@@ -141,8 +141,18 @@
         .footer-copy{padding-top:2rem;border-top:1px solid #334155;color:#94a3b8;font-size:.875rem}
         
         /* Mobile Menu */
-        .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,42,.98);backdrop-filter:blur(10px);border-bottom:1px solid #334155;z-index:50}
-        .mobile-menu.active{display:block}
+        .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,42,.98);backdrop-filter:blur(10px);border-bottom:1px solid #334155;z-index:50;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+        .mobile-menu.active{display:block;animation:slideDown .3s ease-out}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .mobile-menu-content{padding:1.5rem 0;display:flex;flex-direction:column;gap:.5rem}
+        .mobile-menu-content a{color:#f8fafc;text-decoration:none;font-weight:500;padding:1rem 1.5rem;transition:all .3s;border-left:3px solid transparent;display:flex;align-items:center;gap:.75rem;font-size:1rem}
+        .mobile-menu-content a:hover{background:rgba(245,158,11,.1);color:#f59e0b;border-left-color:#f59e0b;padding-left:1.75rem}
+        .mobile-menu-content a:active{background:rgba(245,158,11,.15)}
+        .mobile-menu-content a svg{flex-shrink:0;opacity:.7;transition:opacity .3s}
+        .mobile-menu-content a:hover svg{opacity:1}
+        .mobile-menu-content a.btn{background:#f59e0b;color:#0f172a;border-left:none;border-radius:.5rem;font-weight:600;justify-content:center}
+        .mobile-menu-content a.btn:hover{background:#d97706;color:#0f172a;padding-left:1rem}
+        .mobile-menu-divider{height:1px;background:#334155;margin:.75rem 1.5rem}
         .mobile-btn{cursor:pointer;padding:.5rem}
         
         /* Mobile Responsive Fixes */
@@ -248,12 +258,25 @@
         </div>
         
         <div id="mobile-menu" class="mobile-menu">
-            <div style="padding:1rem 0 1.5rem;display:flex;flex-direction:column;gap:1rem">
-                <a href="index.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Home</a>
-                <a href="article-writing.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Article Writing</a>
-                <a href="website-design.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Website Design</a>
-                <a href="portfolio.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Portfolio</a>
-                <a href="#contact" class="btn" style="display:block;text-align:center;margin-top:0.5rem">Get Quote</a>
+            <div class="mobile-menu-content">
+                <a href="index.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Home</span>
+                </a>
+                <a href="article-writing.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <span>Article Writing</span>
+                </a>
+                <a href="website-design.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <span>Website Design</span>
+                </a>
+                <a href="portfolio.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <span>Portfolio</span>
+                </a>
+                <div class="mobile-menu-divider"></div>
+                <a href="#contact" class="btn" style="margin:.5rem 1.5rem;padding:1rem;text-align:center;justify-content:center;border-left:none;padding-left:1rem">Get Quote</a>
             </div>
         </div>
     </nav>
