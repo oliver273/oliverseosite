@@ -16,20 +16,55 @@
         
         /* Navigation Styles */
         .nav{position:sticky;top:0;background:rgba(15,23,42,.95);backdrop-filter:blur(10px);border-bottom:1px solid #334155;z-index:40}
-        .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem}
-        .logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none}
+        .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem;flex-wrap:nowrap;min-width:0}
+        .logo{flex-shrink:0;min-width:0;display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none}
         .logo-icon{width:2.5rem;height:2.5rem;background:#f59e0b20;border-radius:.5rem;display:flex;align-items:center;justify-content:center}
-        .nav-links{display:none;gap:2rem;align-items:center}@media(min-width:768px){.nav-links{display:flex}}
-        .nav-links a{color:#f8fafc;text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0;margin:0 .5rem;display:inline-block}
+        .nav-links{display:none;gap:1rem;align-items:center;flex-wrap:wrap}@media(min-width:800px){.nav-links{display:flex;gap:1.25rem}}@media(min-width:900px){.nav-links{gap:1.5rem}}@media(min-width:1000px){.nav-links{gap:2rem}}
+        .nav-links a{color:#f8fafc;text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0;margin:0 .25rem;display:inline-block;white-space:nowrap;font-size:.875rem}@media(min-width:900px){.nav-links a{margin:0 .5rem;font-size:.9375rem}}@media(min-width:1000px){.nav-links a{font-size:1rem}}
         .nav-links a:hover{color:#f59e0b}
         .nav-links a.active{color:#f59e0b;border-bottom:2px solid #f59e0b}
-        .mobile-btn{display:block;color:#fff;font-size:1.25rem;background:none;border:none}@media(min-width:768px){.mobile-btn{display:none}}
+        .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:#fff;background:none;border:none;cursor:pointer;padding:.5rem;width:2.5rem;height:2.5rem;justify-content:center;align-items:center}@media(min-width:800px){.mobile-btn{display:none}}
+        .mobile-btn span{display:block;width:1.5rem;height:2px;background:#fff;transition:all .3s;border-radius:2px}
+        .mobile-btn.active span:nth-child(1){transform:rotate(45deg) translate(.4rem,.4rem)}
+        .mobile-btn.active span:nth-child(2){opacity:0}
+        .mobile-btn.active span:nth-child(3){transform:rotate(-45deg) translate(.4rem,-.4rem)}
         
         /* Button Styles with High Contrast */
-        .btn{background:#f59e0b;color:#0f172a;padding:1rem 1.5rem;border-radius:.75rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;text-align:center}
+        .btn{background:#f59e0b;color:#0f172a;padding:.875rem 1.25rem;border-radius:.75rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;text-align:center;width:100%;font-size:.9375rem}@media(min-width:600px){.btn{padding:.9375rem 1.375rem;width:auto;font-size:.96875rem}}@media(min-width:768px){.btn{padding:1rem 1.5rem;font-size:1rem}}
         .btn:hover{background:#d97706;transform:translateY(-1px)}
         .btn-outline{border:2px solid #334155;color:#f8fafc;padding:1rem 1.5rem;border-radius:.75rem;font-weight:600;transition:all .3s;flex:1;text-decoration:none;text-align:center}
         .btn-outline:hover{border-color:#f59e0b;color:#f59e0b;background:#f59e0b05}
+        .nav .btn {
+            padding: 0.625rem 1rem !important;
+            background: #f59e0b;
+            color: #0f172a !important;
+            font-weight: 600;
+            border-radius: .5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            font-size: .875rem !important;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        @media(min-width:800px){
+            .nav .btn {
+                padding: 0.6875rem 1.25rem !important;
+                font-size: .9375rem !important;
+            }
+        }
+        @media(min-width:900px){
+            .nav .btn {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 1rem !important;
+            }
+        }
+        .nav .btn:hover {
+            background: #d97706;
+            color: #0f172a !important;
+            transform: translateY(-1px);
+        }
         
         /* Hero Section */
         .warm-bg{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}
@@ -205,18 +240,20 @@
                 <a href="#contact" class="btn">Get Quote</a>
             </div>
             
-            <button id="mobile-menu-btn" class="mobile-btn">MENU</button>
+            <button id="mobile-menu-btn" class="mobile-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
         
         <div id="mobile-menu" class="mobile-menu">
             <div style="padding:1rem 0 1.5rem;display:flex;flex-direction:column;gap:1rem">
-                <a href="index.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Home</a>
-                <a href="article-writing.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Article Writing</a>
-                <a href="website-design.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Website Design</a>
-                <a href="portfolio.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Portfolio</a>
-                <a href="#packages" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Packages</a>
-                <a href="#contact" class="block text-slate-200 hover:text-amber-500 font-medium py-2">Contact</a>
-                <a href="#contact" class="btn" style="display:block;text-align:center">Get Quote</a>
+                <a href="index.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Home</a>
+                <a href="article-writing.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Article Writing</a>
+                <a href="website-design.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Website Design</a>
+                <a href="portfolio.html" class="block text-slate-200 hover:text-amber-500 font-medium py-2" style="color:#f8fafc;text-decoration:none;font-weight:500;padding:.75rem 1.5rem;transition:background .3s">Portfolio</a>
+                <a href="#contact" class="btn" style="display:block;text-align:center;margin-top:0.5rem">Get Quote</a>
             </div>
         </div>
     </nav>
@@ -585,16 +622,19 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('active');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
         });
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobile-menu');
-            const btn = document.getElementById('mobile-menu-btn');
-            if (menu && !menu.contains(event.target) && !btn.contains(event.target) && window.innerWidth < 768) {
-                menu.classList.remove('active');
+            if (mobileMenu && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target) && window.innerWidth < 800) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
             }
         });
 
