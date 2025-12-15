@@ -1,0 +1,62 @@
+========================================
+  SETUP OLLAMA (FREE LOCAL AI)
+========================================
+
+STEP 1: Download Ollama
+-----------------------
+1. Go to: https://ollama.com/download
+2. Download for Windows
+3. Run the installer
+4. Follow the installation wizard
+
+STEP 2: Download AI Model
+-------------------------
+1. Open Command Prompt or PowerShell
+2. Type this command and press Enter:
+   
+   ollama pull llama3.2
+
+3. Wait for download (about 2GB, takes 5-10 minutes)
+4. You'll see "success" when done
+
+STEP 3: Test in App
+-------------------
+1. Open the OliverSEO Business App
+2. Go to "Settings" tab
+3. Click "Test Connection"
+4. Should see "✅ Ollama is running and model is available!"
+
+That's it! AI features are now free and local.
+
+========================================
+  OTHER MODELS (Optional)
+========================================
+
+You can use other models too:
+
+Smaller (faster, less powerful):
+  ollama pull llama3.2:1b
+
+Larger (slower, more powerful):
+  ollama pull llama3.1
+  ollama pull mistral
+
+To switch models, change the "Model Name" in Settings.
+
+========================================
+  TROUBLESHOOTING
+========================================
+
+Problem: "Cannot connect to Ollama"
+Solution: Make sure Ollama is running. Check your system tray for the Ollama icon.
+
+Problem: "Model not found"
+Solution: Run: ollama pull llama3.2
+
+Problem: App is slow
+Solution: Use a smaller model like llama3.2:1b
+
+========================================
+
+
+

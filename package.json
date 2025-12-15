@@ -1,0 +1,39 @@
+{
+  "name": "oliverseo-business-app",
+  "version": "1.0.0",
+  "description": "OliverSEO Business Dashboard and Reddit Outreach Tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [
+    "business",
+    "dashboard",
+    "reddit",
+    "outreach"
+  ],
+  "author": "OliverSEO",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.oliverseo.business",
+    "productName": "OliverSEO Business",
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "**/*",
+      "!node_modules",
+      "!*.md"
+    ]
+  }
+}
+

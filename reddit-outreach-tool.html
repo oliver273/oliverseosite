@@ -1,0 +1,2882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Outreach Automation Tool - OliverSEO</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --primary: #f59e0b;
+            --secondary: #d97706;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border: rgba(51, 65, 85, 0.5);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--surface), rgba(30, 41, 59, 0.8));
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: var(--background);
+            border-color: var(--primary);
+        }
+        
+        .tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab.active:hover {
+            color: var(--background);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subreddit-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .subreddit-link {
+            background: var(--surface);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .subreddit-link:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subreddit-icon {
+            font-size: 2rem;
+        }
+        
+        .template-box {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .template-text {
+            color: var(--text);
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--background);
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .counter-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .counter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .counter-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-details {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .contact-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .status-new {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .status-contacted {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--primary);
+        }
+        
+        .status-followup {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+        
+        .status-closed {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group label {
+            display: block;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            font-family: inherit;
+        }
+        
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        
+        .input-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .progress-bar {
+            background: var(--background);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            background: var(--primary);
+            height: 100%;
+            transition: width 0.3s;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quick-action {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quick-action:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .quick-action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .quick-action-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .quick-action-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .subreddit-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h1>🤖 Reddit Outreach Automation Tool</h1>
+                    <p class="subtitle">Automate Your Daily Reddit Outreach Workflow</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button onclick="showWebsiteNotifications()" style="position: relative; padding: 0.75rem 1.5rem; background: var(--success); color: white; border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                        🔔 Website Alerts
+                        <span id="notificationBadge" style="display: none; position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">0</span>
+                    </button>
+                    <a href="dashboard-fixed.html" style="text-decoration: none;">
+                        <button style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--background); border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(245, 158, 11, 0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                            ← Back to Dashboard
+                        </button>
+                    </a>
+                    <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem 1.25rem; background: var(--surface); border-radius: 0.75rem; border: 1px solid var(--border); transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                        <input type="checkbox" id="aiToggle" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--primary);" onchange="toggleAI()">
+                        <span style="font-weight: 600; color: var(--text);">
+                            <span id="aiToggleLabel">🤖 AI: </span>
+                            <span id="aiToggleStatus" style="color: var(--primary);">ON</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </header>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="todayReplies">0</div>
+                <div class="stat-label">Today's Replies</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="repliesProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayPosts">0</div>
+                <div class="stat-label">Today's Posts</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="postsProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalContacts">0</div>
+                <div class="stat-label">Total Contacts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayFollowups">0</div>
+                <div class="stat-label">Follow-ups Needed</div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('dashboard')">📊 Dashboard</div>
+            <div class="tab" onclick="switchTab('finder')">🔍 Post Finder</div>
+            <div class="tab" onclick="switchTab('notifications')">🔔 Website Alerts <span id="tabNotificationBadge" style="display: none; background: var(--danger); color: white; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; margin-left: 0.25rem;">0</span></div>
+            <div class="tab" onclick="switchTab('ai')">🤖 AI Assistant</div>
+            <div class="tab" onclick="switchTab('subreddits')">🔗 Subreddits</div>
+            <div class="tab" onclick="switchTab('templates')">📝 Templates</div>
+            <div class="tab" onclick="switchTab('contacts')">👥 Contacts</div>
+            <div class="tab" onclick="switchTab('tracker')">📈 Daily Tracker</div>
+            <div class="tab" onclick="switchTab('settings')">⚙️ Settings</div>
+        </div>
+        
+        <!-- DASHBOARD TAB -->
+        <div id="dashboard" class="tab-content active">
+            <div class="card">
+                <h2 class="card-title">Quick Actions</h2>
+                <div class="quick-actions">
+                    <div class="quick-action" onclick="incrementCounter('replies')">
+                        <div class="quick-action-icon">💬</div>
+                        <div class="quick-action-title">Add Reply</div>
+                        <div class="quick-action-desc">Track a Reddit reply</div>
+                    </div>
+                    <div class="quick-action" onclick="incrementCounter('posts')">
+                        <div class="quick-action-icon">📮</div>
+                        <div class="quick-action-title">Add Post</div>
+                        <div class="quick-action-desc">Track a [FOR HIRE] post</div>
+                    </div>
+                    <div class="quick-action" onclick="switchTab('contacts'); document.getElementById('addContactBtn').click();">
+                        <div class="quick-action-icon">➕</div>
+                        <div class="quick-action-title">Add Contact</div>
+                        <div class="quick-action-desc">Save a new lead</div>
+                    </div>
+                    <div class="quick-action" onclick="switchTab('subreddits')">
+                        <div class="quick-action-icon">🔍</div>
+                        <div class="quick-action-title">Check Subreddits</div>
+                        <div class="quick-action-desc">Open Reddit links</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Today's Goals</h2>
+                <div class="counter-controls">
+                    <span>Replies Goal:</span>
+                    <button class="counter-btn" onclick="adjustGoal('replies', -5)">-</button>
+                    <div class="counter-value" id="repliesGoal">25</div>
+                    <button class="counter-btn" onclick="adjustGoal('replies', 5)">+</button>
+                </div>
+                <div class="counter-controls">
+                    <span>Posts Goal:</span>
+                    <button class="counter-btn" onclick="adjustGoal('posts', -1)">-</button>
+                    <div class="counter-value" id="postsGoal">2</div>
+                    <button class="counter-btn" onclick="adjustGoal('posts', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- POST FINDER TAB -->
+        <div id="finder" class="tab-content">
+            <div class="card" style="background: rgba(245, 158, 11, 0.1); border: 2px solid var(--primary); margin-bottom: 1.5rem;">
+                <h2 class="card-title">⭐ BEST METHOD: Reddit Keyword Search</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 1.1rem;">
+                    <strong>Why This Works:</strong> Reddit's built-in search finds posts instantly. No API issues, 100% reliable.
+                </p>
+                <div style="background: var(--background); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.125rem;">🚀 Super Fast Workflow:</h3>
+                    <ol style="color: var(--text-secondary); line-height: 2; padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Click a search link below (opens Reddit with keyword search)</li>
+                        <li>Sort by "New" to see latest posts</li>
+                        <li>Click a post that looks good</li>
+                        <li>Copy the post text</li>
+                        <li>Paste into "AI Assistant" tab → Generate Reply</li>
+                        <li>Send reply on Reddit</li>
+                    </ol>
+                    <p style="color: var(--primary); font-weight: 600; margin-top: 1rem;">
+                        ⚡ Check these searches 3x per day (morning, afternoon, evening) for best results!
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.75rem; font-size: 1.125rem;">🎯 Website Design Searches (15+ searches):</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                        <a href="https://www.reddit.com/r/forhire/search/?q=need%20website&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "need website"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=website%20design&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "website design"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=%5Bhiring%5D%20website&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "[hiring] website"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=web%20designer&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "web designer"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=create%20website&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "create website"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=build%20website&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "build website"</a>
+                        <a href="https://www.reddit.com/r/slavelabour/search/?q=website&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/slavelabour: "website"</a>
+                        <a href="https://www.reddit.com/r/slavelabour/search/?q=web%20design&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/slavelabour: "web design"</a>
+                        <a href="https://www.reddit.com/r/webdev/search/?q=%5Bhiring%5D&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/webdev: "[hiring]"</a>
+                        <a href="https://www.reddit.com/r/web_design/search/?q=%5Bhiring%5D&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/web_design: "[hiring]"</a>
+                        <a href="https://www.reddit.com/r/entrepreneur/search/?q=website&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/entrepreneur: "website"</a>
+                        <a href="https://www.reddit.com/r/smallbusiness/search/?q=website&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/smallbusiness: "website"</a>
+                        <a href="https://www.reddit.com/r/startups/search/?q=website&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/startups: "website"</a>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.75rem; font-size: 1.125rem;">✍️ Article Writing Searches (12+ searches):</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                        <a href="https://www.reddit.com/r/HireAWriter/search/?q=&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/HireAWriter: All Posts</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=need%20writer&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "need writer"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=article%20writing&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "article writing"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=blog%20post&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "blog post"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=content%20writer&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "content writer"</a>
+                        <a href="https://www.reddit.com/r/forhire/search/?q=blog%20writer&restrict_sr=1&sort=new" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/forhire: "blog writer"</a>
+                        <a href="https://www.reddit.com/r/slavelabour/search/?q=article&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/slavelabour: "article"</a>
+                        <a href="https://www.reddit.com/r/slavelabour/search/?q=blog&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/slavelabour: "blog"</a>
+                        <a href="https://www.reddit.com/r/slavelabour/search/?q=writing&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/slavelabour: "writing"</a>
+                        <a href="https://www.reddit.com/r/writing/search/?q=%5Bhiring%5D&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/writing: "[hiring]"</a>
+                        <a href="https://www.reddit.com/r/freelanceWriters/search/?q=&restrict_sr=1&sort=new" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center; font-size: 0.85rem;">🔍 r/freelanceWriters: All</a>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--success); margin-bottom: 1rem;">
+                    <h3 style="color: var(--success); margin-bottom: 0.5rem; font-size: 1rem;">💡 Pro Tips:</h3>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; font-size: 0.875rem; margin: 0;">
+                        <li><strong>Sort by "New"</strong> - See latest posts first (better chance to reply early)</li>
+                        <li><strong>Bookmark these searches</strong> - Save them in your browser for quick access</li>
+                        <li><strong>Check 3x daily</strong> - Morning (8am), Afternoon (2pm), Evening (6pm)</li>
+                        <li><strong>Reply within 1 hour</strong> - First reply often wins!</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 0.75rem; border: 1px solid #3b82f6;">
+                    <h3 style="color: #3b82f6; margin-bottom: 0.75rem; font-size: 1rem;">🚀 If Not Enough Posts - Try These:</h3>
+                    <div style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.8;">
+                        <p style="margin-bottom: 0.75rem;"><strong>1. Post Your Own [FOR HIRE] Posts</strong> (once you have 50+ karma):</p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                            <a href="https://www.reddit.com/r/forhire/submit" target="_blank" class="btn btn-small" style="background: #3b82f6; text-decoration: none; font-size: 0.8rem;">📮 Post in r/forhire</a>
+                            <a href="https://www.reddit.com/r/slavelabour/submit" target="_blank" class="btn btn-small" style="background: #3b82f6; text-decoration: none; font-size: 0.8rem;">📮 Post in r/slavelabour</a>
+                            <a href="https://www.reddit.com/r/HireAWriter/submit" target="_blank" class="btn btn-small" style="background: #3b82f6; text-decoration: none; font-size: 0.8rem;">📮 Post in r/HireAWriter</a>
+                        </div>
+                        <p style="margin-bottom: 0.75rem;"><strong>2. Reply to Older Posts:</strong> Check posts from yesterday or 2 days ago - they might still need help!</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>3. Expand Your Search:</strong> Look in r/entrepreneur, r/smallbusiness, r/startups for people asking questions (they might need a website)</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>4. Direct Outreach:</strong> Find businesses on Google Maps, email them offering website design</p>
+                        <p><strong>5. Social Media:</strong> Twitter, Facebook groups, LinkedIn - post about your services</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h2 class="card-title">📋 Alternative: Browse Subreddits Directly</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">If you prefer browsing, click these links to see all new posts:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <a href="https://www.reddit.com/r/forhire/new/" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center;">🔗 r/forhire (New)</a>
+                    <a href="https://www.reddit.com/r/slavelabour/new/" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center;">🔗 r/slavelabour (New)</a>
+                    <a href="https://www.reddit.com/r/HireAWriter/new/" target="_blank" class="btn btn-secondary" style="text-decoration: none; text-align: center;">🔗 r/HireAWriter (New)</a>
+                </div>
+            </div>
+            
+            <div class="card" style="background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success); margin-bottom: 1.5rem;">
+                <h2 class="card-title">🔍 Search All Subreddits (Finds Website Needs)</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    This will search all subreddits and automatically notify you when someone needs a website. 
+                    Check the "Website Alerts" tab after searching to review posts manually.
+                </p>
+                <button class="btn" onclick="findPosts('all')" style="background: linear-gradient(135deg, var(--success), #059669); font-size: 1.125rem; padding: 1rem 2rem; font-weight: 600;">
+                    🔍 Search All Subreddits
+                </button>
+                <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.875rem;">
+                    ⚡ This searches: r/forhire, r/slavelabour, r/HireAWriter, r/webdev, r/web_design, and more
+                </p>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">🤖 Auto-Find & Generate Replies (Experimental)</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">⚠️ Automated search is unreliable due to Reddit API restrictions. Use "Search All Subreddits" above for best results.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <button class="btn btn-secondary" onclick="autoFindAndGenerate('forhire')">🤖 Auto r/forhire</button>
+                    <button class="btn btn-secondary" onclick="autoFindAndGenerate('slavelabour')">🤖 Auto r/slavelabour</button>
+                    <button class="btn btn-secondary" onclick="autoFindAndGenerate('HireAWriter')">🤖 Auto r/HireAWriter</button>
+                    <button class="btn btn-secondary" onclick="autoFindAndGenerate('all')">🤖 Auto All Subreddits</button>
+                </div>
+                
+                <div id="finderStatus" style="color: var(--text-secondary); margin-bottom: 1rem; min-height: 1.5rem; font-weight: 600;"></div>
+                
+                <div id="autoGeneratedReplies" style="margin-bottom: 2rem;"></div>
+                
+                <!-- Navigation Filters for Posts -->
+                <div id="postFilters" style="display: none; margin-bottom: 1.5rem; padding: 1rem; background: var(--surface); border-radius: 0.75rem; border: 1px solid var(--border);">
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <span style="font-weight: 600; color: var(--text);">Filter:</span>
+                        <button class="btn btn-small" id="filterAll" onclick="filterPosts('all')" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">All Posts</button>
+                        <button class="btn btn-small btn-secondary" id="filterHiring" onclick="filterPosts('hiring')">💼 Hiring Posts</button>
+                        <button class="btn btn-small btn-secondary" id="filterWebsite" onclick="filterPosts('website')">🌐 Website Needs</button>
+                        <button class="btn btn-small btn-secondary" id="filterWriting" onclick="filterPosts('writing')">✍️ Writing Needs</button>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <span style="font-weight: 600; color: var(--text);">Sort:</span>
+                        <button class="btn btn-small btn-secondary" id="sortNewest" onclick="sortPosts('newest')">🕐 Newest First</button>
+                        <button class="btn btn-small btn-secondary" id="sortOldest" onclick="sortPosts('oldest')">🕐 Oldest First</button>
+                        <button class="btn btn-small btn-secondary" id="sortScore" onclick="sortPosts('score')">⭐ Highest Score</button>
+                    </div>
+                    <div id="filterStatus" style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.875rem;"></div>
+                </div>
+                
+                <div id="foundPosts"></div>
+                
+                <div class="card" style="margin-top: 2rem; background: rgba(245, 158, 11, 0.1); border: 1px solid var(--primary);">
+                    <h3 style="color: var(--primary); margin-bottom: 0.75rem; font-size: 1.125rem;">💡 Alternative Method</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                        If automatic fetching doesn't work due to browser restrictions:
+                    </p>
+                    <ol style="color: var(--text-secondary); line-height: 2; padding-left: 1.5rem; margin-bottom: 1rem; font-size: 0.875rem;">
+                        <li>Use the "Manual Search" buttons above, or</li>
+                        <li>Go to the <strong>Subreddits</strong> tab and click the direct links</li>
+                        <li>Copy a Reddit post you want to reply to</li>
+                        <li>Go to the <strong>AI Assistant</strong> tab</li>
+                        <li>Paste the post and click "Generate Reply"</li>
+                    </ol>
+                    <button class="btn btn-small" onclick="document.querySelectorAll('.tab').forEach(t => { if (t.textContent.includes('Subreddits')) t.click(); })">Go to Subreddits Tab →</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WEBSITE NOTIFICATIONS TAB -->
+        <div id="notifications" class="tab-content">
+            <div class="card" style="background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success); margin-bottom: 1.5rem;">
+                <h2 class="card-title">🔔 Website Needs - Manual Review</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Posts where someone clearly needs a website. Review these manually and reply when ready.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn" onclick="clearAllNotifications()" style="background: var(--danger);">🗑️ Clear All</button>
+                    <button class="btn btn-secondary" onclick="refreshNotifications()">🔄 Refresh</button>
+                </div>
+            </div>
+            
+            <div id="notificationsList" style="margin-bottom: 2rem;">
+                <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                    <p style="font-size: 1.25rem; margin-bottom: 0.5rem;">No website alerts yet</p>
+                    <p style="font-size: 0.875rem;">When posts are found that need websites, they'll appear here for manual review.</p>
+                    <button class="btn" onclick="findPosts('all')" style="margin-top: 1rem;">🔍 Search for Posts Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI ASSISTANT TAB -->
+        <div id="ai" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">🤖 AI Assistant</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Generate AI-powered replies, proposals, and content. Make sure to add your API key in Settings first.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="card" style="cursor: pointer;" onclick="document.getElementById('aiReplyInput').focus()">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">💬 Generate Reddit Reply</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Paste a Reddit post and get a personalized reply</p>
+                    </div>
+                    <div class="card" style="cursor: pointer;" onclick="document.getElementById('aiProposalInput').focus()">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">📝 Generate Proposal</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Create a custom proposal based on client needs</p>
+                    </div>
+                    <div class="card" style="cursor: pointer;" onclick="document.getElementById('aiContentInput').focus()">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">✍️ Generate Content</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Create blog posts, articles, or marketing content</p>
+                    </div>
+                </div>
+                
+                <!-- AI Reply Generator -->
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 class="card-title">💬 AI Reddit Reply Generator</h3>
+                    <div class="input-group">
+                        <label>Paste the Reddit post here:</label>
+                        <textarea id="aiReplyInput" placeholder="Copy and paste the Reddit post you want to reply to..."></textarea>
+                    </div>
+                    <button class="btn" onclick="generateAIReply()">🤖 Generate Reply</button>
+                    <div id="aiReplyOutput" style="margin-top: 1rem; display: none;">
+                        <div class="template-box">
+                            <div class="template-text" id="aiReplyText"></div>
+                            <button class="btn btn-small" onclick="copyAIText('aiReplyText')">📋 Copy Reply</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Proposal Generator -->
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 class="card-title">📝 AI Proposal Generator</h3>
+                    <div class="input-group">
+                        <label>Describe the project or client needs:</label>
+                        <textarea id="aiProposalInput" placeholder="Example: Client needs a 5-page website for their bakery business, wants online ordering, contact form, and menu display..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Service Type:</label>
+                        <select id="aiProposalService" style="width: 100%; padding: 0.75rem; background: var(--background); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
+                            <option value="website">Website Design</option>
+                            <option value="article">Article Writing</option>
+                            <option value="both">Both Services</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="generateAIProposal()">🤖 Generate Proposal</button>
+                    <div id="aiProposalOutput" style="margin-top: 1rem; display: none;">
+                        <div class="template-box">
+                            <div class="template-text" id="aiProposalText"></div>
+                            <button class="btn btn-small" onclick="copyAIText('aiProposalText')">📋 Copy Proposal</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Content Generator -->
+                <div class="card">
+                    <h3 class="card-title">✍️ AI Content Generator</h3>
+                    <div class="input-group">
+                        <label>What content do you need?</label>
+                        <textarea id="aiContentInput" placeholder="Example: Write a blog post about '10 Tips for Small Business Website Design' (800 words)..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Content Type:</label>
+                        <select id="aiContentType" style="width: 100%; padding: 0.75rem; background: var(--background); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
+                            <option value="blog">Blog Post</option>
+                            <option value="article">Article</option>
+                            <option value="social">Social Media Post</option>
+                            <option value="email">Email</option>
+                            <option value="proposal">Proposal</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="generateAIContent()">🤖 Generate Content</button>
+                    <div id="aiContentOutput" style="margin-top: 1rem; display: none;">
+                        <div class="template-box">
+                            <div class="template-text" id="aiContentText"></div>
+                            <button class="btn btn-small" onclick="copyAIText('aiContentText')">📋 Copy Content</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SETTINGS TAB -->
+        <div id="settings" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">⚙️ Settings</h2>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 class="card-title">🤖 Local AI Setup (Free)</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Using Ollama - a free, local AI that runs on your computer. No API keys needed!</p>
+                    <div class="input-group">
+                        <label>Ollama API URL (default: http://localhost:11434):</label>
+                        <input type="text" id="ollamaUrlInput" placeholder="http://localhost:11434" value="http://localhost:11434">
+                    </div>
+                    <div class="input-group">
+                        <label>Model Name (default: llama3.2:latest):</label>
+                        <input type="text" id="ollamaModelInput" placeholder="llama3.2:latest" value="llama3.2:latest">
+                    </div>
+                    <button class="btn" onclick="saveOllamaSettings()">💾 Save Settings</button>
+                    <button class="btn btn-secondary" onclick="testOllamaConnection()" style="margin-left: 0.5rem;">🧪 Test Connection</button>
+                    <div id="ollamaStatus" style="margin-top: 1rem; padding: 0.75rem; border-radius: 0.5rem; display: none;"></div>
+                </div>
+                
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 class="card-title">📥 Install Ollama (One-Time Setup)</h3>
+                    <ol style="color: var(--text-secondary); line-height: 2; padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Download Ollama from <a href="https://ollama.com/download" target="_blank" style="color: var(--primary);">ollama.com/download</a></li>
+                        <li>Install it (just run the installer)</li>
+                        <li>Open Terminal/Command Prompt and run: <code style="background: var(--background); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">ollama pull llama3.2</code></li>
+                        <li>Wait for download (about 2GB, takes a few minutes)</li>
+                        <li>Come back here and click "Test Connection"</li>
+                    </ol>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                        <strong>Note:</strong> Ollama runs completely free on your computer. No internet needed after setup. When you start making money, you can switch to paid APIs in Settings.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">💰 Switch to Paid AI (Later)</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">When you're ready to use paid AI services:</p>
+                    <div class="input-group">
+                        <label>AI Provider:</label>
+                        <select id="aiProviderSelect" style="width: 100%; padding: 0.75rem; background: var(--background); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--text);">
+                            <option value="ollama" selected>Ollama (Local - Free)</option>
+                            <option value="openai">OpenAI (Paid)</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="openaiKeyGroup" style="display: none;">
+                        <label>OpenAI API Key:</label>
+                        <input type="password" id="apiKeyInput" placeholder="sk-..." value="">
+                    </div>
+                    <button class="btn" onclick="saveAISettings()">💾 Save AI Settings</button>
+                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.875rem;">
+                        Currently using: <strong id="currentAIProvider">Ollama (Local)</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUBREDDITS TAB -->
+        <div id="subreddits" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Quick Links to Subreddits</h2>
+                <div class="subreddit-links">
+                    <a href="https://www.reddit.com/r/forhire/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">💼</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/forhire</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">5-10 replies daily</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/slavelabour/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">💰</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/slavelabour</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">5-10 replies daily</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/HireAWriter/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">✍️</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/HireAWriter</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">3-5 replies daily</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/webdev/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">💻</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/webdev</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Web development community</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/web_design/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">🎨</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/web_design</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Web design community</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/freelanceWriters/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">📝</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/freelanceWriters</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Freelance writing</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/writing/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">✍️</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/writing</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Writing community</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/entrepreneur/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">🚀</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/entrepreneur</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Business owners</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/smallbusiness/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">🏢</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/smallbusiness</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Small business owners</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/startups/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">🌟</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/startups</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Startup founders</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/ContentWriting/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">📄</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/ContentWriting</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Content writing</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/Blogging/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">log</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/Blogging</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Bloggers</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/SEO/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">🔍</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/SEO</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">SEO community</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/marketing/new/" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">📊</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">r/marketing</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Marketing professionals</div>
+                        </div>
+                    </a>
+                    <a href="https://www.reddit.com/r/forhire/submit" target="_blank" class="subreddit-link">
+                        <div class="subreddit-icon">📮</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--primary);">Post [FOR HIRE]</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Create new post</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TEMPLATES TAB -->
+        <div id="templates" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Reply Template (r/forhire)</h2>
+                <div class="template-box">
+                    <div class="template-text" id="replyTemplate">Hey! I can help with [their specific need].
+
+I'm a professional website designer and article writer. I offer a streamlined, no-call process for maximum convenience.
+
+**What I Offer:**
+• Website Design: $349-$999 (3-10 days) - No calls needed!
+• Article Writing: $69-$199 (24-48 hours) - Fast delivery!
+• SEO Optimization included
+• Unlimited revisions
+• Professional quality guaranteed
+
+**Portfolio:** https://oliverseo.com/portfolio
+
+**Streamlined Process:**
+✅ No calls, no meetings - everything via messages
+✅ Fast turnaround - no scheduling delays
+✅ I can start immediately
+✅ Professional service, zero hassle
+
+I'm taking on 2 clients this week. Limited availability to ensure quality.
+
+DM me if interested - I'll respond within 5 minutes!</div>
+                    <button class="btn btn-small" onclick="copyTemplate('replyTemplate')">📋 Copy Template</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">[FOR HIRE] Post Template</h2>
+                <div class="template-box">
+                    <div class="template-text" id="postTemplate">[FOR HIRE] Professional Website Designer & Article Writer - $349-$999
+
+Hey everyone!
+
+I'm a professional website designer and article writer. I offer a streamlined, no-call process for maximum convenience and fast delivery.
+
+**What I Offer:**
+• Website Design: $349-$999 (3-10 days) - No calls needed!
+• Article Writing: $69-$199 (24-48 hours) - Fast delivery!
+• SEO Optimization included
+• Unlimited revisions
+• Professional quality guaranteed
+
+**Streamlined Process:**
+✅ No calls, no meetings - everything via messages
+✅ Fast turnaround - no scheduling delays
+✅ I can start immediately
+✅ Professional service, zero hassle
+
+**Portfolio:** https://oliverseo.com/portfolio
+
+I'm taking on 2 clients this week. Limited availability to ensure quality.
+
+DM me if interested - I'll respond within 5 minutes!
+
+Questions? Ask away!</div>
+                    <button class="btn btn-small" onclick="copyTemplate('postTemplate')">📋 Copy Template</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Direct Outreach Email Template</h2>
+                <div class="template-box">
+                    <div class="template-text" id="emailTemplate">Subject: Professional Website Design for [Their Business Name]
+
+Hi [Name],
+
+I noticed [their business] and thought you might benefit from a modern website or fresh content.
+
+I'm a professional website designer and content writer. I help businesses like yours create an online presence that drives results.
+
+**What I Offer:**
+• Modern, responsive websites ($349-$999)
+• SEO-optimized articles ($69-$199)
+• Fast turnaround (3-10 days for websites, 24-48h for articles)
+• No calls needed - streamlined process
+• Unlimited revisions
+
+I'd love to help [their business] grow online. No calls needed - just send me your requirements and I'll get started!
+
+Portfolio: [your link]
+
+Best,
+[Your Name]</div>
+                    <button class="btn btn-small" onclick="copyTemplate('emailTemplate')">📋 Copy Template</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONTACTS TAB -->
+        <div id="contacts" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Add New Contact</h2>
+                <div class="input-group">
+                    <label>Name / Username</label>
+                    <input type="text" id="contactName" placeholder="Reddit username or real name">
+                </div>
+                <div class="input-group">
+                    <label>Platform</label>
+                    <input type="text" id="contactPlatform" placeholder="Reddit, Email, etc.">
+                </div>
+                <div class="input-group">
+                    <label>Contact Info</label>
+                    <input type="text" id="contactInfo" placeholder="u/username or email">
+                </div>
+                <div class="input-group">
+                    <label>Notes</label>
+                    <textarea id="contactNotes" placeholder="Project details, pricing discussed, etc."></textarea>
+                </div>
+                <button class="btn" id="addContactBtn" onclick="addContact()">Add Contact</button>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Your Contacts</h2>
+                <div id="contactsList"></div>
+            </div>
+        </div>
+        
+        <!-- TRACKER TAB -->
+        <div id="tracker" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Daily Activity Log</h2>
+                <div id="activityLog"></div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Reset Daily Counters</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Reset today's counters (use at start of new day)</p>
+                <button class="btn btn-secondary" onclick="resetDaily()">🔄 Reset Today's Counters</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize data
+        let data = {
+            todayReplies: 0,
+            todayPosts: 0,
+            repliesGoal: 25,
+            postsGoal: 2,
+            contacts: [],
+            activityLog: []
+        };
+        
+        // Load data from localStorage
+        function loadData() {
+            const saved = localStorage.getItem('redditOutreachData');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                // Check if it's a new day
+                const lastDate = localStorage.getItem('redditOutreachDate');
+                const today = new Date().toDateString();
+                if (lastDate !== today) {
+                    // New day - reset counters but keep contacts
+                    data.todayReplies = 0;
+                    data.todayPosts = 0;
+                    data.activityLog = [];
+                    data.contacts = parsed.contacts || [];
+                    data.repliesGoal = parsed.repliesGoal || 25;
+                    data.postsGoal = parsed.postsGoal || 2;
+                } else {
+                    data = parsed;
+                }
+            }
+            updateDisplay();
+        }
+        
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('redditOutreachData', JSON.stringify(data));
+            localStorage.setItem('redditOutreachDate', new Date().toDateString());
+        }
+        
+        // Update display
+        function updateDisplay() {
+            document.getElementById('todayReplies').textContent = data.todayReplies;
+            document.getElementById('todayPosts').textContent = data.todayPosts;
+            document.getElementById('repliesGoal').textContent = data.repliesGoal;
+            document.getElementById('postsGoal').textContent = data.postsGoal;
+            
+            // Update progress bars
+            const repliesProgress = (data.todayReplies / data.repliesGoal) * 100;
+            document.getElementById('repliesProgress').style.width = Math.min(repliesProgress, 100) + '%';
+            
+            const postsProgress = (data.todayPosts / data.postsGoal) * 100;
+            document.getElementById('postsProgress').style.width = Math.min(postsProgress, 100) + '%';
+            
+            // Update contacts
+            document.getElementById('totalContacts').textContent = data.contacts.length;
+            const followups = data.contacts.filter(c => c.status === 'followup').length;
+            document.getElementById('todayFollowups').textContent = followups;
+            
+            // Display contacts
+            displayContacts();
+            displayActivityLog();
+        }
+        
+        // Switch tabs
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Increment counters
+        function incrementCounter(type) {
+            if (type === 'replies') {
+                data.todayReplies++;
+                addActivity(`Replied to a Reddit post`, 'reply');
+            } else if (type === 'posts') {
+                data.todayPosts++;
+                addActivity(`Posted [FOR HIRE] post`, 'post');
+            }
+            saveData();
+            updateDisplay();
+        }
+        
+        // Adjust goals
+        function adjustGoal(type, amount) {
+            if (type === 'replies') {
+                data.repliesGoal = Math.max(5, data.repliesGoal + amount);
+            } else if (type === 'posts') {
+                data.postsGoal = Math.max(1, data.postsGoal + amount);
+            }
+            saveData();
+            updateDisplay();
+        }
+        
+        // Copy template
+        function copyTemplate(templateId) {
+            const text = document.getElementById(templateId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Template copied to clipboard!');
+            });
+        }
+        
+        // Add contact
+        function addContact() {
+            const name = document.getElementById('contactName').value;
+            const platform = document.getElementById('contactPlatform').value;
+            const info = document.getElementById('contactInfo').value;
+            const notes = document.getElementById('contactNotes').value;
+            
+            if (!name || !info) {
+                alert('Please fill in at least Name and Contact Info');
+                return;
+            }
+            
+            const contact = {
+                id: Date.now(),
+                name,
+                platform: platform || 'Reddit',
+                info,
+                notes,
+                status: 'new',
+                date: new Date().toLocaleString()
+            };
+            
+            data.contacts.unshift(contact);
+            saveData();
+            updateDisplay();
+            
+            // Clear form
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactPlatform').value = '';
+            document.getElementById('contactInfo').value = '';
+            document.getElementById('contactNotes').value = '';
+            
+            addActivity(`Added contact: ${name}`, 'contact');
+        }
+        
+        // Display contacts
+        function displayContacts() {
+            const container = document.getElementById('contactsList');
+            if (data.contacts.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem;">No contacts yet. Add your first contact above!</p>';
+                return;
+            }
+            
+            container.innerHTML = data.contacts.map(contact => {
+                const statusClass = `status-${contact.status}`;
+                const statusText = contact.status.charAt(0).toUpperCase() + contact.status.slice(1);
+                return `
+                    <div class="contact-item">
+                        <div class="contact-info">
+                            <div class="contact-name">${contact.name} <span class="status-badge ${statusClass}">${statusText}</span></div>
+                            <div class="contact-details">${contact.platform} • ${contact.info}</div>
+                            ${contact.notes ? `<div class="contact-details" style="margin-top: 0.5rem;">${contact.notes}</div>` : ''}
+                            <div class="contact-details" style="font-size: 0.75rem; margin-top: 0.25rem;">${contact.date}</div>
+                        </div>
+                        <div class="contact-actions">
+                            <select class="btn btn-secondary btn-small" onchange="updateContactStatus(${contact.id}, this.value)" style="padding: 0.5rem;">
+                                <option value="new" ${contact.status === 'new' ? 'selected' : ''}>New</option>
+                                <option value="contacted" ${contact.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                                <option value="followup" ${contact.status === 'followup' ? 'selected' : ''}>Follow-up</option>
+                                <option value="closed" ${contact.status === 'closed' ? 'selected' : ''}>Closed</option>
+                            </select>
+                            <button class="btn btn-secondary btn-small" onclick="deleteContact(${contact.id})">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Update contact status
+        function updateContactStatus(id, status) {
+            const contact = data.contacts.find(c => c.id === id);
+            if (contact) {
+                contact.status = status;
+                saveData();
+                updateDisplay();
+                addActivity(`Updated ${contact.name} status to ${status}`, 'contact');
+            }
+        }
+        
+        // Delete contact
+        function deleteContact(id) {
+            if (confirm('Delete this contact?')) {
+                data.contacts = data.contacts.filter(c => c.id !== id);
+                saveData();
+                updateDisplay();
+            }
+        }
+        
+        // Add activity log entry
+        function addActivity(text, type) {
+            data.activityLog.unshift({
+                text,
+                type,
+                time: new Date().toLocaleTimeString()
+            });
+            // Keep only last 50 entries
+            if (data.activityLog.length > 50) {
+                data.activityLog = data.activityLog.slice(0, 50);
+            }
+            saveData();
+        }
+        
+        // Display activity log
+        function displayActivityLog() {
+            const container = document.getElementById('activityLog');
+            if (data.activityLog.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem;">No activity yet today.</p>';
+                return;
+            }
+            
+            container.innerHTML = data.activityLog.map(activity => {
+                const icon = activity.type === 'reply' ? '💬' : activity.type === 'post' ? '📮' : '👥';
+                return `
+                    <div style="padding: 0.75rem; background: var(--background); border-left: 3px solid var(--primary); margin-bottom: 0.5rem; border-radius: 0.25rem;">
+                        <span style="margin-right: 0.5rem;">${icon}</span>
+                        <span>${activity.text}</span>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem; float: right;">${activity.time}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Reset daily counters
+        function resetDaily() {
+            if (confirm('Reset today\'s counters? This will clear today\'s replies and posts count.')) {
+                data.todayReplies = 0;
+                data.todayPosts = 0;
+                data.activityLog = [];
+                saveData();
+                updateDisplay();
+                alert('Daily counters reset!');
+            }
+        }
+        
+        // Initialize
+        loadData();
+        
+        // Auto-save every 30 seconds
+        setInterval(saveData, 30000);
+        
+        // Post Finder Functions - TARGETED KEYWORDS
+        const relevantKeywords = {
+            website: [
+                'website', 'web design', 'webpage', 'site', 'landing page', 'portfolio website',
+                'web developer', 'web development', 'responsive design', 'modern website', 
+                'business website', 'ecommerce', 'e-commerce', 'online store', 'wordpress', 
+                'html', 'css', 'frontend', 'front-end', 'ui/ux', 'ui design', 'ux design',
+                'web designer', 'website designer', 'web designer', 'site design', 'web design',
+                'create website', 'build website', 'design website', 'website creation',
+                'new website', 'redesign website', 'website redesign', 'update website'
+            ],
+            writing: [
+                'article', 'blog', 'content', 'writing', 'copy', 'seo', 'content writer', 
+                'blog post', 'article writing', 'content creation', 'ghostwriter', 'copywriter', 
+                'blogger', 'content marketing', 'seo content', 'blog content', 'website content', 
+                'web content', 'copywriting', 'technical writing', 'blog writing',
+                'write article', 'write blog', 'blog writing', 'article writing', 'content writing',
+                'need writer', 'looking for writer', 'hire writer', 'content creator'
+            ]
+        };
+        
+        // STRICT exclusion - exclude anything that's NOT website design or article writing
+        const excludeKeywords = [
+            // Programming/Development (not design)
+            'full stack developer', 'backend developer', 'software engineer', 'programmer',
+            'python developer', 'javascript developer', 'react developer', 'node developer',
+            'vue developer', 'angular developer', 'php developer', 'java developer',
+            'api developer', 'database', 'sql', 'backend', 'server', 'devops',
+            
+            // Video/Audio
+            'video editor', 'video production', 'animation', 'video creator', 'youtube',
+            'voice actor', 'audio engineer', 'podcast editor', 'sound design',
+            
+            // Design (but not web)
+            'graphic designer', 'logo designer', 'brand designer', 'illustrator', 'photoshop',
+            'illustration', 'vector', 'print design', 'poster design',
+            
+            // Mobile Apps
+            'mobile app', 'ios developer', 'android developer', 'app developer', 'flutter',
+            'react native', 'swift', 'kotlin',
+            
+            // Other services
+            'translator', 'translation services', 'game developer', 'unity', 'unreal',
+            'data scientist', 'machine learning', 'ai developer', 'blockchain', 'crypto',
+            'seo specialist', 'seo expert', 'social media manager', 'marketing manager',
+            'virtual assistant', 'data entry', 'transcription', 'proofreading',
+            'accountant', 'bookkeeper', 'legal', 'lawyer', 'consultant',
+            
+            // Exclude if they want complex development
+            'full stack', 'backend', 'api integration', 'database design', 'server setup',
+            'devops', 'cloud', 'aws', 'azure', 'docker', 'kubernetes'
+        ];
+        
+        // SUPER STRICT: Only find posts that CLEARLY need website design or article writing
+        function isPostRelevant(title, selftext) {
+            const text = (title + ' ' + (selftext || '')).toLowerCase();
+            
+            // FIRST: Exclude [FOR HIRE] posts (people offering services)
+            if (/\[for hire\]|\[forhire\]|for hire|offering|i can|i do|i provide|available|hire me|dm me|message me|contact me/i.test(title)) {
+                return false;
+            }
+            
+            // SECOND: Exclude people sharing their work
+            if (/i (?:made|created|built|designed|wrote)|my (?:first|new|recent)|sharing|showcase|show off|check out|look at my/i.test(text)) {
+                return false;
+            }
+            
+            // THIRD: Exclude exclusion keywords (programming, video, mobile apps, etc.)
+            if (excludeKeywords.some(keyword => text.includes(keyword.toLowerCase()))) {
+                return false;
+            }
+            
+            // FOURTH: Must have relevant keywords
+            const websiteMatches = relevantKeywords.website.filter(kw => text.includes(kw.toLowerCase())).length;
+            const writingMatches = relevantKeywords.writing.filter(kw => text.includes(kw.toLowerCase())).length;
+            
+            if (websiteMatches === 0 && writingMatches === 0) {
+                return false; // No relevant keywords
+            }
+            
+            // FIFTH: Must be a CLEAR hiring/need request - ONE of these patterns:
+            const clearHiringPatterns = [
+                // [HIRING] tag with keywords
+                /\[hiring\].*(?:website|site|web|design|article|blog|content|writer|designer)/i,
+                /(?:website|site|web|design|article|blog|content|writer|designer).*\[hiring\]/i,
+                
+                // "Need" + service keywords
+                /need.*(?:website|site|web|webpage|landing page).*(?:design|created|built|made|redesign)/i,
+                /need.*(?:article|blog|content|writing).*(?:written|created|written)/i,
+                /need.*(?:web|website).*designer/i,
+                /need.*(?:writer|content writer|blog writer|article writer)/i,
+                
+                // "Want" + service keywords
+                /want.*(?:website|site|web|webpage).*(?:design|created|built|made|redesign)/i,
+                /want.*(?:article|blog|content|writing).*(?:written|created)/i,
+                /want.*(?:web|website).*designer/i,
+                /want.*(?:writer|content writer|blog writer)/i,
+                
+                // "Looking for" + service keywords
+                /looking for.*(?:web|website|site).*designer/i,
+                /looking for.*(?:writer|content writer|blog writer|article writer)/i,
+                /looking for.*(?:website|site|web).*(?:design|created|built)/i,
+                /looking for.*(?:article|blog|content).*(?:written|created)/i,
+                
+                // "Seeking" + service keywords
+                /seeking.*(?:web|website|site).*designer/i,
+                /seeking.*(?:writer|content writer|blog writer)/i,
+                
+                // "Hire" + service keywords
+                /(?:hire|hiring).*(?:web|website|site).*designer/i,
+                /(?:hire|hiring).*(?:writer|content writer|blog writer)/i,
+                
+                // Budget/payment + keywords (they have money!)
+                /(?:budget|paying|rate|\$|price).*(?:website|site|web|article|blog|content|writer|designer)/i,
+                /(?:website|site|web|article|blog|content|writer|designer).*(?:budget|paying|rate|\$|price)/i
+            ];
+            
+            const isClearHiring = clearHiringPatterns.some(pattern => pattern.test(text));
+            
+            // ONLY include if it's a clear hiring request with relevant keywords
+            return isClearHiring && (websiteMatches > 0 || writingMatches > 0);
+        }
+        
+        // Check if post specifically needs a website (for notifications)
+        function needsWebsite(title, selftext) {
+            const text = (title + ' ' + (selftext || '')).toLowerCase();
+            
+            // Must have website-related keywords
+            const websiteKeywords = ['website', 'web design', 'webpage', 'site', 'landing page', 'portfolio website', 
+                                    'web developer', 'web development', 'responsive design', 'modern website', 
+                                    'business website', 'ecommerce', 'e-commerce', 'online store', 'wordpress',
+                                    'web designer', 'website designer', 'site design', 'create website', 
+                                    'build website', 'design website', 'new website', 'redesign website'];
+            
+            const hasWebsiteKeyword = websiteKeywords.some(kw => text.includes(kw));
+            if (!hasWebsiteKeyword) return false;
+            
+            // Must be a hiring/need request
+            const hiringPatterns = [
+                /\[hiring\].*(?:website|site|web|design)/i,
+                /need.*(?:website|site|web|webpage|landing page)/i,
+                /want.*(?:website|site|web|webpage)/i,
+                /looking for.*(?:web|website|site).*designer/i,
+                /seeking.*(?:web|website|site).*designer/i,
+                /(?:hire|hiring).*(?:web|website|site).*designer/i,
+                /(?:budget|paying|rate|\$).*(?:website|site|web)/i
+            ];
+            
+            return hiringPatterns.some(pattern => pattern.test(text));
+        }
+        
+        // Store website notification
+        function addWebsiteNotification(post) {
+            const notifications = JSON.parse(localStorage.getItem('websiteNotifications') || '[]');
+            
+            // Check if already exists
+            if (notifications.some(n => n.url === post.url)) {
+                return; // Already notified
+            }
+            
+            notifications.unshift({
+                ...post,
+                notifiedAt: new Date().toISOString(),
+                reviewed: false
+            });
+            
+            // Keep only last 50
+            if (notifications.length > 50) {
+                notifications.pop();
+            }
+            
+            localStorage.setItem('websiteNotifications', JSON.stringify(notifications));
+            updateNotificationBadges();
+            
+            // Show browser notification if permission granted
+            if (Notification.permission === 'granted') {
+                new Notification('🌐 New Website Opportunity!', {
+                    body: post.title.substring(0, 100),
+                    icon: '🔔',
+                    tag: post.url
+                });
+            }
+        }
+        
+        // Update notification badges
+        function updateNotificationBadges() {
+            const notifications = JSON.parse(localStorage.getItem('websiteNotifications') || '[]');
+            const unreadCount = notifications.filter(n => !n.reviewed).length;
+            
+            const badge = document.getElementById('notificationBadge');
+            const tabBadge = document.getElementById('tabNotificationBadge');
+            
+            if (badge) {
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount;
+                    badge.style.display = 'flex';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+            
+            if (tabBadge) {
+                if (unreadCount > 0) {
+                    tabBadge.textContent = unreadCount;
+                    tabBadge.style.display = 'inline-flex';
+                } else {
+                    tabBadge.style.display = 'none';
+                }
+            }
+        }
+        
+        // Show website notifications
+        function showWebsiteNotifications() {
+            switchTab('notifications');
+            refreshNotifications();
+        }
+        
+        // Refresh notifications display
+        function refreshNotifications() {
+            const notifications = JSON.parse(localStorage.getItem('websiteNotifications') || '[]');
+            const listEl = document.getElementById('notificationsList');
+            
+            if (notifications.length === 0) {
+                listEl.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <p style="font-size: 1.25rem; margin-bottom: 0.5rem;">No website alerts yet</p>
+                        <p style="font-size: 0.875rem;">When posts are found that need websites, they'll appear here for manual review.</p>
+                        <button class="btn" onclick="findPosts('all')" style="margin-top: 1rem;">🔍 Search for Posts Now</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const unreadCount = notifications.filter(n => !n.reviewed).length;
+            listEl.innerHTML = `
+                <div style="background: var(--surface); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid var(--border);">
+                    <strong style="color: var(--primary);">${notifications.length}</strong> total alerts
+                    ${unreadCount > 0 ? `<span style="color: var(--danger); margin-left: 1rem;"><strong>${unreadCount}</strong> unread</span>` : ''}
+                </div>
+                ${notifications.map((post, index) => `
+                    <div class="card" style="margin-bottom: 1rem; ${!post.reviewed ? 'border: 2px solid var(--success); background: rgba(16, 185, 129, 0.05);' : ''}">
+                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 300px;">
+                                <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.125rem;">
+                                    ${post.reviewed ? '✅ ' : '🔔 '}${post.title}
+                                </h3>
+                                <div style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.75rem;">
+                                    <div>r/${post.subreddit} • ${new Date(post.created).toLocaleDateString()} • ${post.score} points</div>
+                                    ${post.selftext ? `<div style="margin-top: 0.5rem; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">${post.selftext.substring(0, 200)}...</div>` : ''}
+                                </div>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                    <a href="${post.url}" target="_blank" class="btn btn-small" style="text-decoration: none;">🔗 View on Reddit</a>
+                                    <button class="btn btn-small btn-secondary" onclick="markAsReviewed(${index})">${post.reviewed ? '✅ Reviewed' : '✓ Mark Reviewed'}</button>
+                                    <button class="btn btn-small btn-secondary" onclick="removeNotification(${index})">🗑️ Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Mark notification as reviewed
+        function markAsReviewed(index) {
+            const notifications = JSON.parse(localStorage.getItem('websiteNotifications') || '[]');
+            if (notifications[index]) {
+                notifications[index].reviewed = true;
+                notifications[index].reviewedAt = new Date().toISOString();
+                localStorage.setItem('websiteNotifications', JSON.stringify(notifications));
+                refreshNotifications();
+                updateNotificationBadges();
+            }
+        }
+        
+        // Remove notification
+        function removeNotification(index) {
+            const notifications = JSON.parse(localStorage.getItem('websiteNotifications') || '[]');
+            notifications.splice(index, 1);
+            localStorage.setItem('websiteNotifications', JSON.stringify(notifications));
+            refreshNotifications();
+            updateNotificationBadges();
+        }
+        
+        // Clear all notifications
+        function clearAllNotifications() {
+            if (confirm('Clear all website notifications? This cannot be undone.')) {
+                localStorage.removeItem('websiteNotifications');
+                refreshNotifications();
+                updateNotificationBadges();
+            }
+        }
+        
+        // Request notification permission
+        function requestNotificationPermission() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
+        
+        async function tryFetchWithProxies(url, proxies, timeout = 8000) {
+            for (let i = 0; i < proxies.length; i++) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => {
+                        controller.abort();
+                        console.log(`Proxy ${i} timed out after ${timeout}ms`);
+                    }, timeout);
+                    
+                    const response = await fetch(proxies[i], { 
+                        signal: controller.signal,
+                        mode: 'cors'
+                    });
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        console.log(`Proxy ${i} returned status ${response.status}`);
+                        continue;
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Handle different proxy response formats
+                    let redditData;
+                    if (typeof data === 'string') {
+                        redditData = JSON.parse(data);
+                    } else if (data.contents) {
+                        redditData = JSON.parse(data.contents);
+                    } else if (data.data) {
+                        redditData = data;
+                    } else {
+                        continue; // Try next proxy
+                    }
+                    
+                    if (redditData.data && redditData.data.children) {
+                        console.log(`Proxy ${i} succeeded!`);
+                        return redditData;
+                    }
+                } catch (error) {
+                    console.log(`Proxy ${i} failed:`, error.name, error.message);
+                    // Try next proxy
+                    continue;
+                }
+            }
+            console.log('All proxies failed');
+            return null;
+        }
+        
+        function findPosts(subreddit) {
+            const statusEl = document.getElementById('finderStatus');
+            const postsEl = document.getElementById('foundPosts');
+            
+            statusEl.textContent = '🔍 Searching for posts... This may take a moment.';
+            postsEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">Loading posts from Reddit...<br><small style="margin-top: 1rem; display: block;">This may take 30-60 seconds. If it takes too long, use the manual search links above.</small></div>';
+            
+            const subreddits = subreddit === 'all' 
+                ? ['forhire', 'slavelabour', 'HireAWriter', 'webdev', 'web_design', 'freelanceWriters', 'writing', 'entrepreneur', 'smallbusiness', 'startups']
+                : [subreddit];
+            
+            let allPosts = [];
+            let completed = 0;
+            let totalSearched = 0;
+            let hasError = false;
+            
+            // Add overall timeout (60 seconds)
+            const overallTimeout = setTimeout(() => {
+                if (completed < subreddits.length) {
+                    hasError = true;
+                    statusEl.textContent = '⏱️ Search timed out. Some subreddits may not have loaded.';
+                    postsEl.innerHTML = `
+                        <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                            <p style="margin-bottom: 1rem; color: var(--danger);">⚠️ Search took too long and timed out.</p>
+                            <p style="margin-bottom: 1rem;">Found ${allPosts.length} posts before timeout.</p>
+                            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Try using the manual search links above for more reliable results.</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                <a href="https://www.reddit.com/r/forhire/search/?q=need%20website&restrict_sr=1&sort=new" target="_blank" class="btn">🔍 Manual Search</a>
+                                <button class="btn btn-secondary" onclick="findPosts('all')">🔄 Try Again</button>
+                            </div>
+                        </div>
+                    `;
+                    if (allPosts.length > 0) {
+                        displayFoundPosts(allPosts);
+                    }
+                }
+            }, 60000); // 60 second timeout
+            
+            subreddits.forEach(async (sub) => {
+                const redditUrl = `https://www.reddit.com/r/${sub}/new.json?limit=100`;
+                
+                // Multiple proxy options with better reliability
+                const proxies = [
+                    redditUrl, // Direct access (works in Electron)
+                    `https://api.allorigins.win/get?url=${encodeURIComponent(redditUrl)}`,
+                    `https://corsproxy.io/?${encodeURIComponent(redditUrl)}`,
+                    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(redditUrl)}`,
+                    `https://cors-anywhere.herokuapp.com/${redditUrl}`,
+                    `https://thingproxy.freeboard.io/fetch/${redditUrl}`,
+                    `https://api.allorigins.win/raw?url=${encodeURIComponent(redditUrl)}`
+                ];
+                
+                try {
+                    const redditData = await tryFetchWithProxies(redditUrl, proxies);
+                    
+                    if (redditData && redditData.data && redditData.data.children) {
+                        const allChildren = redditData.data.children.map(item => item.data);
+                        totalSearched += allChildren.length;
+                        
+                        const posts = allChildren
+                            .filter(post => isPostRelevant(post.title, post.selftext))
+                            .map(post => {
+                                const postObj = {
+                                    title: post.title,
+                                    author: post.author,
+                                    subreddit: post.subreddit,
+                                    url: `https://reddit.com${post.permalink}`,
+                                    created: new Date(post.created_utc * 1000),
+                                    score: post.score,
+                                    num_comments: post.num_comments,
+                                    selftext: post.selftext || '',
+                                    is_self: post.is_self
+                                };
+                                
+                                // Check if this post needs a website and add notification
+                                if (needsWebsite(post.title, post.selftext)) {
+                                    addWebsiteNotification(postObj);
+                                }
+                                
+                                return postObj;
+                            });
+                        
+                        console.log(`r/${sub}: Found ${posts.length} relevant posts out of ${allChildren.length} total`);
+                        allPosts = allPosts.concat(posts);
+                    }
+                } catch (error) {
+                    console.error(`Error fetching r/${sub}:`, error);
+                } finally {
+                    completed++;
+                    
+                    // Update status
+                    statusEl.textContent = `🔍 Searched ${completed}/${subreddits.length} subreddits... Found ${allPosts.length} relevant posts so far.`;
+                    
+                    if (completed === subreddits.length) {
+                        clearTimeout(overallTimeout); // Clear timeout since we're done
+                        
+                        if (allPosts.length === 0) {
+                            statusEl.textContent = '⚠️ No matching posts found. Try different subreddits or check manually.';
+                            postsEl.innerHTML = `
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <p style="margin-bottom: 1rem;">No relevant posts found in the searched subreddits.</p>
+                                    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Try:</p>
+                                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                                        <a href="https://www.reddit.com/r/forhire/search/?q=need%20website&restrict_sr=1&sort=new" target="_blank" class="btn">🔍 Manual Search</a>
+                                        <a href="https://www.reddit.com/r/forhire/new/" target="_blank" class="btn">Open r/forhire</a>
+                                        <a href="https://www.reddit.com/r/slavelabour/new/" target="_blank" class="btn">Open r/slavelabour</a>
+                                    </div>
+                                    <p style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.875rem;">
+                                        Or use the manual search links above for more reliable results.
+                                    </p>
+                                </div>
+                            `;
+                        } else {
+                            statusEl.textContent = `✅ Search complete! Found ${allPosts.length} relevant posts.`;
+                            displayFoundPosts(allPosts);
+                            updateNotificationBadges(); // Update badges after finding posts
+                        }
+                    }
+                }
+            });
+        }
+        
+        function displayFoundPosts(posts) {
+            allFoundPosts = posts; // Store all posts for filtering
+            const statusEl = document.getElementById('finderStatus');
+            const postsEl = document.getElementById('foundPosts');
+            const filtersEl = document.getElementById('postFilters');
+            
+            if (posts.length === 0) {
+                statusEl.textContent = 'No matching posts found. Try searching again or check the subreddits manually.';
+                postsEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No posts found matching your services.</div>';
+                filtersEl.style.display = 'none';
+                return;
+            }
+            
+            // Show filters
+            filtersEl.style.display = 'block';
+            statusEl.textContent = `Found ${posts.length} relevant post${posts.length !== 1 ? 's' : ''}!`;
+            
+            // Apply current filter and sort
+            applyFiltersAndSort();
+        }
+        
+        // Apply filters and sorting
+        function applyFiltersAndSort() {
+            let filtered = [...allFoundPosts];
+            const statusEl = document.getElementById('filterStatus');
+            
+            // Apply filter
+            if (currentFilter === 'hiring') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /\[hiring\]|looking for|need.*(?:developer|designer|writer|help)|want.*(?:website|content|article|blog)/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} hiring posts (people needing work done)`;
+            } else if (currentFilter === 'website') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /website|web design|webpage|site|landing page|wordpress/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} posts needing website services`;
+            } else if (currentFilter === 'writing') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /article|blog|content|writing|copy|seo content/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} posts needing writing services`;
+            } else {
+                statusEl.textContent = `Showing all ${filtered.length} posts`;
+            }
+            
+            // Apply sorting
+            if (currentSort === 'newest') {
+                filtered.sort((a, b) => b.created - a.created);
+            } else if (currentSort === 'oldest') {
+                filtered.sort((a, b) => a.created - b.created);
+            } else if (currentSort === 'score') {
+                filtered.sort((a, b) => b.score - a.score);
+            }
+            
+            // Display filtered and sorted posts
+            const postsEl = document.getElementById('foundPosts');
+            if (filtered.length === 0) {
+                postsEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No posts match the current filter.</div>';
+                return;
+            }
+            
+            postsEl.innerHTML = filtered.map(post => {
+                const timeAgo = getTimeAgo(post.created);
+                const matchReasons = findMatchReasons(post.title + ' ' + (post.selftext || ''));
+                
+                return `
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                            <div style="flex: 1;">
+                                <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.125rem;">
+                                    <a href="${post.url}" target="_blank" style="color: var(--primary); text-decoration: none;">${post.title}</a>
+                                </h3>
+                                <div style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                    r/${post.subreddit} • by u/${post.author} • ${timeAgo} • ${post.score} upvotes • ${post.num_comments} comments
+                                </div>
+                                ${matchReasons.length > 0 ? `
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+                                        ${matchReasons.map(reason => `<span style="background: rgba(245, 158, 11, 0.2); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">${reason}</span>`).join('')}
+                                    </div>
+                                ` : ''}
+                                ${post.selftext ? `
+                                    <div style="color: var(--text-secondary); font-size: 0.875rem; max-height: 100px; overflow: hidden; margin-bottom: 0.75rem; line-height: 1.5;">
+                                        ${post.selftext.substring(0, 200)}${post.selftext.length > 200 ? '...' : ''}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <a href="${post.url}" target="_blank" class="btn btn-small">📖 View Post</a>
+                            <button class="btn btn-secondary btn-small" onclick="addContactFromPost('${post.author}', '${post.subreddit}', '${post.url.replace(/'/g, "\\'")}')">➕ Add as Contact</button>
+                            <button class="btn btn-secondary btn-small" onclick="copyReplyTemplate('${post.url.replace(/'/g, "\\'")}')">📋 Copy Reply</button>
+                            <button class="btn btn-small" style="background: linear-gradient(135deg, #10b981, #059669);" onclick="generateAIReplyFromPost('${post.title.replace(/'/g, "\\'")}', '${(post.selftext || '').replace(/'/g, "\\'")}')">🤖 AI Reply</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diff = now - date;
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+            
+            if (minutes < 1) return 'just now';
+            if (minutes < 60) return `${minutes}m ago`;
+            if (hours < 24) return `${hours}h ago`;
+            return `${days}d ago`;
+        }
+        
+        function findMatchReasons(text) {
+            const lowerText = text.toLowerCase();
+            const reasons = [];
+            
+            if (lowerText.includes('website') || lowerText.includes('web design') || lowerText.includes('webpage')) {
+                reasons.push('Website Design');
+            }
+            if (lowerText.includes('article') || lowerText.includes('blog') || lowerText.includes('content writing')) {
+                reasons.push('Article Writing');
+            }
+            if (lowerText.includes('seo') || lowerText.includes('search engine')) {
+                reasons.push('SEO');
+            }
+            if (lowerText.includes('wordpress') || lowerText.includes('wp ')) {
+                reasons.push('WordPress');
+            }
+            
+            return reasons;
+        }
+        
+        // Filter posts based on type
+        function filterPosts(filterType) {
+            currentFilter = filterType;
+            
+            // Update button styles
+            document.getElementById('filterAll').className = filterType === 'all' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            document.getElementById('filterHiring').className = filterType === 'hiring' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            document.getElementById('filterWebsite').className = filterType === 'website' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            document.getElementById('filterWriting').className = filterType === 'writing' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            
+            // Update active state
+            if (filterType === 'all') {
+                document.getElementById('filterAll').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('filterAll').style.background = '';
+            }
+            if (filterType === 'hiring') {
+                document.getElementById('filterHiring').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('filterHiring').style.background = '';
+            }
+            if (filterType === 'website') {
+                document.getElementById('filterWebsite').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('filterWebsite').style.background = '';
+            }
+            if (filterType === 'writing') {
+                document.getElementById('filterWriting').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('filterWriting').style.background = '';
+            }
+            
+            applyFiltersAndSort();
+        }
+        
+        // Sort posts
+        function sortPosts(sortType) {
+            currentSort = sortType;
+            
+            // Update button styles
+            document.getElementById('sortNewest').className = sortType === 'newest' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            document.getElementById('sortOldest').className = sortType === 'oldest' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            document.getElementById('sortScore').className = sortType === 'score' ? 'btn btn-small' : 'btn btn-small btn-secondary';
+            
+            // Update active state
+            if (sortType === 'newest') {
+                document.getElementById('sortNewest').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('sortNewest').style.background = '';
+            }
+            if (sortType === 'oldest') {
+                document.getElementById('sortOldest').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('sortOldest').style.background = '';
+            }
+            if (sortType === 'score') {
+                document.getElementById('sortScore').style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            } else {
+                document.getElementById('sortScore').style.background = '';
+            }
+            
+            applyFiltersAndSort();
+        }
+        
+        // Apply filters and sorting
+        function applyFiltersAndSort() {
+            let filtered = [...allFoundPosts];
+            const statusEl = document.getElementById('filterStatus');
+            
+            // Apply filter
+            if (currentFilter === 'hiring') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /\[hiring\]|looking for|need.*(?:developer|designer|writer|help)|want.*(?:website|content|article|blog)/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} hiring posts (people needing work done)`;
+            } else if (currentFilter === 'website') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /website|web design|webpage|site|landing page|wordpress/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} posts needing website services`;
+            } else if (currentFilter === 'writing') {
+                filtered = filtered.filter(post => {
+                    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+                    return /article|blog|content|writing|copy|seo content/i.test(text);
+                });
+                statusEl.textContent = `Showing ${filtered.length} posts needing writing services`;
+            } else {
+                statusEl.textContent = `Showing all ${filtered.length} posts`;
+            }
+            
+            // Apply sorting
+            if (currentSort === 'newest') {
+                filtered.sort((a, b) => b.created - a.created);
+            } else if (currentSort === 'oldest') {
+                filtered.sort((a, b) => a.created - b.created);
+            } else if (currentSort === 'score') {
+                filtered.sort((a, b) => b.score - a.score);
+            }
+            
+            // Display filtered and sorted posts
+            const postsEl = document.getElementById('foundPosts');
+            if (filtered.length === 0) {
+                postsEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No posts match the current filter.</div>';
+                return;
+            }
+            
+            postsEl.innerHTML = filtered.map(post => {
+                const matchReasons = findMatchReasons(post.title + ' ' + (post.selftext || ''));
+                const timeAgo = getTimeAgo(post.created);
+                return `
+                    <div class="post-card" style="background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(245, 158, 11, 0.2)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform=''; this.style.boxShadow=''">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                            <h3 style="color: var(--primary); font-size: 1.125rem; margin: 0; flex: 1; min-width: 200px;">${post.title}</h3>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <span style="background: var(--background); padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; color: var(--text-secondary);">r/${post.subreddit}</span>
+                                <span style="background: var(--background); padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; color: var(--text-secondary);">${timeAgo}</span>
+                            </div>
+                        </div>
+                        ${post.selftext ? `<p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">${post.selftext.substring(0, 200)}${post.selftext.length > 200 ? '...' : ''}</p>` : ''}
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                            ${matchReasons.map(reason => `<span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600;">${reason}</span>`).join('')}
+                            <span style="background: var(--background); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem;">⭐ ${post.score} | 💬 ${post.num_comments}</span>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="${post.url}" target="_blank" class="btn btn-small" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">🔗 Open Post</a>
+                            <button class="btn btn-secondary btn-small" onclick="addContactFromPost('${post.author}', '${post.subreddit}', '${post.url.replace(/'/g, "\\'")}')">➕ Add as Contact</button>
+                            <button class="btn btn-secondary btn-small" onclick="copyReplyTemplate('${post.url.replace(/'/g, "\\'")}')">📋 Copy Reply</button>
+                            <button class="btn btn-small" style="background: linear-gradient(135deg, #10b981, #059669);" onclick="generateAIReplyFromPost('${post.title.replace(/'/g, "\\'")}', '${(post.selftext || '').replace(/'/g, "\\'")}')">🤖 AI Reply</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function addContactFromPost(author, subreddit, url) {
+            const name = `u/${author}`;
+            const platform = `Reddit (r/${subreddit})`;
+            const info = url;
+            
+            // Check if contact already exists
+            const exists = data.contacts.some(c => c.info === url);
+            if (exists) {
+                alert('This contact already exists!');
+                return;
+            }
+            
+            document.getElementById('contactName').value = name;
+            document.getElementById('contactPlatform').value = platform;
+            document.getElementById('contactInfo').value = info;
+            document.getElementById('contactNotes').value = `Found via Post Finder`;
+            
+            // Switch to contacts tab
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.textContent.includes('Contacts')) {
+                    tab.click();
+                }
+            });
+            
+            // Scroll to form
+            setTimeout(() => {
+                document.getElementById('contactName').focus();
+            }, 100);
+        }
+        
+        function copyReplyTemplate(postUrl) {
+            const template = document.getElementById('replyTemplate').textContent;
+            navigator.clipboard.writeText(template).then(() => {
+                alert('Reply template copied! Now go to the post and paste it.');
+                window.open(postUrl, '_blank');
+            });
+        }
+        
+        async function generateAIReplyFromPost(title, selftext) {
+            if (!isAIEnabled()) {
+                if (confirm('AI is currently disabled. Would you like to enable it now?')) {
+                    document.getElementById('aiToggle').checked = true;
+                    toggleAI();
+                } else {
+                    return;
+                }
+            }
+            
+            // Switch to AI tab
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.textContent.includes('AI Assistant')) {
+                    tab.click();
+                }
+            });
+            
+            // Fill in the post text
+            const postText = `${title}\n\n${selftext}`;
+            document.getElementById('aiReplyInput').value = postText;
+            
+            // Wait a moment for tab switch, then generate
+            setTimeout(() => {
+                generateAIReply();
+            }, 300);
+        }
+        
+        // Auto-Find and Generate Replies
+        async function autoFindAndGenerate(subreddit) {
+            if (!isAIEnabled()) {
+                alert('Please enable AI first using the toggle in the header!');
+                return;
+            }
+            
+            const statusEl = document.getElementById('finderStatus');
+            const repliesEl = document.getElementById('autoGeneratedReplies');
+            
+            statusEl.textContent = '🔍 Finding posts and generating replies... This may take a minute.';
+            repliesEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">Loading posts and generating replies...</div>';
+            
+            const subreddits = subreddit === 'all' 
+                ? ['forhire', 'slavelabour', 'HireAWriter', 'webdev', 'web_design', 'freelanceWriters', 'writing', 'entrepreneur', 'smallbusiness', 'startups']
+                : [subreddit];
+            
+            let allPosts = [];
+            let completed = 0;
+            
+            // First, find posts using improved proxy handling
+            for (const sub of subreddits) {
+                const redditUrl = `https://www.reddit.com/r/${sub}/new.json?limit=100`;
+                const proxies = [
+                    redditUrl, // Direct access (works in Electron)
+                    `https://api.allorigins.win/get?url=${encodeURIComponent(redditUrl)}`,
+                    `https://corsproxy.io/?${encodeURIComponent(redditUrl)}`,
+                    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(redditUrl)}`,
+                    `https://cors-anywhere.herokuapp.com/${redditUrl}`,
+                    `https://thingproxy.freeboard.io/fetch/${redditUrl}`,
+                    `https://api.allorigins.win/raw?url=${encodeURIComponent(redditUrl)}`
+                ];
+                
+                try {
+                    const redditData = await tryFetchWithProxies(redditUrl, proxies);
+                    
+                    if (redditData && redditData.data && redditData.data.children) {
+                        const allChildren = redditData.data.children.map(item => item.data);
+                        const posts = allChildren
+                            .filter(post => isPostRelevant(post.title, post.selftext))
+                            .slice(0, 10) // Get more posts per subreddit
+                            .map(post => ({
+                                title: post.title,
+                                author: post.author,
+                                subreddit: post.subreddit,
+                                url: `https://reddit.com${post.permalink}`,
+                                created: new Date(post.created_utc * 1000),
+                                score: post.score,
+                                num_comments: post.num_comments,
+                                selftext: post.selftext || '',
+                                is_self: post.is_self
+                            }));
+                        
+                        console.log(`r/${sub} (auto): Found ${posts.length} relevant posts out of ${allChildren.length} total`);
+                        allPosts = allPosts.concat(posts);
+                    }
+                } catch (error) {
+                    console.error(`Error fetching r/${sub}:`, error);
+                } finally {
+                    completed++;
+                    statusEl.textContent = `🔍 Searched ${completed}/${subreddits.length} subreddits... Found ${allPosts.length} relevant posts.`;
+                    
+                    if (completed === subreddits.length) {
+                        if (allPosts.length === 0) {
+                            statusEl.textContent = '⚠️ No matching posts found. Try different subreddits.';
+                            repliesEl.innerHTML = `
+                                <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                    <p style="margin-bottom: 1rem;">No relevant posts found.</p>
+                                    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Try using manual search or check subreddits directly.</p>
+                                    <button class="btn" onclick="findPosts('all')">Try Manual Search</button>
+                                </div>
+                            `;
+                        } else {
+                            // Now generate replies for each post
+                            generateRepliesForPosts(allPosts);
+                        }
+                    }
+                }
+            }
+        }
+        
+        async function generateRepliesForPosts(posts) {
+            const statusEl = document.getElementById('finderStatus');
+            const repliesEl = document.getElementById('autoGeneratedReplies');
+            
+            if (posts.length === 0) {
+                statusEl.textContent = 'No matching posts found.';
+                repliesEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No posts found.</div>';
+                return;
+            }
+            
+            // Limit to first 10 posts for speed (can process more in batches)
+            const postsToProcess = posts.slice(0, 10);
+            const remaining = posts.length - postsToProcess.length;
+            
+            statusEl.textContent = `Found ${posts.length} posts. Generating ${postsToProcess.length} AI replies in parallel...${remaining > 0 ? ` (${remaining} more available)` : ''}`;
+            repliesEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">Generating replies in parallel... This will be much faster!</div>';
+            
+            const systemPrompt = `You are a professional website designer and article writer. Offer: websites ($349-$999) and articles ($69-$199). Be friendly, concise (2-3 paragraphs max).`;
+            
+            // Generate replies in batches to avoid overwhelming Ollama
+            // Process 3 at a time for better stability
+            const batchSize = 3;
+            const generatedReplies = [];
+            
+            for (let i = 0; i < postsToProcess.length; i += batchSize) {
+                const batch = postsToProcess.slice(i, i + batchSize);
+                const batchNumber = Math.floor(i / batchSize) + 1;
+                const totalBatches = Math.ceil(postsToProcess.length / batchSize);
+                
+                statusEl.textContent = `Generating batch ${batchNumber} of ${totalBatches} (${batch.length} replies)...`;
+                
+                const batchPromises = batch.map(async (post) => {
+                    const postText = `${post.title}\n\n${post.selftext}`;
+                    const prompt = `Write a professional reply offering your services for this request. Be specific and helpful:
+
+${postText}
+
+Reply:`;
+                    
+                    try {
+                        const reply = await callAI(prompt, systemPrompt);
+                        return {
+                            post: post,
+                            reply: reply || 'Error generating reply',
+                            ready: !!reply
+                        };
+                    } catch (error) {
+                        return {
+                            post: post,
+                            reply: 'Error generating reply',
+                            ready: false
+                        };
+                    }
+                });
+                
+                // Wait for this batch to complete
+                const batchResults = await Promise.all(batchPromises);
+                generatedReplies.push(...batchResults);
+                
+                // Update progress display
+                const readyCount = generatedReplies.filter(r => r.ready).length;
+                repliesEl.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="color: var(--primary); font-size: 1.25rem; margin-bottom: 0.5rem;">Generating replies...</div>
+                        <div style="color: var(--text-secondary); margin-bottom: 1rem;">Batch ${batchNumber} of ${totalBatches} complete</div>
+                        <div style="color: var(--text-secondary);">✅ ${readyCount} of ${generatedReplies.length} replies ready</div>
+                    </div>
+                `;
+                
+                // Small delay between batches to avoid overwhelming Ollama
+                if (i + batchSize < postsToProcess.length) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+            
+            // Display all generated replies
+            displayGeneratedReplies(generatedReplies);
+            const successCount = generatedReplies.filter(r => r.ready).length;
+            statusEl.textContent = `✅ Generated ${successCount} replies!${remaining > 0 ? ` (${remaining} more posts available - run again to process more)` : ''}`;
+        }
+        
+        function displayGeneratedReplies(replies) {
+            const repliesEl = document.getElementById('autoGeneratedReplies');
+            
+            if (replies.length === 0) {
+                repliesEl.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No replies generated.</div>';
+                return;
+            }
+            
+            repliesEl.innerHTML = `
+                <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">🤖 Generated Replies (${replies.length})</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Click "Copy & Open" to copy the reply and open the Reddit post in a new tab.</p>
+            `;
+            
+            replies.forEach((item, index) => {
+                const post = item.post;
+                const reply = item.reply;
+                const timeAgo = getTimeAgo(post.created);
+                
+                const replyCard = document.createElement('div');
+                replyCard.className = 'card';
+                replyCard.style.marginBottom = '1.5rem';
+                replyCard.innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.125rem;">
+                            <a href="${post.url}" target="_blank" style="color: var(--primary); text-decoration: none;">${post.title}</a>
+                        </h4>
+                        <div style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.75rem;">
+                            r/${post.subreddit} • by u/${post.author} • ${timeAgo} • ${post.score} upvotes
+                        </div>
+                    </div>
+                    <div class="template-box" style="margin-bottom: 1rem;">
+                        <div class="template-text" style="white-space: pre-wrap;">${reply}</div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button class="btn btn-small" onclick="copyReplyAndOpen('${post.url.replace(/'/g, "\\'")}', ${index})">📋 Copy & Open Post</button>
+                        <button class="btn btn-secondary btn-small" onclick="copyReplyOnly(${index})">📋 Copy Reply Only</button>
+                        <button class="btn btn-secondary btn-small" onclick="addContactFromPost('${post.author}', '${post.subreddit}', '${post.url.replace(/'/g, "\\'")}')">➕ Add Contact</button>
+                    </div>
+                `;
+                
+                repliesEl.appendChild(replyCard);
+            });
+            
+            // Store replies for copy functions
+            window.generatedReplies = replies;
+        }
+        
+        function copyReplyAndOpen(postUrl, index) {
+            const replies = window.generatedReplies || [];
+            if (replies[index]) {
+                const reply = replies[index].reply;
+                navigator.clipboard.writeText(reply).then(() => {
+                    alert('Reply copied! Opening Reddit post...');
+                    window.open(postUrl, '_blank');
+                    // Track this as a reply
+                    incrementCounter('replies');
+                });
+            }
+        }
+        
+        function copyReplyOnly(index) {
+            const replies = window.generatedReplies || [];
+            if (replies[index]) {
+                const reply = replies[index].reply;
+                navigator.clipboard.writeText(reply).then(() => {
+                    alert('Reply copied to clipboard!');
+                });
+            }
+        }
+        
+        // AI Functions - Local Ollama (Free)
+        function getOllamaSettings() {
+            return {
+                url: localStorage.getItem('ollama_url') || 'http://localhost:11434',
+                model: localStorage.getItem('ollama_model') || 'llama3.2:latest'
+            };
+        }
+        
+        function getAIProvider() {
+            return localStorage.getItem('ai_provider') || 'ollama';
+        }
+        
+        function saveOllamaSettings() {
+            const url = document.getElementById('ollamaUrlInput').value.trim() || 'http://localhost:11434';
+            const model = document.getElementById('ollamaModelInput').value.trim() || 'llama3.2:latest';
+            
+            localStorage.setItem('ollama_url', url);
+            localStorage.setItem('ollama_model', model);
+            showOllamaStatus('✅ Settings saved!', 'success');
+        }
+        
+        async function testOllamaConnection() {
+            const settings = getOllamaSettings();
+            showOllamaStatus('🧪 Testing connection to Ollama...', 'info');
+            
+            try {
+                // Test if Ollama is running (use faster /api/version endpoint first)
+                const versionController = new AbortController();
+                const versionTimeout = setTimeout(() => versionController.abort(), 15000); // 15 second timeout
+                
+                const versionResponse = await fetch(`${settings.url}/api/version`, {
+                    method: 'GET',
+                    signal: versionController.signal
+                });
+                clearTimeout(versionTimeout);
+                
+                if (!versionResponse.ok) {
+                    showOllamaStatus('❌ Ollama is not running. Please start Ollama first.', 'error');
+                    return;
+                }
+                
+                // Now check if model exists
+                const tagsController = new AbortController();
+                const tagsTimeout = setTimeout(() => tagsController.abort(), 15000); // 15 second timeout
+                
+                const tagsResponse = await fetch(`${settings.url}/api/tags`, {
+                    method: 'GET',
+                    signal: tagsController.signal
+                });
+                clearTimeout(tagsTimeout);
+                
+                if (tagsResponse.ok) {
+                    const data = await tagsResponse.json();
+                    const hasModel = data.models?.some(m => m.name.includes(settings.model));
+                    
+                    if (hasModel) {
+                        showOllamaStatus('✅ Ollama is running and model is available!', 'success');
+                    } else {
+                        showOllamaStatus(`⚠️ Ollama is running but model "${settings.model}" not found. Run: ollama pull ${settings.model}`, 'error');
+                    }
+                } else {
+                    showOllamaStatus('⚠️ Ollama is running but could not check models. Model may still work.', 'error');
+                }
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    showOllamaStatus('❌ Connection timeout. Ollama may be slow to respond or not running.', 'error');
+                } else {
+                    showOllamaStatus('❌ Cannot connect to Ollama. Make sure it\'s installed and running.', 'error');
+                }
+            }
+        }
+        
+        function showOllamaStatus(message, type) {
+            const statusEl = document.getElementById('ollamaStatus');
+            statusEl.style.display = 'block';
+            statusEl.textContent = message;
+            statusEl.style.background = type === 'success' ? 'rgba(16, 185, 129, 0.2)' : 
+                                       type === 'error' ? 'rgba(239, 68, 68, 0.2)' : 
+                                       'rgba(59, 130, 246, 0.2)';
+            statusEl.style.color = type === 'success' ? '#10b981' : 
+                                   type === 'error' ? '#ef4444' : 
+                                   '#3b82f6';
+            statusEl.style.border = `1px solid ${type === 'success' ? '#10b981' : 
+                                               type === 'error' ? '#ef4444' : 
+                                               '#3b82f6'}`;
+        }
+        
+        function saveAISettings() {
+            const provider = document.getElementById('aiProviderSelect').value;
+            localStorage.setItem('ai_provider', provider);
+            
+            if (provider === 'openai') {
+                const key = document.getElementById('apiKeyInput').value.trim();
+                if (key) {
+                    localStorage.setItem('openai_api_key', key);
+                }
+            }
+            
+            updateAISettingsUI();
+            showOllamaStatus('✅ AI settings saved!', 'success');
+        }
+        
+        function updateAISettingsUI() {
+            const provider = getAIProvider();
+            document.getElementById('aiProviderSelect').value = provider;
+            document.getElementById('currentAIProvider').textContent = provider === 'ollama' ? 'Ollama (Local - Free)' : 'OpenAI (Paid)';
+            document.getElementById('openaiKeyGroup').style.display = provider === 'openai' ? 'block' : 'none';
+        }
+        
+        async function callAI(prompt, systemPrompt = '') {
+            const provider = getAIProvider();
+            
+            if (provider === 'ollama') {
+                return await callOllama(prompt, systemPrompt);
+            } else {
+                return await callOpenAI(prompt, systemPrompt);
+            }
+        }
+        
+        async function callOllama(prompt, systemPrompt = '') {
+            const settings = getOllamaSettings();
+            
+            try {
+                // First, check if Ollama is responding (health check with longer timeout)
+                // Use a simpler endpoint that's faster
+                try {
+                    const healthController = new AbortController();
+                    const healthTimeout = setTimeout(() => healthController.abort(), 20000); // 20 second timeout for health check
+                    
+                    // Try the simpler /api/version endpoint first (faster than /api/tags)
+                    const healthCheck = await fetch(`${settings.url}/api/version`, {
+                        method: 'GET',
+                        signal: healthController.signal
+                    });
+                    clearTimeout(healthTimeout);
+                    
+                    if (!healthCheck.ok) {
+                        throw new Error('Ollama is not responding. Make sure Ollama is running.');
+                    }
+                } catch (healthError) {
+                    if (healthError.name === 'AbortError') {
+                        throw new Error('Ollama is taking too long to respond. Make sure Ollama is running and try again.');
+                    } else if (healthError.message.includes('fetch') || healthError.message.includes('Failed')) {
+                        throw new Error('Cannot connect to Ollama. Make sure Ollama is installed and running at ' + settings.url);
+                    }
+                    throw healthError;
+                }
+                
+                const fullPrompt = systemPrompt ? `${systemPrompt}\n\n${prompt}` : prompt;
+                
+                // Longer timeout for actual generation (model inference can take time, especially first time)
+                // Increased timeout for first-time model loading
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 180000); // 180 second (3 minute) timeout for generation
+                
+                const response = await fetch(`${settings.url}/api/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: settings.model,
+                        prompt: fullPrompt,
+                        stream: false,
+                        options: {
+                            temperature: 0.7,
+                            num_predict: 500  // Reduced from 1000 for faster generation
+                        }
+                    }),
+                    signal: controller.signal
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error(`Model "${settings.model}" not found. Run: ollama pull ${settings.model}`);
+                    } else if (response.status === 0 || response.status >= 500) {
+                        throw new Error('Cannot connect to Ollama. Make sure Ollama is installed and running.');
+                    } else {
+                        throw new Error(`Ollama request failed (${response.status}). Make sure Ollama is running.`);
+                    }
+                }
+                
+                const data = await response.json();
+                return data.response || 'No response generated';
+            } catch (error) {
+                let errorMsg = error.message || 'Connection failed';
+                const settings = getOllamaSettings();
+                
+                // Handle specific error types
+                if (error.name === 'AbortError') {
+                    errorMsg = 'Connection timeout. The model may be loading for the first time (this can take 1-2 minutes). Try:\n- Wait a bit longer and try again\n- Check if Ollama is running: ollama list\n- Try a smaller model if llama3.2 is too slow';
+                } else if (error.message === 'Failed to fetch' || error.message.includes('fetch')) {
+                    errorMsg = `Cannot connect to Ollama at ${settings.url}. Make sure:\n- Ollama is installed and running\n- The URL is correct (default: http://localhost:11434)\n- No firewall is blocking the connection\n- Try: ollama serve (in terminal)`;
+                }
+                
+                alert(`❌ Ollama Connection Error\n\n${errorMsg}\n\nTo fix this:\n1. Make sure Ollama is installed (download from ollama.ai)\n2. Start Ollama (it should run in the background)\n3. Pull the model: ollama pull ${settings.model}\n4. Check Settings tab to verify the URL: ${settings.url}\n5. Try clicking "Test Connection" in Settings to verify Ollama is accessible`);
+                return null;
+            }
+        }
+        
+        async function callOpenAI(prompt, systemPrompt = '') {
+            const apiKey = localStorage.getItem('openai_api_key') || '';
+            if (!apiKey) {
+                alert('Please add your OpenAI API key in Settings first!');
+                return null;
+            }
+            
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [
+                            ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1000
+                    })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || 'API request failed');
+                }
+                
+                const data = await response.json();
+                return data.choices[0].message.content;
+            } catch (error) {
+                alert('Error: ' + error.message);
+                return null;
+            }
+        }
+        
+        async function generateAIReply() {
+            if (!isAIEnabled()) {
+                alert('AI is currently disabled. Enable it using the toggle in the header to use AI features.');
+                return;
+            }
+            
+            const postText = document.getElementById('aiReplyInput').value.trim();
+            if (!postText) {
+                alert('Please paste the Reddit post first!');
+                return;
+            }
+            
+            const outputEl = document.getElementById('aiReplyOutput');
+            const textEl = document.getElementById('aiReplyText');
+            outputEl.style.display = 'block';
+            textEl.textContent = '🤖 Generating reply...';
+            
+            const systemPrompt = `You are a professional website designer and article writer offering services. You create modern, responsive websites ($349-$999) and SEO-optimized articles ($69-$199). Be friendly, professional, and helpful. Keep replies concise (2-3 short paragraphs max).`;
+            
+            const prompt = `Based on this Reddit post, write a professional, friendly reply offering your services. Be specific about how you can help with their request. Don't be pushy, just helpful.
+
+Reddit Post:
+${postText}
+
+Write a reply:`;
+            
+            const reply = await callAI(prompt, systemPrompt);
+            if (reply) {
+                textEl.textContent = reply;
+            } else {
+                textEl.textContent = 'Error generating reply. Please check your API key.';
+            }
+        }
+        
+        async function generateAIProposal() {
+            if (!isAIEnabled()) {
+                alert('AI is currently disabled. Enable it using the toggle in the header to use AI features.');
+                return;
+            }
+            
+            const projectDesc = document.getElementById('aiProposalInput').value.trim();
+            const serviceType = document.getElementById('aiProposalService').value;
+            
+            if (!projectDesc) {
+                alert('Please describe the project first!');
+                return;
+            }
+            
+            const outputEl = document.getElementById('aiProposalOutput');
+            const textEl = document.getElementById('aiProposalText');
+            outputEl.style.display = 'block';
+            textEl.textContent = '🤖 Generating proposal...';
+            
+            const serviceInfo = serviceType === 'website' ? 'Website Design ($349-$999)' :
+                               serviceType === 'article' ? 'Article Writing ($69-$199)' :
+                               'Website Design ($349-$999) and Article Writing ($69-$199)';
+            
+            const prompt = `Write a professional proposal email for a client. Include:
+1. Acknowledgment of their needs
+2. How your ${serviceInfo} services can help
+3. What you'll deliver
+4. Timeline (5-7 days for websites, 24-48 hours for articles)
+5. Pricing range
+6. Call to action
+
+Client needs: ${projectDesc}
+
+Write the proposal:`;
+            
+            const proposal = await callAI(prompt, 'You are a professional business proposal writer. Write clear, professional proposals.');
+            if (proposal) {
+                textEl.textContent = proposal;
+            } else {
+                textEl.textContent = 'Error generating proposal. Please check your API key.';
+            }
+        }
+        
+        async function generateAIContent() {
+            if (!isAIEnabled()) {
+                alert('AI is currently disabled. Enable it using the toggle in the header to use AI features.');
+                return;
+            }
+            
+            const contentRequest = document.getElementById('aiContentInput').value.trim();
+            const contentType = document.getElementById('aiContentType').value;
+            
+            if (!contentRequest) {
+                alert('Please describe what content you need!');
+                return;
+            }
+            
+            const outputEl = document.getElementById('aiContentOutput');
+            const textEl = document.getElementById('aiContentText');
+            outputEl.style.display = 'block';
+            textEl.textContent = '🤖 Generating content...';
+            
+            const typeInstructions = {
+                'blog': 'Write a well-structured blog post with an engaging introduction, clear sections, and a conclusion.',
+                'article': 'Write a professional article with proper formatting, headings, and SEO-friendly content.',
+                'social': 'Write engaging social media posts (can be multiple posts).',
+                'email': 'Write a professional email.',
+                'proposal': 'Write a business proposal.'
+            };
+            
+            const prompt = `${typeInstructions[contentType]}
+
+Request: ${contentRequest}
+
+Generate the content:`;
+            
+            const content = await callAI(prompt, 'You are a professional content writer specializing in web design and digital marketing.');
+            if (content) {
+                textEl.textContent = content;
+            } else {
+                textEl.textContent = 'Error generating content. Please check your API key.';
+            }
+        }
+        
+        function copyAIText(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+        
+        // AI Toggle Functions
+        function isAIEnabled() {
+            const enabled = localStorage.getItem('ai_enabled');
+            return enabled === null || enabled === 'true'; // Default to enabled
+        }
+        
+        function toggleAI() {
+            const checkbox = document.getElementById('aiToggle');
+            const enabled = checkbox.checked;
+            localStorage.setItem('ai_enabled', enabled);
+            updateAIToggleUI();
+        }
+        
+        function updateAIToggleUI() {
+            const enabled = isAIEnabled();
+            const checkbox = document.getElementById('aiToggle');
+            const statusEl = document.getElementById('aiToggleStatus');
+            
+            checkbox.checked = enabled;
+            statusEl.textContent = enabled ? 'ON' : 'OFF';
+            statusEl.style.color = enabled ? 'var(--success)' : 'var(--text-secondary)';
+        }
+        
+        // Auto-enable AI function
+        function autoEnableAI() {
+            localStorage.setItem('ai_enabled', 'true');
+            console.log('AI auto-enabled on Reddit tool load');
+            // Use setTimeout to ensure UI elements are ready
+            setTimeout(() => {
+                updateAIToggleUI();
+                console.log('AI toggle UI updated, status:', isAIEnabled());
+            }, 100);
+        }
+        
+        // Check if Ollama is running on page load
+        async function checkOllamaOnLoad() {
+            const provider = getAIProvider();
+            if (provider === 'ollama') {
+                try {
+                    const settings = getOllamaSettings();
+                    const response = await fetch(`${settings.url}/api/tags`, {
+                        method: 'GET',
+                        signal: AbortSignal.timeout(5000) // 5 second timeout
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        const hasModel = data.models?.some(m => m.name.includes(settings.model));
+                        if (!hasModel) {
+                            console.warn(`⚠️ Ollama is running but model "${settings.model}" not found. Run: ollama pull ${settings.model}`);
+                            // Show a non-intrusive notification
+                            const statusEl = document.getElementById('aiToggleStatus');
+                            if (statusEl) {
+                                statusEl.textContent = 'ON (Model Missing)';
+                                statusEl.style.color = 'var(--danger)';
+                            }
+                        } else {
+                            console.log('✅ Ollama is running and ready!');
+                        }
+                    } else {
+                        console.warn('⚠️ Ollama responded but with an error. Check if Ollama is fully started.');
+                    }
+                } catch (error) {
+                    console.warn('⚠️ Ollama is not running or not accessible. AI features will not work until Ollama is started.');
+                    console.warn('To start Ollama: Download from ollama.ai and make sure it\'s running in the background.');
+                    console.warn('Error details:', error.message);
+                }
+            }
+        }
+        
+        // Load settings on page load
+        function initializePage() {
+            // Automatically enable AI when Reddit tool opens
+            autoEnableAI();
+            
+            // Initialize notifications
+            updateNotificationBadges();
+            requestNotificationPermission();
+            
+            const settings = getOllamaSettings();
+            const ollamaUrlInput = document.getElementById('ollamaUrlInput');
+            const ollamaModelInput = document.getElementById('ollamaModelInput');
+            
+            if (ollamaUrlInput) ollamaUrlInput.value = settings.url;
+            if (ollamaModelInput) ollamaModelInput.value = settings.model;
+            
+            updateAISettingsUI();
+            
+            const savedKey = localStorage.getItem('openai_api_key');
+            const apiKeyInput = document.getElementById('apiKeyInput');
+            if (savedKey && apiKeyInput) {
+                // Show masked version
+                apiKeyInput.value = savedKey.substring(0, 7) + '...' + savedKey.substring(savedKey.length - 4);
+            }
+            
+            // Check Ollama connection after a short delay
+            setTimeout(checkOllamaOnLoad, 1000);
+        }
+        
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+            // Initialize notifications
+            updateNotificationBadges();
+            requestNotificationPermission();
+            
+            // Refresh notifications if on notifications tab
+            if (window.location.hash === '#notifications' || document.getElementById('notifications').classList.contains('active')) {
+                refreshNotifications();
+            }
+                setTimeout(initializePage, 50);
+            });
+        } else {
+            // Page already loaded, run with small delay
+            setTimeout(initializePage, 50);
+        }
+    </script>
+</body>
+</html>
+

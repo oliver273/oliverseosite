@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #1e293b;
+            color: #f8fafc;
+        }
+        .test {
+            background: #334155;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+        .success { border-left: 4px solid #10b981; }
+        .error { border-left: 4px solid #ef4444; }
+        .info { border-left: 4px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Viewer Debug Test</h1>
+    <div id="results"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const results = document.getElementById('results');
+        
+        function addTest(name, status, message) {
+            const div = document.createElement('div');
+            div.className = 'test ' + status;
+            div.innerHTML = `<strong>${name}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+        
+        // Test 1: Protocol
+        addTest('Protocol', 'info', window.location.protocol);
+        
+        // Test 2: Marked.js
+        if (typeof marked !== 'undefined') {
+            addTest('Marked.js', 'success', '✅ Loaded successfully');
+        } else {
+            addTest('Marked.js', 'error', '❌ Not loaded');
+        }
+        
+        // Test 3: Fetch file
+        fetch('4_DAY_CLIENT_PLAN.md')
+            .then(response => {
+                if (response.ok) {
+                    addTest('File Fetch', 'success', `✅ HTTP ${response.status} - File exists`);
+                    return response.text();
+                } else {
+                    addTest('File Fetch', 'error', `❌ HTTP ${response.status} - File not found`);
+                    throw new Error('File not found');
+                }
+            })
+            .then(text => {
+                addTest('File Content', 'success', `✅ Loaded ${text.length} characters`);
+                
+                // Test 4: Markdown parsing
+                if (typeof marked !== 'undefined') {
+                    try {
+                        const html = marked.parse(text.substring(0, 500));
+                        addTest('Markdown Parse', 'success', '✅ Parsed successfully');
+                        addTest('Next Step', 'info', '<a href="viewer.html?file=4_DAY_CLIENT_PLAN.md" style="color: #f59e0b;">Try opening the actual viewer →</a>');
+                    } catch (e) {
+                        addTest('Markdown Parse', 'error', '❌ Parse error: ' + e.message);
+                    }
+                } else {
+                    addTest('Markdown Parse', 'error', '❌ Cannot parse - Marked.js not loaded');
+                }
+            })
+            .catch(error => {
+                addTest('File Fetch', 'error', '❌ Error: ' + error.message);
+            });
+    </script>
+</body>
+</html>
+
+
