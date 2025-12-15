@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OliverSEO Business Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --primary: #f59e0b;
+            --secondary: #d97706;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --border: rgba(51, 65, 85, 0.5);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--surface), rgba(30, 41, 59, 0.8));
+            padding: 2.5rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+        
+        .search-box {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--background);
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+        }
+        
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .card-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        .card-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+        
+        .card-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .card-link:hover {
+            color: var(--secondary);
+            gap: 0.75rem;
+        }
+        
+        .section {
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            padding: 1.75rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .file-list {
+            list-style: none;
+        }
+        
+        .file-list li {
+            padding: 1rem 1.25rem;
+            background: var(--surface);
+            margin-bottom: 0.75rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.2s;
+        }
+        
+        .file-list li:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateX(5px);
+        }
+        
+        .file-list a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .file-list a:hover {
+            color: var(--primary);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .highlight-card {
+            border: 2px solid var(--primary) !important;
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.3) !important;
+            background: linear-gradient(135deg, var(--surface), rgba(245, 158, 11, 0.05)) !important;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: var(--background);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            display: none;
+        }
+        
+        .no-results.visible {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h1>🚀 OliverSEO Business Dashboard</h1>
+                    <p class="subtitle">Complete Business System - Everything You Need in One Place</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem 1.25rem; background: var(--surface); border-radius: 0.75rem; border: 1px solid var(--border); transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                        <input type="checkbox" id="aiToggle" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--primary);" onchange="toggleAI()">
+                        <span style="font-weight: 600; color: var(--text);">
+                            <span>🤖 AI: </span>
+                            <span id="aiToggleStatus" style="color: var(--primary);">ON</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search documents, guides, templates..." onkeyup="searchFiles()" autocomplete="off">
+        </div>
+        
+        <div class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Business Documents</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Core Systems</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Daily Proposals Goal</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Sale Per Day Target</div>
+            </div>
+        </div>
+        
+        <!-- WHEN YOU'RE SCARED -->
+        <div class="section">
+            <h2 class="section-title">💙 When You're Scared - It's Okay</h2>
+            <div class="grid">
+                <div class="card highlight-card" onclick="openFile('WHEN_YOURE_SCARED.md')" style="border: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.1);">
+                    <div class="card-icon">💙</div>
+                    <div class="card-title">When You're Scared - It's Okay ⭐</div>
+                    <div class="card-desc">Feeling scared? That's normal. Break it down into tiny steps. Start with just 1 reply. You don't have to be perfect. You just have to start.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('WHEN_YOURE_SCARED.md')" class="card-link">Read This First →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI ASSISTANT -->
+        <div class="section">
+            <h2 class="section-title">🤖 AI Assistant</h2>
+            <div class="grid">
+                <div class="card highlight-card" onclick="openRedditTool('finder')">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title">Auto-Find & Generate Replies ⭐</div>
+                    <div class="card-desc">Automatically find Reddit posts and generate AI replies ready to send. One-click automation!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openRedditTool('finder')" class="card-link">Open Post Finder →</a>
+                </div>
+                <div class="card highlight-card" onclick="openAIAssistant()">
+                    <div class="card-icon">✍️</div>
+                    <div class="card-title">AI Content Generator</div>
+                    <div class="card-desc">Generate Reddit replies, proposals, and content using AI. Manual generation tools.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openAIAssistant()" class="card-link">Open AI Assistant →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- EMERGENCY PLAN -->
+        <div class="section">
+            <h2 class="section-title">🎯 YOUR FOCUS: 30 Days = 30 Websites = 1 $5K Client</h2>
+            <div class="grid">
+                <div class="card highlight-card" onclick="openFile('30_DAYS_5K_CLIENT_PLAN.md')" style="border: 4px solid var(--primary); background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.15)); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">30 Days = 30 Websites = 1 $5K Client - START HERE ⭐⭐⭐</div>
+                    <div class="card-desc">Build 1 website per day for 30 days. Post about it daily. Build your portfolio. Get 1 client for $5,000 minimum. This is your focus. This is your plan. Day-by-day breakdown, posting strategy, portfolio building, $5K sales script.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('30_DAYS_5K_CLIENT_PLAN.md')" class="card-link">Read Your 30-Day Plan →</a>
+                </div>
+                <div class="card" onclick="openFile('HOW_TO_POST_DAILY.md')" style="border: 3px solid var(--primary); background: rgba(245, 158, 11, 0.1);">
+                    <div class="card-icon">📱</div>
+                    <div class="card-title">How to Post Daily - Step-by-Step ⭐</div>
+                    <div class="card-desc">Complete step-by-step guide: how to take screenshots, write posts, post on Instagram/LinkedIn/Twitter/Facebook/Reddit, posting templates, daily schedule, engagement tips. Everything you need to post about your websites daily.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('HOW_TO_POST_DAILY.md')" class="card-link">Read Posting Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('PLATFORMS_TO_POST_ON.md')" style="border: 2px solid var(--primary); background: rgba(245, 158, 11, 0.05);">
+                    <div class="card-icon">📱</div>
+                    <div class="card-title">Platforms to Post On - Complete List</div>
+                    <div class="card-desc">Reddit, Instagram, LinkedIn, Facebook, Twitter/X, TikTok, YouTube, Discord, Pinterest, Behance, Dribbble, your website. Where to post, what to post, how often, best practices, posting templates, daily schedule.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('PLATFORMS_TO_POST_ON.md')" class="card-link">Read Platforms Guide →</a>
+                </div>
+                <div class="card highlight-card" onclick="openFile('1_999_CLIENT_PLAN.md')" style="border: 3px solid var(--primary); background: rgba(245, 158, 11, 0.1);">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">1 Client = $999 Plan</div>
+                    <div class="card-desc">Get 1 premium client worth $999. Less work, higher value, less pressure. Target businesses, not individuals. Quality over quantity. 7-day plan with direct outreach + Reddit strategy.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('1_999_CLIENT_PLAN.md')" class="card-link">Read Your $999 Plan →</a>
+                </div>
+                <div class="card highlight-card" onclick="openFile('1_WEEK_1_CLIENT_PLAN.md')" style="border: 3px solid var(--success); background: rgba(16, 185, 129, 0.1);">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">1 Week = 1 Client Plan</div>
+                    <div class="card-desc">Realistic plan to get 1 client in 7 days. Less pressure, more achievable. Day-by-day breakdown, 5-7 replies per day, follow-up strategy.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('1_WEEK_1_CLIENT_PLAN.md')" class="card-link">Read 1-Week Plan →</a>
+                </div>
+                <div class="card highlight-card" onclick="openFile('4_DAY_CLIENT_PLAN.md')" style="border: 3px solid var(--primary); background: rgba(245, 158, 11, 0.1);">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">4-Day Plan (If You Want to Go Faster)</div>
+                    <div class="card-desc">Original 4-day plan if you want to push harder. 15-20 replies per day, 2 clients by Thanksgiving.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('4_DAY_CLIENT_PLAN.md')" class="card-link">Read 4-Day Plan →</a>
+                </div>
+                <div class="card highlight-card" onclick="openFile('DOUBLE_INCOME_PLAN.md')" style="border: 3px solid var(--success); background: rgba(16, 185, 129, 0.1);">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Double Your Income Plan ⭐</div>
+                    <div class="card-desc">Made $600-$800 biweekly at old job? Double it to $2,400-$3,200/month! Only need 2-3 clients/week. Weekly targets, monthly goals, exact math.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('DOUBLE_INCOME_PLAN.md')" class="card-link">Read Double Income Plan →</a>
+                </div>
+                <div class="card" onclick="openFile('RECURRING_INCOME_PLAN.md')" style="border: 2px solid var(--success); background: rgba(16, 185, 129, 0.05);">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Recurring Income Plan</div>
+                    <div class="card-desc">Make this a regular income stream! $3,000-$10,000/month doing this consistently. Weekly routines, monthly goals.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('RECURRING_INCOME_PLAN.md')" class="card-link">Read Recurring Plan →</a>
+                </div>
+                <div class="card" onclick="openFile('RENT_TO_RANK_GUIDE.md')" style="border: 3px solid var(--primary); background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1)); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Rent to Rank Guide ⭐</div>
+                    <div class="card-desc">"Rent" your SEO services monthly! $199-$999/month recurring revenue. Lower barrier to entry, predictable income, scalable. Perfect combo: Website ($999) + SEO ($199-$999/month).</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('RENT_TO_RANK_GUIDE.md')" class="card-link">Read Rent to Rank Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('HOW_TO_RANK_TOP_KEYWORDS.md')" style="border: 2px solid var(--primary); background: rgba(245, 158, 11, 0.05);">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">How to Rank #1 for Keywords</div>
+                    <div class="card-desc">Complete SEO guide: keyword research, on-page optimization, content creation, link building, technical SEO, local SEO. Step-by-step process to rank at the top of Google.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('HOW_TO_RANK_TOP_KEYWORDS.md')" class="card-link">Read SEO Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('PROFIT_TIMELINE_AI_GUIDE.md')" style="border: 3px solid var(--success); background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1)); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title">Profit Timeline & AI Guide ⭐</div>
+                    <div class="card-desc">How long to get profitable? Week 1-2! Can AI do all the steps? Yes, 60-80%! AI workflow, tools, realistic timelines. AI saves 50%+ of your time. Profitable in 1-2 weeks with AI help.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('PROFIT_TIMELINE_AI_GUIDE.md')" class="card-link">Read AI Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('LEAD_GENERATION_MODEL.md')" style="border: 4px solid var(--primary); background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.15)); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Lead Generation Model - BRILLIANT IDEA! ⭐⭐⭐</div>
+                    <div class="card-desc">Create ranking website → Send leads to businesses (free) → Follow up: "Want to keep getting leads?" → Charge $299-$999/month. Prove value first, then they pay! Scalable, profitable, genius model.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('LEAD_GENERATION_MODEL.md')" class="card-link">Read Lead Gen Model →</a>
+                </div>
+                <div class="card" onclick="openFile('BEAT_17_PER_HOUR_PLAN.md')" style="border: 2px solid var(--success); background: rgba(16, 185, 129, 0.05);">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Beat $17/Hour Plan</div>
+                    <div class="card-desc">Pricing strategy to beat $17/hour. Need $272+ from 2 clients. Higher prices ($299+ websites, $49+ articles).</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('BEAT_17_PER_HOUR_PLAN.md')" class="card-link">Read Pricing Plan →</a>
+                </div>
+                <div class="card" onclick="openFile('SLOW_PACE_4_DAY_PLAN.md')" style="border: 2px solid var(--primary); background: rgba(245, 158, 11, 0.05);">
+                    <div class="card-icon">🐢</div>
+                    <div class="card-title">Realistic 4-Day Plan (Slower Pace)</div>
+                    <div class="card-desc">Simplified plan for working at your own pace. Quality over quantity. 45 quality replies = 2 clients.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('SLOW_PACE_4_DAY_PLAN.md')" class="card-link">Read Realistic Plan →</a>
+                </div>
+                <div class="card" onclick="openFile('EMERGENCY_4_DAY_PLAN.md')" style="border: 2px solid var(--danger); background: rgba(239, 68, 68, 0.05);">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Fast-Paced 4-Day Plan</div>
+                    <div class="card-desc">Aggressive plan if you want to go fast. 155+ replies. Only if you work quickly.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('EMERGENCY_4_DAY_PLAN.md')" class="card-link">Read Fast Plan →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ONE SALE PER DAY -->
+        <div class="section">
+            <h2 class="section-title">🎯 One Sale Per Day System</h2>
+            <div class="grid">
+                <div class="card highlight-card" onclick="openRedditTool('finder')">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-title">Post Finder - Auto Generate Replies ⭐</div>
+                    <div class="card-desc">Automatically find Reddit posts and generate AI replies ready to send. One-click automation!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openRedditTool('finder')" class="card-link">Open Post Finder →</a>
+                </div>
+                <div class="card" onclick="window.open('reddit-outreach-tool.html', '_blank')">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Reddit Outreach Tool</div>
+                    <div class="card-desc">Track replies, manage contacts, use templates, and hit your daily goals!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); window.open('reddit-outreach-tool.html', '_blank')" class="card-link">Open Tool →</a>
+                </div>
+                <div class="card" onclick="openFile('ONE_SALE_PER_DAY.md')">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">One Sale Per Day Strategy</div>
+                    <div class="card-desc">Complete system to get 1 sale per day. 30 proposals = 1 sale formula.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('ONE_SALE_PER_DAY.md')" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card highlight-card" onclick="openFile('UNDER_18_STRATEGY.md')">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">Under 18 Strategy ⭐</div>
+                    <div class="card-desc">Reddit-focused plan for ages under 18. No Fiverr/Upwork needed!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('UNDER_18_STRATEGY.md')" class="card-link">Read Strategy →</a>
+                </div>
+                <div class="card" onclick="window.open('daily_sale_tracker.html', '_blank')">
+                    <div class="card-icon">📈</div>
+                    <div class="card-title">Daily Sale Tracker</div>
+                    <div class="card-desc">Interactive tracker for daily progress, proposals, sales, and revenue. Auto-saves!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); window.open('daily_sale_tracker.html', '_blank')" class="card-link">Open Tracker →</a>
+                </div>
+                <div class="card" onclick="openFile('QUICK_PROPOSAL_TEMPLATES.md')">
+                    <div class="card-icon">📝</div>
+                    <div class="card-title">Quick Proposal Templates</div>
+                    <div class="card-desc">Copy & paste templates for Reddit, LinkedIn, direct outreach. Ready to use!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('QUICK_PROPOSAL_TEMPLATES.md')" class="card-link">View Templates →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ACCOUNT SETUP -->
+        <div class="section">
+            <h2 class="section-title">🔧 Account Setup Guides</h2>
+            <div class="grid">
+                <div class="card" onclick="openFile('ACCOUNT_SETUP_GUIDE.md')">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">Complete Account Setup</div>
+                    <div class="card-desc">Step-by-step checklists for Fiverr, Upwork, Reddit, LinkedIn, Facebook, Twitter, Square, and more!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('ACCOUNT_SETUP_GUIDE.md')" class="card-link">Start Setup →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- COMPLETE BUSINESS PLAN -->
+        <div class="section">
+            <h2 class="section-title">📚 Complete Business Plan</h2>
+            <div class="grid">
+                <div class="card" onclick="openFile('MASTER_BUSINESS_PLAN_INDEX.md')">
+                    <div class="card-icon">📖</div>
+                    <div class="card-title">Master Index</div>
+                    <div class="card-desc">Complete index of all business documents. Start here!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('MASTER_BUSINESS_PLAN_INDEX.md')" class="card-link">View Index →</a>
+                </div>
+                <div class="card" onclick="openFile('1_PLATFORM_ANALYSIS.md')">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-title">Platform Analysis</div>
+                    <div class="card-desc">Where to post: Fiverr, Upwork, Reddit, LinkedIn comparison and strategy.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('1_PLATFORM_ANALYSIS.md')" class="card-link">Read Analysis →</a>
+                </div>
+                <div class="card" onclick="openFile('2_SALES_SCRIPTS.md')">
+                    <div class="card-icon">💬</div>
+                    <div class="card-title">Sales Scripts & Templates</div>
+                    <div class="card-desc">Fiverr gigs, Upwork proposals, Reddit posts, LinkedIn messages, email templates.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('2_SALES_SCRIPTS.md')" class="card-link">View Scripts →</a>
+                </div>
+                <div class="card" onclick="openFile('3_SQUARE_INVOICE_GUIDE.md')">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Square Invoice Guide</div>
+                    <div class="card-desc">Step-by-step Square setup, how to create invoices, payment tracking.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('3_SQUARE_INVOICE_GUIDE.md')" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('4_WEBSITE_QUALITY_CHECKLIST.md')">
+                    <div class="card-icon">✅</div>
+                    <div class="card-title">40-Step Quality Checklist</div>
+                    <div class="card-desc">Complete checklist for every website: Design, Functionality, Performance, SEO.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('4_WEBSITE_QUALITY_CHECKLIST.md')" class="card-link">View Checklist →</a>
+                </div>
+                <div class="card" onclick="openFile('5_SALES_FUNNEL.md')">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Complete Sales Funnel</div>
+                    <div class="card-desc">5-stage funnel: Awareness → Interest → Consideration → Purchase → Retention.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('5_SALES_FUNNEL.md')" class="card-link">View Funnel →</a>
+                </div>
+                <div class="card" onclick="openFile('6_BUSINESS_OPERATIONS.md')">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">Business Operations</div>
+                    <div class="card-desc">Daily, weekly, monthly tasks. Financial operations, project management.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('6_BUSINESS_OPERATIONS.md')" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('QUICK_START_GUIDE.md')">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">Quick Start Guide</div>
+                    <div class="card-desc">Week 1 action plan, essential checklists, quick reference guide.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('QUICK_START_GUIDE.md')" class="card-link">Start Here →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SALES STRATEGIES -->
+        <div class="section">
+            <h2 class="section-title">💡 Sales Strategies</h2>
+            <div class="grid">
+                <div class="card highlight-card" onclick="openFile('UNDER_18_STRATEGY.md')">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">Under 18 Strategy ⭐</div>
+                    <div class="card-desc">Complete business plan for ages under 18. Reddit-focused, no Fiverr/Upwork needed!</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('UNDER_18_STRATEGY.md')" class="card-link">Read Strategy →</a>
+                </div>
+                <div class="card" onclick="openFile('PREMIUM_SALE_STRATEGY.md')">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-title">Premium Sale Strategy</div>
+                    <div class="card-desc">No discounts. Premium positioning, scarcity, value focus.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('PREMIUM_SALE_STRATEGY.md')" class="card-link">Read Strategy →</a>
+                </div>
+                <div class="card" onclick="openFile('ATTRACT_LEADS.md')">
+                    <div class="card-icon">🎣</div>
+                    <div class="card-title">Attract Leads (Inbound)</div>
+                    <div class="card-desc">Get people to come to you. SEO, free resources, FAQ, social sharing.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('ATTRACT_LEADS.md')" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card" onclick="openFile('GUARANTEED_SALE_STRATEGY.md')">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Guaranteed Sale Strategy</div>
+                    <div class="card-desc">Maximum conversion approach with urgency, scarcity, guarantees.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('GUARANTEED_SALE_STRATEGY.md')" class="card-link">View Strategy →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SERVICE PAGES -->
+        <div class="section">
+            <h2 class="section-title">🌐 Service Pages</h2>
+            <div class="grid">
+                <div class="card" onclick="window.open('article-writing.html', '_blank')">
+                    <div class="card-icon">✍️</div>
+                    <div class="card-title">Article Writing Service</div>
+                    <div class="card-desc">Professional article writing page - $39-$299 packages, SEO optimized content.</div>
+                    <a href="article-writing.html" target="_blank" onclick="event.stopPropagation()" class="card-link">View Page →</a>
+                </div>
+                <div class="card" onclick="window.open('website-design.html', '_blank')">
+                    <div class="card-icon">🎨</div>
+                    <div class="card-title">Website Design Service</div>
+                    <div class="card-desc">Professional website design page - $249-$999 packages, responsive design.</div>
+                    <a href="website-design.html" target="_blank" onclick="event.stopPropagation()" class="card-link">View Page →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- LONG-TERM PLANS -->
+        <div class="section">
+            <h2 class="section-title">🔮 Long-Term Plans (Future Focus)</h2>
+            <div class="grid">
+                <div class="card" onclick="openFile('LEAD_GENERATION_MODEL.md')" style="border: 2px solid var(--primary); background: rgba(245, 158, 11, 0.05);">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Lead Generation Model</div>
+                    <div class="card-desc">Create ranking website → Send leads to businesses (free) → Follow up: "Want to keep getting leads?" → Charge $299-$999/month. Prove value first, then they pay! Scalable, profitable model for future.</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('LEAD_GENERATION_MODEL.md')" class="card-link">Read Lead Gen Model →</a>
+                </div>
+                <div class="card" onclick="openFile('RENT_TO_RANK_GUIDE.md')" style="border: 2px solid var(--primary); background: rgba(245, 158, 11, 0.05);">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Rent to Rank Guide</div>
+                    <div class="card-desc">"Rent" your SEO services monthly! $199-$999/month recurring revenue. Lower barrier to entry, predictable income, scalable. Perfect combo: Website ($999) + SEO ($199-$999/month).</div>
+                    <a href="javascript:void(0)" onclick="event.stopPropagation(); openFile('RENT_TO_RANK_GUIDE.md')" class="card-link">Read Rent to Rank Guide →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ALL FILES LIST -->
+        <div class="section">
+            <h2 class="section-title">📁 All Documents</h2>
+            <div class="no-results" id="noResults">
+                No documents found matching your search.
+            </div>
+            <ul class="file-list" id="fileList">
+                <li><a href="javascript:void(0)" onclick="openFile('ACCOUNT_SETUP_GUIDE.md')">⚙️ Complete Account Setup Guide</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('ONE_SALE_PER_DAY.md')">📊 One Sale Per Day Strategy</a></li>
+                <li><a href="javascript:void(0)" onclick="window.open('daily_sale_tracker.html', '_blank')">📈 Daily Sale Tracker</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('QUICK_PROPOSAL_TEMPLATES.md')">📝 Quick Proposal Templates</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('MASTER_BUSINESS_PLAN_INDEX.md')">📖 Master Business Plan Index</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('1_PLATFORM_ANALYSIS.md')">🌐 Platform Analysis</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('2_SALES_SCRIPTS.md')">💬 Sales Scripts & Templates</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('3_SQUARE_INVOICE_GUIDE.md')">💰 Square Invoice Guide</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('4_WEBSITE_QUALITY_CHECKLIST.md')">✅ 40-Step Quality Checklist</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('5_SALES_FUNNEL.md')">🔄 Complete Sales Funnel</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('6_BUSINESS_OPERATIONS.md')">⚙️ Business Operations</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('QUICK_START_GUIDE.md')">🚀 Quick Start Guide</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('PREMIUM_SALE_STRATEGY.md')">⭐ Premium Sale Strategy</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('ATTRACT_LEADS.md')">🎣 Attract Leads Guide</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('GUARANTEED_SALE_STRATEGY.md')">🎯 Guaranteed Sale Strategy</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('UNDER_18_STRATEGY.md')">🎓 Under 18 Business Strategy</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('30_DAYS_5K_CLIENT_PLAN.md')">🚀 30 Days = 30 Websites = 1 $5K Client Plan</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('LEAD_GENERATION_MODEL.md')">🎯 Lead Generation Model</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('RENT_TO_RANK_GUIDE.md')">💰 Rent to Rank Guide</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('HOW_TO_RANK_TOP_KEYWORDS.md')">🚀 How to Rank #1 for Keywords</a></li>
+                <li><a href="javascript:void(0)" onclick="openFile('PROFIT_TIMELINE_AI_GUIDE.md')">🤖 Profit Timeline & AI Guide</a></li>
+                <li><a href="article-writing.html" target="_blank">✍️ Article Writing Service Page</a></li>
+                <li><a href="website-design.html" target="_blank">🎨 Website Design Service Page</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+    
+    <script>
+        function openFile(filename) {
+            // Open markdown files in viewer, HTML files directly
+            if (filename.endsWith('.md')) {
+                window.open(`viewer.html?file=${encodeURIComponent(filename)}`, '_blank');
+            } else {
+                window.open(filename, '_blank');
+            }
+        }
+        
+        function searchFiles() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.card');
+            const fileList = document.getElementById('fileList');
+            const listItems = fileList.querySelectorAll('li');
+            const sections = document.querySelectorAll('.section');
+            const noResults = document.getElementById('noResults');
+            
+            let hasResults = false;
+            
+            // Search cards
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    card.style.display = 'flex';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Search file list
+            let listHasResults = false;
+            listItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = 'block';
+                    listHasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide sections if no results
+            sections.forEach(section => {
+                const sectionCards = section.querySelectorAll('.card');
+                const visibleCards = Array.from(sectionCards).filter(card => 
+                    card.style.display !== 'none'
+                );
+                if (visibleCards.length === 0 && filter !== '') {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+            
+            // Show no results message
+            if (filter !== '' && !hasResults && !listHasResults) {
+                noResults.classList.add('visible');
+            } else {
+                noResults.classList.remove('visible');
+            }
+        }
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Make cards clickable
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.cursor = 'pointer';
+        });
+        
+        // Clear search on Escape key
+        document.getElementById('searchInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                e.target.value = '';
+                searchFiles();
+            }
+        });
+        
+        // AI Toggle Functions (shared across pages)
+        function isAIEnabled() {
+            const enabled = localStorage.getItem('ai_enabled');
+            return enabled === null || enabled === 'true'; // Default to enabled
+        }
+        
+        function toggleAI() {
+            const checkbox = document.getElementById('aiToggle');
+            const enabled = checkbox.checked;
+            localStorage.setItem('ai_enabled', enabled);
+            updateAIToggleUI();
+        }
+        
+        function updateAIToggleUI() {
+            const enabled = isAIEnabled();
+            const checkbox = document.getElementById('aiToggle');
+            const statusEl = document.getElementById('aiToggleStatus');
+            
+            if (checkbox && statusEl) {
+                checkbox.checked = enabled;
+                statusEl.textContent = enabled ? 'ON' : 'OFF';
+                statusEl.style.color = enabled ? 'var(--success)' : 'var(--text-secondary)';
+            }
+        }
+        
+        // Auto-enable AI when dashboard opens
+        function autoEnableAI() {
+            localStorage.setItem('ai_enabled', 'true');
+            console.log('AI auto-enabled on dashboard load');
+            // Use setTimeout to ensure UI elements are ready
+            setTimeout(() => {
+                updateAIToggleUI();
+                console.log('AI toggle UI updated, status:', isAIEnabled());
+            }, 100);
+        }
+        
+        // Load AI toggle state on page load - Auto-enable AI when dashboard opens
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(autoEnableAI, 50);
+            });
+        } else {
+            // Page already loaded, run with small delay
+            setTimeout(autoEnableAI, 50);
+        }
+        
+        // Open Reddit Tool
+        function openRedditTool(tabName) {
+            window.location.href = 'reddit-outreach-tool.html';
+            // Wait for load then switch to specified tab
+            setTimeout(() => {
+                document.querySelectorAll('.tab').forEach(tab => {
+                    if (tabName === 'finder' && tab.textContent.includes('Post Finder')) {
+                        tab.click();
+                    } else if (tabName === 'ai' && tab.textContent.includes('AI Assistant')) {
+                        tab.click();
+                    }
+                });
+            }, 500);
+        }
+        
+        // Open AI Assistant
+        function openAIAssistant() {
+            openRedditTool('ai');
+        }
+    </script>
+</body>
+</html>
+
