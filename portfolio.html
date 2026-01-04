@@ -120,8 +120,10 @@
         .mobile-menu-content{padding:1.5rem 0;display:flex;flex-direction:column;gap:.5rem}
         .mobile-menu-content a{color:var(--text-primary);text-decoration:none;font-weight:500;padding:1rem 1.5rem;transition:all .3s;border-left:3px solid transparent;display:flex;align-items:center;gap:.75rem;font-size:1rem}
         .mobile-menu-content a:hover{background:var(--primary-bg);color:var(--primary);border-left-color:var(--primary);padding-left:1.75rem}
-        .mobile-menu-content a.btn{background:var(--primary);color:#0f172a;border-left:none;border-radius:.5rem;font-weight:600;justify-content:center;margin:.5rem 1.5rem}
-        .mobile-menu-content a.btn:hover{background:var(--primary-hover);color:#0f172a;padding-left:1rem}
+        .mobile-menu-content a.btn{background:var(--primary);color:#ffffff;border-left:none;border-radius:.5rem;font-weight:600;justify-content:center;margin:.5rem 1.5rem}
+        [data-theme="light"] .mobile-menu-content a.btn{color:#0f172a}
+        .mobile-menu-content a.btn:hover{background:var(--primary-hover);color:#ffffff;padding-left:1rem}
+        [data-theme="light"] .mobile-menu-content a.btn:hover{color:#0f172a}
     </style>
 </head>
 <body>
