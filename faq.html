@@ -407,14 +407,32 @@
         }
         
         // Mobile Menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target) && window.innerWidth < 800) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
         }
         
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.remove('active');
+        // Theme toggle buttons
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
         }
     </script>
 </body>
