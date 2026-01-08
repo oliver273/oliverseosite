@@ -61,6 +61,7 @@
         .nav-links{display:none;gap:1rem;align-items:center;flex-wrap:wrap}@media(min-width:800px){.nav-links{display:flex;gap:1.25rem}}@media(min-width:900px){.nav-links{gap:1.5rem}}@media(min-width:1000px){.nav-links{gap:2rem}}
         .nav-links a{color:var(--text-primary);text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0;margin:0 .25rem;display:inline-block;white-space:nowrap;font-size:.875rem}@media(min-width:900px){.nav-links a{margin:0 .5rem;font-size:.9375rem}}@media(min-width:1000px){.nav-links a{font-size:1rem}}
         .nav-links a:hover{color:var(--primary)}
+        .nav-links a.active{color:var(--primary);border-bottom:2px solid var(--primary)}
         .theme-toggle{background:none;border:none;color:var(--text-primary);cursor:pointer;padding:.5rem;width:44px;height:44px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:.5rem;transition:all .3s;flex-shrink:0}
         .theme-toggle:hover{background:var(--primary-bg);color:var(--primary)}
         .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:var(--text-primary);background:none;border:none;cursor:pointer;padding:.5rem;width:44px;height:44px;min-width:44px;min-height:44px;justify-content:center;align-items:center}@media(min-width:800px){.mobile-btn{display:none}}
@@ -127,7 +128,7 @@
                 <a href="index.html">Home</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
-                <a href="about.html">About</a>
+                <a href="about.html" class="active">About</a>
                 <a href="faq.html">FAQ</a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
                     <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
