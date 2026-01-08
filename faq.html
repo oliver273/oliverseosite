@@ -39,9 +39,11 @@
         ul{list-style:none}
         
         /* Navigation */
-        .nav{background:var(--bg-surface);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);position:sticky;top:0;z-index:1000;transition:background-color 0.3s ease}
-        .nav-container{max-width:1200px;margin:0 auto;padding:1rem;display:flex;justify-content:space-between;align-items:center}
-        .nav-logo{display:flex;align-items:center;gap:.75rem;font-weight:700;font-size:1.25rem;color:var(--text-primary)}
+        .nav{position:sticky;top:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:40;transition:background-color 0.3s ease, border-color 0.3s ease}
+        .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+        .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem;flex-wrap:nowrap;min-width:0}
+        .logo{display:flex;align-items:center;gap:.75rem;color:var(--text-primary);text-decoration:none;flex-shrink:0}
+        .logo-icon{width:2.5rem;height:2.5rem;background:var(--primary-bg);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
         .nav-links{display:none;align-items:center;gap:1rem}@media(min-width:800px){.nav-links{display:flex}}
         .nav-links a{color:var(--text-primary);text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0;margin:0 .25rem;display:inline-block;white-space:nowrap;font-size:.875rem}@media(min-width:900px){.nav-links a{margin:0 .5rem;font-size:.9375rem}}@media(min-width:1000px){.nav-links a{font-size:1rem}}
         .nav-links a:hover{color:var(--primary)}
@@ -49,8 +51,9 @@
         .theme-toggle:hover{background:var(--primary-bg);color:var(--primary)}
         .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:var(--text-primary);background:none;border:none;cursor:pointer;padding:.5rem;width:44px;height:44px;min-width:44px;min-height:44px;justify-content:center;align-items:center}@media(min-width:800px){.mobile-btn{display:none}}
         .mobile-btn span{display:block;width:1.5rem;height:2px;background:var(--text-primary);transition:all .3s;border-radius:2px}
-        .mobile-menu{display:none;position:fixed;top:73px;left:0;right:0;background:var(--bg-surface);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:999}
-        .mobile-menu.active{display:block}
+        .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:50;box-shadow:0 10px 25px rgba(0,0,0,.2);transition:background-color 0.3s ease}
+        .mobile-menu.active{display:block;animation:slideDown .3s ease-out}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
         .mobile-menu-content{padding:1.5rem 0;display:flex;flex-direction:column;gap:.5rem}
         .mobile-menu-content a{color:var(--text-primary);text-decoration:none;font-weight:500;padding:1rem 1.5rem;transition:all .3s;border-left:3px solid transparent;display:flex;align-items:center;gap:.75rem;font-size:1rem}
         .mobile-menu-content a:hover{background:var(--primary-bg);color:var(--primary);border-left-color:var(--primary);padding-left:1.75rem}
@@ -100,24 +103,23 @@
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <div style="width:2rem;height:2rem;background:var(--primary-bg);border-radius:.5rem;display:flex;align-items:center;justify-content:center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="9" cy="12" r="5" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M 15 6 Q 18 6 18 9 Q 18 10.5 16.5 10.5 Q 15 10.5 15 12 Q 15 13.5 18 13.5 L 18 18" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="12" r="5" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/><path d="M 15 6 Q 18 6 18 9 Q 18 10.5 16.5 10.5 Q 15 10.5 15 12 Q 15 13.5 18 13.5 L 18 18" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div>
+                    <div style="font-weight:600;font-size:1.125rem;color:var(--text-primary)">OliverSEO</div>
+                    <div style="font-size:.75rem;color:var(--text-secondary)">Website Design</div>
                 </div>
-                <span>OliverSEO</span>
             </a>
+            
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html">Blog</a>
                 <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
-                <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -131,22 +133,36 @@
                 </button>
                 <a href="index.html#contact" class="btn">Get Quote</a>
             </div>
-            <button class="mobile-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            
+            <button id="mobile-menu-btn" class="mobile-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
+        
+        <div id="mobile-menu" class="mobile-menu">
             <div class="mobile-menu-content">
-                <a href="index.html" onclick="closeMobileMenu()">Home</a>
-                <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
-                <a href="about.html" onclick="closeMobileMenu()">About</a>
-                <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
-                <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()" style="margin:.5rem 1.5rem;justify-self:flex-start">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <button id="theme-toggle-mobile" class="theme-toggle" style="margin: 0.5rem 1.5rem; width: auto; justify-content: flex-start; padding: 1rem 1.5rem;" aria-label="Toggle theme">
+                    <svg id="theme-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.75rem;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
                     <span>Toggle Theme</span>
                 </button>
-                <a href="index.html#contact" class="btn" onclick="closeMobileMenu()">Get Quote</a>
+                <a href="index.html#contact" class="btn" style="margin:.5rem 1.5rem">Get Quote</a>
             </div>
         </div>
     </nav>

@@ -154,7 +154,18 @@
                 <a href="blog.html">Blog</a>
                 <a href="about.html">About</a>
                 <a href="faq.html">FAQ</a>
-                <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()" style="margin:.5rem 1.5rem;justify-self:flex-start">
+                <button id="theme-toggle-mobile" class="theme-toggle" style="margin: 0.5rem 1.5rem; width: auto; justify-content: flex-start; padding: 1rem 1.5rem;" aria-label="Toggle theme">
+                    <svg id="theme-icon-mobile" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.75rem;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
                     <span>Toggle Theme</span>
                 </button>
                 <a href="index.html#contact" class="btn" style="margin:.5rem 1.5rem">Get Quote</a>
@@ -246,10 +257,15 @@
             }
         });
         
-        // Theme toggle button
+        // Theme toggle buttons
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
         }
     </script>
 </body>
