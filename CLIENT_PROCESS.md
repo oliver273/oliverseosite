@@ -4,6 +4,8 @@
 
 This document outlines the complete process from first contact to project delivery. Follow this step-by-step to ensure consistent, professional client experiences.
 
+**📞 Communication:** See COMMUNICATION_GUIDE.md for detailed communication methods, templates, and best practices.
+
 ---
 
 ## 📋 PROCESS OVERVIEW
