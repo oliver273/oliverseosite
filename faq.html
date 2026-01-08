@@ -44,13 +44,16 @@
         .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem;flex-wrap:nowrap;min-width:0}
         .logo{display:flex;align-items:center;gap:.75rem;color:var(--text-primary);text-decoration:none;flex-shrink:0}
         .logo-icon{width:2.5rem;height:2.5rem;background:var(--primary-bg);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
-        .nav-links{display:none;align-items:center;gap:1rem}@media(min-width:800px){.nav-links{display:flex}}
+        .nav-links{display:none;gap:1rem;align-items:center;flex-wrap:wrap}@media(min-width:800px){.nav-links{display:flex;gap:1.25rem}}@media(min-width:900px){.nav-links{gap:1.5rem}}@media(min-width:1000px){.nav-links{gap:2rem}}
         .nav-links a{color:var(--text-primary);text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0;margin:0 .25rem;display:inline-block;white-space:nowrap;font-size:.875rem}@media(min-width:900px){.nav-links a{margin:0 .5rem;font-size:.9375rem}}@media(min-width:1000px){.nav-links a{font-size:1rem}}
         .nav-links a:hover{color:var(--primary)}
         .theme-toggle{background:none;border:none;color:var(--text-primary);cursor:pointer;padding:.5rem;width:44px;height:44px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:.5rem;transition:all .3s;flex-shrink:0}
         .theme-toggle:hover{background:var(--primary-bg);color:var(--primary)}
         .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:var(--text-primary);background:none;border:none;cursor:pointer;padding:.5rem;width:44px;height:44px;min-width:44px;min-height:44px;justify-content:center;align-items:center}@media(min-width:800px){.mobile-btn{display:none}}
         .mobile-btn span{display:block;width:1.5rem;height:2px;background:var(--text-primary);transition:all .3s;border-radius:2px}
+        .mobile-btn.active span:nth-child(1){transform:rotate(45deg) translate(.4rem,.4rem)}
+        .mobile-btn.active span:nth-child(2){opacity:0}
+        .mobile-btn.active span:nth-child(3){transform:rotate(-45deg) translate(.4rem,-.4rem)}
         .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:50;box-shadow:0 10px 25px rgba(0,0,0,.2);transition:background-color 0.3s ease}
         .mobile-menu.active{display:block;animation:slideDown .3s ease-out}
         @keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
