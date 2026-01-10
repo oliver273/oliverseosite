@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win a FREE $1,500 Website | OliverSEO Giveaway</title>
+    <meta name="description" content="Enter to win a FREE professional website worth $1,500. Mobile-friendly, SEO optimized, custom design. No purchase necessary.">
+    <meta name="keywords" content="free website giveaway, free web design, win free website, small business website">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Win a FREE $1,500 Professional Website">
+    <meta property="og:description" content="Enter for your chance to win a complete professional website for your business. Worth $1,500!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oliverseo.com/giveaway">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --gold: #f59e0b;
+            --gold-dark: #d97706;
+            --green: #10b981;
+            --green-dark: #059669;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Value */
+        .value-box {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--green);
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .value-box span {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--green);
+        }
+        
+        /* What you win */
+        .prize-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .prize-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .prize-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .prize-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(245, 158, 11, 0.05);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .prize-icon {
+            font-size: 2rem;
+        }
+        
+        .prize-item strong {
+            display: block;
+            color: var(--light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .prize-item span {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        /* Form */
+        .form-section {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(16, 185, 129, 0.05));
+            border: 2px solid var(--gold);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .form-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .form-section p {
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            color: var(--light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            border: none;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .form-note {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        
+        /* Countdown */
+        .countdown-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .countdown-section h3 {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        
+        .countdown-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Trust */
+        .trust-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1rem;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+        }
+        
+        .trust-item span {
+            font-size: 1.5rem;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+        
+        .faq-item p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+        
+        .footer p {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Success State */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-message h2 {
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+        
+        .success-message p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-section.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo">OliverSEO</a>
+        </header>
+        
+        <section class="hero">
+            <div class="badge">🎁 Monthly Giveaway</div>
+            <h1>Win a FREE $1,500 Website</h1>
+            <p class="subtitle">I'm giving away one professional website every month. Enter below for your chance to win a complete, custom-designed website for your business.</p>
+            <div class="value-box">
+                <span>Total Value: $1,800+</span>
+            </div>
+        </section>
+        
+        <section class="prize-section">
+            <h2>🏆 What You Win</h2>
+            <div class="prize-grid">
+                <div class="prize-item">
+                    <span class="prize-icon">🌐</span>
+                    <div>
+                        <strong>5-Page Website</strong>
+                        <span>$1,500 value</span>
+                    </div>
+                </div>
+                <div class="prize-item">
+                    <span class="prize-icon">📱</span>
+                    <div>
+                        <strong>Mobile-Friendly</strong>
+                        <span>Responsive design</span>
+                    </div>
+                </div>
+                <div class="prize-item">
+                    <span class="prize-icon">🔍</span>
+                    <div>
+                        <strong>SEO Optimization</strong>
+                        <span>$200 value</span>
+                    </div>
+                </div>
+                <div class="prize-item">
+                    <span class="prize-icon">🎨</span>
+                    <div>
+                        <strong>Logo Design</strong>
+                        <span>$200 value</span>
+                    </div>
+                </div>
+                <div class="prize-item">
+                    <span class="prize-icon">☁️</span>
+                    <div>
+                        <strong>Hosting Setup</strong>
+                        <span>$100 value</span>
+                    </div>
+                </div>
+                <div class="prize-item">
+                    <span class="prize-icon">✏️</span>
+                    <div>
+                        <strong>Unlimited Revisions</strong>
+                        <span>Until you're happy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="countdown-section">
+            <h3>Winner Announced In:</h3>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="form-section" id="entryForm">
+            <h2>Enter to Win</h2>
+            <p>Fill out the form below for your chance to win.</p>
+            
+            <form id="giveawayForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="business">Business Name *</label>
+                        <input type="text" id="business" name="business" required placeholder="Smith Plumbing">
+                    </div>
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select your industry...</option>
+                            <option value="construction">Construction / Trades</option>
+                            <option value="retail">Retail / E-commerce</option>
+                            <option value="services">Professional Services</option>
+                            <option value="food">Food & Restaurant</option>
+                            <option value="health">Health & Wellness</option>
+                            <option value="real-estate">Real Estate</option>
+                            <option value="automotive">Automotive</option>
+                            <option value="tech">Technology</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="why">Why does your business need a website? *</label>
+                    <textarea id="why" name="why" required placeholder="Tell us about your business and how a new website would help you..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="website">Current Website (if any)</label>
+                    <input type="url" id="website" name="website" placeholder="https://yourbusiness.com">
+                </div>
+                
+                <button type="submit" class="submit-btn">🎁 Enter Giveaway Now</button>
+                
+                <p class="form-note">
+                    By entering, you agree to receive emails from OliverSEO. You can unsubscribe anytime.
+                    Winner selected based on business fit and potential impact.
+                </p>
+            </form>
+        </section>
+        
+        <section class="success-message" id="successMessage">
+            <h2>🎉 You're Entered!</h2>
+            <p>Thanks for entering! We'll announce the winner soon. Share for bonus entries!</p>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=I%20just%20entered%20to%20win%20a%20FREE%20%241%2C500%20website%20from%20%40OliverSEO!%20Enter%20here%3A&url=https://oliverseo.com/giveaway" target="_blank" class="share-btn">
+                    📱 Share on Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://oliverseo.com/giveaway" target="_blank" class="share-btn">
+                    📘 Share on Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://oliverseo.com/giveaway" target="_blank" class="share-btn">
+                    💼 Share on LinkedIn
+                </a>
+            </div>
+        </section>
+        
+        <section class="trust-section">
+            <div class="trust-item">
+                <span>✅</span>
+                <p>No Purchase Necessary</p>
+            </div>
+            <div class="trust-item">
+                <span>🔒</span>
+                <p>Your Info is Safe</p>
+            </div>
+            <div class="trust-item">
+                <span>📧</span>
+                <p>Unsubscribe Anytime</p>
+            </div>
+            <div class="trust-item">
+                <span>🏆</span>
+                <p>Real Winner Every Month</p>
+            </div>
+        </section>
+        
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>How do I enter?</h3>
+                <p>Just fill out the form above with your details. That's it! You're automatically entered into the giveaway.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>When is the winner announced?</h3>
+                <p>Winners are selected at the end of each month. You'll receive an email if you win!</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Why are you doing this?</h3>
+                <p>I'm building my portfolio and want to help small businesses succeed. Plus, many entrants become future clients!</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What if I don't win?</h3>
+                <p>Don't worry! You'll receive a special consolation offer with a significant discount on my services.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Is this really free?</h3>
+                <p>Yes! The website design is 100% free. Optional add-ons like domain registration and hosting are separate.</p>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>&copy; 2026 <a href="index.html">OliverSEO</a>. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">Wyoming, USA</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Countdown timer - set to end of month
+        function updateCountdown() {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+            const diff = endOfMonth - now;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Form submission
+        document.getElementById('giveawayForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                business: document.getElementById('business').value,
+                industry: document.getElementById('industry').value,
+                why: document.getElementById('why').value,
+                website: document.getElementById('website').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store in localStorage (in real app, send to server)
+            const entries = JSON.parse(localStorage.getItem('giveawayEntries') || '[]');
+            entries.push(formData);
+            localStorage.setItem('giveawayEntries', JSON.stringify(entries));
+            
+            // Show success message
+            document.getElementById('entryForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            console.log('Entry submitted:', formData);
+        });
+    </script>
+</body>
+</html>
+
