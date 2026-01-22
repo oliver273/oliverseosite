@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CogniFlow – Intelligent AI for Modern Teams</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --cf-bg: #020617;
+      --cf-bg-soft: #020617;
+      --cf-surface: rgba(15, 23, 42, 0.9);
+      --cf-surface-soft: rgba(15, 23, 42, 0.7);
+      --cf-primary: #2563eb;
+      --cf-primary-soft: rgba(37, 99, 235, 0.25);
+      --cf-primary-strong: #1d4ed8;
+      --cf-accent: #22d3ee;
+      --cf-muted: #64748b;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 45%, #000 100%);
+      color: #e5e7eb;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .hero-grid {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.23), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 55%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cf-primary), var(--cf-primary-strong));
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(30, 64, 175, 0.22);
+      border-color: rgba(129, 140, 248, 0.7);
+    }
+
+    .pill {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 60%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 60%),
+                  linear-gradient(to bottom right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.7);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+      transform: translateY(-4px);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%),
+                  linear-gradient(to bottom right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98));
+    }
+
+    .feature-icon {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(56, 189, 248, 0.16));
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .pricing-feature::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 30%, #22d3ee, #1d4ed8);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(4px);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: float 22s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), transparent 65%);
+      top: -60px;
+      right: 2rem;
+    }
+
+    .blob-2 {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 40% 40%, rgba(129, 140, 248, 0.9), transparent 65%);
+      bottom: -70px;
+      left: -40px;
+      animation-direction: alternate-reverse;
+    }
+
+    .blob-3 {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 40% 40%, rgba(34, 211, 238, 0.9), transparent 65%);
+      top: 40%;
+      right: -70px;
+      animation-duration: 26s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-12px, -14px, 0) scale(1.04);
+      }
+      100% {
+        transform: translate3d(10px, 16px, 0) scale(1.02);
+      }
+    }
+
+    .stat-grid {
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 60%);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.85);
+    }
+
+    .input-field {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.7);
+    }
+
+    ::selection {
+      background: rgba(56, 189, 248, 0.3);
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-100" id="top">
+  <!-- Navigation -->
+  <header class="fixed inset-x-0 top-0 z-40 nav-blur">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <a href="#top" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-blue-500 via-sky-400 to-cyan-300 flex items-center justify-center shadow-lg shadow-blue-800/60">
+            <span class="text-[17px] font-semibold tracking-tight text-slate-950">Cf</span>
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="text-sm font-semibold tracking-tight text-slate-50">CogniFlow</span>
+            <span class="text-[11px] text-slate-400">Intelligent Workflows</span>
+          </div>
+        </a>
+
+        <!-- Nav links -->
+        <nav class="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-300">
+          <a href="#features" class="hover:text-sky-300 transition-colors">Features</a>
+          <a href="#pricing" class="hover:text-sky-300 transition-colors">Pricing</a>
+          <a href="#about" class="hover:text-sky-300 transition-colors">About</a>
+          <a href="#contact" class="hover:text-sky-300 transition-colors">Contact</a>
+          <a href="../portfolio.html" class="hover:text-sky-300 transition-colors border-l border-slate-700 pl-5">← Back to Portfolio</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="../portfolio.html" class="hidden sm:inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-slate-300 border border-slate-600 hover:border-sky-400 hover:text-sky-300 transition-colors">
+            ← Portfolio
+          </a>
+          <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-slate-950 bg-slate-100/95 hover:bg-white shadow-lg shadow-sky-900/40">
+            Get started
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 pt-16">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="hero-grid">
+        <div class="absolute inset-0 pointer-events-none opacity-60" aria-hidden="true">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28 relative">
+          <div class="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-16 items-center">
+            <!-- Left -->
+            <div class="space-y-7 fade-up">
+              <span class="pill inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.19em] text-slate-200/90 bg-slate-900/60">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(34,211,238,0.9)]"></span>
+                AI-driven workflows for modern teams
+              </span>
+
+              <div class="space-y-4">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50">
+                  Ship smarter with
+                  <span class="block bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">intelligent automation.</span>
+                </h1>
+                <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+                  CogniFlow connects your tools, learns from your processes, and orchestrates the busyworkso your team
+                  can focus on the work that matters.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-4">
+                <a href="#pricing" class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-50 btn-primary transition-transform">
+                  Start free trial
+                </a>
+                <a href="#features" class="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs sm:text-sm font-medium border btn-ghost text-slate-200/90">
+                  View product tour
+                </a>
+                <p class="w-full sm:w-auto text-[11px] text-slate-400 flex items-center gap-2">
+                  <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"></span>
+                  No credit card. 14-day free trial.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right visual -->
+            <div class="fade-up delay-150">
+              <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-tr from-sky-500/15 via-blue-600/25 to-cyan-400/10 blur-2xl -z-10"></div>
+                <div class="stat-grid rounded-3xl bg-slate-900/90 p-5 sm:p-6 border border-slate-700/70">
+                  <div class="flex items-center justify-between mb-4">
+                    <div>
+                      <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Live overview</p>
+                      <p class="text-sm font-semibold text-slate-50 mt-1">Workflow health</p>
+                    </div>
+                    <span class="inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2 py-1 text-[11px] text-emerald-300 border border-emerald-400/40">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      Stable
+                    </span>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-3 text-xs mb-5">
+                    <div class="rounded-2xl bg-slate-900/80 border border-slate-700/70 px-3 py-2.5">
+                      <p class="text-[11px] text-slate-400 mb-1">Tasks automated</p>
+                      <p class="text-lg font-semibold text-slate-50">32k</p>
+                      <p class="text-[11px] text-emerald-300">+128% this week</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-900/80 border border-slate-700/70 px-3 py-2.5">
+                      <p class="text-[11px] text-slate-400 mb-1">Time saved</p>
+                      <p class="text-lg font-semibold text-slate-50">1,420h</p>
+                      <p class="text-[11px] text-sky-300">Avg. per team</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-900/80 border border-slate-700/70 px-3 py-2.5">
+                      <p class="text-[11px] text-slate-400 mb-1">Accuracy</p>
+                      <p class="text-lg font-semibold text-slate-50">99.3%</p>
+                      <p class="text-[11px] text-slate-400">Last 30 days</p>
+                    </div>
+                  </div>
+
+                  <div class="space-y-3 text-[11px] text-slate-300">
+                    <div class="flex items-center justify-between">
+                      <span class="flex items-center gap-2">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-400/50 text-[13px] text-sky-300">↯</span>
+                        Real-time anomaly detection
+                      </span>
+                      <span class="text-emerald-300">Active</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="flex items-center gap-2">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/60 text-[13px] text-cyan-300">∞</span>
+                        Adaptive routing engine
+                      </span>
+                      <span class="text-sky-300">Optimized</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="flex items-center gap-2">
+                        <span class="inline-flex h-6 w-6 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-400/60 text-[13px] text-indigo-300">◎</span>
+                        Policy-aware automation
+                      </span>
+                      <span class="text-slate-300">Compliant</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 sm:py-20 bg-slate-950/70 border-y border-slate-800/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10 fade-up">
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-sky-300 mb-2">Features</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50 mb-3">Everything you need to put AI to work, not in the way.</h2>
+          <p class="text-sm sm:text-base text-slate-300 max-w-2xl">
+            CogniFlow plugs into your existing stack, learns how your team works, and safely automates the repetitive tasks
+            across support, operations, and product.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-7">
+          <!-- Feature 1 -->
+          <article class="card rounded-3xl p-5 sm:p-6 fade-up">
+            <div class="feature-icon inline-flex h-10 w-10 items-center justify-center rounded-2xl mb-4 text-sky-300 text-lg">
+              ⚡
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50 mb-2">Adaptive automation</h3>
+            <p class="text-sm text-slate-300 mb-4">
+              Automate multi-step workflows with natural language, not brittle rules. CogniFlow adapts as your processes evolve.
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-slate-400">
+              <li>· Train on your existing tickets and docs.</li>
+              <li>· Drag-and-drop builder for complex runs.</li>
+              <li>· Granular audit log for every decision.</li>
+            </ul>
+          </article>
+
+          <!-- Feature 2 -->
+          <article class="card rounded-3xl p-5 sm:p-6 fade-up delay-100">
+            <div class="feature-icon inline-flex h-10 w-10 items-center justify-center rounded-2xl mb-4 text-cyan-300 text-lg">
+              📊
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50 mb-2">Deep insights</h3>
+            <p class="text-sm text-slate-300 mb-4">
+              Understand where time is spent, what blocks your team, and how AI is impacting key metrics in real time.
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-slate-400">
+              <li>· Live dashboards with custom KPIs.</li>
+              <li>· Team performance & workload heatmaps.</li>
+              <li>· Export-ready reports for leadership.</li>
+            </ul>
+          </article>
+
+          <!-- Feature 3 -->
+          <article class="card rounded-3xl p-5 sm:p-6 fade-up delay-200">
+            <div class="feature-icon inline-flex h-10 w-10 items-center justify-center rounded-2xl mb-4 text-indigo-300 text-lg">
+              🛡️
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50 mb-2">Enterprise-grade guardrails</h3>
+            <p class="text-sm text-slate-300 mb-4">
+              Built-in data controls, approvals, and observability keep your team compliant without slowing them down.
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-slate-400">
+              <li>· SSO, SCIM, and granular role control.</li>
+              <li>· Region-aware data residency options.</li>
+              <li>· SOC 2-ready architecture.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 sm:py-20 bg-slate-950/90">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-10 text-center mx-auto fade-up">
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-sky-300 mb-2">Pricing</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50 mb-3">Simple plans that scale with your team.</h2>
+          <p class="text-sm sm:text-base text-slate-300">
+            Start in minutes on our free trial. Upgrade only when you are ready to automate production workflows.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+          <!-- Starter -->
+          <div class="card rounded-3xl p-5 sm:p-6 flex flex-col fade-up">
+            <h3 class="text-sm font-semibold text-slate-50 mb-1">Starter</h3>
+            <p class="text-xs text-slate-400 mb-4">For individuals and small teams exploring AI automation.</p>
+            <p class="text-2xl font-semibold text-slate-50 mb-1">$29<span class="text-xs text-slate-400">/month</span></p>
+            <p class="text-[11px] text-slate-400 mb-4">Billed monthly. Cancel anytime.</p>
+            <ul class="space-y-2 mb-5 text-[12px] text-slate-300">
+              <li class="relative pl-4 pricing-feature">Up to 3 automated workflows</li>
+              <li class="relative pl-4 pricing-feature">5,000 AI actions / month</li>
+              <li class="relative pl-4 pricing-feature">Email support</li>
+            </ul>
+            <button class="mt-auto inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-slate-100 border border-slate-600 hover:border-sky-400 hover:bg-slate-900/80 transition-colors">
+              Choose Starter
+            </button>
+          </div>
+
+          <!-- Growth -->
+          <div class="relative fade-up delay-100">
+            <div class="absolute -inset-[1px] bg-gradient-to-tr from-sky-500 via-blue-500 to-cyan-400 rounded-[26px] opacity-80 blur-sm"></div>
+            <div class="relative rounded-[24px] bg-slate-950/90 border border-sky-400/60 shadow-xl shadow-sky-950/70 p-[1px]">
+              <div class="rounded-[23px] bg-slate-950/95 p-5 sm:p-6 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-sm font-semibold text-slate-50">Growth</h3>
+                  <span class="inline-flex items-center rounded-full bg-sky-500/10 px-2 py-1 text-[10px] font-medium text-sky-300 border border-sky-400/60">Most popular</span>
+                </div>
+                <p class="text-xs text-slate-300 mb-4">For product and operations teams ready to automate across tools.</p>
+                <p class="text-2xl font-semibold text-slate-50 mb-1">$89<span class="text-xs text-slate-400">/month</span></p>
+                <p class="text-[11px] text-slate-400 mb-4">Includes 14-day trial and onboarding call.</p>
+                <ul class="space-y-2 mb-5 text-[12px] text-slate-200">
+                  <li class="relative pl-4 pricing-feature">Unlimited workflows</li>
+                  <li class="relative pl-4 pricing-feature">50,000 AI actions / month</li>
+                  <li class="relative pl-4 pricing-feature">Priority support & onboarding</li>
+                  <li class="relative pl-4 pricing-feature">Advanced analytics & reporting</li>
+                </ul>
+                <button class="mt-auto inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold text-slate-950 bg-sky-400 hover:bg-sky-300 shadow-lg shadow-sky-900/70 transition-colors">
+                  Choose Growth
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="card rounded-3xl p-5 sm:p-6 flex flex-col fade-up delay-200">
+            <h3 class="text-sm font-semibold text-slate-50 mb-1">Enterprise</h3>
+            <p class="text-xs text-slate-400 mb-4">For organizations needing custom SLAs and compliance.</p>
+            <p class="text-2xl font-semibold text-slate-50 mb-1">Lets talk</p>
+            <p class="text-[11px] text-slate-400 mb-4">Custom pricing based on volume and security needs.</p>
+            <ul class="space-y-2 mb-5 text-[12px] text-slate-300">
+              <li class="relative pl-4 pricing-feature">Unlimited actions & environments</li>
+              <li class="relative pl-4 pricing-feature">Dedicated success manager</li>
+              <li class="relative pl-4 pricing-feature">Custom data residency & SSO/SAML</li>
+              <li class="relative pl-4 pricing-feature">Security review & custom terms</li>
+            </ul>
+            <button class="mt-auto inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-slate-100 border border-slate-600 hover:border-sky-400 hover:bg-slate-900/80 transition-colors">
+              Talk to sales
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16 sm:py-20 bg-slate-950/70 border-t border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr,1fr] gap-10 lg:gap-16 items-start">
+        <div class="space-y-5 fade-up">
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-sky-300">About CogniFlow</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50">Built for teams who want AI to feel like a teammate, not a tool.</h2>
+          <p class="text-sm sm:text-base text-slate-300">
+            We started CogniFlow after watching high-performing teams drown in notifications, status updates, and manual
+            coordination. Our goal is simple: give every team an AI teammate that understands their context and works
+            quietly in the background.
+          </p>
+          <p class="text-sm sm:text-base text-slate-300">
+            Today, product, support, and operations teams across the globe rely on CogniFlow to orchestrate millions of
+            tasks every weekwith the guardrails, transparency, and control they need.
+          </p>
+          <div class="grid sm:grid-cols-3 gap-4 pt-2">
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-900/70 px-4 py-3">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-1">Teams</p>
+              <p class="text-lg font-semibold text-slate-50">350+</p>
+              <p class="text-[11px] text-slate-400">Across 22 countries</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-900/70 px-4 py-3">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-1">Tasks / month</p>
+              <p class="text-lg font-semibold text-slate-50">12M</p>
+              <p class="text-[11px] text-slate-400">Automated end-to-end</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700/80 bg-slate-900/70 px-4 py-3">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-slate-400 mb-1">Uptime</p>
+              <p class="text-lg font-semibold text-slate-50">99.99%</p>
+              <p class="text-[11px] text-slate-400">Monitored 24/7</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <div class="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-5 sm:p-6 shadow-xl shadow-slate-950/80 space-y-4">
+            <h3 class="text-sm font-semibold text-slate-50 mb-1">Our principles</h3>
+            <ul class="space-y-3 text-[13px] text-slate-300">
+              <li>
+                <span class="font-medium text-slate-100">Transparent by default.</span>
+                <span class="block text-slate-400">Every automated action is logged, explainable, and reversible.</span>
+              </li>
+              <li>
+                <span class="font-medium text-slate-100">Human in the loop.</span>
+                <span class="block text-slate-400">Keep humans in control with approvals, suggestions, and overrides.</span>
+              </li>
+              <li>
+                <span class="font-medium text-slate-100">Secure from day one.</span>
+                <span class="block text-slate-400">We design with privacy, compliance, and least-privilege access in mind.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 sm:py-20 bg-slate-950/90">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr,1fr] gap-10 lg:gap-16 items-start">
+        <div class="space-y-5 fade-up">
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-sky-300">Contact</p>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50">See CogniFlow in action.</h2>
+          <p class="text-sm sm:text-base text-slate-300 max-w-md">
+            Share a bit about your team and current stack, and well set up a tailored walkthrough with a product
+            specialistno hard sell.
+          </p>
+          <div class="space-y-2 text-sm text-slate-300">
+            <p><span class="font-semibold text-slate-100">Email:</span> hello@cogniflow.app</p>
+            <p><span class="font-semibold text-slate-100">Sales:</span> sales@cogniflow.app</p>
+          </div>
+          <p class="text-[11px] text-slate-500">
+            We typically respond within one business day. Enterprise security reviews may take longer depending on
+            region and requirements.
+          </p>
+        </div>
+
+        <div class="fade-up">
+          <form id="contact-form" class="space-y-4 rounded-2xl border border-slate-700/80 bg-slate-900/90 p-5 sm:p-6 shadow-xl shadow-slate-950/80">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-xs font-medium text-slate-200 mb-1">Name</label>
+                <input id="name" name="name" type="text" class="input-field w-full rounded-lg px-3 py-2 text-sm text-slate-50" placeholder="Alex Rivera" required />
+              </div>
+              <div>
+                <label for="company" class="block text-xs font-medium text-slate-200 mb-1">Company</label>
+                <input id="company" name="company" type="text" class="input-field w-full rounded-lg px-3 py-2 text-sm text-slate-50" placeholder="Northwind Labs" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-medium text-slate-200 mb-1">Work email</label>
+              <input id="email" name="email" type="email" class="input-field w-full rounded-lg px-3 py-2 text-sm text-slate-50" placeholder="you@company.com" required />
+            </div>
+            <div>
+              <label for="team" class="block text-xs font-medium text-slate-200 mb-1">What team are you on?</label>
+              <select id="team" name="team" class="input-field w-full rounded-lg px-3 py-2 text-sm text-slate-50" required>
+                <option value="" disabled selected>Select a team</option>
+                <option>Product</option>
+                <option>Customer Support</option>
+                <option>Operations</option>
+                <option>Engineering</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-xs font-medium text-slate-200 mb-1">What would you like to automate?</label>
+              <textarea id="message" name="message" rows="4" class="input-field w-full rounded-lg px-3 py-2 text-sm text-slate-50 resize-none" placeholder="Share your current workflow, tools, and goals." required></textarea>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between pt-1">
+              <button id="submit-btn" type="submit" class="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-50 btn-primary">
+                Request demo
+              </button>
+              <p class="text-[11px] text-slate-500 max-w-xs">
+                Well only use your information to contact you about CogniFlow. No spam.
+              </p>
+            </div>
+            <p id="form-success" class="hidden text-xs text-emerald-400 mt-1">
+              Thank you. A member of our team will reach out shortly.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold text-slate-100">CogniFlow</span>
+        <span class="hidden sm:inline text-slate-700">·</span>
+        <span>AI workflow platform for modern teams</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#top" class="hover:text-sky-300 transition-colors">Back to top</a>
+        <span class="text-slate-600">© <span id="year"></span> CogniFlow</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+          if (target) {
+            const headerOffset = 72;
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // IntersectionObserver for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach((el, index) => {
+      el.style.transitionDelay = (index * 80) + 'ms';
+      observer.observe(el);
+    });
+
+    // Fake form submission
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        successMsg.classList.remove('hidden');
+        contactForm.reset();
+      }, 900);
+    });
+  </script>
+</body>
+</html>
