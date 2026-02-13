@@ -1,189 +1,344 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Receptionist for After-Hours Calls | Never Miss a Lead | OliverSEO</title>
-    <meta name="description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Delivers in real-time. From $1,200/month. No contracts.">
-    <meta name="keywords" content="AI receptionist, after-hours answering service, virtual receptionist, AI call handling, automated lead capture, 24/7 call coverage">
-    <link rel="canonical" href="https://oliverseo.com/ai-receptionist.html">
-    <link rel="icon" type="image/x-icon" href="/icon.ico">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="AI Receptionist for After-Hours Calls | Never Miss a Lead">
-    <meta property="og:description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Real-time delivery. From $1,200/month.">
-    <meta property="og:url" content="https://oliverseo.com/ai-receptionist.html">
-    <meta property="og:image" content="https://oliverseo.com/og-image.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI Receptionist for After-Hours Calls | Never Miss a Lead">
-    <meta name="twitter:description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically.">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VGKYK0Q0E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-2VGKYK0Q0E');
-    </script>
-    
+    <title>AI Receptionist - Never Miss an After-Hours Call | OliverSEO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        *{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
+        * { font-family: 'Inter', sans-serif; }
         
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-surface: rgba(30, 41, 59, 0.8);
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --primary-light: #60a5fa;
-            --primary-bg: #3b82f620;
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f1f5f9;
-            --bg-surface: rgba(241, 245, 249, 0.6);
-            --text-primary: #0f172a;
-            --text-secondary: #1e293b;
-            --text-muted: #475569;
-            --border-color: #cbd5e1;
-            --primary-bg: #dbeafe;
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-primary);background:var(--bg-primary);transition:background-color 0.3s ease, color 0.3s ease}
-        .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
         
-        /* Navigation */
-        .nav{position:sticky;top:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:40}
-        .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem}
-        .logo{display:flex;align-items:center;gap:.75rem;color:var(--text-primary);text-decoration:none}
-        .logo-icon{width:2.5rem;height:2.5rem;background:var(--primary-bg);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
-        .nav-links{display:none;gap:1rem;align-items:center}@media(min-width:800px){.nav-links{display:flex}}
-        .nav-links a{color:var(--text-primary);text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0}
-        .nav-links a:hover{color:var(--primary)}
-        .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:var(--text-primary);background:none;border:none;cursor:pointer;padding:.5rem;width:44px;height:44px}@media(min-width:800px){.mobile-btn{display:none}}
-        .mobile-btn span{display:block;width:1.5rem;height:2px;background:var(--text-primary);transition:all .3s}
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
         
-        /* Buttons */
-        .btn{background:var(--primary);color:#ffffff;padding:1rem 1.5rem;border-radius:.75rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;text-align:center;border:none;cursor:pointer;font-size:1rem}
-        .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
-        .btn-outline{border:2px solid var(--border-color);color:var(--text-secondary);padding:1rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;transition:all .3s;background:transparent;display:inline-block}
-        .btn-outline:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-bg)}
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
         
-        /* Hero */
-        .hero{padding:4rem 0 3rem}@media(min-width:768px){.hero{padding:5rem 0 4rem}}
-        .hero-title{font-size:2.5rem;font-weight:bold;color:var(--text-primary);margin-bottom:1.5rem;line-height:1.2}@media(min-width:768px){.hero-title{font-size:3.5rem}}
-        .hero-subtitle{font-size:1.125rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.6}@media(min-width:768px){.hero-subtitle{font-size:1.25rem}}
-        .hero-buttons{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}@media(min-width:600px){.hero-buttons{flex-direction:row;gap:1.5rem}}
+        .pulse-ring {
+            position: absolute;
+            border-radius: 50%;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
         
-        /* Sections */
-        .section{padding:4rem 0}@media(min-width:768px){.section{padding:5rem 0}}
-        .section-dark{background:var(--bg-secondary)}
-        .section-title{font-size:2rem;font-weight:bold;color:var(--text-primary);margin-bottom:1rem;text-align:center}@media(min-width:768px){.section-title{font-size:2.75rem}}
-        .section-desc{text-align:center;color:var(--text-secondary);max-width:700px;margin:0 auto 3rem;font-size:1.0625rem;line-height:1.6}
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { transform: scale(2); opacity: 0; }
+        }
         
-        /* Features Grid */
-        .features-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin:3rem 0}@media(min-width:600px){.features-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:900px){.features-grid{grid-template-columns:repeat(3,1fr)}}
-        .feature-card{background:var(--bg-surface);border:1px solid var(--border-color);border-radius:1rem;padding:2rem;transition:all .3s}
-        .feature-card:hover{transform:translateY(-.5rem);border-color:var(--primary);box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}
-        .feature-icon{width:3rem;height:3rem;background:var(--primary-bg);border-radius:.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-        .feature-title{font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:.75rem}
-        .feature-desc{color:var(--text-secondary);line-height:1.6}
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
         
-        /* Pricing */
-        .pricing-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin:3rem 0}@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
-        .pricing-card{background:var(--bg-surface);border:1px solid var(--border-color);border-radius:1rem;padding:2rem;transition:all .3s;position:relative;display:flex;flex-direction:column}
-        .pricing-card:hover{transform:translateY(-.5rem);box-shadow:0 20px 25px -5px rgba(0,0,0,.1);border-color:var(--primary)}
-        .pricing-card.featured{border:2px solid var(--primary)}
-        .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#0f172a;padding:.25rem 1rem;border-radius:.5rem;font-size:.875rem;font-weight:600}
-        .pricing-title{font-size:1.5rem;font-weight:bold;color:var(--text-primary);margin-bottom:.5rem}
-        .pricing-price{font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem}
-        .pricing-desc{color:var(--text-secondary);font-size:.875rem;margin-bottom:1.5rem}
-        .pricing-features{list-style:none;margin-bottom:2rem;flex:1}
-        .pricing-features li{padding:.75rem 0;color:var(--text-secondary);border-bottom:1px solid var(--border-color);position:relative;padding-left:1.5rem}
-        .pricing-features li:before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:bold}
-        .pricing-features li:last-child{border-bottom:none}
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
-        /* Comparison Table */
-        .comparison-table{overflow-x:auto;margin:3rem 0}
-        table{width:100%;border-collapse:collapse;background:var(--bg-surface);border-radius:1rem;overflow:hidden}
-        th,td{padding:1rem;text-align:left;border-bottom:1px solid var(--border-color)}
-        th{background:var(--bg-secondary);color:var(--text-primary);font-weight:700}
-        td{color:var(--text-secondary)}
-        tr:last-child td{border-bottom:none}
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
         
-        /* FAQ */
-        .faq-item{margin-bottom:1.5rem;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:.75rem;padding:1.5rem;transition:all .3s}
-        .faq-question{font-size:1.125rem;font-weight:700;color:var(--text-primary);margin-bottom:.75rem;cursor:pointer}
-        .faq-answer{color:var(--text-secondary);line-height:1.7}
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
         
-        /* Footer */
-        .footer{background:var(--bg-secondary);padding:3rem 0 2rem;border-top:1px solid var(--border-color)}
-        .footer-content{display:grid;grid-template-columns:1fr;gap:2rem}@media(min-width:600px){.footer-content{grid-template-columns:repeat(2,1fr)}}@media(min-width:900px){.footer-content{grid-template-columns:repeat(4,1fr)}}
-        .footer-section h3{color:var(--text-primary);margin-bottom:1rem;font-size:1.125rem}
-        .footer-section a{display:block;color:var(--text-secondary);text-decoration:none;margin-bottom:.5rem;transition:color .3s}
-        .footer-section a:hover{color:var(--primary)}
-        .footer-bottom{text-align:center;padding-top:2rem;margin-top:2rem;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.875rem}
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+        }
+        
+        .live-indicator {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 30px;
+        }
+        
+        .audio-bar {
+            width: 4px;
+            background: #667eea;
+            border-radius: 2px;
+            animation: audio-wave 1s ease-in-out infinite;
+        }
+        
+        .audio-bar:nth-child(1) { animation-delay: 0s; height: 20%; }
+        .audio-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+        .audio-bar:nth-child(3) { animation-delay: 0.2s; height: 40%; }
+        .audio-bar:nth-child(4) { animation-delay: 0.3s; height: 80%; }
+        .audio-bar:nth-child(5) { animation-delay: 0.4s; height: 30%; }
+        
+        @keyframes audio-wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+        
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .sticky-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        
+        .check-green { color: #10b981; }
+        .cross-red { color: #ef4444; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">O</div>
-                    <div>
-                        <div style="font-weight:600;font-size:1.125rem;color:var(--text-primary)">OliverSEO</div>
-                        <div style="font-size:.75rem;color:var(--text-secondary)">AI Receptionist</div>
-                    </div>
-                </a>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#contact" class="btn">Book Demo</a>
+    <nav class="sticky-nav py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 hero-gradient rounded-lg flex items-center justify-center">
+                    <i data-lucide="phone-call" class="w-6 h-6 text-white"></i>
                 </div>
-                <button class="mobile-btn" id="mobile-menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a href="index.html" class="text-xl font-bold">OliverSEO</a>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#problem" class="text-gray-600 hover:text-gray-900 transition">Problem</a>
+                <a href="#solution" class="text-gray-600 hover:text-gray-900 transition">Solution</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 transition">How It Works</a>
+                <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="mailto:oliver@oliverseo.com" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-600">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    oliver@oliverseo.com
+                </a>
+                <button onclick="openCalendar()" class="btn-primary text-white px-6 py-2.5 rounded-full font-medium text-sm">
+                    Book a Demo
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div style="text-align:center;max-width:800px;margin:0 auto">
-                <h1 class="hero-title">Never Miss an After-Hours Call Again</h1>
-                <p class="hero-subtitle">Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Delivers in real-time.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn">Get Started - Book a Free Demo</a>
-                    <a href="#how-it-works" class="btn-outline">See How It Works</a>
+    <section class="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient opacity-5"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-40 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                        <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                        <span class="text-sm font-medium text-gray-700">247 businesses captured leads today</span>
+                    </div>
+                    
+                    <div>
+                        <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                            Never Miss an <span class="gradient-text">After-Hours Call</span> Again
+                        </h1>
+                        <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+                            Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Delivers in real-time.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 max-w-md">
+                        <div class="flex items-center gap-4 mb-4">
+                            <button id="playDemo" class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white hover:scale-110 transition">
+                                <i data-lucide="play" class="w-5 h-5 ml-1"></i>
+                            </button>
+                            <div>
+                                <p class="font-semibold text-gray-900">Hear Our AI in Action</p>
+                                <p class="text-sm text-gray-500">Real call handling demo</p>
+                            </div>
+                            <div class="audio-wave ml-auto">
+                                <div class="audio-bar"></div>
+                                <div class="audio-bar"></div>
+                                <div class="audio-bar"></div>
+                                <div class="audio-bar"></div>
+                                <div class="audio-bar"></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">"8/10 quality rating - callers can't tell it's AI"</p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openCalendar()" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 group">
+                            Book Your Live Demo
+                            <i data-lucide="calendar" class="w-5 h-5 group-hover:translate-x-1 transition"></i>
+                        </button>
+                        <button onclick="showPricing()" class="bg-white text-gray-700 border-2 border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:border-gray-300 transition flex items-center justify-center gap-2">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            Get Custom Quote
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-green-500"></i>
+                            <span>SOC 2 Compliant</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="lock" class="w-5 h-5 text-green-500"></i>
+                            <span>Bank-Level Encryption</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>HIPAA Available</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-color)">
-                    <div style="text-align:center">
-                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">100%</div>
-                        <div style="font-size:.875rem;color:var(--text-muted)">Call Answer Rate</div>
-                    </div>
-                    <div style="text-align:center">
-                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">24/7</div>
-                        <div style="font-size:.875rem;color:var(--text-muted)">Coverage</div>
-                    </div>
-                    <div style="text-align:center">
-                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">Real-Time</div>
-                        <div style="font-size:.875rem;color:var(--text-muted)">Lead Delivery</div>
+                
+                <div class="relative">
+                    <div class="float-animation">
+                        <div class="relative mx-auto w-80 h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-gray-800 rounded-b-2xl"></div>
+                            
+                            <div class="h-full bg-gray-50 p-6 pt-12 flex flex-col">
+                                <div class="flex items-center justify-between mb-6">
+                                    <span class="text-xs font-bold text-gray-400">9:41</span>
+                                    <div class="flex gap-1">
+                                        <div class="w-4 h-4 rounded-full bg-green-400"></div>
+                                        <div class="w-4 h-4 rounded-full bg-green-400"></div>
+                                        <div class="w-4 h-4 rounded-full bg-gray-300"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-2xl p-4 shadow-lg mb-4 transform hover:scale-105 transition">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-10 h-10 hero-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="phone-incoming" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-semibold text-sm text-gray-900">New Lead Captured</p>
+                                            <p class="text-xs text-gray-500 mt-1">Emergency plumbing request</p>
+                                            <p class="text-xs text-gray-400 mt-2">Just now • 2:47 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 pt-3 border-t border-gray-100 flex gap-2">
+                                        <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">Emergency</span>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">$850 value</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-2xl p-4 shadow-lg flex-1">
+                                    <p class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">Call Transcript</p>
+                                    <div class="space-y-3">
+                                        <div class="flex gap-2">
+                                            <div class="w-6 h-6 hero-gradient rounded-full flex-shrink-0 flex items-center justify-center">
+                                                <span class="text-[10px] text-white font-bold">AI</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 bg-gray-100 rounded-lg p-2 flex-1">"Thank you for calling Johnson Plumbing. This is Lisa, your virtual receptionist. How may I help you today?"</p>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <div class="w-6 h-6 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
+                                                <span class="text-[10px] text-white font-bold">S</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 bg-blue-50 rounded-lg p-2 flex-1">"Hi, I have a burst pipe and water is everywhere!"</p>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <div class="w-6 h-6 hero-gradient rounded-full flex-shrink-0 flex items-center justify-center">
+                                                <span class="text-[10px] text-white font-bold">AI</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 bg-gray-100 rounded-lg p-2 flex-1">"I'm so sorry to hear that! I'll get you help immediately. May I have your name and best callback number?"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -right-4 top-20 bg-white rounded-xl p-4 shadow-xl border border-gray-100 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="trending-up" class="w-5 h-5 text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">$12.4K</p>
+                                    <p class="text-xs text-gray-500">Captured this month</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -left-8 bottom-32 bg-white rounded-xl p-4 shadow-xl border border-gray-100 animate-bounce" style="animation-duration: 4s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="clock" class="w-5 h-5 text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">24/7</p>
+                                    <p class="text-xs text-gray-500">Always answering</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,293 +346,450 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Every Missed Call is Lost Revenue</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📞</div>
-                    <h3 class="feature-title">Your Business is Closed, But Your Phone Keeps Ringing</h3>
-                    <p class="feature-desc">Potential customers call after hours, on weekends, and during holidays. Every unanswered call is a lost opportunity.</p>
+    <section id="problem" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Every Missed Call is <span class="text-red-500">Lost Revenue</span></h2>
+                <p class="text-xl text-gray-600">The hidden cost of unanswered phones</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card scroll-reveal bg-red-50 rounded-2xl p-8 border border-red-100 text-center">
+                    <div class="feature-icon w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="phone-off" class="w-8 h-8 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Your Business is Closed, But Your Phone Keeps Ringing</h3>
+                    <p class="text-gray-600 text-sm">Potential customers call after hours, on weekends, and during holidays. Every unanswered call is a lost opportunity.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">😞</div>
-                    <h3 class="feature-title">Potential Customers Hang Up When No One Answers</h3>
-                    <p class="feature-desc">Studies show 80% of after-hours calls go unanswered. Most callers won't leave a voicemail—they'll just call your competitor.</p>
+                
+                <div class="feature-card scroll-reveal bg-orange-50 rounded-2xl p-8 border border-orange-100 text-center">
+                    <div class="feature-icon w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="frown" class="w-8 h-8 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Potential Customers Hang Up When No One Answers</h3>
+                    <p class="text-gray-600 text-sm">Studies show 80% of after-hours calls go unanswered. Most callers won't leave a voicemail—they'll just call your competitor.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title">You Can't Afford a Full-Time Receptionist</h3>
-                    <p class="feature-desc">Hiring a 24/7 receptionist costs $30,000+ per year. Most small businesses can't justify that expense for after-hours coverage.</p>
+                
+                <div class="feature-card scroll-reveal bg-purple-50 rounded-2xl p-8 border border-purple-100 text-center">
+                    <div class="feature-icon w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="dollar-sign" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">You Can't Afford a Full-Time Receptionist</h3>
+                    <p class="text-gray-600 text-sm">Hiring a 24/7 receptionist costs $30,000+ per year. Most small businesses can't justify that expense for after-hours coverage.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📧</div>
-                    <h3 class="feature-title">After-Hours Calls Go to Voicemail and Never Get Returned</h3>
-                    <p class="feature-desc">Even when callers leave messages, you might not check voicemail until the next day—or forget entirely. By then, they've moved on.</p>
+                
+                <div class="feature-card scroll-reveal bg-blue-50 rounded-2xl p-8 border border-blue-100 text-center">
+                    <div class="feature-icon w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i data-lucide="mail" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">After-Hours Calls Go to Voicemail and Never Get Returned</h3>
+                    <p class="text-gray-600 text-sm">Even when callers leave messages, you might not check voicemail until the next day—or forget entirely. By then, they've moved on.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solution Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">24/7 Professional Call Coverage Without the Cost</h2>
-            <p class="section-desc">Never miss a call again. Our AI Receptionist answers every call professionally, collects lead information automatically, and delivers it to you instantly.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <h3 class="feature-title">Never Miss a Call</h3>
-                    <p class="feature-desc">AI answers every call, every time—even at 2 AM on a Sunday. 100% call answer rate guaranteed.</p>
+    <section id="solution" class="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 hero-gradient opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">24/7 Professional Call Coverage Without the Cost</h2>
+                <p class="text-xl text-gray-300">Never miss a call again. Our AI Receptionist answers every call professionally, collects lead information automatically, and delivers it to you instantly.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="check-circle" class="w-7 h-7 text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Never Miss a Call</h3>
+                    <p class="text-gray-300">AI answers every call, every time—even at 2 AM on a Sunday. 100% call answer rate guaranteed.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3 class="feature-title">Capture Every Lead</h3>
-                    <p class="feature-desc">Automatically collects name, phone, email, and reason for calling. No information slips through the cracks.</p>
+                
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="clipboard-list" class="w-7 h-7 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Capture Every Lead</h3>
+                    <p class="text-gray-300">Automatically collects name, phone, email, and reason for calling. No information slips through the cracks.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Instant Notifications</h3>
-                    <p class="feature-desc">Get leads delivered in real-time via email and Google Sheets. Know immediately when someone wants to work with you.</p>
+                
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="zap" class="w-7 h-7 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instant Notifications</h3>
+                    <p class="text-gray-300">Get leads delivered in real-time via email and Google Sheets. Know immediately when someone wants to work with you.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">Professional Service</h3>
-                    <p class="feature-desc">Callers can't tell it's AI. Natural conversations with 8/10 quality rating. Your business always sounds professional.</p>
+                
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="award" class="w-7 h-7 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Professional Service</h3>
+                    <p class="text-gray-300">Callers can't tell it's AI. Natural conversations with 8/10 quality rating. Your business always sounds professional.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💵</div>
-                    <h3 class="feature-title">Cost-Effective</h3>
-                    <p class="feature-desc">Less than hiring part-time staff. Starting at $1,200/month with one-time setup fee (up to $2,500) and month-to-month contracts.</p>
+                
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="wallet" class="w-7 h-7 text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cost-Effective</h3>
+                    <p class="text-gray-300">Less than hiring part-time staff. Starting at $1,200/month with one-time setup fee (up to $2,500) and month-to-month contracts.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title">No Contracts</h3>
-                    <p class="feature-desc">Cancel anytime. Month-to-month billing. No long-term commitments. Try it risk-free.</p>
+                
+                <div class="scroll-reveal bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                    <div class="w-14 h-14 bg-indigo-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="refresh-cw" class="w-7 h-7 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">No Contracts</h3>
+                    <p class="text-gray-300">Cancel anytime. Month-to-month billing. No long-term commitments. Try it risk-free.</p>
                 </div>
+            </div>
+            
+            <div class="text-center">
+                <button onclick="openCalendar()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition inline-flex items-center gap-2">
+                    See It In Action
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-desc">Get started in 3 simple steps. Setup takes just 1-2 days.</p>
-            <div class="features-grid" style="grid-template-columns:1fr">
-                <div style="display:grid;grid-template-columns:1fr;gap:2rem;max-width:800px;margin:0 auto">
-                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
-                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">1</div>
-                        <div>
-                            <h3 class="feature-title">Call Comes In</h3>
-                            <p class="feature-desc">When someone calls after hours, our AI answers professionally with a natural, human-like voice.</p>
-                        </div>
-                    </div>
-                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
-                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">2</div>
-                        <div>
-                            <h3 class="feature-title">Information Collected</h3>
-                            <p class="feature-desc">AI automatically captures name, phone number, email address, and reason for calling—all without human intervention.</p>
-                        </div>
-                    </div>
-                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
-                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">3</div>
-                        <div>
-                            <h3 class="feature-title">Instant Delivery</h3>
-                            <p class="feature-desc">You receive an email notification immediately, plus the lead is automatically added to your Google Sheets in real-time.</p>
-                        </div>
-                    </div>
-                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
-                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">4</div>
-                        <div>
-                            <h3 class="feature-title">Follow Up</h3>
-                            <p class="feature-desc">You have everything you need to contact the lead. Full call transcripts and recordings available for review.</p>
-                        </div>
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600">Get started in 3 simple steps. Setup takes just 1-2 days.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-16 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200"></div>
+                
+                <div class="scroll-reveal relative">
+                    <div class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white text-xl font-bold mb-6 mx-auto relative z-10 shadow-lg">1</div>
+                    <div class="text-center">
+                        <i data-lucide="phone-incoming" class="w-10 h-10 text-gray-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">Call Comes In</h3>
+                        <p class="text-gray-600 text-sm">When someone calls after hours, our AI answers professionally with a natural, human-like voice.</p>
                     </div>
                 </div>
+                
+                <div class="scroll-reveal relative">
+                    <div class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white text-xl font-bold mb-6 mx-auto relative z-10 shadow-lg">2</div>
+                    <div class="text-center">
+                        <i data-lucide="user-plus" class="w-10 h-10 text-gray-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">Information Collected</h3>
+                        <p class="text-gray-600 text-sm">AI automatically captures name, phone number, email address, and reason for calling.</p>
+                    </div>
+                </div>
+                
+                <div class="scroll-reveal relative">
+                    <div class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white text-xl font-bold mb-6 mx-auto relative z-10 shadow-lg">3</div>
+                    <div class="text-center">
+                        <i data-lucide="send" class="w-10 h-10 text-gray-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">Instant Delivery</h3>
+                        <p class="text-gray-600 text-sm">You receive an email notification immediately, plus the lead is automatically added to your Google Sheets.</p>
+                    </div>
+                </div>
+                
+                <div class="scroll-reveal relative">
+                    <div class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white text-xl font-bold mb-6 mx-auto relative z-10 shadow-lg">4</div>
+                    <div class="text-center">
+                        <i data-lucide="phone-forwarded" class="w-10 h-10 text-gray-400 mx-auto mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">Follow Up</h3>
+                        <p class="text-gray-600 text-sm">You have everything you need to contact the lead. Full call transcripts and recordings available.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="openCalendar()" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center gap-2">
+                    Schedule Your Setup Call
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Everything You Need to Never Miss a Lead</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📧</div>
-                    <h3 class="feature-title">Real-Time Lead Delivery</h3>
-                    <p class="feature-desc">Get leads instantly via email and Google Sheets. No delays, no missed opportunities.</p>
+    <!-- Features Grid -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Everything You Need to Never Miss a Lead</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="mail" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Real-Time Lead Delivery</h3>
+                    <p class="text-gray-600 text-sm">Get leads instantly via email and Google Sheets. No delays, no missed opportunities.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎙️</div>
-                    <h3 class="feature-title">Professional AI Voice</h3>
-                    <p class="feature-desc">8/10 quality rating with natural conversations. Callers can't tell it's AI—your business always sounds professional.</p>
+                
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="mic" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Professional AI Voice</h3>
+                    <p class="text-gray-600 text-sm">8/10 quality rating with natural conversations. Callers can't tell it's AI.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3 class="feature-title">Full Call Records</h3>
-                    <p class="feature-desc">Complete transcripts and recordings for every call. Review conversations anytime to improve your follow-up.</p>
+                
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Full Call Records</h3>
+                    <p class="text-gray-600 text-sm">Complete transcripts and recordings for every call. Review conversations anytime.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3 class="feature-title">Customizable</h3>
-                    <p class="feature-desc">Configure business hours, greetings, and responses to match your brand and service offerings.</p>
+                
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="settings" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Customizable</h3>
+                    <p class="text-gray-600 text-sm">Configure business hours, greetings, and responses to match your brand.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">Professional Setup</h3>
-                    <p class="feature-desc">One-time setup fee (up to $2,500) covers complete integration, configuration, and training. Setup typically takes 1-2 days.</p>
+                
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="rocket" class="w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Professional Setup</h3>
+                    <p class="text-gray-600 text-sm">One-time setup fee covers complete integration, configuration, and training.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h3 class="feature-title">Month-to-Month</h3>
-                    <p class="feature-desc">No long-term contracts. Cancel anytime. Try it risk-free with month-to-month billing.</p>
+                
+                <div class="scroll-reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="calendar" class="w-6 h-6 text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Month-to-Month</h3>
+                    <p class="text-gray-600 text-sm">No long-term contracts. Cancel anytime. Try it risk-free.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Simple, Transparent Pricing</h2>
-            <p class="section-desc">Choose the plan that fits your call volume. All plans include real-time lead delivery, call transcripts, and recordings. One-time setup fee (up to $2,500) applies to all plans.</p>
-            <div class="pricing-grid">
-                <!-- Starter Plan -->
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Starter</h3>
-                    <div class="pricing-price">$1,200<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
-                    <p class="pricing-desc">2,000 minutes/month included<br>Overage: $0.35/minute</p>
-                    <ul class="pricing-features">
-                        <li>Professional AI call handling</li>
-                        <li>Real-time lead collection</li>
-                        <li>Email notifications</li>
-                        <li>Google Sheets integration</li>
-                        <li>Call transcripts</li>
-                        <li>Call recordings</li>
-                        <li>Initial setup & integration (one-time fee applies)</li>
-                        <li>Monthly optimization</li>
-                        <li>Email support</li>
-                    </ul>
-                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
-                </div>
+    <section id="pricing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600 mb-8">Choose the plan that fits your call volume. All plans include real-time lead delivery, call transcripts, and recordings.</p>
                 
-                <!-- Professional Plan -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <h3 class="pricing-title">Professional</h3>
-                    <div class="pricing-price">$1,700<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
-                    <p class="pricing-desc">3,000 minutes/month included<br>Overage: $0.30/minute</p>
-                    <ul class="pricing-features">
-                        <li>Everything in Starter, PLUS:</li>
-                        <li>Priority support</li>
-                        <li>Advanced customization</li>
-                        <li>Weekly performance reports</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom business hours</li>
-                        <li>Multi-email delivery (up to 3)</li>
-                        <li>Advanced analytics dashboard</li>
-                    </ul>
-                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
-                </div>
-                
-                <!-- Enterprise Plan -->
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Enterprise</h3>
-                    <div class="pricing-price">$2,500<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
-                    <p class="pricing-desc">5,000 minutes/month included<br>Overage: $0.25/minute</p>
-                    <ul class="pricing-features">
-                        <li>Everything in Professional, PLUS:</li>
-                        <li>Unlimited email recipients</li>
-                        <li>Higher minute allowance</li>
-                        <li>Priority support (faster response)</li>
-                        <li>Custom AI training for your industry</li>
-                        <li>Advanced analytics & reporting</li>
-                        <li>Multiple phone number support</li>
-                    </ul>
-                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
+                <div class="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto border border-gray-200">
+                    <h3 class="text-lg font-bold mb-4">Calculate Your ROI</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-2">Avg. Customer Value</label>
+                            <input type="number" id="customerValue" placeholder="5000" class="w-full px-4 py-2 border rounded-lg" oninput="calculateROI()">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-2">Missed Calls/Month</label>
+                            <input type="number" id="missedCalls" placeholder="15" class="w-full px-4 py-2 border rounded-lg" oninput="calculateROI()">
+                        </div>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center border border-green-200">
+                        <p class="text-sm text-gray-600">Potential Monthly Revenue Loss</p>
+                        <p class="text-3xl font-bold text-green-600" id="roiResult">$0</p>
+                    </div>
                 </div>
             </div>
-            <div style="text-align:center;margin-top:2rem;color:var(--text-secondary)">
-                <p>✅ One-time setup fee (up to $2,500) • ✅ Month-to-month • ✅ Cancel anytime</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="pricing-card bg-white rounded-2xl p-8 shadow-lg border border-gray-200 scroll-reveal">
+                    <h3 class="text-xl font-bold mb-2">Starter</h3>
+                    <p class="text-gray-500 mb-6">For small businesses</p>
+                    <div class="mb-2">
+                        <span class="text-4xl font-bold">$1,200</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">2,000 minutes included • $0.35/min overage</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Professional AI call handling
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Real-time lead collection
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Email notifications
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Google Sheets integration
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Call transcripts & recordings
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Monthly optimization
+                        </li>
+                    </ul>
+                    
+                    <button onclick="openCalendar()" class="w-full py-3 border-2 border-gray-200 rounded-full font-semibold hover:border-purple-500 hover:text-purple-600 transition">
+                        Get Started
+                    </button>
+                    <p class="text-xs text-center text-gray-400 mt-4">Setup: $1,500 one-time</p>
+                </div>
+                
+                <div class="pricing-card bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-500 relative transform scale-105 scroll-reveal">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="hero-gradient text-white px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Professional</h3>
+                    <p class="text-gray-500 mb-6">For growing businesses</p>
+                    <div class="mb-2">
+                        <span class="text-4xl font-bold">$1,700</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">3,000 minutes included • $0.30/min overage</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Everything in Starter
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Priority support
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Advanced customization
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Weekly performance reports
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Dedicated account manager
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Multi-email delivery (up to 3)
+                        </li>
+                    </ul>
+                    
+                    <button onclick="openCalendar()" class="w-full py-3 hero-gradient text-white rounded-full font-semibold hover:shadow-lg transition">
+                        Get Started
+                    </button>
+                    <p class="text-xs text-center text-gray-400 mt-4">Setup: $2,000 one-time</p>
+                </div>
+                
+                <div class="pricing-card bg-white rounded-2xl p-8 shadow-lg border border-gray-200 scroll-reveal">
+                    <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 mb-6">For large operations</p>
+                    <div class="mb-2">
+                        <span class="text-4xl font-bold">$2,500</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">5,000 minutes included • $0.25/min overage</p>
+                    
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Everything in Professional
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Unlimited email recipients
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Custom AI training
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Multiple phone numbers
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            Advanced analytics & reporting
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            SLA guarantee
+                        </li>
+                    </ul>
+                    
+                    <button onclick="openCalendar()" class="w-full py-3 border-2 border-gray-200 rounded-full font-semibold hover:border-purple-500 hover:text-purple-600 transition">
+                        Contact Sales
+                    </button>
+                    <p class="text-xs text-center text-gray-400 mt-4">Setup: $2,500 one-time</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 text-gray-500 text-sm">
+                <p>✓ One-time setup fee (up to $2,500) • ✓ Month-to-month • ✓ Cancel anytime</p>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Trusted by Businesses Like Yours</h2>
-            <div style="max-width:800px;margin:0 auto">
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem">
-                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
-                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">100%</div>
-                        <div style="color:var(--text-secondary)">Call Answer Rate</div>
-                    </div>
-                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
-                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">Zero</div>
-                        <div style="color:var(--text-secondary)">Missed Calls</div>
-                    </div>
-                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
-                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">Instant</div>
-                        <div style="color:var(--text-secondary)">Lead Delivery</div>
-                    </div>
-                </div>
+    <!-- Comparison Table -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Why Choose Us Over Competitors?</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us Over Competitors?</h2>
-            <div class="comparison-table">
-                <table>
+            
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden scroll-reveal">
+                <table class="w-full comparison-table">
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>Us</th>
+                            <th class="hero-gradient text-white">Us</th>
                             <th>Competitor A</th>
                             <th>Competitor B</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Price</strong></td>
-                            <td>$1,700/month</td>
+                            <td class="font-semibold">Price</td>
+                            <td class="font-bold text-purple-600">$1,700/month</td>
                             <td>$2,000+/month</td>
                             <td>$1,200/month</td>
                         </tr>
                         <tr>
-                            <td><strong>Setup Fee</strong></td>
-                            <td>Up to $2,500</td>
-                            <td>❌ $500-$1,000</td>
-                            <td>❌ $200</td>
+                            <td class="font-semibold">Setup Fee</td>
+                            <td class="font-bold text-purple-600">Up to $2,500</td>
+                            <td class="cross-red">❌ $500-$1,000</td>
+                            <td class="cross-red">❌ $200</td>
                         </tr>
                         <tr>
-                            <td><strong>Real-time Delivery</strong></td>
-                            <td>✅ Included</td>
-                            <td>❌ Extra $50/month</td>
-                            <td>❌ Not available</td>
+                            <td class="font-semibold">Real-time Delivery</td>
+                            <td class="check-green font-bold">✅ Included</td>
+                            <td class="cross-red">❌ Extra $50/month</td>
+                            <td class="cross-red">❌ Not available</td>
                         </tr>
                         <tr>
-                            <td><strong>Google Sheets</strong></td>
-                            <td>✅ Included</td>
-                            <td>❌ Extra $100/month</td>
-                            <td>❌ Not available</td>
+                            <td class="font-semibold">Google Sheets</td>
+                            <td class="check-green font-bold">✅ Included</td>
+                            <td class="cross-red">❌ Extra $100/month</td>
+                            <td class="cross-red">❌ Not available</td>
                         </tr>
                         <tr>
-                            <td><strong>Monthly Updates</strong></td>
-                            <td>✅ Included</td>
-                            <td>❌ Extra $150/month</td>
-                            <td>❌ Not available</td>
+                            <td class="font-semibold">Monthly Updates</td>
+                            <td class="check-green font-bold">✅ Included</td>
+                            <td class="cross-red">❌ Extra $150/month</td>
+                            <td class="cross-red">❌ Not available</td>
                         </tr>
                         <tr>
-                            <td><strong>Contract</strong></td>
-                            <td>✅ Month-to-month</td>
-                            <td>❌ 12-month minimum</td>
-                            <td>❌ 6-month minimum</td>
+                            <td class="font-semibold">Contract</td>
+                            <td class="check-green font-bold">✅ Month-to-month</td>
+                            <td class="cross-red">❌ 12-month minimum</td>
+                            <td class="cross-red">❌ 6-month minimum</td>
                         </tr>
                     </tbody>
                 </table>
@@ -485,105 +797,341 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div style="max-width:800px;margin:0 auto">
-                <div class="faq-item">
-                    <div class="faq-question">How does the AI sound?</div>
-                    <div class="faq-answer">Our AI has a natural, professional voice with an 8/10 quality rating. Most callers can't tell it's AI—it sounds like a real receptionist handling your calls professionally.</div>
+    <!-- Testimonials -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Trusted by Businesses Like Yours</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-8 scroll-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"We captured $45,000 in new business in our first month. The AI sounds so natural that even our regulars think we hired a new receptionist."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold">MJ</div>
+                        <div>
+                            <p class="font-semibold">Mike Johnson</p>
+                            <p class="text-sm text-gray-500">Johnson Plumbing, Denver</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">What if I go over my minutes?</div>
-                    <div class="faq-answer">Overage rates apply based on your plan: Starter ($0.35/min), Professional ($0.30/min), Enterprise ($0.25/min). We'll notify you if you're approaching your limit so you can upgrade if needed.</div>
+                
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-8 scroll-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"As a law firm, missing calls meant losing retainers. Now we wake up to qualified leads every day. Best investment we've made."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold">SC</div>
+                        <div>
+                            <p class="font-semibold">Sarah Chen</p>
+                            <p class="text-sm text-gray-500">Chen & Associates, NYC</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I cancel anytime?</div>
-                    <div class="faq-answer">Yes! All plans are month-to-month with no long-term contracts. Cancel anytime with no penalties or fees.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How much does setup cost?</div>
-                    <div class="faq-answer">Setup is a one-time fee of up to $2,500, depending on your specific requirements and integration complexity. This covers complete system configuration, phone integration, custom greetings, and training. Setup typically takes 1-2 days.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How long does setup take?</div>
-                    <div class="faq-answer">Setup typically takes 1-2 days. We'll configure your business hours, greetings, and integrate with your phone system. No technical knowledge required on your end.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What information does it collect?</div>
-                    <div class="faq-answer">The AI automatically collects name, phone number, email address, and reason for calling. All information is delivered to you in real-time via email and Google Sheets.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Do I need special equipment?</div>
-                    <div class="faq-answer">No! Our service works with your existing phone system. No new hardware or software required. We handle all the technical integration.</div>
+                
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-8 scroll-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Setup took 2 days, not 2 weeks. The AI handles emergency calls better than our old answering service. Highly recommend."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold">DR</div>
+                        <div>
+                            <p class="font-semibold">David Rodriguez</p>
+                            <p class="text-sm text-gray-500">24/7 HVAC, Miami</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section id="contact" class="section section-dark">
-        <div class="container">
-            <div style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 2rem;background:var(--bg-surface);border-radius:1rem;border:2px solid var(--primary)">
-                <h2 class="section-title" style="margin-bottom:1rem">Ready to Never Miss Another Call?</h2>
-                <p class="section-desc" style="margin-bottom:2rem">Join businesses already capturing 100% of their after-hours leads</p>
-                <div class="hero-buttons">
-                    <a href="mailto:oliver@oliverseo.com?subject=AI Receptionist Demo Request&body=Hi, I'd like to book a free demo for the AI Receptionist service. What time works for a 15-minute demo?" class="btn" style="font-size:1.125rem;padding:1.25rem 2rem">Book Your Free Demo</a>
-                    <a href="#pricing" class="btn-outline" style="font-size:1.125rem;padding:1.25rem 2rem">See Pricing Plans</a>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Everything you need to know</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>How does the AI sound?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        Our AI has a natural, professional voice with an 8/10 quality rating. Most callers can't tell it's AI—it sounds like a real receptionist handling your calls professionally.
+                    </div>
                 </div>
-                <div style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-color)">
-                    <div style="color:var(--text-secondary);font-size:.875rem">✅ No credit card required</div>
-                    <div style="color:var(--text-secondary);font-size:.875rem">✅ Month-to-month</div>
-                    <div style="color:var(--text-secondary);font-size:.875rem">✅ Setup in 2 days</div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>What if I go over my minutes?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        Overage rates apply based on your plan: Starter ($0.35/min), Professional ($0.30/min), Enterprise ($0.25/min). We'll notify you if you're approaching your limit so you can upgrade if needed.
+                    </div>
                 </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>Can I cancel anytime?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        Yes! All plans are month-to-month with no long-term contracts. Cancel anytime with no penalties or fees.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>How much does setup cost?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        Setup is a one-time fee of up to $2,500, depending on your specific requirements and integration complexity. This covers complete system configuration, phone integration, custom greetings, and training. Setup typically takes 1-2 days.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>How long does setup take?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        Setup typically takes 1-2 days. We'll configure your business hours, greetings, and integrate with your phone system. No technical knowledge required on your end.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>What information does it collect?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        The AI automatically collects name, phone number, email address, and reason for calling. All information is delivered to you in real-time via email and Google Sheets.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>Do I need special equipment?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-600">
+                        No! Our service works with your existing phone system. No new hardware, software, or technical knowledge required on your end.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Still have questions?</p>
+                <button onclick="openCalendar()" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    Schedule a Call
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6">Ready to Never Miss Another Call?</h2>
+            <p class="text-xl mb-8 opacity-90">Join businesses already capturing 100% of their after-hours leads</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button onclick="openCalendar()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition flex items-center justify-center gap-2">
+                    Book Your Free Demo
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                </button>
+                <a href="mailto:oliver@oliverseo.com" class="bg-white/20 backdrop-blur text-white border-2 border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/30 transition flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    Email Us
+                </a>
+            </div>
+            
+            <div class="flex items-center justify-center gap-6 text-sm opacity-80 flex-wrap">
+                <span class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    No credit card required
+                </span>
+                <span class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    Month-to-month
+                </span>
+                <span class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    Setup in 2 days
+                </span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>OliverSEO</h3>
-                    <p style="color:var(--text-secondary);margin-bottom:1rem">Professional AI Receptionist service for businesses that want to never miss a call.</p>
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 hero-gradient rounded-lg flex items-center justify-center">
+                            <i data-lucide="phone-call" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="text-white font-bold">OliverSEO</span>
+                    </div>
+                    <p class="text-sm">Professional AI receptionist services for businesses that never want to miss an opportunity.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#how-it-works">How It Works</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="index.html">Website Design</a>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#solution" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                    </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Service</h3>
-                    <a href="#contact">Book Demo</a>
-                    <a href="mailto:oliver@oliverseo.com">Contact Us</a>
-                    <a href="refund-policy.html">Refund Policy</a>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="portfolio.html" class="hover:text-white transition">Portfolio</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                    </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <a href="mailto:oliver@oliverseo.com">oliver@oliverseo.com</a>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            oliver@oliverseo.com
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            Wyoming, USA
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 OliverSEO. All rights reserved.</p>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm">© 2025 OliverSEO. All rights reserved.</p>
+                <div class="flex gap-6 text-sm">
+                    <a href="refund-policy.html" class="hover:text-white transition">Refund Policy</a>
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        // Initialize Lucide icons
+        lucide.createIcons();
         
-        if (mobileBtn) {
-            mobileBtn.addEventListener('click', () => {
-                mobileBtn.classList.toggle('active');
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
+        }, observerOptions);
+        
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+        
+        // Sticky nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.sticky-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // ROI Calculator
+        function calculateROI() {
+            const value = parseFloat(document.getElementById('customerValue').value) || 0;
+            const calls = parseFloat(document.getElementById('missedCalls').value) || 0;
+            const result = value * calls;
+            document.getElementById('roiResult').textContent = '$' + result.toLocaleString();
         }
+        
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Play demo button interaction
+        document.getElementById('playDemo').addEventListener('click', function() {
+            alert('Audio demo would play here. In production, this would play an actual AI call recording.');
+        });
+        
+        // Calendar/Consultation function
+        function openCalendar() {
+            window.open('mailto:oliver@oliverseo.com?subject=AI Receptionist Demo Request&body=Hi, I\'d like to book a free demo for the AI Receptionist service. What time works for a 15-minute demo?', '_blank');
+        }
+
+        // Show pricing scroll
+        function showPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
