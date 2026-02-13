@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Receptionist for After-Hours Calls | Never Miss a Lead | OliverSEO</title>
+    <meta name="description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Delivers in real-time. From $1,200/month. No contracts.">
+    <meta name="keywords" content="AI receptionist, after-hours answering service, virtual receptionist, AI call handling, automated lead capture, 24/7 call coverage">
+    <link rel="canonical" href="https://oliverseo.com/ai-receptionist.html">
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Receptionist for After-Hours Calls | Never Miss a Lead">
+    <meta property="og:description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Real-time delivery. From $1,200/month.">
+    <meta property="og:url" content="https://oliverseo.com/ai-receptionist.html">
+    <meta property="og:image" content="https://oliverseo.com/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Receptionist for After-Hours Calls | Never Miss a Lead">
+    <meta name="twitter:description" content="Professional AI Receptionist handles calls when you're closed. Collects leads automatically.">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VGKYK0Q0E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2VGKYK0Q0E');
+    </script>
+    
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-surface: rgba(30, 41, 59, 0.8);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --primary-light: #60a5fa;
+            --primary-bg: #3b82f620;
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --bg-surface: rgba(241, 245, 249, 0.6);
+            --text-primary: #0f172a;
+            --text-secondary: #1e293b;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --primary-bg: #dbeafe;
+        }
+        
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-primary);background:var(--bg-primary);transition:background-color 0.3s ease, color 0.3s ease}
+        .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+        
+        /* Navigation */
+        .nav{position:sticky;top:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:40}
+        .nav-content{display:flex;justify-content:space-between;align-items:center;height:4rem;gap:1rem}
+        .logo{display:flex;align-items:center;gap:.75rem;color:var(--text-primary);text-decoration:none}
+        .logo-icon{width:2.5rem;height:2.5rem;background:var(--primary-bg);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
+        .nav-links{display:none;gap:1rem;align-items:center}@media(min-width:800px){.nav-links{display:flex}}
+        .nav-links a{color:var(--text-primary);text-decoration:none;font-weight:500;transition:color .3s;padding:.75rem 0}
+        .nav-links a:hover{color:var(--primary)}
+        .mobile-btn{display:flex;flex-direction:column;gap:.25rem;color:var(--text-primary);background:none;border:none;cursor:pointer;padding:.5rem;width:44px;height:44px}@media(min-width:800px){.mobile-btn{display:none}}
+        .mobile-btn span{display:block;width:1.5rem;height:2px;background:var(--text-primary);transition:all .3s}
+        
+        /* Buttons */
+        .btn{background:var(--primary);color:#ffffff;padding:1rem 1.5rem;border-radius:.75rem;font-weight:700;text-decoration:none;transition:all .3s;display:inline-block;text-align:center;border:none;cursor:pointer;font-size:1rem}
+        .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
+        .btn-outline{border:2px solid var(--border-color);color:var(--text-secondary);padding:1rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;transition:all .3s;background:transparent;display:inline-block}
+        .btn-outline:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-bg)}
+        
+        /* Hero */
+        .hero{padding:4rem 0 3rem}@media(min-width:768px){.hero{padding:5rem 0 4rem}}
+        .hero-title{font-size:2.5rem;font-weight:bold;color:var(--text-primary);margin-bottom:1.5rem;line-height:1.2}@media(min-width:768px){.hero-title{font-size:3.5rem}}
+        .hero-subtitle{font-size:1.125rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.6}@media(min-width:768px){.hero-subtitle{font-size:1.25rem}}
+        .hero-buttons{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}@media(min-width:600px){.hero-buttons{flex-direction:row;gap:1.5rem}}
+        
+        /* Sections */
+        .section{padding:4rem 0}@media(min-width:768px){.section{padding:5rem 0}}
+        .section-dark{background:var(--bg-secondary)}
+        .section-title{font-size:2rem;font-weight:bold;color:var(--text-primary);margin-bottom:1rem;text-align:center}@media(min-width:768px){.section-title{font-size:2.75rem}}
+        .section-desc{text-align:center;color:var(--text-secondary);max-width:700px;margin:0 auto 3rem;font-size:1.0625rem;line-height:1.6}
+        
+        /* Features Grid */
+        .features-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin:3rem 0}@media(min-width:600px){.features-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:900px){.features-grid{grid-template-columns:repeat(3,1fr)}}
+        .feature-card{background:var(--bg-surface);border:1px solid var(--border-color);border-radius:1rem;padding:2rem;transition:all .3s}
+        .feature-card:hover{transform:translateY(-.5rem);border-color:var(--primary);box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}
+        .feature-icon{width:3rem;height:3rem;background:var(--primary-bg);border-radius:.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+        .feature-title{font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:.75rem}
+        .feature-desc{color:var(--text-secondary);line-height:1.6}
+        
+        /* Pricing */
+        .pricing-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin:3rem 0}@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
+        .pricing-card{background:var(--bg-surface);border:1px solid var(--border-color);border-radius:1rem;padding:2rem;transition:all .3s;position:relative;display:flex;flex-direction:column}
+        .pricing-card:hover{transform:translateY(-.5rem);box-shadow:0 20px 25px -5px rgba(0,0,0,.1);border-color:var(--primary)}
+        .pricing-card.featured{border:2px solid var(--primary)}
+        .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#0f172a;padding:.25rem 1rem;border-radius:.5rem;font-size:.875rem;font-weight:600}
+        .pricing-title{font-size:1.5rem;font-weight:bold;color:var(--text-primary);margin-bottom:.5rem}
+        .pricing-price{font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem}
+        .pricing-desc{color:var(--text-secondary);font-size:.875rem;margin-bottom:1.5rem}
+        .pricing-features{list-style:none;margin-bottom:2rem;flex:1}
+        .pricing-features li{padding:.75rem 0;color:var(--text-secondary);border-bottom:1px solid var(--border-color);position:relative;padding-left:1.5rem}
+        .pricing-features li:before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:bold}
+        .pricing-features li:last-child{border-bottom:none}
+        
+        /* Comparison Table */
+        .comparison-table{overflow-x:auto;margin:3rem 0}
+        table{width:100%;border-collapse:collapse;background:var(--bg-surface);border-radius:1rem;overflow:hidden}
+        th,td{padding:1rem;text-align:left;border-bottom:1px solid var(--border-color)}
+        th{background:var(--bg-secondary);color:var(--text-primary);font-weight:700}
+        td{color:var(--text-secondary)}
+        tr:last-child td{border-bottom:none}
+        
+        /* FAQ */
+        .faq-item{margin-bottom:1.5rem;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:.75rem;padding:1.5rem;transition:all .3s}
+        .faq-question{font-size:1.125rem;font-weight:700;color:var(--text-primary);margin-bottom:.75rem;cursor:pointer}
+        .faq-answer{color:var(--text-secondary);line-height:1.7}
+        
+        /* Footer */
+        .footer{background:var(--bg-secondary);padding:3rem 0 2rem;border-top:1px solid var(--border-color)}
+        .footer-content{display:grid;grid-template-columns:1fr;gap:2rem}@media(min-width:600px){.footer-content{grid-template-columns:repeat(2,1fr)}}@media(min-width:900px){.footer-content{grid-template-columns:repeat(4,1fr)}}
+        .footer-section h3{color:var(--text-primary);margin-bottom:1rem;font-size:1.125rem}
+        .footer-section a{display:block;color:var(--text-secondary);text-decoration:none;margin-bottom:.5rem;transition:color .3s}
+        .footer-section a:hover{color:var(--primary)}
+        .footer-bottom{text-align:center;padding-top:2rem;margin-top:2rem;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.875rem}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">O</div>
+                    <div>
+                        <div style="font-weight:600;font-size:1.125rem;color:var(--text-primary)">OliverSEO</div>
+                        <div style="font-size:.75rem;color:var(--text-secondary)">AI Receptionist</div>
+                    </div>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact" class="btn">Book Demo</a>
+                </div>
+                <button class="mobile-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div style="text-align:center;max-width:800px;margin:0 auto">
+                <h1 class="hero-title">Never Miss an After-Hours Call Again</h1>
+                <p class="hero-subtitle">Professional AI Receptionist handles calls when you're closed. Collects leads automatically. Delivers in real-time.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get Started - Book a Free Demo</a>
+                    <a href="#how-it-works" class="btn-outline">See How It Works</a>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-color)">
+                    <div style="text-align:center">
+                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">100%</div>
+                        <div style="font-size:.875rem;color:var(--text-muted)">Call Answer Rate</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">24/7</div>
+                        <div style="font-size:.875rem;color:var(--text-muted)">Coverage</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div style="font-size:1.5rem;font-weight:bold;color:var(--text-primary)">Real-Time</div>
+                        <div style="font-size:.875rem;color:var(--text-muted)">Lead Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Every Missed Call is Lost Revenue</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3 class="feature-title">Your Business is Closed, But Your Phone Keeps Ringing</h3>
+                    <p class="feature-desc">Potential customers call after hours, on weekends, and during holidays. Every unanswered call is a lost opportunity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">😞</div>
+                    <h3 class="feature-title">Potential Customers Hang Up When No One Answers</h3>
+                    <p class="feature-desc">Studies show 80% of after-hours calls go unanswered. Most callers won't leave a voicemail—they'll just call your competitor.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">You Can't Afford a Full-Time Receptionist</h3>
+                    <p class="feature-desc">Hiring a 24/7 receptionist costs $30,000+ per year. Most small businesses can't justify that expense for after-hours coverage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3 class="feature-title">After-Hours Calls Go to Voicemail and Never Get Returned</h3>
+                    <p class="feature-desc">Even when callers leave messages, you might not check voicemail until the next day—or forget entirely. By then, they've moved on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">24/7 Professional Call Coverage Without the Cost</h2>
+            <p class="section-desc">Never miss a call again. Our AI Receptionist answers every call professionally, collects lead information automatically, and delivers it to you instantly.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3 class="feature-title">Never Miss a Call</h3>
+                    <p class="feature-desc">AI answers every call, every time—even at 2 AM on a Sunday. 100% call answer rate guaranteed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Capture Every Lead</h3>
+                    <p class="feature-desc">Automatically collects name, phone, email, and reason for calling. No information slips through the cracks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Instant Notifications</h3>
+                    <p class="feature-desc">Get leads delivered in real-time via email and Google Sheets. Know immediately when someone wants to work with you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Professional Service</h3>
+                    <p class="feature-desc">Callers can't tell it's AI. Natural conversations with 8/10 quality rating. Your business always sounds professional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💵</div>
+                    <h3 class="feature-title">Cost-Effective</h3>
+                    <p class="feature-desc">Less than hiring part-time staff. Starting at $1,200/month with no setup fees and month-to-month contracts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">No Contracts</h3>
+                    <p class="feature-desc">Cancel anytime. Month-to-month billing. No long-term commitments. Try it risk-free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-desc">Get started in 3 simple steps. Setup takes just 1-2 days.</p>
+            <div class="features-grid" style="grid-template-columns:1fr">
+                <div style="display:grid;grid-template-columns:1fr;gap:2rem;max-width:800px;margin:0 auto">
+                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
+                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">1</div>
+                        <div>
+                            <h3 class="feature-title">Call Comes In</h3>
+                            <p class="feature-desc">When someone calls after hours, our AI answers professionally with a natural, human-like voice.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
+                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">2</div>
+                        <div>
+                            <h3 class="feature-title">Information Collected</h3>
+                            <p class="feature-desc">AI automatically captures name, phone number, email address, and reason for calling—all without human intervention.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
+                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">3</div>
+                        <div>
+                            <h3 class="feature-title">Instant Delivery</h3>
+                            <p class="feature-desc">You receive an email notification immediately, plus the lead is automatically added to your Google Sheets in real-time.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card" style="display:flex;flex-direction:row;align-items:center;gap:2rem">
+                        <div style="font-size:3rem;font-weight:bold;color:var(--primary);min-width:60px">4</div>
+                        <div>
+                            <h3 class="feature-title">Follow Up</h3>
+                            <p class="feature-desc">You have everything you need to contact the lead. Full call transcripts and recordings available for review.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Never Miss a Lead</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3 class="feature-title">Real-Time Lead Delivery</h3>
+                    <p class="feature-desc">Get leads instantly via email and Google Sheets. No delays, no missed opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3 class="feature-title">Professional AI Voice</h3>
+                    <p class="feature-desc">8/10 quality rating with natural conversations. Callers can't tell it's AI—your business always sounds professional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3 class="feature-title">Full Call Records</h3>
+                    <p class="feature-desc">Complete transcripts and recordings for every call. Review conversations anytime to improve your follow-up.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Customizable</h3>
+                    <p class="feature-desc">Configure business hours, greetings, and responses to match your brand and service offerings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">No Setup Fees</h3>
+                    <p class="feature-desc">Everything included in your monthly price. Setup typically takes 1-2 days with no hidden costs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Month-to-Month</h3>
+                    <p class="feature-desc">No long-term contracts. Cancel anytime. Try it risk-free with month-to-month billing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-desc">Choose the plan that fits your call volume. All plans include real-time lead delivery, call transcripts, and recordings.</p>
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Starter</h3>
+                    <div class="pricing-price">$1,200<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
+                    <p class="pricing-desc">2,000 minutes/month included<br>Overage: $0.35/minute</p>
+                    <ul class="pricing-features">
+                        <li>Professional AI call handling</li>
+                        <li>Real-time lead collection</li>
+                        <li>Email notifications</li>
+                        <li>Google Sheets integration</li>
+                        <li>Call transcripts</li>
+                        <li>Call recordings</li>
+                        <li>Initial setup & integration</li>
+                        <li>Monthly optimization</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3 class="pricing-title">Professional</h3>
+                    <div class="pricing-price">$1,700<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
+                    <p class="pricing-desc">3,000 minutes/month included<br>Overage: $0.30/minute</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Starter, PLUS:</li>
+                        <li>Priority support</li>
+                        <li>Advanced customization</li>
+                        <li>Weekly performance reports</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom business hours</li>
+                        <li>Multi-email delivery (up to 3)</li>
+                        <li>Advanced analytics dashboard</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Enterprise</h3>
+                    <div class="pricing-price">$2,500<span style="font-size:1rem;color:var(--text-secondary);font-weight:400">/month</span></div>
+                    <p class="pricing-desc">5,000 minutes/month included<br>Overage: $0.25/minute</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional, PLUS:</li>
+                        <li>Unlimited email recipients</li>
+                        <li>Higher minute allowance</li>
+                        <li>Priority support (faster response)</li>
+                        <li>Custom AI training for your industry</li>
+                        <li>Advanced analytics & reporting</li>
+                        <li>Multiple phone number support</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width:100%;text-align:center">Get Started</a>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:2rem;color:var(--text-secondary)">
+                <p>✅ No setup fees • ✅ Month-to-month • ✅ Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Trusted by Businesses Like Yours</h2>
+            <div style="max-width:800px;margin:0 auto">
+                <div class="feature-card" style="text-align:center;padding:3rem 2rem">
+                    <div style="font-size:3rem;margin-bottom:1rem">"</div>
+                    <p style="font-size:1.125rem;color:var(--text-primary);line-height:1.8;margin-bottom:2rem;font-style:italic">
+                        Farm Bureau Financial Services has been using this service for several months. We've captured 100% of our after-hours calls and our leads are delivered instantly. Highly recommend!
+                    </p>
+                    <div style="font-weight:700;color:var(--text-primary)">Farm Bureau Financial Services</div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem">
+                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
+                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">100%</div>
+                        <div style="color:var(--text-secondary)">Call Answer Rate</div>
+                    </div>
+                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
+                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">Zero</div>
+                        <div style="color:var(--text-secondary)">Missed Calls</div>
+                    </div>
+                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
+                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">Instant</div>
+                        <div style="color:var(--text-secondary)">Lead Delivery</div>
+                    </div>
+                    <div style="text-align:center;padding:1.5rem;background:var(--bg-surface);border-radius:.75rem;border:1px solid var(--border-color)">
+                        <div style="font-size:2rem;font-weight:bold;color:var(--primary);margin-bottom:.5rem">81%</div>
+                        <div style="color:var(--text-secondary)">Profit Margin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us Over Competitors?</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Us</th>
+                            <th>Competitor A</th>
+                            <th>Competitor B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Price</strong></td>
+                            <td>$1,700/month</td>
+                            <td>$2,000+/month</td>
+                            <td>$1,200/month</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Setup Fee</strong></td>
+                            <td>✅ $0</td>
+                            <td>❌ $500-$1,000</td>
+                            <td>❌ $200</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Real-time Delivery</strong></td>
+                            <td>✅ Included</td>
+                            <td>❌ Extra $50/month</td>
+                            <td>❌ Not available</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google Sheets</strong></td>
+                            <td>✅ Included</td>
+                            <td>❌ Extra $100/month</td>
+                            <td>❌ Not available</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monthly Updates</strong></td>
+                            <td>✅ Included</td>
+                            <td>❌ Extra $150/month</td>
+                            <td>❌ Not available</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contract</strong></td>
+                            <td>✅ Month-to-month</td>
+                            <td>❌ 12-month minimum</td>
+                            <td>❌ 6-month minimum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width:800px;margin:0 auto">
+                <div class="faq-item">
+                    <div class="faq-question">How does the AI sound?</div>
+                    <div class="faq-answer">Our AI has a natural, professional voice with an 8/10 quality rating. Most callers can't tell it's AI—it sounds like a real receptionist handling your calls professionally.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I go over my minutes?</div>
+                    <div class="faq-answer">Overage rates apply based on your plan: Starter ($0.35/min), Professional ($0.30/min), Enterprise ($0.25/min). We'll notify you if you're approaching your limit so you can upgrade if needed.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I cancel anytime?</div>
+                    <div class="faq-answer">Yes! All plans are month-to-month with no long-term contracts. Cancel anytime with no penalties or fees.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long does setup take?</div>
+                    <div class="faq-answer">Setup typically takes 1-2 days. We'll configure your business hours, greetings, and integrate with your phone system. No technical knowledge required on your end.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What information does it collect?</div>
+                    <div class="faq-answer">The AI automatically collects name, phone number, email address, and reason for calling. All information is delivered to you in real-time via email and Google Sheets.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I need special equipment?</div>
+                    <div class="faq-answer">No! Our service works with your existing phone system. No new hardware or software required. We handle all the technical integration.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <div style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 2rem;background:var(--bg-surface);border-radius:1rem;border:2px solid var(--primary)">
+                <h2 class="section-title" style="margin-bottom:1rem">Ready to Never Miss Another Call?</h2>
+                <p class="section-desc" style="margin-bottom:2rem">Join businesses already capturing 100% of their after-hours leads</p>
+                <div class="hero-buttons">
+                    <a href="mailto:oliver@oliverseo.com?subject=AI Receptionist Demo Request&body=Hi, I'd like to book a free demo for the AI Receptionist service. What time works for a 15-minute demo?" class="btn" style="font-size:1.125rem;padding:1.25rem 2rem">Book Your Free Demo</a>
+                    <a href="#pricing" class="btn-outline" style="font-size:1.125rem;padding:1.25rem 2rem">See Pricing Plans</a>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-color)">
+                    <div style="color:var(--text-secondary);font-size:.875rem">✅ No credit card required</div>
+                    <div style="color:var(--text-secondary);font-size:.875rem">✅ Month-to-month</div>
+                    <div style="color:var(--text-secondary);font-size:.875rem">✅ Setup in 2 days</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>OliverSEO</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:1rem">Professional AI Receptionist service for businesses that want to never miss a call.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="index.html">Website Design</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Service</h3>
+                    <a href="#contact">Book Demo</a>
+                    <a href="mailto:oliver@oliverseo.com">Contact Us</a>
+                    <a href="refund-policy.html">Refund Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:oliver@oliverseo.com">oliver@oliverseo.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OliverSEO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                mobileBtn.classList.toggle('active');
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
