@@ -3,17 +3,17 @@
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://oliverseo.com/</loc>
-    <lastmod>2026-02-12</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- AI Receptionist Service - High Priority -->
+  <!-- AI Receptionist Service - Primary Product -->
   <url>
     <loc>https://oliverseo.com/ai-receptionist.html</loc>
-    <lastmod>2026-02-12</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
 
   <!-- Main Service Pages - High Priority -->
