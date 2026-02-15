@@ -419,5 +419,130 @@ AI Receptionist for after-hours call handling
 
 ---
 
-**Last Updated:** February 12, 2026  
+---
+
+## 🤝 CLIENT SUCCESS & REFERRAL PLAYBOOK
+
+### **Goal:** Keep Mike happy → Get referrals → Grow without ad spend
+
+---
+
+### **PHASE 1: During the Test (Now — Tuesday Feb 18)**
+
+**Your job is to make Mike feel like he has a dedicated tech team, not just a vendor.**
+
+1. **Monitor every single test call yourself** — don't wait for Mike or Kayleigh to find issues
+2. **Send a quick daily update** (text or email) — "Hey Mike, 3 calls came through today, all captured perfectly. No issues."
+3. **Fix anything before they notice** — if you see a hiccup in a transcript, fix it and tell them you already caught and resolved it
+4. **Be responsive within minutes** — if they text/call with a question during the test, reply FAST. This builds trust more than anything else
+5. **Over-deliver** — if you see something you can improve (greeting, flow, etc.), do it and let them know: "I noticed X and made it even better for you"
+
+---
+
+### **PHASE 2: After the Test Goes Well (Tuesday-Wednesday)**
+
+**This is your window to lock in long-term happiness AND plant the referral seed.**
+
+**Step 1: Get feedback from Kayleigh**
+> "Hey Kayleigh, now that you've seen a few days of calls come through — is there anything you'd want the AI to ask that it's not asking? For example, should it ask callers for their preferred contact method — phone, email, or text? I want to make sure this works perfectly for YOUR workflow."
+
+- This does 2 things: makes her feel heard AND improves the product
+- Whatever she says, implement it quickly (same day if possible)
+
+**Step 2: Get feedback from Mike**
+> "Mike, how are you feeling about it? Is it doing what you expected? Anything you'd change?"
+
+- Listen carefully — even small complaints are gold because fixing them fast = trust
+
+**Step 3: Ask for a testimonial**
+> "Hey Mike, if you're happy with how it's working, would you mind if I used you as a reference when I talk to other businesses? Nothing public if you don't want — just being able to say 'I run this for a Farm Bureau office in Wyoming' goes a long way."
+
+- Most people say yes to this. It costs them nothing.
+
+---
+
+### **PHASE 3: The Referral Ask (After 1-2 weeks of smooth operation)**
+
+**Don't rush this. Wait until Mike has seen real results and is genuinely happy.**
+
+**The casual approach (best for Mike's personality):**
+> "Hey Mike, I'm glad this is working well for you. Quick question — do you know any other business owners who deal with the same after-hours call problem? Insurance agents, real estate guys, anyone like that? If you send someone my way and they sign up, I'll knock $500 off your next month's invoice as a thank you."
+
+**If he asks "who specifically?":**
+> "Really anyone who misses calls — other insurance agents, financial advisors, law firms, medical offices, contractors. Anyone who's ever said 'I wish I had a receptionist after hours.'"
+
+**If he offers multiple names:**
+> "That's awesome. The deal is $500 off for every one that signs up — so if you send me 3 and they all join, that's $1,500 off. You could basically get a free month."
+
+---
+
+### **REFERRAL PROGRAM — THE MATH**
+
+| Scenario | Mike's Discount | Your New Client Revenue | Your Net Gain |
+|----------|----------------|------------------------|---------------|
+| 1 referral signs up | -$500 (one-time) | +$1,700/mo recurring | +$1,200 month 1, +$1,370/mo after |
+| 2 referrals sign up | -$1,000 (one-time) | +$3,400/mo recurring | +$2,400 month 1, +$2,740/mo after |
+| 3 referrals sign up | -$1,500 (one-time) | +$5,100/mo recurring | +$3,600 month 1, +$4,110/mo after |
+| Mike refers enough for a free month | -$1,700 (one-time) | +$5,780/mo recurring | Still massively profitable |
+
+**Why this is your best marketing spend:**
+- **Cost per client via referral:** $500 (one-time discount to Mike)
+- **Cost per client via LinkedIn Ads:** $100-200 (but lower close rate)
+- **Referral close rate:** 50%+ (vs 25% for cold leads)
+- **Referral LTV:** Higher (referred clients stay longer and are less price-sensitive)
+- **ROI on $500 referral discount:** $500 cost → $16,440 LTV = **3,188% return**
+
+---
+
+### **ONGOING CLIENT SUCCESS CHECKLIST (Monthly)**
+
+Do these every month for EVERY client to keep them happy and referral-ready:
+
+- [ ] **Week 1:** Review call data, identify any issues, optimize prompt if needed
+- [ ] **Week 2:** Send a quick "monthly check-in" email with stats (total calls handled, data collected, any improvements made)
+- [ ] **Week 3:** Ask if they need any changes to the greeting, flow, or data collection
+- [ ] **Week 4:** Casually remind them about the referral program (if they haven't referred anyone yet)
+
+**Monthly check-in email template:**
+> Subject: Your AI Receptionist — [Month] Recap
+>
+> Hey [Name],
+>
+> Quick update on your AI receptionist this month:
+> - **Calls handled:** [X]
+> - **Leads captured:** [X]  
+> - **Average call duration:** [X] minutes
+> - **Updates made:** [list any optimizations]
+>
+> Everything's running smoothly. Let me know if you want any changes!
+>
+> And as always — if you know anyone who'd benefit from this, I'll take $500 off your next invoice for every referral that signs up.
+>
+> — Oliver
+
+---
+
+### **RULES FOR THE REFERRAL PROGRAM**
+
+1. **$500 off Mike's next invoice** for every referral that becomes a paying client
+2. **No limit** on referrals — if he sends 10 and they all sign up, that's $5,000 in discounts
+3. **The discount applies once** per referral (one-time, not recurring)
+4. **The referral must sign up and pay** — not just a name and number
+5. **Stack discounts** — if 3 referrals sign up the same month, Mike gets $1,500 off that month
+6. **If discount exceeds monthly invoice**, roll the remainder to the next month
+7. **Offer the same deal to ALL clients** — not just Mike (every client can refer)
+
+---
+
+### **WHAT NOT TO DO**
+
+- ❌ Don't ask for referrals before Mike is genuinely happy
+- ❌ Don't make it feel transactional — keep it casual
+- ❌ Don't push if he says "I can't think of anyone right now" — just say "No worries, if anyone comes to mind just shoot me their name"
+- ❌ Don't discount your actual price for the new client — the $500 is Mike's reward, the new client pays full $1,700
+- ❌ Don't wait too long — the best time to ask is when excitement is highest (first 2-3 weeks after launch)
+
+---
+
+**Last Updated:** February 14, 2026  
 **Next Review:** After Client #2 acquisition

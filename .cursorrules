@@ -1,0 +1,80 @@
+# OliverSEO — Cursor Rules
+
+## WHO I AM
+- **Name:** Oliver Carroll
+- **Business:** OliverSEO
+- **Location:** Gillette, Wyoming
+- **Primary domains:** oliverseo.com (primary), oliverseo.co (secondary)
+- **Email:** oliver@oliverseo.com
+- **Cold outreach email:** outreach@oliverseo.co (via Instantly.ai)
+
+## WHAT I DO
+I run two businesses:
+1. **Web design** — Wyoming-focused SEO and web design (oliverseo.com website)
+2. **AI Receptionist service** — My main growth focus. I build and sell AI receptionists that handle after-hours calls for businesses.
+
+## AI RECEPTIONIST BUSINESS
+
+### Pricing
+- **Monthly fee:** $1,700/month (flat rate)
+- **Includes:** Up to 3,000 call minutes/month
+- **Overage:** $0.30/minute over 3,000
+- **Contract:** Month-to-month, no long-term commitment
+
+### My Costs
+- **Cost per minute:** $0.11 (GPT-4.1 nano + ElevenLabs v3)
+- **Cost per client/month:** ~$330 (at 3,000 min usage)
+- **Profit per client/month:** ~$1,370 (81% margin)
+- **Delay:** 1910ms
+
+### Tech Stack
+- **Platform:** Vapi.ai
+- **LLM:** GPT-4.1 nano
+- **Voice:** ElevenLabs v3
+- **DNS/Domains:** Cloudflare
+- **Email hosting:** Google Workspace
+- **Cold email tool:** Instantly.ai
+- **Lead delivery:** Real-time email + Google Sheets
+
+### Demo Line
+- **Phone:** (307) 464-9517
+- **AI name:** Claire
+- **Purpose:** Live demo for prospects to experience the AI receptionist
+
+### Client #1 — Mike (Farm Bureau Financial Services)
+- **Business:** Mountain West Farm Bureau, Gillette WY
+- **AI phone number:** +1 (307) 439-0626
+- **Email delivery to:** KCody@mwfbi.com (Kayleigh, Mike's receptionist)
+- **Status:** Testing, business opens Tuesday
+- **Price:** $1,700/month
+
+### Referral Program
+- **$500 off the referring client's next invoice** for every referral that becomes a paying client
+- No limit on referrals, discount is one-time per referral
+- Offer this to ALL clients, not just Mike
+
+### Marketing
+- **Budget:** Limited (~$100-500 at a time)
+- **Channels:** Cold email (Instantly.ai), LinkedIn, direct outreach, referrals
+- **Target industries:** Insurance, real estate, law firms, medical, HVAC/plumbing, home services
+- **Target market:** Small-medium businesses (1-50 employees) that miss after-hours calls
+
+## KEY FILES
+All AI receptionist business files are in the `AI Receptionist/` folder:
+- `MARKETING_PLAN.md` — Full business plan, financials, marketing strategy, referral playbook
+- `SALES_CALL_SCRIPT.md` — Script for closing sales calls
+- `PRICE_JUSTIFICATION.md` — ROI arguments and "not a voicemail" objection handling
+- `COLD_EMAIL_TEMPLATES.md` — 3-step cold email sequence for Instantly.ai
+- `DEMO_AI_PROMPT.md` — Prompt for the demo AI (Claire)
+- `AI_RECEPTIONIST_PROMPT.md` — Prompt for Mike's AI receptionist
+- `CALL_SCRIPT.md` — The strict conversation script Mike's AI follows
+- `MIKE_AI_RECEPTIONIST_INFO.md` — Mike's setup details, costs, and config
+
+## HOW TO HELP ME
+- I'm building a business, not just coding — think like a business partner
+- Be direct and practical — I want actionable advice, not theory
+- When I ask you to remember something, save it as a memory
+- When creating documents, keep them practical and ready-to-use
+- I'm focused on getting clients and making money — everything should tie back to revenue
+- Spell things correctly in documents even if I misspell them in chat
+- Use the files in `AI Receptionist/` as the source of truth for business details
