@@ -79,8 +79,29 @@ Get ALL of this from the client before building anything:
 ## PHASE 5: GO LIVE (Day 5-7)
 
 - [ ] **Help the client set up call forwarding** from their business line to the AI number
-  - Walk them through their phone provider's forwarding settings
+  - Walk them through their phone provider's forwarding settings (see provider guides below)
   - Test that forwarding works correctly
+
+### Call Forwarding Guides by Provider
+
+#### Spectrum Business
+
+**Turn ON forwarding (send calls to the AI):**
+1. Turn off Day/Night mode on the phone system
+2. Pick up the phone, press **Line 1**, then dial **\*72** — wait for the beep
+3. Dial the AI's phone number (e.g. 307-439-0626), wait for the confirmation message — done
+
+**Turn OFF forwarding (back to normal):**
+1. Pick up the phone, press **Line 1**
+2. Dial **\*73**, listen for the confirmation message — done
+
+#### Other Providers
+*(Add guides here as you onboard clients with different phone systems)*
+
+- **AT&T / Verizon / T-Mobile (cell):** Dial \*72 + AI number to forward, \*73 to cancel (same as Spectrum for most)
+- **RingCentral:** Admin Portal → Phone System → Call Handling → Add Forwarding Number
+- **Google Voice:** Settings → Calls → Call Forwarding → Add AI number
+- **Vonage:** Dashboard → Extensions → Call Forwarding → Enter AI number
 - [ ] **Confirm first real call comes through** — monitor it closely
 - [ ] **Send the client a "you're live" email:**
 
