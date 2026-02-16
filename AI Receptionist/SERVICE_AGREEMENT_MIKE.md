@@ -100,16 +100,44 @@ Client agrees to:
 
 ---
 
-## 8. LIMITATIONS AND LIABILITY
+## 8. SERVICE QUALITY AND PERFORMANCE
 
-- The Service is an **AI-powered tool** and may occasionally produce inaccurate transcriptions or responses
+### Performance Target
+- Provider targets a **95% or higher successful call handling rate** (defined as calls where the AI correctly collects the caller's name, phone number, and reason for calling)
+- During the first 2 weeks of service ("Optimization Period"), call quality may be slightly lower as the AI is tuned to the Client's specific business needs. Provider will actively monitor all calls during this period and implement fixes promptly.
+
+### What Counts as a Successful Call
+- AI answers the call professionally ✅
+- AI collects at least the caller's **name** and **phone number** ✅
+- AI delivers the lead to the Client's email and Google Sheets ✅
+
+### What Counts as a Failed Call
+- AI hangs up before collecting info ❌
+- AI fails to capture name or phone number ❌
+- AI produces a confusing or frustrating experience for the caller ❌
+
+### Issue Resolution
+- Provider monitors calls regularly and proactively fixes issues — often before the Client notices
+- When a call quality issue is identified, Provider will implement a fix within **24 hours**
+- Client may report any quality issues to Provider at any time via email or text
+
+### Monthly Quality Reporting
+- Provider will include call quality metrics in the monthly recap email
+- If the success rate drops below 90% in any given month, Provider will perform a full review and present a corrective action plan within 5 business days
+
+---
+
+## 9. LIMITATIONS AND LIABILITY
+
+- The Service is an **AI-powered tool** and may occasionally produce inaccurate transcriptions or responses — this is expected and normal for any AI system
+- Provider targets 95%+ success rate but does not guarantee 100% accuracy on every call
 - Provider is **not liable** for missed business opportunities, lost revenue, or damages resulting from AI errors or service interruptions
 - Provider will make reasonable efforts to resolve any issues promptly
 - Provider's total liability shall not exceed the **amount paid by Client in the previous month**
 
 ---
 
-## 9. REFERRAL PROGRAM
+## 10. REFERRAL PROGRAM
 
 - Client may refer other businesses to OliverSEO's AI Receptionist service
 - For every referral that becomes a paying client, the referring Client receives **$500 off their next monthly invoice**
@@ -119,7 +147,7 @@ Client agrees to:
 
 ---
 
-## 10. AGREEMENT
+## 11. AGREEMENT
 
 By signing below, both parties agree to the terms outlined in this agreement.
 
