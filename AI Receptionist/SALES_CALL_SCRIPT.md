@@ -109,6 +109,20 @@ The goal here is to find their PAIN. Don't pitch yet — just listen.
 ### "What if callers don't like talking to an AI?"
 > "Great question. The voice is super natural — most callers don't even realize it's AI. It uses the latest voice technology, not a robotic text-to-speech. You can hear it yourself at **(307) 464-9517**. People are honestly surprised."
 
+### "I can get an AI receptionist online for $200/month"
+> "You absolutely can — and here's the difference. Those are DIY platforms. You sign up, you figure out the setup yourself, you write your own prompts, you troubleshoot when something breaks at 2 AM, and you get a generic AI that sounds like everyone else's.
+>
+> What I do is completely different. I build a custom AI for YOUR business — with your greeting, your call flow, your industry knowledge. I set everything up for you, I monitor every call to make sure it's working, and I optimize it every month based on real data. When something goes wrong, I fix it before you even notice.
+>
+> Those $200 tools are like buying a DSLR camera and learning photography yourself. I'm the photographer who shows up, takes the photos, and hands you the finished product.
+>
+> And honestly, if you look at the math — those platforms charge per minute too. At 3,000 minutes, most of them end up costing $1,200-$1,500 anyway, and you're still doing all the work yourself. For a couple hundred more, I handle everything."
+
+### "My buddy / nephew / IT guy says they can build this for me"
+> "They probably can — Vapi, Bland, a dozen platforms out there can technically do this. The question is: will they be there at 11 PM on a Saturday when the AI mispronounces your company name and a real customer is on the line? Will they optimize the prompts every month based on actual call data? Will they set up the email delivery, the Google Sheets integration, the call recordings?
+>
+> I've already built this, it's already running, and you can hear it right now — (307) 464-9517. The difference between 'can build it' and 'already built and running for real businesses' is about 40 hours of work and a lot of trial and error."
+
 ---
 
 ## 6. THE CLOSE

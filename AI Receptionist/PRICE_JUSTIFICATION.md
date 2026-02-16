@@ -214,6 +214,12 @@ That's less than:
 **"Let me see how the test goes first"**
 > "That's exactly what I'd suggest. Let's see how it performs this week — you'll be able to see every call, every email, every transcript. Then we can talk numbers once you've seen it in action."
 
+**"I can get an AI receptionist for $200/month online"**
+> "You can — those are DIY self-service platforms. You sign up, configure it yourself, write your own prompts, and troubleshoot it yourself when it breaks. That's a totally different product from what I offer. I build a custom AI for your specific business, set everything up, monitor every call, and optimize it monthly. You don't touch anything — it just works. And if you do the math on those platforms at 3,000 minutes, the overages put you at $1,200-$1,500/mo anyway — and you're still doing all the work yourself."
+
+**"My IT guy / buddy says they can build this"**
+> "They probably can — the tools exist. The question is: will they monitor it at 11 PM on a Saturday when something goes wrong? Will they optimize the prompts based on real call data every month? This is already built, already running for real businesses, and you can hear it right now at (307) 464-9517."
+
 ---
 
 ## 📌 KEY NUMBERS TO MEMORIZE
@@ -221,5 +227,6 @@ That's less than:
 - **$57/day** = less than 1 hour of a human receptionist
 - **$1,700** vs **$2,000-$4,000** for a traditional service
 - **$1,700** vs **$1,600-$2,100** for a part-time hire (who can't work 24/7)
+- **$1,700** vs **$1,200-$1,500+** DIY platforms at 3,000 min (and you do all the work)
 - **1 captured client/month** = AI pays for itself
 - **24/7/365** coverage with **zero** sick days
