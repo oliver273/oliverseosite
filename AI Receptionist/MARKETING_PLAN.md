@@ -1,6 +1,6 @@
 # 💰 AI Receptionist Business - Marketing Plan & Financial Analysis
 
-**Last Updated:** February 12, 2026  
+**Last Updated:** February 16, 2026  
 **Status:** Active - Client #1 (Mike) onboarded, Client #2 in progress
 
 ---
@@ -29,32 +29,79 @@ AI Receptionist for after-hours call handling
 
 ## 💵 PRICING STRUCTURE
 
-### **Standard Pricing:**
+### **Plan 1: Pay-Per-Use (Starter)**
+- **Monthly Fee:** None
+- **Setup Fee:** $1,500 (one-time — covers configuration, integration, testing)
+- **Per Minute:** $0.90/minute (only charged for actual call time)
+- **Contract:** Month-to-month (no long-term commitment)
+- **Best For:** Smaller businesses, businesses that want to try it before committing, lower call volume
+
+**Pay-Per-Use Math:**
+| Monthly Usage | Client Pays | Your Cost ($0.11/min) | Your Profit |
+|---|---|---|---|
+| 200 min | $180 | $22 | $158 |
+| 500 min | $450 | $55 | $395 |
+| 1,000 min | $900 | $110 | $790 |
+| 1,500 min | $1,350 | $165 | $1,185 |
+| 1,889 min | $1,700 | $208 | $1,492 |
+| 3,000 min | $2,700 | $330 | $2,370 |
+
+**Upsell trigger:** When a Pay-Per-Use client hits ~1,889 min/month, their bill equals $1,700 — pitch them the Pro plan: *"Hey, you're spending $1,700+ anyway. Want to switch to the flat rate and cap your costs?"*
+
+### **Plan 2: Pro (Flat Rate)**
 - **Monthly Fee:** $1,700/month (flat rate)
+- **Setup Fee:** None (included)
 - **Includes:** Up to 3,000 call minutes/month
 - **Overage Rate:** $0.30/minute for minutes over 3,000
 - **Contract:** Month-to-month (no long-term commitment)
+- **Best For:** Serious businesses, higher call volume, businesses that want predictable costs
 
-### **What's Included:**
-- All call handling (up to 3,000 minutes/month)
+### **What's Included (Both Plans):**
+- 24/7 professional AI call handling
 - Initial setup and integration
 - Google Sheets integration (real-time data collection)
 - Automated email delivery (real-time notifications)
 - Call transcripts and recordings
 - Monthly updates and optimization
 - Ongoing support and maintenance
+- Custom greeting and conversation flow
+
+### **Sales Framing:**
+
+**Pay-Per-Use pitch:**
+> *"There's no monthly fee. You only pay when the AI is actually talking to a customer — 90 cents a minute. A typical call is 2-3 minutes, so you're paying about $2-3 per lead captured. Compare that to a missed call that goes to voicemail and costs you a potential $2,000 customer."*
+
+**Pro plan pitch:**
+> *"$1,700 a month flat — that's $57 a day. Less than one hour of a human receptionist. And you get 24/7 coverage, 3,000 minutes, email delivery, transcripts, recordings, and I optimize it for you every month."*
 
 ### **Market Position:**
 - **Quality Rating:** 7.8/10 (Mid-Market Professional Tier)
 - **Competitive Pricing:** $1,000-$2,500/month range
-- **Your Price:** $1,700/month ✅ (Right in the middle)
-- **Value Proposition:** All-inclusive, no hidden fees
+- **Your Pro Price:** $1,700/month ✅ (Right in the middle)
+- **Your Pay-Per-Use Price:** $0.90/min ✅ (Low barrier to entry)
+- **Value Proposition:** Choose fixed or flexible — both all-inclusive, no hidden fees
 
 ---
 
 ## 💰 COST STRUCTURE
 
-### **Per Client Costs:**
+### **Your Cost Per Minute:** $0.11/minute (all-in)
+
+### **Technology Stack:**
+- **LLM:** GPT-4.1 nano
+- **Voice:** ElevenLabs v3
+- **Delay:** 1910ms (good balance)
+- **Voice Quality:** 8/10
+
+### **Profit Per Minute by Plan:**
+
+| Plan | Client Pays | Your Cost | Your Profit/Min | Margin |
+|---|---|---|---|---|
+| Pay-Per-Use | $0.90/min | $0.11/min | $0.79/min | 88% |
+| Pro (flat rate) | ~$0.57/min (at 3,000 min) | $0.11/min | ~$0.46/min | 81% |
+| Pro overage | $0.30/min | $0.11/min | $0.19/min | 63% |
+
+### **Per Client Costs (Pro Plan):**
 
 **Monthly Cost Breakdown:**
 - **AI Service Cost:** $0.11/minute
@@ -63,17 +110,6 @@ AI Receptionist for after-hours call handling
 
 **Annual Cost per Client:**
 - **Annual Cost:** $330 × 12 = **$3,960/year**
-
-### **Technology Stack:**
-- **LLM:** GPT-4.1 nano ($0.11/minute)
-- **Voice:** ElevenLabs v3 (included in cost)
-- **Delay:** 1910ms (good balance)
-- **Voice Quality:** 8/10
-
-### **Overage Costs:**
-- **Your Cost:** $0.11/minute
-- **Client Charge:** $0.30/minute
-- **Profit on Overage:** $0.19/minute (173% margin)
 
 ---
 
@@ -544,5 +580,5 @@ Do these every month for EVERY client to keep them happy and referral-ready:
 
 ---
 
-**Last Updated:** February 14, 2026  
+**Last Updated:** February 16, 2026  
 **Next Review:** After Client #2 acquisition

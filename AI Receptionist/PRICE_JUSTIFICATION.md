@@ -72,7 +72,7 @@ A voicemail is a dead end. This is an active employee.
 | **Engagement** | 80% of people hang up without leaving a message | 95%+ of callers stay and talk because someone "answered" |
 | **Information collected** | Whatever the caller decides to say (usually just "call me back") | Name, phone, email, reason — every time, structured and complete |
 | **Follow-up speed** | Someone has to listen, take notes, then act | Instant email with everything organized — ready to call back in seconds |
-| **Accuracy** | Caller mumbles a phone number, you replay 3 times | AI reads it back letter by letter for confirmation |
+| **Accuracy** | Caller mumbles a phone number, you replay 3 times | AI collects info clearly and delivers it instantly via email |
 | **Recording** | Just raw audio | Full transcript + recording + structured data in a spreadsheet |
 | **Availability** | Always "on" but nobody's home | Always on AND someone's home — it answers, listens, responds |
 | **Caller perception** | "They don't care enough to answer" | "They answered right away, very professional" |

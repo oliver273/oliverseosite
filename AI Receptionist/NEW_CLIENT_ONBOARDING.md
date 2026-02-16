@@ -8,8 +8,12 @@
 
 - [ ] Client says yes on the call or via email
 - [ ] Send the **Service Agreement** for signature (copy from `SERVICE_AGREEMENT_MIKE.md` as a template, update client details)
-- [ ] Confirm the **monthly fee** ($1,700/mo) and **overage rate** ($0.30/min standard)
-- [ ] Set up **recurring invoice** in Square (1st of each month, $1,700)
+- [ ] Confirm which **plan** the client wants:
+  - **Pay-Per-Use:** $0.90/min + $1,500 setup fee (no monthly commitment)
+  - **Pro:** $1,700/mo flat + $0.30/min overage (no setup fee)
+- [ ] Set up invoice in Square:
+  - Pay-Per-Use: $1,500 setup invoice immediately, then monthly usage invoices
+  - Pro: Recurring $1,700 on the 1st of each month
 - [ ] Decide on start date — pro-rate first month or start on the 1st?
 
 ---
