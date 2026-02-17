@@ -34,7 +34,7 @@ OliverSEO ("Provider") will provide an AI-powered receptionist service ("Service
 - You are only charged for actual call time — if the AI isn't talking, you aren't paying
 
 ### One-Time Setup Fee
-- **$500.00** (due upon signing)
+- **$300.00** (due upon signing)
 - Covers initial configuration, integration, testing, and deployment of the AI receptionist
 
 ### No Monthly Minimum
@@ -199,7 +199,7 @@ Date: ________________
 
 | Item | Amount | When |
 |---|---|---|
-| One-time setup fee | $500.00 | Due upon signing |
+| One-time setup fee | $300.00 | Due upon signing |
 | Per-minute rate | $0.90/minute | Invoiced monthly |
 | Monthly minimum | None | — |
 | Commitment | 3 months | Then month-to-month |
