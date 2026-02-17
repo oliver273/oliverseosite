@@ -1,231 +1,96 @@
-# ⏰ Vapi Time Tool Setup — How to Make the AI Know the Time
+# ⏰ Time-Awareness Setup — How the AI Knows the Time
 
-**Purpose:** Give the AI the current time. The AI already knows the business hours from its prompt — it just needs to know what time it is right now.
+**Purpose:** Give the AI the current time so it knows if the office is open or closed.
 
-**One Cloudflare Worker. Works for ALL clients. No client database, no Google Sheets, no per-client config.** The AI handles the timezone math and business hours logic itself.
-
----
-
-## STEP 1: Create a Cloudflare Worker
-
-1. Go to [dash.cloudflare.com](https://dash.cloudflare.com)
-2. Click **"Workers & Pages"** in the left sidebar
-3. Click **"Create"** → **"Create Worker"**
-4. Name it: `get-current-time`
-5. Click **"Deploy"** (it creates a default worker)
-6. Click **"Edit Code"** (or "Quick Edit")
-7. **Delete everything** and paste this:
-
-```javascript
-export default {
-  async fetch(request) {
-    if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        },
-      });
-    }
-
-    // Read the toolCallId from Vapi's request (Vapi needs it echoed back)
-    let toolCallId = "time-check";
-    if (request.method === "POST") {
-      try {
-        const body = await request.json();
-        if (body?.message?.toolCallList?.[0]?.id) {
-          toolCallId = body.message.toolCallList[0].id;
-        }
-      } catch (e) {
-        // If parsing fails, use default
-      }
-    }
-
-    const now = new Date();
-
-    // Pre-convert to all US timezones so the AI doesn't have to do math
-    function formatTime(date, tz) {
-      const f = new Intl.DateTimeFormat("en-US", {
-        timeZone: tz,
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-      return f.format(date);
-    }
-
-    const result = {
-      results: [
-        {
-          toolCallId: toolCallId,
-          result: JSON.stringify({
-            mountain_time: formatTime(now, "America/Denver"),
-            central_time: formatTime(now, "America/Chicago"),
-            eastern_time: formatTime(now, "America/New_York"),
-            pacific_time: formatTime(now, "America/Los_Angeles"),
-            arizona_time: formatTime(now, "America/Phoenix"),
-            utc: now.toISOString(),
-          }),
-        },
-      ],
-    };
-
-    return new Response(JSON.stringify(result), {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-  },
-};
-```
-
-8. Click **"Save and Deploy"**
-9. Copy the URL — something like: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev`
-10. **Test it** in your browser — you should see the current UTC time
-
-That's the entire worker. ~20 lines. Done forever. Works for every client.
+**No tools needed. No Cloudflare Worker needed. Uses Vapi's built-in `{{now}}` variable.**
 
 ---
 
-## STEP 2: Add the Tool in Vapi
+## How It Works
 
-1. Go to [dashboard.vapi.ai](https://dashboard.vapi.ai)
-2. Open your assistant (Mike's, the demo, any client)
-3. Find **"Tools"** or **"Functions"** → **"Add Tool"**
-4. Configure:
+Vapi has built-in **dynamic variables** that get injected directly into the system prompt when a call starts. The AI reads the time from its prompt — no tool calls, no external services.
 
-**Tool Name:** `check_current_time`
+### The Variable
 
-**Description:**
+Put this in the system prompt:
+
 ```
-Returns the current UTC time. ALWAYS call this tool at the very start of every call before your first greeting. Use the UTC time to determine the local time based on the timezone in your instructions.
+THE CURRENT TIME IS: {{"now" | date: "%A, %B %d, %Y, %I:%M %p", "America/Denver"}} (Mountain Time)
 ```
 
-**Server URL:** `https://get-current-time.YOUR-SUBDOMAIN.workers.dev`
+When a call starts, Vapi replaces this with the actual time, like:
 
-**No parameters needed.**
+```
+THE CURRENT TIME IS: Tuesday, February 17, 2026, 12:30 PM (Mountain Time)
+```
 
-> **Same URL for every client.** The AI figures out the local time from its prompt.
+The AI then compares this to the business hours in the prompt and knows if the office is open, on break, or closed.
 
 ---
 
-## STEP 3: Add This to Each Client's System Prompt
+## For Different Timezones
 
-Each client's prompt already has business hours listed. Just make sure the prompt includes:
+Just change the timezone string:
 
-1. **The timezone** (e.g., "Mountain Time / MST, which is UTC-7, or MDT UTC-6 during daylight saving")
-2. **The business hours**
-3. **The instruction to call the tool first**
+| Timezone | Use |
+|---|---|
+| Mountain Time (Wyoming) | `"America/Denver"` |
+| Central Time (Texas) | `"America/Chicago"` |
+| Eastern Time (New York) | `"America/New_York"` |
+| Pacific Time (California) | `"America/Los_Angeles"` |
+| Arizona (no DST) | `"America/Phoenix"` |
 
-The AI will:
-1. Call the tool → get UTC time
-2. Convert UTC to the client's local timezone (from the prompt)
-3. Compare to the business hours (from the prompt)
-4. Use the right greeting
+### Example for a Central Time client:
+```
+THE CURRENT TIME IS: {{"now" | date: "%A, %B %d, %Y, %I:%M %p", "America/Chicago"}} (Central Time)
+```
 
 ---
 
-## What Goes in Each Client's Prompt
-
-Just include a section like this in each client's system prompt:
-
-```
-BEFORE YOUR FIRST RESPONSE ON EVERY CALL, you MUST call the check_current_time tool. It returns the time already converted to multiple US timezones. Use the correct one for this business (see TIMEZONE below).
-
-TIMEZONE: Mountain Time — use the `mountain_time` field from the tool result.
-
-BUSINESS HOURS:
-- Monday-Thursday: 9:00 AM - 5:00 PM
-- Friday: 9:00 AM - 4:00 PM
-- Saturday-Sunday: CLOSED
-
-IF the business is currently OPEN:
-- Greeting: "Thank you for calling [Business Name]! How can I help you today?"
-- Closing: "I'll make sure someone on the team gets this right away."
-
-IF the business is currently ON A BREAK (between listed time blocks):
-- Greeting: "Thank you for calling [Business Name]. The office is on a short break right now, but I'd be happy to take your information."
-- Closing: "Someone will get back to you as soon as they're back."
-
-IF the business is currently CLOSED:
-- Greeting: "Thank you for calling [Business Name]. We're currently closed, but I'd be happy to take your information."
-- Closing: "We'll get back to you as soon as possible."
-```
-
-For a client with a lunch break, just write the hours that way:
-```
-BUSINESS HOURS:
-- Monday-Friday: 8:00 AM - 12:00 PM, 1:00 PM - 5:00 PM (closed 12-1 for lunch)
-- Saturday: 9:00 AM - 12:00 PM
-- Sunday: CLOSED
-```
-
-The AI reads it and handles it. No code needed.
-
----
-
-## Why This Is Better
+## What Changed (Old → New)
 
 | Old approach | New approach |
 |---|---|
-| Worker checks business hours | AI checks business hours |
-| Worker needs client database | Worker just returns the time |
-| Google Sheet with 31 columns | Plain English in the prompt |
-| New client = add sheet row + configure URL | New client = same URL, hours in prompt |
-| Code handles lunch breaks | AI reads "closed 12-1 for lunch" |
-| Different URL per client | Same URL for every client |
+| Cloudflare Worker returned the time | Vapi injects time automatically |
+| AI called a tool every turn (broken) | No tools — time is in the prompt |
+| Tool fired 4-7 times per call | Zero tool calls |
+| AI got confused and skipped steps | AI reads time once, follows script |
+| Required Cloudflare account | Nothing extra needed |
+| Cost: $0/mo (but required setup) | Cost: $0/mo (zero setup) |
 
 ---
 
-## Common Timezone References for Prompts
+## Setup Steps (Per Client)
 
-Copy the right one into each client's prompt:
+1. **Remove the `check_current_time` tool** from the Vapi assistant (if it exists)
+2. **Add the `{{now}}` variable** to the system prompt (see AI_RECEPTIONIST_PROMPT.md)
+3. **Add business hours** to the prompt in plain English
+4. **Done.** The AI handles everything.
 
-**Mountain Time (Wyoming, Colorado, Montana):**
-```
-TIMEZONE: Mountain Time (UTC-7 MST / UTC-6 MDT during daylight saving, March-November)
-```
+---
 
-**Central Time (Texas, Illinois, Wisconsin):**
-```
-TIMEZONE: Central Time (UTC-6 CST / UTC-5 CDT during daylight saving, March-November)
-```
+## Daylight Saving Time
 
-**Eastern Time (New York, Florida, Georgia):**
-```
-TIMEZONE: Eastern Time (UTC-5 EST / UTC-4 EDT during daylight saving, March-November)
-```
+Handled automatically. The `"America/Denver"` timezone string accounts for MST (winter) and MDT (summer). You never need to change it.
 
-**Pacific Time (California, Oregon, Washington):**
-```
-TIMEZONE: Pacific Time (UTC-8 PST / UTC-7 PDT during daylight saving, March-November)
-```
+---
 
-**Arizona (no daylight saving):**
-```
-TIMEZONE: Arizona Time (UTC-7 year-round, no daylight saving)
-```
+## The Old Cloudflare Worker
+
+The `get-current-time` Cloudflare Worker is **no longer needed**. You can delete it from your Cloudflare dashboard, or just leave it — it won't cost anything and won't be called.
 
 ---
 
 ## Testing
 
-- [ ] Visit the Worker URL in browser → Should show current UTC time
-- [ ] Call during business hours → AI should NOT say "we're closed"
-- [ ] Call during lunch break → AI should say "on a short break"
-- [ ] Call after hours → AI should say "we're currently closed"
-- [ ] Call on weekend → AI should say "we're currently closed"
+- [ ] Make a test call during business hours → AI should NOT say "we're closed"
+- [ ] Make a test call after hours → AI should say "the office is closed for the day"
+- [ ] Make a test call on weekend → AI should say "the office is closed"
+- [ ] Verify: NO "Tool Response" entries in the call log
+- [ ] Verify: AI follows the full script without skipping steps
 
 ---
 
 ## Costs
 
-- **Cloudflare Worker:** FREE (100,000 requests/day)
-- **Total cost:** $0/month forever
-- **New client setup:** 0 extra minutes (just write hours in their prompt like normal)
+- **$0/month.** Built into Vapi. No external services needed.
