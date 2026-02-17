@@ -4,6 +4,8 @@
 
 **Scales to unlimited clients** — one Cloudflare Worker + one Google Sheet. To add a new client, just add a row to the spreadsheet. No code editing ever again.
 
+**Supports lunch breaks / split hours** — each day has two time blocks. Block 1 = morning, Block 2 = afternoon. If there's no break, just use Block 1 and leave Block 2 blank.
+
 ---
 
 ## STEP 1: Create the Google Sheet
@@ -12,30 +14,50 @@
 2. Name it: **"AI Receptionist — Business Hours"**
 3. Set up the columns **exactly** like this in Row 1:
 
-| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
+| A | B | C |
+|---|---|---|
+| client | name | timezone |
 
-4. Add Mike as the first row (Row 2):
+Then for each day, there are 4 columns (2 time blocks):
 
-| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 16 | | | | |
+| D | E | F | G | H | I | J | K | ... |
+|---|---|---|---|---|---|---|---|---|
+| mon_open1 | mon_close1 | mon_open2 | mon_close2 | tue_open1 | tue_close1 | tue_open2 | tue_close2 | ... |
 
-**Hours are in 24-hour format:**
-- 9 = 9:00 AM
-- 12 = 12:00 PM (noon)
-- 13 = 1:00 PM
-- 17 = 5:00 PM
-- 16 = 4:00 PM
-- Leave sat/sun columns **blank** = closed that day
+**Full column list (31 columns total):**
+```
+client, name, timezone,
+mon_open1, mon_close1, mon_open2, mon_close2,
+tue_open1, tue_close1, tue_open2, tue_close2,
+wed_open1, wed_close1, wed_open2, wed_close2,
+thu_open1, thu_close1, thu_open2, thu_close2,
+fri_open1, fri_close1, fri_open2, fri_close2,
+sat_open1, sat_close1, sat_open2, sat_close2,
+sun_open1, sun_close1, sun_open2, sun_close2
+```
+
+4. **Add Mike** as the first row (Row 2). He has NO lunch break, so only Block 1 is filled:
+
+| client | name | timezone | mon_open1 | mon_close1 | mon_open2 | mon_close2 | tue_open1 | tue_close1 | tue_open2 | tue_close2 | wed_open1 | wed_close1 | wed_open2 | wed_close2 | thu_open1 | thu_close1 | thu_open2 | thu_close2 | fri_open1 | fri_close1 | fri_open2 | fri_close2 | sat_open1 | sat_close1 | sat_open2 | sat_close2 | sun_open1 | sun_close1 | sun_open2 | sun_close2 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | | | 9 | 17 | | | 9 | 17 | | | 9 | 17 | | | 9 | 16 | | | | | | | | | | |
+
+**Example: A dentist with a lunch break** (closed 12-1pm):
+
+| client | name | timezone | mon_open1 | mon_close1 | mon_open2 | mon_close2 | ... |
+|---|---|---|---|---|---|---|---|
+| texas-dentist | Smile Dental | America/Chicago | 8 | 12 | 13 | 17 | ... |
+
+This means: Open 8am-12pm, closed for lunch 12-1pm, open 1pm-5pm.
+
+**No break?** Just fill Block 1, leave Block 2 blank (like Mike).
 
 5. **Publish the sheet:**
    - Go to **File → Share → Publish to web**
    - Under "Link", select the sheet tab (usually "Sheet1")
    - Change format from "Web page" to **"Comma-separated values (.csv)"**
    - Click **"Publish"**
-   - **Copy the URL** it gives you — it looks like:
+   - **Copy the URL** — it looks like:
      `https://docs.google.com/spreadsheets/d/e/XXXXX/pub?gid=0&single=true&output=csv`
    - **Save this URL** — you'll paste it into the Cloudflare Worker
 
@@ -104,7 +126,6 @@ export default {
       });
       const csvText = await sheetResponse.text();
       const rows = csvText.split("\n").map(row => {
-        // Handle CSV parsing (basic — works for simple values without commas in them)
         return row.split(",").map(cell => cell.trim().replace(/^"|"$/g, ""));
       });
 
@@ -120,7 +141,8 @@ export default {
             hours: {},
           };
 
-          // Parse hours: mon=1, tue=2, wed=3, thu=4, fri=5, sat=6, sun=0
+          // Parse hours with TWO blocks per day (supports lunch breaks)
+          // mon=1, tue=2, wed=3, thu=4, fri=5, sat=6, sun=0
           const dayMapping = [
             { prefix: "mon", dayNum: 1 },
             { prefix: "tue", dayNum: 2 },
@@ -132,15 +154,24 @@ export default {
           ];
 
           for (const { prefix, dayNum } of dayMapping) {
-            const openCol = headers.indexOf(`${prefix}_open`);
-            const closeCol = headers.indexOf(`${prefix}_close`);
-            const openVal = row[openCol];
-            const closeVal = row[closeCol];
-            if (openVal && closeVal && openVal !== "" && closeVal !== "") {
-              client.hours[dayNum] = {
-                open: parseInt(openVal),
-                close: parseInt(closeVal),
-              };
+            const blocks = [];
+
+            // Block 1 (morning or full day)
+            const open1 = row[headers.indexOf(`${prefix}_open1`)];
+            const close1 = row[headers.indexOf(`${prefix}_close1`)];
+            if (open1 && close1 && open1 !== "" && close1 !== "") {
+              blocks.push({ open: parseInt(open1), close: parseInt(close1) });
+            }
+
+            // Block 2 (afternoon, after lunch break)
+            const open2 = row[headers.indexOf(`${prefix}_open2`)];
+            const close2 = row[headers.indexOf(`${prefix}_close2`)];
+            if (open2 && close2 && open2 !== "" && close2 !== "") {
+              blocks.push({ open: parseInt(open2), close: parseInt(close2) });
+            }
+
+            if (blocks.length > 0) {
+              client.hours[dayNum] = blocks;
             }
           }
           break;
@@ -203,16 +234,29 @@ export default {
     if (dayPeriod === "PM" && hour !== 12) hour24 = hour + 12;
     if (dayPeriod === "AM" && hour === 12) hour24 = 0;
 
-    // Check if business is open
+    // Check if business is open (supports multiple blocks per day)
     const dayMap = {
       "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
       "Thursday": 4, "Friday": 5, "Saturday": 6,
     };
     const dayNum = dayMap[weekday];
     let isOpen = false;
+    let isOnBreak = false;
 
     if (client.hours[dayNum]) {
-      isOpen = hour24 >= client.hours[dayNum].open && hour24 < client.hours[dayNum].close;
+      const blocks = client.hours[dayNum];
+      for (const block of blocks) {
+        if (hour24 >= block.open && hour24 < block.close) {
+          isOpen = true;
+          break;
+        }
+      }
+      // Check if they're on a break (between block 1 close and block 2 open)
+      if (!isOpen && blocks.length === 2) {
+        if (hour24 >= blocks[0].close && hour24 < blocks[1].open) {
+          isOnBreak = true;
+        }
+      }
     }
 
     const timeString = `${hour}:${minute} ${dayPeriod}`;
@@ -221,10 +265,24 @@ export default {
     // Build hours description for the AI
     const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let hoursDesc = [];
-    for (const [d, h] of Object.entries(client.hours)) {
-      const openAmPm = h.open >= 12 ? `${h.open === 12 ? 12 : h.open - 12}pm` : `${h.open}am`;
-      const closeAmPm = h.close >= 12 ? `${h.close === 12 ? 12 : h.close - 12}pm` : `${h.close}am`;
-      hoursDesc.push(`${dayNames[d]}: ${openAmPm}-${closeAmPm}`);
+    for (const [d, blocks] of Object.entries(client.hours)) {
+      const formatTime = (h) => {
+        if (h === 0) return "12am";
+        if (h === 12) return "12pm";
+        return h > 12 ? `${h - 12}pm` : `${h}am`;
+      };
+      const blockStrings = blocks.map(b => `${formatTime(b.open)}-${formatTime(b.close)}`);
+      hoursDesc.push(`${dayNames[d]}: ${blockStrings.join(", ")}`);
+    }
+
+    // Build the status message
+    let statusMessage;
+    if (isOpen) {
+      statusMessage = `The office IS OPEN right now. Current time: ${timeString} ${dateString}.`;
+    } else if (isOnBreak) {
+      statusMessage = `The office is currently ON BREAK (lunch/break time) but will reopen later today. Current time: ${timeString} ${dateString}. Business hours: ${hoursDesc.join("; ")}.`;
+    } else {
+      statusMessage = `The office is CLOSED right now. Current time: ${timeString} ${dateString}. Business hours: ${hoursDesc.join("; ")}.`;
     }
 
     const result = {
@@ -238,9 +296,8 @@ export default {
             timezone: client.timezone,
             businessName: client.name,
             isBusinessOpen: isOpen,
-            businessHours: isOpen
-              ? `The office IS OPEN right now. Current time: ${timeString} ${dateString}.`
-              : `The office is CLOSED right now. Current time: ${timeString} ${dateString}. Business hours: ${hoursDesc.join(", ")}.`,
+            isOnBreak: isOnBreak,
+            businessHours: statusMessage,
           },
         },
       ],
@@ -298,10 +355,11 @@ Already done — the prompt files already tell the AI to call `check_current_tim
 1. ☎️ A call comes in
 2. 🤖 The AI calls the `check_current_time` tool (before saying anything)
 3. 🔧 The Cloudflare Worker fetches the Google Sheet → finds the client's hours → checks the time
-4. ⏰ Returns: `{ isBusinessOpen: true/false, businessHours: "The office IS OPEN..." }`
+4. ⏰ Returns: `{ isBusinessOpen: true/false, isOnBreak: true/false, businessHours: "..." }`
 5. 💬 The AI uses the correct greeting:
-   - **Open:** "Thank you for calling Farm Bureau Financial Services! How can I help you today?"
-   - **Closed:** "Thank you for calling Farm Bureau Financial Services. We're currently closed, but I'd be happy to take your information..."
+   - **Open:** "Thank you for calling [Business]! How can I help you today?"
+   - **On break:** "Thank you for calling [Business]. The office is on a short break but will reopen later today. I'd be happy to take your information..."
+   - **Closed:** "Thank you for calling [Business]. We're currently closed, but I'd be happy to take your information..."
 
 ---
 
@@ -310,16 +368,11 @@ Already done — the prompt files already tell the AI to call `check_current_tim
 When you sign a new client:
 
 1. **Open the Google Sheet**
-2. **Add a new row** with their info:
-
-| client | name | timezone | mon_open | mon_close | ... |
-|---|---|---|---|---|---|
-| texas-dentist | Smile Dental | America/Chicago | 8 | 17 | ... |
-
+2. **Add a new row** with their info
 3. **In their Vapi assistant**, set the tool Server URL to:
-   `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=texas-dentist`
+   `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=their-slug`
 
-**That's it.** No code changes, no redeploying. The worker reads the sheet live.
+**That's it.** No code changes, no redeploying.
 
 ---
 
@@ -353,22 +406,57 @@ When you sign a new client:
 | California, Oregon, Washington | `America/Los_Angeles` (Pacific) |
 | Arizona (no daylight saving) | `America/Phoenix` |
 
-**Closed days:** Just leave the open/close columns blank for that day.
+---
+
+## Google Sheet Examples
+
+### Simple: No lunch break (like Mike)
+| client | name | timezone | mon_open1 | mon_close1 | mon_open2 | mon_close2 |
+|---|---|---|---|---|---|---|
+| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | | |
+
+→ Open 9am-5pm straight through. Block 2 is blank = no break.
+
+### With lunch break: Closed 12-1pm
+| client | name | timezone | mon_open1 | mon_close1 | mon_open2 | mon_close2 |
+|---|---|---|---|---|---|---|
+| texas-dentist | Smile Dental | America/Chicago | 8 | 12 | 13 | 17 |
+
+→ Open 8am-12pm, closed for lunch 12-1pm, open 1pm-5pm.
+
+### With lunch break: Closed 12-1:30pm
+| client | name | timezone | mon_open1 | mon_close1 | mon_open2 | mon_close2 |
+|---|---|---|---|---|---|---|
+| law-firm | Johnson Law | America/New_York | 9 | 12 | 13.5 | 18 |
+
+→ Open 9am-12pm, closed 12-1:30pm, open 1:30pm-6pm. (Use 13.5 for 1:30pm)
+
+### Saturday half-day, no break
+| client | ... | sat_open1 | sat_close1 | sat_open2 | sat_close2 |
+|---|---|---|---|---|---|
+| hvac-company | ... | 8 | 12 | | |
+
+→ Saturday 8am-12pm only. No afternoon block.
+
+### Closed all day (leave ALL columns blank)
+| client | ... | sun_open1 | sun_close1 | sun_open2 | sun_close2 |
+|---|---|---|---|---|---|
+| any-business | ... | | | | |
+
+→ Sunday = closed.
 
 ---
 
-## Example: 3 Clients in the Google Sheet
+## Half-Hour Times
 
-| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 16 | | | | |
-| texas-dentist | Smile Dental | America/Chicago | 8 | 17 | 8 | 17 | 8 | 17 | 8 | 17 | 8 | 14 | | | | |
-| ny-law-firm | Johnson & Associates | America/New_York | 9 | 18 | 9 | 18 | 9 | 18 | 9 | 18 | 9 | 17 | 10 | 14 | | |
-
-**Vapi tool URLs:**
-- Mike: `...?client=farm-bureau`
-- Dentist: `...?client=texas-dentist`
-- Law firm: `...?client=ny-law-firm`
+For times like 8:30 AM or 1:30 PM, use decimals:
+| Time | Value |
+|---|---|
+| 8:30 AM | 8.5 |
+| 9:30 AM | 9.5 |
+| 12:30 PM | 12.5 |
+| 1:30 PM | 13.5 |
+| 5:30 PM | 17.5 |
 
 ---
 
@@ -377,6 +465,7 @@ When you sign a new client:
 After setup, test with these scenarios:
 - [ ] Visit `YOUR-WORKER-URL?client=farm-bureau` in browser → Should show current time + open/closed
 - [ ] Call during business hours → AI should NOT say "we're closed"
+- [ ] Call during lunch break → AI should say "on a short break"
 - [ ] Call after hours → AI should say "we're currently closed"
 - [ ] Call on weekend → AI should say "we're currently closed"
 - [ ] Add a test row to the sheet → Visit `?client=test-row` → Should pick up the new hours
@@ -396,7 +485,7 @@ After setup, test with these scenarios:
 
 **Sheet changes don't show up immediately:**
 - The Worker caches the sheet for 5 minutes for speed. Changes will take up to 5 min to appear.
-- To test immediately, add `?nocache=1` to the Worker URL
+- To test immediately, add `&nocache=1` to the Worker URL
 
 **AI says the wrong greeting:**
 - Check the Worker URL in browser — is `isBusinessOpen` correct?
