@@ -33,7 +33,8 @@ AI Receptionist for after-hours call handling
 - **Monthly Fee:** None
 - **Setup Fee:** $1,500 (one-time — covers configuration, integration, testing)
 - **Per Minute:** $0.90/minute (only charged for actual call time)
-- **Contract:** Month-to-month (no long-term commitment)
+- **Minimum Commitment:** 3 months
+- **Contract:** 3-month minimum, then month-to-month after that
 - **Best For:** Smaller businesses, businesses that want to try it before committing, lower call volume
 
 **Pay-Per-Use Math:**

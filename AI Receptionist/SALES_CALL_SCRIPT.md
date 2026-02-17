@@ -64,7 +64,7 @@ The goal here is to find their PAIN. Don't pitch yet — just listen.
 >
 > I have two options for you:
 >
-> **Option 1 — Pay-Per-Use.** There's no monthly fee. You only pay when the AI is actually on a call — **90 cents a minute**. A typical call is 2-3 minutes, so you're looking at about **$2-3 per lead captured**. There's a one-time $1,500 setup fee and that's it. Zero calls means zero cost. It's completely risk-free.
+> **Option 1 — Pay-Per-Use.** There's no monthly fee. You only pay when the AI is actually on a call — **90 cents a minute**. A typical call is 2-3 minutes, so you're looking at about **$2-3 per lead captured**. There's a one-time $1,500 setup fee and a 3-month minimum — after that it goes month-to-month. Zero calls means zero cost.
 >
 > **Option 2 — Pro.** **$1,700 a month, flat.** That includes 3,000 call minutes, no setup fee, instant email delivery after every call with the full transcript and recording, and I personally monitor and optimize it for you every month. That works out to **$57 a day** — less than one hour of a human receptionist.
 >
@@ -160,6 +160,7 @@ The goal here is to find their PAIN. Don't pitch yet — just listen.
 |------|-------|
 | **Pay-Per-Use price** | $0.90/min (no monthly fee) |
 | **Pay-Per-Use setup** | $1,500 one-time |
+| **Pay-Per-Use minimum** | 3 months |
 | **Pro price** | $1,700/month flat |
 | **Pro included minutes** | 3,000 |
 | **Pro overage rate** | $0.30/min |
