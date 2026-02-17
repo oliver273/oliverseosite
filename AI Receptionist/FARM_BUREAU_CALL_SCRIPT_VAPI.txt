@@ -32,7 +32,7 @@
 - **If 7 digits** (no area code) → Ask: "And what's the area code for that?" Save the full number. Say: "Thank you." **GO TO LINE 7.**
 - **🚨 Do NOT ask for the area code if they already gave 10 digits. Do NOT ask for the phone number again if they already gave it.**
 
-**LINE 7:** Say: "Do you have an email address we can reach you at?" **GO TO LINE 8.**
+**LINE 7:** Say: "Would you like to leave an email address?" **GO TO LINE 8.**
 
 **LINE 8:** Wait for caller's response.
 - **If they give an email:** Save it exactly as they say it. Say: "Thank you." **GO TO LINE 9.**
