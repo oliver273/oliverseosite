@@ -1,4 +1,6 @@
-# MANDATORY CALL SCRIPT - FOLLOW EXACTLY
+# DEPRECATED — Call script is now embedded directly in the system prompt (AI_RECEPTIONIST_PROMPT.md). Remove this file from Vapi's Knowledge Base.
+
+# MANDATORY CALL SCRIPT - FOLLOW EXACTLY (OLD — kept for reference)
 
 **YOU MUST FOLLOW THIS SCRIPT LINE BY LINE. DO NOT SKIP LINES. COMPLETE ALL STEPS BEFORE ENDING THE CALL.**
 
