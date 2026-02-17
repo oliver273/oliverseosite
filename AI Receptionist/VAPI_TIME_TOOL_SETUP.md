@@ -1,6 +1,8 @@
 # ⏰ Vapi Time Tool Setup — How to Make the AI Know the Time
 
-**Purpose:** Give the AI receptionist the ability to check the current time in MST so it can adjust its greeting based on whether the business is open or closed.
+**Purpose:** Give the AI receptionist the ability to check the current time so it can adjust its greeting based on whether the business is open or closed.
+
+**Scales to unlimited clients** — one Cloudflare Worker handles ALL clients. Each client's hours and timezone are stored in the worker. When you onboard a new client, just add their hours to the code and set their Vapi tool URL with `?client=client-slug`.
 
 ---
 
@@ -29,10 +31,72 @@ export default {
       });
     }
 
-    // Get current time in Mountain Time (America/Denver handles MST/MDT automatically)
+    // ============================================================
+    // CLIENT DATABASE — Add new clients here as you onboard them
+    // ============================================================
+    const clients = {
+      "farm-bureau": {
+        name: "Farm Bureau Financial Services",
+        timezone: "America/Denver",  // MST/MDT (auto-adjusts for daylight saving)
+        hours: {
+          1: { open: 9, close: 17 },  // Monday: 9am-5pm
+          2: { open: 9, close: 17 },  // Tuesday: 9am-5pm
+          3: { open: 9, close: 17 },  // Wednesday: 9am-5pm
+          4: { open: 9, close: 17 },  // Thursday: 9am-5pm
+          5: { open: 9, close: 16 },  // Friday: 9am-4pm
+          // 0 (Sunday) and 6 (Saturday) = not listed = closed
+        },
+      },
+      // -------------------------------------------------------
+      // TO ADD A NEW CLIENT, copy this template and fill it in:
+      // -------------------------------------------------------
+      // "client-slug": {
+      //   name: "Business Name",
+      //   timezone: "America/Denver",  // or "America/Chicago", "America/New_York", "America/Los_Angeles"
+      //   hours: {
+      //     1: { open: 9, close: 17 },  // Monday
+      //     2: { open: 9, close: 17 },  // Tuesday
+      //     3: { open: 9, close: 17 },  // Wednesday
+      //     4: { open: 9, close: 17 },  // Thursday
+      //     5: { open: 9, close: 17 },  // Friday
+      //     6: { open: 10, close: 14 }, // Saturday (optional)
+      //     // 0 = Sunday (leave out if closed)
+      //   },
+      // },
+    };
+
+    // ============================================================
+    // DETERMINE WHICH CLIENT IS CALLING
+    // ============================================================
+    let clientId = "farm-bureau"; // default
+
+    // Check URL parameter: ?client=farm-bureau
+    const url = new URL(request.url);
+    if (url.searchParams.has("client")) {
+      clientId = url.searchParams.get("client");
+    }
+
+    // Check POST body (for Vapi tool calls)
+    if (request.method === "POST") {
+      try {
+        const body = await request.clone().json();
+        // Vapi sends tool call arguments in message.toolCallList[0].function.arguments
+        if (body?.message?.toolCallList?.[0]?.function?.arguments?.client) {
+          clientId = body.message.toolCallList[0].function.arguments.client;
+        }
+      } catch (e) {
+        // If body parsing fails, use default
+      }
+    }
+
+    const client = clients[clientId] || clients["farm-bureau"];
+
+    // ============================================================
+    // GET CURRENT TIME IN CLIENT'S TIMEZONE
+    // ============================================================
     const now = new Date();
     const options = {
-      timeZone: "America/Denver",
+      timeZone: client.timezone,
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
@@ -59,10 +123,7 @@ export default {
     if (dayPeriod === "PM" && hour !== 12) hour24 = hour + 12;
     if (dayPeriod === "AM" && hour === 12) hour24 = 0;
 
-    // Check business hours
-    // Mon-Thu: 9am-5pm (9:00-17:00)
-    // Fri: 9am-4pm (9:00-16:00)
-    // Sat-Sun: Closed
+    // Check if business is open based on client's hours
     const dayMap = {
       "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
       "Thursday": 4, "Friday": 5, "Saturday": 6,
@@ -70,17 +131,21 @@ export default {
     const dayNum = dayMap[weekday];
     let isOpen = false;
 
-    if (dayNum >= 1 && dayNum <= 4) {
-      // Monday-Thursday: 9am-5pm
-      isOpen = hour24 >= 9 && hour24 < 17;
-    } else if (dayNum === 5) {
-      // Friday: 9am-4pm
-      isOpen = hour24 >= 9 && hour24 < 16;
+    if (client.hours[dayNum]) {
+      isOpen = hour24 >= client.hours[dayNum].open && hour24 < client.hours[dayNum].close;
     }
-    // Saturday (6) and Sunday (0) = closed
 
     const timeString = `${hour}:${minute} ${dayPeriod}`;
     const dateString = `${weekday}, ${month}/${day}/${year}`;
+
+    // Build hours description for the AI
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let hoursDesc = [];
+    for (const [d, h] of Object.entries(client.hours)) {
+      const openAmPm = h.open >= 12 ? `${h.open === 12 ? 12 : h.open - 12}pm` : `${h.open}am`;
+      const closeAmPm = h.close >= 12 ? `${h.close === 12 ? 12 : h.close - 12}pm` : `${h.close}am`;
+      hoursDesc.push(`${dayNames[d]}: ${openAmPm}-${closeAmPm}`);
+    }
 
     const result = {
       results: [
@@ -90,11 +155,12 @@ export default {
             currentTime: timeString,
             currentDate: dateString,
             dayOfWeek: weekday,
-            timezone: "Mountain Time (MST/MDT)",
+            timezone: client.timezone,
+            businessName: client.name,
             isBusinessOpen: isOpen,
             businessHours: isOpen
               ? `The office IS OPEN right now. Current time: ${timeString} ${dateString}.`
-              : `The office is CLOSED right now. Current time: ${timeString} ${dateString}. Business hours: Mon-Thu 9am-5pm, Fri 9am-4pm MST.`,
+              : `The office is CLOSED right now. Current time: ${timeString} ${dateString}. Business hours: ${hoursDesc.join(", ")}.`,
           },
         },
       ],
@@ -110,9 +176,30 @@ export default {
 };
 ```
 
+**How to add a new client:** Just add a new entry to the `clients` object at the top of the code. Example for a dentist in Chicago:
+
+```javascript
+"chicago-dentist": {
+  name: "Smile Dental",
+  timezone: "America/Chicago",  // Central Time
+  hours: {
+    1: { open: 8, close: 17 },  // Monday: 8am-5pm
+    2: { open: 8, close: 17 },  // Tuesday
+    3: { open: 8, close: 17 },  // Wednesday
+    4: { open: 8, close: 17 },  // Thursday
+    5: { open: 8, close: 14 },  // Friday: 8am-2pm
+  },
+},
+```
+
+Then in that client's Vapi tool, set the Server URL to:
+`https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=chicago-dentist`
+
 9. Click **"Save and Deploy"**
 10. Copy the URL — it'll look something like: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev`
-11. **Test it** by visiting that URL in your browser — you should see the current MST time and whether the office is open
+11. **Test it** by visiting that URL in your browser — you should see the current time and whether the office is open
+12. **For Mike**, use: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau`
+13. **For future clients**, add them to the `clients` object and use `?client=their-slug`
 
 ---
 
@@ -131,9 +218,11 @@ export default {
 Returns the current time in Mountain Time (MST) and whether the business is currently open or closed. ALWAYS call this tool at the very start of every call before your first greeting.
 ```
 
-**Server URL:** `https://get-current-time.YOUR-SUBDOMAIN.workers.dev` (paste YOUR Cloudflare Worker URL here)
+**Server URL:** `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau` (paste YOUR Worker URL + client slug)
 
-**No parameters needed** — leave parameters empty or set to none.
+**No parameters needed** — the client is identified by the URL. Leave parameters empty or set to none.
+
+> **For each new client's Vapi assistant**, just change the `?client=` part of the URL to match their slug in the worker code.
 
 ---
 
@@ -157,6 +246,29 @@ BEFORE YOUR FIRST RESPONSE ON EVERY CALL, you MUST call the check_current_time t
 5. 💬 The AI uses the correct greeting:
    - **Open:** "Thank you for calling Farm Bureau Financial Services! How can I help you today?"
    - **Closed:** "Thank you for calling Farm Bureau Financial Services. We're currently closed, but I'd be happy to take your information..."
+
+---
+
+---
+
+## Adding a New Client (2 min per client)
+
+When you sign a new client, here's all you do:
+
+1. **Open the Cloudflare Worker** → Edit Code
+2. **Add their hours** to the `clients` object (copy the template, fill in name/timezone/hours)
+3. **Save and Deploy**
+4. **In their Vapi assistant**, set the tool Server URL to: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=their-slug`
+
+That's it. One worker, unlimited clients.
+
+**Common timezones:**
+| Location | Timezone |
+|---|---|
+| Wyoming, Colorado, Montana | `America/Denver` (Mountain) |
+| Texas, Illinois, Wisconsin | `America/Chicago` (Central) |
+| New York, Florida, Georgia | `America/New_York` (Eastern) |
+| California, Oregon, Washington | `America/Los_Angeles` (Pacific) |
 
 ---
 
