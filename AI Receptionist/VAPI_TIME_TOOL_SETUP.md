@@ -44,14 +44,32 @@ export default {
 
     const now = new Date();
 
+    // Pre-convert to all US timezones so the AI doesn't have to do math
+    function formatTime(date, tz) {
+      const f = new Intl.DateTimeFormat("en-US", {
+        timeZone: tz,
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      return f.format(date);
+    }
+
     const result = {
       results: [
         {
           toolCallId: toolCallId,
           result: JSON.stringify({
+            mountain_time: formatTime(now, "America/Denver"),
+            central_time: formatTime(now, "America/Chicago"),
+            eastern_time: formatTime(now, "America/New_York"),
+            pacific_time: formatTime(now, "America/Los_Angeles"),
+            arizona_time: formatTime(now, "America/Phoenix"),
             utc: now.toISOString(),
-            utc_readable: now.toUTCString(),
-            unix_timestamp: Math.floor(now.getTime() / 1000),
           }),
         },
       ],
@@ -118,9 +136,9 @@ The AI will:
 Just include a section like this in each client's system prompt:
 
 ```
-BEFORE YOUR FIRST RESPONSE ON EVERY CALL, you MUST call the check_current_time tool. It returns the current time in UTC. Convert it to the local timezone below, then decide if the business is open or closed.
+BEFORE YOUR FIRST RESPONSE ON EVERY CALL, you MUST call the check_current_time tool. It returns the time already converted to multiple US timezones. Use the correct one for this business (see TIMEZONE below).
 
-TIMEZONE: Mountain Time (UTC-7 MST / UTC-6 MDT during daylight saving, March-November)
+TIMEZONE: Mountain Time — use the `mountain_time` field from the tool result.
 
 BUSINESS HOURS:
 - Monday-Thursday: 9:00 AM - 5:00 PM
