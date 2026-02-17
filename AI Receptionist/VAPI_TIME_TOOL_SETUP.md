@@ -29,17 +29,30 @@ export default {
       });
     }
 
+    // Read the toolCallId from Vapi's request (Vapi needs it echoed back)
+    let toolCallId = "time-check";
+    if (request.method === "POST") {
+      try {
+        const body = await request.json();
+        if (body?.message?.toolCallList?.[0]?.id) {
+          toolCallId = body.message.toolCallList[0].id;
+        }
+      } catch (e) {
+        // If parsing fails, use default
+      }
+    }
+
     const now = new Date();
 
     const result = {
       results: [
         {
-          toolCallId: "time-check",
-          result: {
+          toolCallId: toolCallId,
+          result: JSON.stringify({
             utc: now.toISOString(),
             utc_readable: now.toUTCString(),
             unix_timestamp: Math.floor(now.getTime() / 1000),
-          },
+          }),
         },
       ],
     };
