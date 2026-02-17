@@ -2,20 +2,54 @@
 
 **Purpose:** Give the AI receptionist the ability to check the current time so it can adjust its greeting based on whether the business is open or closed.
 
-**Scales to unlimited clients** — one Cloudflare Worker handles ALL clients. Each client's hours and timezone are stored in the worker. When you onboard a new client, just add their hours to the code and set their Vapi tool URL with `?client=client-slug`.
+**Scales to unlimited clients** — one Cloudflare Worker + one Google Sheet. To add a new client, just add a row to the spreadsheet. No code editing ever again.
 
 ---
 
-## STEP 1: Create a Cloudflare Worker
+## STEP 1: Create the Google Sheet
+
+1. Go to [sheets.google.com](https://sheets.google.com) → **Create a new spreadsheet**
+2. Name it: **"AI Receptionist — Business Hours"**
+3. Set up the columns **exactly** like this in Row 1:
+
+| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
+
+4. Add Mike as the first row (Row 2):
+
+| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 16 | | | | |
+
+**Hours are in 24-hour format:**
+- 9 = 9:00 AM
+- 12 = 12:00 PM (noon)
+- 13 = 1:00 PM
+- 17 = 5:00 PM
+- 16 = 4:00 PM
+- Leave sat/sun columns **blank** = closed that day
+
+5. **Publish the sheet:**
+   - Go to **File → Share → Publish to web**
+   - Under "Link", select the sheet tab (usually "Sheet1")
+   - Change format from "Web page" to **"Comma-separated values (.csv)"**
+   - Click **"Publish"**
+   - **Copy the URL** it gives you — it looks like:
+     `https://docs.google.com/spreadsheets/d/e/XXXXX/pub?gid=0&single=true&output=csv`
+   - **Save this URL** — you'll paste it into the Cloudflare Worker
+
+---
+
+## STEP 2: Create the Cloudflare Worker
 
 1. Go to [dash.cloudflare.com](https://dash.cloudflare.com)
 2. Click **"Workers & Pages"** in the left sidebar
-3. Click **"Create"**
-4. Click **"Create Worker"**
-5. Name it: `get-current-time`
-6. Click **"Deploy"** (it creates a default worker)
-7. Click **"Edit Code"** (or "Quick Edit")
-8. **Delete everything** in the code editor and paste this:
+3. Click **"Create"** → **"Create Worker"**
+4. Name it: `get-current-time`
+5. Click **"Deploy"** (it creates a default worker)
+6. Click **"Edit Code"** (or "Quick Edit")
+7. **Delete everything** in the code editor and paste this:
 
 ```javascript
 export default {
@@ -32,43 +66,14 @@ export default {
     }
 
     // ============================================================
-    // CLIENT DATABASE — Add new clients here as you onboard them
+    // 🔗 PASTE YOUR GOOGLE SHEETS CSV URL BELOW
     // ============================================================
-    const clients = {
-      "farm-bureau": {
-        name: "Farm Bureau Financial Services",
-        timezone: "America/Denver",  // MST/MDT (auto-adjusts for daylight saving)
-        hours: {
-          1: { open: 9, close: 17 },  // Monday: 9am-5pm
-          2: { open: 9, close: 17 },  // Tuesday: 9am-5pm
-          3: { open: 9, close: 17 },  // Wednesday: 9am-5pm
-          4: { open: 9, close: 17 },  // Thursday: 9am-5pm
-          5: { open: 9, close: 16 },  // Friday: 9am-4pm
-          // 0 (Sunday) and 6 (Saturday) = not listed = closed
-        },
-      },
-      // -------------------------------------------------------
-      // TO ADD A NEW CLIENT, copy this template and fill it in:
-      // -------------------------------------------------------
-      // "client-slug": {
-      //   name: "Business Name",
-      //   timezone: "America/Denver",  // or "America/Chicago", "America/New_York", "America/Los_Angeles"
-      //   hours: {
-      //     1: { open: 9, close: 17 },  // Monday
-      //     2: { open: 9, close: 17 },  // Tuesday
-      //     3: { open: 9, close: 17 },  // Wednesday
-      //     4: { open: 9, close: 17 },  // Thursday
-      //     5: { open: 9, close: 17 },  // Friday
-      //     6: { open: 10, close: 14 }, // Saturday (optional)
-      //     // 0 = Sunday (leave out if closed)
-      //   },
-      // },
-    };
+    const SHEET_CSV_URL = "PASTE_YOUR_PUBLISHED_CSV_URL_HERE";
 
     // ============================================================
     // DETERMINE WHICH CLIENT IS CALLING
     // ============================================================
-    let clientId = "farm-bureau"; // default
+    let clientId = "farm-bureau"; // default fallback
 
     // Check URL parameter: ?client=farm-bureau
     const url = new URL(request.url);
@@ -80,16 +85,91 @@ export default {
     if (request.method === "POST") {
       try {
         const body = await request.clone().json();
-        // Vapi sends tool call arguments in message.toolCallList[0].function.arguments
         if (body?.message?.toolCallList?.[0]?.function?.arguments?.client) {
           clientId = body.message.toolCallList[0].function.arguments.client;
         }
       } catch (e) {
-        // If body parsing fails, use default
+        // If body parsing fails, use URL parameter or default
       }
     }
 
-    const client = clients[clientId] || clients["farm-bureau"];
+    // ============================================================
+    // FETCH CLIENT HOURS FROM GOOGLE SHEETS
+    // ============================================================
+    let client = null;
+
+    try {
+      const sheetResponse = await fetch(SHEET_CSV_URL, {
+        cf: { cacheTtl: 300 }, // Cache for 5 minutes so it's fast
+      });
+      const csvText = await sheetResponse.text();
+      const rows = csvText.split("\n").map(row => {
+        // Handle CSV parsing (basic — works for simple values without commas in them)
+        return row.split(",").map(cell => cell.trim().replace(/^"|"$/g, ""));
+      });
+
+      // Row 0 = headers, Row 1+ = data
+      const headers = rows[0];
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (row[0] === clientId) {
+          client = {
+            name: row[headers.indexOf("name")] || "Unknown Business",
+            timezone: row[headers.indexOf("timezone")] || "America/Denver",
+            hours: {},
+          };
+
+          // Parse hours: mon=1, tue=2, wed=3, thu=4, fri=5, sat=6, sun=0
+          const dayMapping = [
+            { prefix: "mon", dayNum: 1 },
+            { prefix: "tue", dayNum: 2 },
+            { prefix: "wed", dayNum: 3 },
+            { prefix: "thu", dayNum: 4 },
+            { prefix: "fri", dayNum: 5 },
+            { prefix: "sat", dayNum: 6 },
+            { prefix: "sun", dayNum: 0 },
+          ];
+
+          for (const { prefix, dayNum } of dayMapping) {
+            const openCol = headers.indexOf(`${prefix}_open`);
+            const closeCol = headers.indexOf(`${prefix}_close`);
+            const openVal = row[openCol];
+            const closeVal = row[closeCol];
+            if (openVal && closeVal && openVal !== "" && closeVal !== "") {
+              client.hours[dayNum] = {
+                open: parseInt(openVal),
+                close: parseInt(closeVal),
+              };
+            }
+          }
+          break;
+        }
+      }
+    } catch (e) {
+      // If Google Sheets fetch fails, return a safe fallback
+    }
+
+    // If client not found, return a safe "closed" fallback
+    if (!client) {
+      const result = {
+        results: [{
+          toolCallId: "time-check",
+          result: {
+            currentTime: "unknown",
+            currentDate: "unknown",
+            dayOfWeek: "unknown",
+            timezone: "unknown",
+            businessName: "Unknown",
+            isBusinessOpen: false,
+            businessHours: "Could not determine business hours. Default to after-hours greeting.",
+          },
+        }],
+      };
+      return new Response(JSON.stringify(result), {
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
 
     // ============================================================
     // GET CURRENT TIME IN CLIENT'S TIMEZONE
@@ -123,7 +203,7 @@ export default {
     if (dayPeriod === "PM" && hour !== 12) hour24 = hour + 12;
     if (dayPeriod === "AM" && hour === 12) hour24 = 0;
 
-    // Check if business is open based on client's hours
+    // Check if business is open
     const dayMap = {
       "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
       "Thursday": 4, "Friday": 5, "Saturday": 6,
@@ -176,34 +256,15 @@ export default {
 };
 ```
 
-**How to add a new client:** Just add a new entry to the `clients` object at the top of the code. Example for a dentist in Chicago:
-
-```javascript
-"chicago-dentist": {
-  name: "Smile Dental",
-  timezone: "America/Chicago",  // Central Time
-  hours: {
-    1: { open: 8, close: 17 },  // Monday: 8am-5pm
-    2: { open: 8, close: 17 },  // Tuesday
-    3: { open: 8, close: 17 },  // Wednesday
-    4: { open: 8, close: 17 },  // Thursday
-    5: { open: 8, close: 14 },  // Friday: 8am-2pm
-  },
-},
-```
-
-Then in that client's Vapi tool, set the Server URL to:
-`https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=chicago-dentist`
-
+8. **⚠️ IMPORTANT:** Replace `PASTE_YOUR_PUBLISHED_CSV_URL_HERE` on line 15 with the Google Sheets CSV URL you copied in Step 1.
 9. Click **"Save and Deploy"**
-10. Copy the URL — it'll look something like: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev`
-11. **Test it** by visiting that URL in your browser — you should see the current time and whether the office is open
-12. **For Mike**, use: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau`
-13. **For future clients**, add them to the `clients` object and use `?client=their-slug`
+10. Copy the Worker URL — it looks like: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev`
+11. **Test it** in your browser: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau`
+    - You should see the current MST time and `isBusinessOpen: true` or `false`
 
 ---
 
-## STEP 2: Add the Tool in Vapi
+## STEP 3: Add the Tool in Vapi
 
 1. Go to [dashboard.vapi.ai](https://dashboard.vapi.ai)
 2. Open your **Mike's Farm Bureau** assistant
@@ -213,89 +274,138 @@ Then in that client's Vapi tool, set the Server URL to:
 
 **Tool Name:** `check_current_time`
 
-**Description:** 
+**Description:**
 ```
-Returns the current time in Mountain Time (MST) and whether the business is currently open or closed. ALWAYS call this tool at the very start of every call before your first greeting.
+Returns the current time and whether the business is currently open or closed. ALWAYS call this tool at the very start of every call before your first greeting.
 ```
 
-**Server URL:** `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau` (paste YOUR Worker URL + client slug)
+**Server URL:** `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=farm-bureau` (YOUR Worker URL + client slug)
 
-**No parameters needed** — the client is identified by the URL. Leave parameters empty or set to none.
+**No parameters needed** — the client is identified by the URL. Leave parameters empty.
 
-> **For each new client's Vapi assistant**, just change the `?client=` part of the URL to match their slug in the worker code.
+> **For each new client**, just change `?client=` to match their slug from the Google Sheet.
 
 ---
 
-## STEP 3: Update the System Prompt
+## STEP 4: Update the System Prompt
 
-The prompt is already set up with time-aware instructions. You just need to add one line at the very top of the system prompt:
-
-**Add this at the very beginning of the system prompt:**
-```
-BEFORE YOUR FIRST RESPONSE ON EVERY CALL, you MUST call the check_current_time tool to find out if the business is open or closed. Use the result to choose the correct greeting. Do NOT guess the time — always call the tool first.
-```
+Already done — the prompt files already tell the AI to call `check_current_time` first.
 
 ---
 
 ## How It Works (The Flow)
 
 1. ☎️ A call comes in
-2. 🤖 The AI sees "call check_current_time first" in the prompt
-3. 🔧 The AI calls the Cloudflare Worker tool
-4. ⏰ The Worker returns: `{ isBusinessOpen: true/false, businessHours: "The office IS OPEN..." }`
+2. 🤖 The AI calls the `check_current_time` tool (before saying anything)
+3. 🔧 The Cloudflare Worker fetches the Google Sheet → finds the client's hours → checks the time
+4. ⏰ Returns: `{ isBusinessOpen: true/false, businessHours: "The office IS OPEN..." }`
 5. 💬 The AI uses the correct greeting:
    - **Open:** "Thank you for calling Farm Bureau Financial Services! How can I help you today?"
    - **Closed:** "Thank you for calling Farm Bureau Financial Services. We're currently closed, but I'd be happy to take your information..."
 
 ---
 
+## 🆕 Adding a New Client (1 minute — NO code changes)
+
+When you sign a new client:
+
+1. **Open the Google Sheet**
+2. **Add a new row** with their info:
+
+| client | name | timezone | mon_open | mon_close | ... |
+|---|---|---|---|---|---|
+| texas-dentist | Smile Dental | America/Chicago | 8 | 17 | ... |
+
+3. **In their Vapi assistant**, set the tool Server URL to:
+   `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=texas-dentist`
+
+**That's it.** No code changes, no redeploying. The worker reads the sheet live.
+
 ---
 
-## Adding a New Client (2 min per client)
+## Quick Reference: Hours Format
 
-When you sign a new client, here's all you do:
-
-1. **Open the Cloudflare Worker** → Edit Code
-2. **Add their hours** to the `clients` object (copy the template, fill in name/timezone/hours)
-3. **Save and Deploy**
-4. **In their Vapi assistant**, set the tool Server URL to: `https://get-current-time.YOUR-SUBDOMAIN.workers.dev?client=their-slug`
-
-That's it. One worker, unlimited clients.
+**24-hour clock:**
+| Time | Value |
+|---|---|
+| 6:00 AM | 6 |
+| 7:00 AM | 7 |
+| 8:00 AM | 8 |
+| 9:00 AM | 9 |
+| 10:00 AM | 10 |
+| 11:00 AM | 11 |
+| 12:00 PM (noon) | 12 |
+| 1:00 PM | 13 |
+| 2:00 PM | 14 |
+| 3:00 PM | 15 |
+| 4:00 PM | 16 |
+| 5:00 PM | 17 |
+| 6:00 PM | 18 |
+| 7:00 PM | 19 |
+| 8:00 PM | 20 |
 
 **Common timezones:**
-| Location | Timezone |
+| Location | Timezone Value |
 |---|---|
 | Wyoming, Colorado, Montana | `America/Denver` (Mountain) |
 | Texas, Illinois, Wisconsin | `America/Chicago` (Central) |
 | New York, Florida, Georgia | `America/New_York` (Eastern) |
 | California, Oregon, Washington | `America/Los_Angeles` (Pacific) |
+| Arizona (no daylight saving) | `America/Phoenix` |
+
+**Closed days:** Just leave the open/close columns blank for that day.
+
+---
+
+## Example: 3 Clients in the Google Sheet
+
+| client | name | timezone | mon_open | mon_close | tue_open | tue_close | wed_open | wed_close | thu_open | thu_close | fri_open | fri_close | sat_open | sat_close | sun_open | sun_close |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| farm-bureau | Farm Bureau Financial Services | America/Denver | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 17 | 9 | 16 | | | | |
+| texas-dentist | Smile Dental | America/Chicago | 8 | 17 | 8 | 17 | 8 | 17 | 8 | 17 | 8 | 14 | | | | |
+| ny-law-firm | Johnson & Associates | America/New_York | 9 | 18 | 9 | 18 | 9 | 18 | 9 | 18 | 9 | 17 | 10 | 14 | | |
+
+**Vapi tool URLs:**
+- Mike: `...?client=farm-bureau`
+- Dentist: `...?client=texas-dentist`
+- Law firm: `...?client=ny-law-firm`
 
 ---
 
 ## Testing
 
 After setup, test with these scenarios:
-- [ ] Call during business hours → Should NOT say "we're closed"
-- [ ] Call after hours → Should say "we're currently closed"
-- [ ] Call on weekend → Should say "we're currently closed"
-- [ ] Visit the Worker URL in browser → Should show current MST time
+- [ ] Visit `YOUR-WORKER-URL?client=farm-bureau` in browser → Should show current time + open/closed
+- [ ] Call during business hours → AI should NOT say "we're closed"
+- [ ] Call after hours → AI should say "we're currently closed"
+- [ ] Call on weekend → AI should say "we're currently closed"
+- [ ] Add a test row to the sheet → Visit `?client=test-row` → Should pick up the new hours
 
 ---
 
 ## Troubleshooting
 
-**AI doesn't call the tool:**
-- Make sure the tool description says to call it "at the very start of every call"
-- Make sure the prompt starts with the instruction to call check_current_time FIRST
+**Worker returns "Could not determine business hours":**
+- Check that the `client` parameter in the URL matches the value in column A of the sheet
+- Make sure the sheet is still published (File → Share → Publish to web)
+- Visit the CSV URL directly in your browser — you should see raw CSV data
 
-**Worker returns wrong time:**
-- The Worker uses "America/Denver" timezone which automatically handles MST/MDT daylight saving
-- Test by visiting the Worker URL in your browser
+**AI doesn't call the tool:**
+- Make sure the tool description says "ALWAYS call this at the very start of every call"
+- Make sure the system prompt starts with the instruction to call `check_current_time` first
+
+**Sheet changes don't show up immediately:**
+- The Worker caches the sheet for 5 minutes for speed. Changes will take up to 5 min to appear.
+- To test immediately, add `?nocache=1` to the Worker URL
 
 **AI says the wrong greeting:**
-- Check the Worker URL — is `isBusinessOpen` correct?
-- Make sure the prompt instructions match the time-aware greetings in CALL_SCRIPT.md
+- Check the Worker URL in browser — is `isBusinessOpen` correct?
+- Verify the hours in the Google Sheet are in 24-hour format
 
 ---
 
-**Cloudflare Workers Free Tier:** 100,000 requests/day — you'll never hit this. It's completely free.
+## Costs
+
+- **Cloudflare Worker:** FREE (100,000 requests/day)
+- **Google Sheets:** FREE
+- **Total cost:** $0/month forever
