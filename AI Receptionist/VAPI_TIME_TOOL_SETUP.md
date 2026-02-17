@@ -15,30 +15,35 @@ Vapi has built-in **dynamic variables** that get injected directly into the syst
 Put this in the system prompt:
 
 ```
-CURRENT UTC TIME: {{now}}
-Mountain Time = UTC minus 7 hours (MST winter) or UTC minus 6 hours (MDT summer, March-November).
+THE CURRENT TIME IS: {{"now" | date: "%A, %B %d, %Y, %I:%M %p", "America/Denver"}} (Mountain Time)
 ```
 
-When a call starts, Vapi replaces `{{now}}` with the actual UTC time. The AI then:
-1. Subtracts 7 hours to get Mountain Time
-2. Compares to business hours in the prompt
-3. Determines if office is open, on break, or closed
+When a call starts, Vapi replaces this with the actual Mountain Time, like:
 
-Example: If `{{now}}` shows 7:43 PM UTC → that's 12:43 PM Mountain Time → office is OPEN.
+```
+THE CURRENT TIME IS: Tuesday, February 17, 2026, 12:30 PM (Mountain Time)
+```
+
+The AI reads it directly — no timezone conversion needed. It compares to business hours and determines if the office is open or closed.
 
 ---
 
 ## For Different Timezones
 
-Just change the UTC offset instruction in the prompt:
+Just change the timezone string in the LiquidJS format:
 
-| Timezone | Instruction |
+| Timezone | Use |
 |---|---|
-| Mountain Time (Wyoming) | "Subtract 7 hours from UTC (MST) or 6 hours (MDT Mar-Nov)" |
-| Central Time (Texas) | "Subtract 6 hours from UTC (CST) or 5 hours (CDT Mar-Nov)" |
-| Eastern Time (New York) | "Subtract 5 hours from UTC (EST) or 4 hours (EDT Mar-Nov)" |
-| Pacific Time (California) | "Subtract 8 hours from UTC (PST) or 7 hours (PDT Mar-Nov)" |
-| Arizona (no DST) | "Subtract 7 hours from UTC year-round" |
+| Mountain Time (Wyoming) | `"America/Denver"` |
+| Central Time (Texas) | `"America/Chicago"` |
+| Eastern Time (New York) | `"America/New_York"` |
+| Pacific Time (California) | `"America/Los_Angeles"` |
+| Arizona (no DST) | `"America/Phoenix"` |
+
+### Example for a Central Time client:
+```
+THE CURRENT TIME IS: {{"now" | date: "%A, %B %d, %Y, %I:%M %p", "America/Chicago"}} (Central Time)
+```
 
 ---
 
