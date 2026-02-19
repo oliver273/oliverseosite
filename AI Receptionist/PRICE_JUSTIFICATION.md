@@ -42,21 +42,29 @@
 ---
 
 ### Option C: Your AI Receptionist ✅
-| Item | Cost |
-|------|------|
-| Monthly flat rate (everything included) | $1,700/month |
-| Setup & integration | $0 (included) |
-| Email delivery after every call | $0 (included) |
-| Call recordings & transcripts | $0 (included) |
-| Monthly optimization & support | $0 (included) |
-| **Total** | **$1,700/month — that's it** |
+
+**Pay-Per-Use:** $200/month base (200 min included) + $0.90/min after · $1,500 setup · 3-month min
+
+**Pro:** $1,700/month flat (3,000 min included) · no setup fee · month-to-month
+
+| Item | Pay-Per-Use | Pro |
+|------|-------------|-----|
+| Monthly fee | $200/month | $1,700/month |
+| Included minutes | 200 | 3,000 |
+| Appointment booking | ✅ Included | ✅ Included |
+| Email delivery after every call | ✅ Included | ✅ Included |
+| Call recordings & transcripts | ✅ Included | ✅ Included |
+| Monthly optimization & support | ✅ Included | ✅ Included |
+| HIPAA compliance (optional) | +$2,000/mo | +$2,000/mo |
 
 ✅ Works 24/7/365 — never sleeps, never calls in sick  
 ✅ Answers in under 2 seconds — never misses a ring  
 ✅ Sounds natural — callers don't realize it's AI  
+✅ Books appointments right into your calendar  
 ✅ Instant email to your team with name, phone, email, reason, transcript, and recording  
 ✅ No hidden fees, no per-minute surprises  
 ✅ Gets smarter every month (I optimize it for you)  
+✅ HIPAA compliant option for healthcare businesses  
 
 ---
 
@@ -215,7 +223,7 @@ That's less than:
 > "That's exactly what I'd suggest. Let's see how it performs this week — you'll be able to see every call, every email, every transcript. Then we can talk numbers once you've seen it in action."
 
 **"I can get an AI receptionist for $200/month online"**
-> "You can — those are DIY self-service platforms. You sign up, configure it yourself, write your own prompts, and troubleshoot it yourself when it breaks. That's a totally different product from what I offer. I build a custom AI for your specific business, set everything up, monitor every call, and optimize it monthly. You don't touch anything — it just works. And if you do the math on those platforms at 3,000 minutes, the overages put you at $1,200-$1,500/mo anyway — and you're still doing all the work yourself."
+> "You can — those are DIY self-service platforms. You sign up, configure it yourself, write your own prompts, and troubleshoot it yourself when it breaks. That's a totally different product from what I offer. I build a custom AI for your specific business, set everything up, monitor every call, and optimize it monthly. Mine also books appointments right into your calendar and I offer HIPAA compliance for healthcare businesses. You don't touch anything — it just works. And if you do the math on those platforms at 3,000 minutes, the overages put you at $1,200-$1,500/mo anyway — and you're still doing all the work yourself."
 
 **"My IT guy / buddy says they can build this"**
 > "They probably can — the tools exist. The question is: will they monitor it at 11 PM on a Saturday when something goes wrong? Will they optimize the prompts based on real call data every month? This is already built, already running for real businesses, and you can hear it right now at (307) 464-9517."

@@ -12,19 +12,19 @@ Use Instantly's variable tags: `{{firstName}}`, `{{companyName}}`
 
 ## STEP 1 — Initial Outreach
 
-**Subject:** Quick question about after-hours calls, {{firstName}}
+**Subject:** {{firstName}} — quick question
 
 **Body:**
 
 Hi {{firstName}},
 
-I noticed {{companyName}} likely gets calls outside business hours — and if no one picks up, that's a lost customer.
+Do you guys ever miss calls after hours at {{companyName}}?
 
-We built an AI receptionist that answers your phone 24/7, collects the caller's name, number, email, and reason for calling, then sends it to you instantly via email and spreadsheet.
+I set up an AI receptionist for an insurance office here in Wyoming — it picks up every call they miss, collects the caller's info, can even book appointments, and emails everything to their team instantly.
 
-It sounds natural (not robotic), and your callers won't know the difference.
+Want to hear what it sounds like? You can call it right now: (307) 464-9517
 
-Would you be open to a quick call to hear how it works? I can also set up a demo line you can call yourself.
+Oliver
 
 Best,
 Oliver Carroll
@@ -34,42 +34,36 @@ OliverSEO — AI Receptionist Services
 
 ## STEP 2 — Follow-Up (3 days later)
 
-**Subject:** Re: Quick question about after-hours calls, {{firstName}}
+**Subject:** Re: {{firstName}} — quick question
 
 **Body:**
 
 Hi {{firstName}},
 
-Just following up — I know you're busy running {{companyName}}.
+Just bumping this up. 80% of callers won't leave a voicemail — they just hang up and call someone else.
 
-Here's the short version: our AI answers your phone after hours, collects lead info, and delivers it to your inbox in real-time. No missed calls, no voicemail, no lost revenue.
+If you want to hear what the AI receptionist sounds like, call this number: (307) 464-9517
 
-One of our clients was losing 15+ after-hours calls a month. Now every one of those turns into a follow-up.
+Takes 30 seconds.
 
-Want to hear what it sounds like? I'll send you a number you can call right now.
-
-Best,
 Oliver
 
 ---
 
 ## STEP 3 — Final Follow-Up (5 days later)
 
-**Subject:** Last one from me, {{firstName}}
+**Subject:** not trying to spam you {{firstName}}
 
 **Body:**
 
-Hi {{firstName}},
+Hey {{firstName}},
 
-I don't want to fill your inbox — so this is my last note.
+Last email from me. If after-hours calls aren't a problem for {{companyName}}, totally ignore this.
 
-If you ever want to stop losing after-hours leads, we have an AI receptionist that handles it for about the cost of a part-time employee — but works 24/7 and never calls in sick.
+But if you're losing leads to voicemail, I built something that fixes it. Already running it for a business here in Wyoming.
 
-Here's a demo line you can call anytime to hear it in action: (307) 464-9517
+Demo line if you're curious: (307) 464-9517
 
-If the timing isn't right, no worries at all. Wishing you and {{companyName}} the best.
-
-Best,
 Oliver
 
 ---

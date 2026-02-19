@@ -64,23 +64,26 @@ The goal here is to find their PAIN. Don't pitch yet — just listen.
 >
 > I have two options for you:
 >
-> **Option 1 — Pay-Per-Use.** There's no monthly fee. You only pay when the AI is actually on a call — **90 cents a minute**. A typical call is 2-3 minutes, so you're looking at about **$2-3 per lead captured**. There's a one-time $1,500 setup fee and a 3-month minimum — after that it goes month-to-month. Zero calls means zero cost.
+> **Option 1 — Pay-Per-Use.** **$200 a month** base, which includes 200 minutes. After that it's **90 cents a minute**. A typical call is 2-3 minutes, so you're looking at about **$2-3 per lead captured**. There's a one-time $1,500 setup fee and a 3-month minimum — after that it goes month-to-month. And the AI can even book appointments right into your calendar.
 >
-> **Option 2 — Pro.** **$1,700 a month, flat.** That includes 3,000 call minutes, no setup fee, instant email delivery after every call with the full transcript and recording, and I personally monitor and optimize it for you every month. That works out to **$57 a day** — less than one hour of a human receptionist.
+> **Option 2 — Pro.** **$1,700 a month, flat.** That includes 3,000 call minutes, no setup fee, appointment booking, instant email delivery after every call with the full transcript and recording, and I personally monitor and optimize it for you every month. That works out to **$57 a day** — less than one hour of a human receptionist.
 >
-> Both plans include 24/7 coverage, email delivery, transcripts, recordings, Google Sheets integration, and monthly optimization. The only question is — do you want to pay per call or lock in a flat rate?"
+> Both plans include 24/7 coverage, appointment booking, email delivery, transcripts, recordings, Google Sheets integration, and monthly optimization. The only question is — do you want to start small or lock in the flat rate?"
 
 **If they lean toward Pay-Per-Use:**
-> "Great choice to start. And here's the thing — if your call volume picks up and you're spending over $1,700 a month anyway, I'll move you to the flat rate and save you money. I'll actually tell you when it makes sense to switch."
+> "Great choice to start. You get 200 minutes included in that $200 base — most businesses with light after-hours traffic stay well under that. And here's the thing — if your call volume picks up and you're spending over $1,700 a month anyway, I'll move you to the flat rate and save you money. I'll actually tell you when it makes sense to switch."
 
 **If they react to the price (sticker shock on Pro):**
-> "That's why I have the pay-per-use option. You can start at 90 cents a minute — no monthly commitment. If you get 20 calls a month at 3 minutes each, that's only $54. You're literally paying $3 to capture a lead that could be worth thousands."
+> "That's why I have the pay-per-use option. $200 a month with 200 minutes included — that covers most small businesses. If you get 20 calls a month at 3 minutes each, that's only 60 minutes — well within your included minutes. You're literally paying to capture leads that could be worth thousands."
 
 **The daily cost reframe (for Pro):**
-> "Think of it this way — $57 a day for a receptionist that never sleeps, never calls in sick, never takes a holiday, and emails your team instantly after every single call."
+> "Think of it this way — $57 a day for a receptionist that never sleeps, never calls in sick, never takes a holiday, books appointments, and emails your team instantly after every single call."
 
 **The per-lead reframe (for Pay-Per-Use):**
-> "You're paying about $2-3 to capture a lead that could be worth hundreds or thousands of dollars to your business. Compare that to a missed call that goes to voicemail — 80% of callers won't leave a message. That lead is just gone."
+> "At $200 a month with 200 minutes included, you're paying about $2-3 per lead captured. Compare that to a missed call that goes to voicemail — 80% of callers won't leave a message. That lead is just gone."
+
+**If they're in healthcare (HIPAA pitch):**
+> "Since you're in healthcare, I should mention — we also offer full HIPAA compliance as an add-on. That's an extra $2,000 a month, but it means all your patient calls are handled securely and you stay fully compliant. Most AI services can't even offer that."
 
 ---
 
@@ -158,19 +161,24 @@ The goal here is to find their PAIN. Don't pitch yet — just listen.
 
 | Stat | Value |
 |------|-------|
-| **Pay-Per-Use price** | $0.90/min (no monthly fee) |
+| **Pay-Per-Use base** | $200/month (includes 200 min) |
+| **Pay-Per-Use overage** | $0.90/min after 200 min |
 | **Pay-Per-Use setup** | $1,500 one-time |
 | **Pay-Per-Use minimum** | 3 months |
 | **Pro price** | $1,700/month flat |
 | **Pro included minutes** | 3,000 |
 | **Pro overage rate** | $0.30/min |
+| **HIPAA add-on** | +$2,000/month (on either plan) |
+| **Appointment booking** | Included (both plans) |
 | Traditional answering service | $2,000-4,000/mo |
 | Full-time receptionist | $35,000-45,000/yr |
 | Setup time | ~1 week |
 | Demo line | (307) 464-9517 |
 | Your cost per minute | ~$0.11 |
-| Your profit (Pay-Per-Use) | $0.79/min (88% margin) |
+| Your HIPAA cost | $1,000/mo (platform fee) |
+| Your profit (Pay-Per-Use base) | $178/mo min (89% margin) |
 | Your profit (Pro) | ~$1,370/mo (81% margin) |
+| Your profit (HIPAA add-on) | $1,000+/mo (50%+ margin, scales with clients) |
 
 ---
 

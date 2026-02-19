@@ -30,24 +30,26 @@ AI Receptionist for after-hours call handling
 ## 💵 PRICING STRUCTURE
 
 ### **Plan 1: Pay-Per-Use (Starter)**
-- **Monthly Fee:** None
+- **Monthly Base Fee:** $200/month
+- **Included Minutes:** 200 minutes/month
+- **Overage:** $0.90/minute after 200 minutes
 - **Setup Fee:** $1,500 (one-time — covers configuration, integration, testing)
-- **Per Minute:** $0.90/minute (only charged for actual call time)
-- **Minimum Commitment:** 3 months
-- **Contract:** 3-month minimum, then month-to-month after that
+- **Minimum Commitment:** 3 months, then month-to-month
+- **Appointment Booking:** Included (client needs Calendly or similar)
 - **Best For:** Smaller businesses, businesses that want to try it before committing, lower call volume
 
 **Pay-Per-Use Math:**
 | Monthly Usage | Client Pays | Your Cost ($0.11/min) | Your Profit |
 |---|---|---|---|
-| 200 min | $180 | $22 | $158 |
-| 500 min | $450 | $55 | $395 |
-| 1,000 min | $900 | $110 | $790 |
-| 1,500 min | $1,350 | $165 | $1,185 |
-| 1,889 min | $1,700 | $208 | $1,492 |
-| 3,000 min | $2,700 | $330 | $2,370 |
+| 100 min | $200 (base) | $11 | $189 |
+| 200 min | $200 (base) | $22 | $178 |
+| 500 min | $200 + $270 = $470 | $55 | $415 |
+| 1,000 min | $200 + $720 = $920 | $110 | $810 |
+| 1,500 min | $200 + $1,170 = $1,370 | $165 | $1,205 |
+| 1,867 min | $200 + $1,500 = $1,700 | $205 | $1,495 |
+| 3,000 min | $200 + $2,520 = $2,720 | $330 | $2,390 |
 
-**Upsell trigger:** When a Pay-Per-Use client hits ~1,889 min/month, their bill equals $1,700 — pitch them the Pro plan: *"Hey, you're spending $1,700+ anyway. Want to switch to the flat rate and cap your costs?"*
+**Upsell trigger:** When a Pay-Per-Use client hits ~1,867 min/month, their bill equals $1,700 — pitch them the Pro plan: *"Hey, you're spending $1,700+ anyway. Want to switch to the flat rate and cap your costs?"*
 
 ### **Plan 2: Pro (Flat Rate)**
 - **Monthly Fee:** $1,700/month (flat rate)
@@ -55,10 +57,26 @@ AI Receptionist for after-hours call handling
 - **Includes:** Up to 3,000 call minutes/month
 - **Overage Rate:** $0.30/minute for minutes over 3,000
 - **Contract:** Month-to-month (no long-term commitment)
+- **Appointment Booking:** Included (client needs Calendly or similar)
 - **Best For:** Serious businesses, higher call volume, businesses that want predictable costs
 
-### **What's Included (Both Plans):**
+### **Add-On: HIPAA Compliance**
+- **Add-On Fee:** +$2,000/month (on top of either plan)
+- **Your Cost:** $1,000/month (Vapi HIPAA platform fee — flat regardless of client count)
+- **Best For:** Medical offices, dental, therapists, mental health, healthcare
+- **Rule:** Do NOT enable HIPAA until you have a committed paying client
+
+**HIPAA Profit Math:**
+| HIPAA Clients | Your Cost | Total Add-On Revenue | Profit from Add-On |
+|---|---|---|---|
+| 1 | $1,000/mo | $2,000/mo | $1,000/mo |
+| 2 | $1,000/mo | $4,000/mo | $3,000/mo |
+| 5 | $1,000/mo | $10,000/mo | $9,000/mo |
+| 10 | $1,000/mo | $20,000/mo | $19,000/mo |
+
+### **What's Included (All Plans):**
 - 24/7 professional AI call handling
+- Appointment booking (client provides Calendly or similar calendar tool)
 - Initial setup and integration
 - Google Sheets integration (real-time data collection)
 - Automated email delivery (real-time notifications)
@@ -70,17 +88,21 @@ AI Receptionist for after-hours call handling
 ### **Sales Framing:**
 
 **Pay-Per-Use pitch:**
-> *"There's no monthly fee. You only pay when the AI is actually talking to a customer — 90 cents a minute. A typical call is 2-3 minutes, so you're paying about $2-3 per lead captured. Compare that to a missed call that goes to voicemail and costs you a potential $2,000 customer."*
+> *"Two hundred a month gets you the AI receptionist with 200 minutes included. After that it's 90 cents a minute — a typical call is 2-3 minutes, so about $2-3 per lead captured. Plus it can book appointments right into your calendar. There's a one-time setup fee and a 3-month minimum — after that, month-to-month."*
 
 **Pro plan pitch:**
-> *"$1,700 a month flat — that's $57 a day. Less than one hour of a human receptionist. And you get 24/7 coverage, 3,000 minutes, email delivery, transcripts, recordings, and I optimize it for you every month."*
+> *"$1,700 a month flat — that's $57 a day. Less than one hour of a human receptionist. And you get 24/7 coverage, 3,000 minutes, appointment booking, email delivery, transcripts, recordings, and I optimize it for you every month."*
+
+**HIPAA pitch (for medical/dental):**
+> *"If you're in healthcare, we offer full HIPAA compliance as an add-on. That's an extra $2,000 a month — but it means your patient calls are handled securely and you stay compliant. No other AI receptionist service at this price point offers that."*
 
 ### **Market Position:**
 - **Quality Rating:** 7.8/10 (Mid-Market Professional Tier)
 - **Competitive Pricing:** $1,000-$2,500/month range
 - **Your Pro Price:** $1,700/month ✅ (Right in the middle)
-- **Your Pay-Per-Use Price:** $0.90/min ✅ (Low barrier to entry)
-- **Value Proposition:** Choose fixed or flexible — both all-inclusive, no hidden fees
+- **Your Pay-Per-Use Price:** $200/mo + $0.90/min ✅ (Low barrier to entry)
+- **HIPAA Add-On:** $2,000/mo ✅ (Premium for healthcare vertical)
+- **Value Proposition:** Choose fixed or flexible — both all-inclusive with appointment booking, no hidden fees
 
 ---
 
@@ -98,9 +120,11 @@ AI Receptionist for after-hours call handling
 
 | Plan | Client Pays | Your Cost | Your Profit/Min | Margin |
 |---|---|---|---|---|
-| Pay-Per-Use | $0.90/min | $0.11/min | $0.79/min | 88% |
+| Pay-Per-Use (base) | $200/mo for 200 min = $1.00/min | $0.11/min | $0.89/min | 89% |
+| Pay-Per-Use (overage) | $0.90/min | $0.11/min | $0.79/min | 88% |
 | Pro (flat rate) | ~$0.57/min (at 3,000 min) | $0.11/min | ~$0.46/min | 81% |
 | Pro overage | $0.30/min | $0.11/min | $0.19/min | 63% |
+| HIPAA add-on | +$2,000/mo | $1,000/mo (platform) | $1,000/mo+ | 50%+ |
 
 ### **Per Client Costs (Pro Plan):**
 

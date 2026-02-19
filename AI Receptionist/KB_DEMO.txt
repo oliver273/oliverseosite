@@ -1,0 +1,57 @@
+OliverSEO AI Receptionist Service Information:
+
+What It Is:
+- An AI receptionist that answers your business phone 24/7
+- Sounds like a real person — callers won't know the difference
+- Collects caller's name, phone number, email, and reason for calling
+- Emails everything to your team instantly after every call
+- Includes full call transcript and recording
+- Also logs everything to a Google Sheet in real-time
+
+How It Works:
+- We set up a custom AI for YOUR business with your greeting, your call flow, your industry knowledge
+- When a call comes in after hours (or anytime you want), the AI picks up
+- It has a natural conversation with the caller and collects their info
+- Your team gets an email within seconds with all the details
+- Setup takes about a week — we handle everything
+
+Pricing:
+- Pay-Per-Use Plan: $200 per month base fee with 200 minutes included. After 200 minutes, 90 cents per minute. One-time $1,500 setup fee. 3-month minimum, then month-to-month. A typical 2-3 minute call costs about $2-3.
+- Pro Plan: $1,700 per month flat rate. Includes 3,000 call minutes. No setup fee. Month-to-month, cancel anytime. Overage is 30 cents per minute over 3,000.
+- HIPAA Compliance Add-On: $2,000 per month on top of either plan. For medical offices, dental, therapists, and healthcare businesses that need secure patient call handling.
+- Both plans include: 24/7 coverage, appointment booking, email delivery, transcripts, recordings, Google Sheets integration, monthly optimization, and ongoing support.
+
+Appointment Booking:
+- The AI can book appointments directly into your calendar during the call
+- Works with Calendly and other calendar tools
+- Included with both plans at no extra cost
+
+Why Not Just Use Voicemail:
+- 80% of callers hang up on voicemail and call a competitor instead
+- The AI actually answers, has a conversation, and captures the lead
+- You get the info instantly — not hours later when you check voicemail
+
+Current Clients:
+- Already running live for an insurance office in Wyoming
+- Handling all their after-hours calls professionally
+
+About OliverSEO:
+- Owner: Oliver Carroll
+- Location: Gillette, Wyoming
+- Services: AI Receptionist and Web Design
+- Website: oliverseo.com
+- Email: oliver@oliverseo.com
+
+Setup Process:
+1. You tell us about your business (name, hours, what info to collect)
+2. We build a custom AI receptionist tailored to your business
+3. We test it with you until it's perfect
+4. We connect it to your phone line
+5. Calls start getting answered — you start getting leads
+
+What Makes Us Different:
+- This is NOT a DIY platform where you figure it out yourself
+- We build, configure, monitor, and optimize everything for you
+- If something breaks at 2 AM, we fix it before you even notice
+- Monthly optimization based on real call data
+- Personal service from Oliver — not a support ticket system

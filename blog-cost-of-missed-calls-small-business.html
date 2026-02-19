@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Missing After-Hours Calls: How AI Receptionists Are Changing Small Business | OliverSEO Blog</title>
-    <meta name="description" content="Small businesses lose thousands of dollars every month from missed after-hours calls. Learn how an AI receptionist captures every lead — even at 2 AM — without hiring extra staff.">
+    <title>The True Cost of Missed Calls for Small Businesses (With Real Math) | OliverSEO Blog</title>
+    <meta name="description" content="62% of calls to small businesses go unanswered. Here's the real math on how much missed calls cost your business — and the cheapest way to fix it.">
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     
     <!-- Google Analytics -->
@@ -21,14 +21,14 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Stop Missing After-Hours Calls: How AI Receptionists Are Changing Small Business",
-      "description": "Small businesses lose thousands of dollars every month from missed after-hours calls. Learn how an AI receptionist captures every lead — even at 2 AM — without hiring extra staff.",
+      "headline": "The True Cost of Missed Calls for Small Businesses (With Real Math)",
+      "description": "62% of calls to small businesses go unanswered. Here's the real math on how much missed calls cost your business — and the cheapest way to fix it.",
       "author": {
         "@type": "Person",
         "name": "Oliver Carroll"
       },
-      "datePublished": "2026-02-16",
-      "dateModified": "2026-02-16",
+      "datePublished": "2026-02-17",
+      "dateModified": "2026-02-17",
       "publisher": {
         "@type": "Organization",
         "name": "OliverSEO",
@@ -45,7 +45,6 @@
         *{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
         
-        /* CSS Variables for Light/Dark Mode */
         :root {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
@@ -80,7 +79,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         
-        /* Navigation */
         .nav{position:sticky;top:0;background:var(--bg-secondary);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:40;transition:background-color 0.3s ease, border-color 0.3s ease}
         .nav-container{max-width:1200px;margin:0 auto;padding:0 1rem}
         .container{max-width:800px;margin:0 auto;padding:0 1rem}
@@ -106,11 +104,8 @@
         .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
         .nav-links .btn{padding:.75rem 1rem;font-size:.875rem;white-space:nowrap;margin-left:.5rem;min-height:36px}
         
-        /* Section */
         .section{padding:3rem 0}@media(min-width:600px){.section{padding:3.5rem 0}}@media(min-width:768px){.section{padding:4.5rem 0}}
-        .container{max-width:800px;margin:0 auto;padding:0 1rem}
         
-        /* Blog Post */
         .blog-header{margin-bottom:3rem;text-align:center}
         .blog-date{color:var(--text-muted);font-size:.875rem;margin-bottom:1rem;font-weight:500}
         .blog-title{font-size:2rem;font-weight:bold;color:var(--text-primary);margin-bottom:1.5rem;line-height:1.2}@media(min-width:600px){.blog-title{font-size:2.5rem}}@media(min-width:768px){.blog-title{font-size:3rem}}
@@ -131,13 +126,25 @@
         .stat-box{background:var(--primary-bg);border:1px solid var(--primary);border-radius:.75rem;padding:1.5rem;text-align:center;margin:1.5rem 0}
         .stat-box .stat-number{font-size:2.5rem;font-weight:800;color:var(--primary);line-height:1}
         .stat-box .stat-label{color:var(--text-secondary);font-size:.9375rem;margin-top:.5rem}
+        .stat-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0}@media(min-width:600px){.stat-grid{grid-template-columns:repeat(3,1fr)}}
+        .stat-grid .stat-box{margin:0}
+        .math-box{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:.75rem;padding:1.5rem;margin:1.5rem 0;font-family:'Courier New',monospace}
+        [data-theme="light"] .math-box{background:#f8fafc}
+        .math-box .math-line{color:var(--text-secondary);margin-bottom:.5rem;font-size:.9375rem}
+        .math-box .math-result{color:var(--primary);font-weight:700;font-size:1.25rem;border-top:2px solid var(--border-color);padding-top:.75rem;margin-top:.75rem}
         .comparison-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
-        .comparison-table th,.comparison-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border-color);font-size:.9375rem}
+        .comparison-table th,.comparison-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--border-color);font-size:.875rem}
         .comparison-table th{color:var(--text-primary);font-weight:600;background:var(--primary-bg)}
         .comparison-table td{color:var(--text-secondary)}
         .comparison-table tr:last-child td{border-bottom:none}
+        .roi-calculator{background:linear-gradient(135deg,#667eea15 0%,#764ba215 100%);border:2px solid var(--primary);border-radius:1rem;padding:2rem;margin:2rem 0}
+        .roi-calculator h3{color:var(--primary);margin-top:0;margin-bottom:1rem;font-size:1.25rem}
+        .roi-calculator label{display:block;color:var(--text-secondary);margin-bottom:.5rem;font-size:.875rem;font-weight:500}
+        .roi-calculator input{width:100%;padding:.75rem 1rem;border:1px solid var(--border-color);border-radius:.5rem;background:var(--bg-primary);color:var(--text-primary);font-size:1rem;margin-bottom:1rem}
+        .roi-calculator .roi-result{background:var(--bg-primary);border-radius:.75rem;padding:1.5rem;text-align:center;margin-top:1rem}
+        .roi-calculator .roi-result-number{font-size:2rem;font-weight:800;color:#10b981}
+        .roi-calculator .roi-result-label{color:var(--text-muted);font-size:.875rem;margin-top:.25rem}
         
-        /* Footer */
         .footer{background:var(--bg-secondary);padding:3rem 0 2rem;margin-top:4rem;border-top:1px solid var(--border-color)}
         .footer-content{max-width:1200px;margin:0 auto;padding:0 1rem;text-align:center}
         .footer-logo{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.5rem}
@@ -213,146 +220,213 @@
             <a href="blog.html" class="back-link">← Back to Blog</a>
             
             <div class="blog-header">
-                <div class="blog-date">February 16, 2026</div>
-                <h1 class="blog-title">Stop Missing After-Hours Calls: How AI Receptionists Are Changing Small Business</h1>
+                <div class="blog-date">February 17, 2026</div>
+                <h1 class="blog-title">The True Cost of Missed Calls for Small Businesses (With Real Math)</h1>
             </div>
             
             <div class="blog-content">
-                <p>It's 6:15 PM on a Tuesday. Your office closed 15 minutes ago. A homeowner's pipe just burst, an insurance prospect needs a quote before tomorrow, or a patient needs to schedule an urgent appointment. They call your business and hear... voicemail.</p>
+                <p>Your phone rang at 5:47 PM last Tuesday. You were already gone for the day. The caller didn't leave a voicemail. You'll never know who they were, what they wanted, or how much money you just lost.</p>
                 
-                <p><strong>What happens next? They hang up and call your competitor.</strong></p>
+                <p>This happens to small businesses every single day — and the financial impact is staggering when you actually do the math.</p>
                 
-                <p>This isn't a hypothetical. It happens to small businesses every single day — and most owners have no idea how much revenue they're leaving on the table.</p>
+                <h2>The Numbers That Should Scare You</h2>
                 
-                <h2>The Real Cost of Missed Calls</h2>
-                
-                <p>Here's a number that should keep every business owner up at night:</p>
-                
-                <div class="stat-box">
-                    <div class="stat-number">62%</div>
-                    <div class="stat-label">of calls to small businesses go unanswered</div>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">62%</div>
+                        <div class="stat-label">of calls to small businesses go unanswered</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">of callers won't leave a voicemail</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">of people won't call back if unanswered</div>
+                    </div>
                 </div>
                 
-                <p>And it gets worse. According to research, <strong>80% of callers who reach voicemail don't leave a message</strong> — they just move on to the next business in their search results.</p>
+                <p>Think about what this means. If 100 potential customers call your business after hours this month, 80 of them will hang up when they reach voicemail. Of those 80, about 68 will never call back — they'll call your competitor instead.</p>
                 
-                <p>Think about what that means for your business. If you get 20 after-hours calls a month and the average customer is worth $500, that's potentially <strong>$10,000 in lost revenue every month</strong> — just from the calls you never even knew about.</p>
+                <p>You just lost 68 potential customers and didn't even know they existed.</p>
                 
-                <h2>Why Voicemail Doesn't Work Anymore</h2>
+                <h2>Let's Do the Math for Your Industry</h2>
                 
-                <p>Voicemail was a great invention — in the 1980s. But today's customers expect more. They want answers now, not a callback tomorrow. Here's why voicemail is failing your business:</p>
+                <p>Here's what missed calls actually cost for common small business types:</p>
                 
-                <ul>
-                    <li><strong>People hate leaving messages.</strong> Most callers hang up the moment they hear "Please leave a message after the beep." They'd rather call the next business on Google.</li>
-                    <li><strong>No information captured.</strong> Even when someone does leave a voicemail, you get a muffled name, a phone number you have to replay three times, and no context about what they actually need.</li>
-                    <li><strong>Delayed follow-up.</strong> You don't hear the voicemail until the next morning. By then, the caller has already found someone else.</li>
-                    <li><strong>No professionalism.</strong> A generic voicemail greeting doesn't exactly scream "we care about our customers."</li>
-                </ul>
+                <h3>Insurance Agency</h3>
+                <div class="math-box">
+                    <div class="math-line">Average customer value: $1,500/year</div>
+                    <div class="math-line">After-hours calls per month: ~25</div>
+                    <div class="math-line">Calls that go to voicemail: 25</div>
+                    <div class="math-line">Callers who hang up (80%): 20</div>
+                    <div class="math-line">Callers who never call back (85%): 17</div>
+                    <div class="math-line">Close rate on leads: 25%</div>
+                    <div class="math-line">Customers lost: ~4/month</div>
+                    <div class="math-result">Revenue lost: $6,000/month → $72,000/year</div>
+                </div>
                 
-                <h2>Enter the AI Receptionist</h2>
+                <h3>Law Firm</h3>
+                <div class="math-box">
+                    <div class="math-line">Average case value: $3,000-$10,000</div>
+                    <div class="math-line">After-hours calls per month: ~30</div>
+                    <div class="math-line">Callers who hang up (80%): 24</div>
+                    <div class="math-line">Callers who never call back (85%): 20</div>
+                    <div class="math-line">Close rate on leads: 20%</div>
+                    <div class="math-line">Cases lost: ~4/month</div>
+                    <div class="math-result">Revenue lost: $12,000-$40,000/month → $144,000-$480,000/year</div>
+                </div>
                 
-                <p>An AI receptionist is exactly what it sounds like: an artificial intelligence that answers your phone like a real person. Not a robotic menu ("Press 1 for sales, press 2 for support..."). Not a chatbot. An actual voice that has a natural conversation with your caller.</p>
+                <h3>HVAC / Plumbing Company</h3>
+                <div class="math-box">
+                    <div class="math-line">Average job value: $500</div>
+                    <div class="math-line">After-hours calls per month: ~40 (emergencies happen at night)</div>
+                    <div class="math-line">Callers who hang up (80%): 32</div>
+                    <div class="math-line">Callers who never call back (85%): 27</div>
+                    <div class="math-line">Close rate on leads: 40%</div>
+                    <div class="math-line">Jobs lost: ~11/month</div>
+                    <div class="math-result">Revenue lost: $5,500/month → $66,000/year</div>
+                </div>
                 
-                <p>Here's what a modern AI receptionist actually does:</p>
+                <h3>Real Estate Agent</h3>
+                <div class="math-box">
+                    <div class="math-line">Average commission: $8,000</div>
+                    <div class="math-line">After-hours calls per month: ~15</div>
+                    <div class="math-line">Callers who hang up (80%): 12</div>
+                    <div class="math-line">Callers who never call back (85%): 10</div>
+                    <div class="math-line">Close rate on leads: 10%</div>
+                    <div class="math-line">Sales lost: ~1/month</div>
+                    <div class="math-result">Revenue lost: $8,000/month → $96,000/year</div>
+                </div>
                 
-                <ul>
-                    <li><strong>Answers every call</strong> — 24/7, 365 days a year, never calls in sick</li>
-                    <li><strong>Has a real conversation</strong> — greets the caller by your business name, asks how it can help, and collects their information naturally</li>
-                    <li><strong>Captures the lead</strong> — gets the caller's name, phone number, email, and reason for calling</li>
-                    <li><strong>Delivers it to you instantly</strong> — sends the lead details to your email and a spreadsheet in real time, so you can follow up first thing in the morning</li>
-                    <li><strong>Sounds human</strong> — modern AI voices are natural and conversational, not the robotic text-to-speech from a few years ago</li>
-                </ul>
+                <h2>Calculate Your Own Cost</h2>
                 
-                <h2>AI Receptionist vs. The Alternatives</h2>
+                <div class="roi-calculator">
+                    <h3>📊 Missed Call Cost Calculator</h3>
+                    <label for="calc-value">What's your average customer/job worth? ($)</label>
+                    <input type="number" id="calc-value" placeholder="2000" oninput="calculateCost()">
+                    
+                    <label for="calc-calls">How many after-hours calls do you think you miss per month?</label>
+                    <input type="number" id="calc-calls" placeholder="20" oninput="calculateCost()">
+                    
+                    <label for="calc-close">What % of leads do you typically close? (enter a number)</label>
+                    <input type="number" id="calc-close" placeholder="25" oninput="calculateCost()">
+                    
+                    <div class="roi-result">
+                        <div class="roi-result-label">You're potentially losing</div>
+                        <div class="roi-result-number" id="calc-result">$0/month</div>
+                        <div class="roi-result-label" id="calc-annual">$0/year in missed revenue</div>
+                    </div>
+                </div>
                 
-                <p>Let's compare the options honestly:</p>
+                <h2>Why "Just Check Voicemail in the Morning" Doesn't Work</h2>
+                
+                <p>Business owners always tell me the same thing: "I check my voicemail first thing every morning." Here's why that doesn't solve the problem:</p>
+                
+                <ol>
+                    <li><strong>Most people don't leave voicemails.</strong> 80% of callers hang up when they hear the beep. They're not checking your voicemail because there's nothing to check — those callers are gone.</li>
+                    <li><strong>Speed-to-lead matters.</strong> Research from Harvard Business Review shows that businesses that respond to leads within 5 minutes are <strong>21x more likely</strong> to qualify the lead than those who respond after 30 minutes. Responding the next morning? You've already lost.</li>
+                    <li><strong>Your competitor answers.</strong> When someone has an urgent need — a burst pipe, an insurance question, a legal issue — they don't wait. They call the next business in their Google search results. The first business that answers gets the job.</li>
+                    <li><strong>No information captured.</strong> Even when someone does leave a voicemail, you get a mumbled name, a phone number you have to replay three times, and no context. Compare that to a structured lead with name, phone, email, and reason — delivered to your inbox in 30 seconds.</li>
+                </ol>
+                
+                <h2>The 4 Options (And What They Actually Cost)</h2>
                 
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Option</th>
-                            <th>Cost</th>
-                            <th>Availability</th>
-                            <th>Lead Capture</th>
+                            <th>Solution</th>
+                            <th>Monthly Cost</th>
+                            <th>Leads Captured</th>
+                            <th>ROI</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Voicemail</strong></td>
                             <td>Free</td>
-                            <td>24/7</td>
-                            <td>Poor — 80% hang up</td>
+                            <td>~20% of callers</td>
+                            <td>Losing $5,000-$40,000+/mo</td>
                         </tr>
                         <tr>
-                            <td><strong>Part-time receptionist</strong></td>
-                            <td>$2,000-3,500/mo</td>
-                            <td>Limited hours</td>
-                            <td>Good — when available</td>
+                            <td><strong>Hire a receptionist</strong></td>
+                            <td>$3,200+/mo</td>
+                            <td>Good — but only during shifts</td>
+                            <td>Positive, but expensive</td>
                         </tr>
                         <tr>
-                            <td><strong>Answering service</strong></td>
-                            <td>$500-2,000/mo</td>
-                            <td>24/7</td>
-                            <td>Varies widely</td>
+                            <td><strong>Human answering service</strong></td>
+                            <td>$500-$4,000/mo</td>
+                            <td>Good — 24/7</td>
+                            <td>Positive, but high cost</td>
                         </tr>
-                        <tr>
-                            <td><strong>AI Receptionist</strong></td>
-                            <td>$200/mo or $1,700/mo</td>
-                            <td>24/7/365</td>
-                            <td>Every call captured</td>
+                        <tr style="background:var(--primary-bg)">
+                            <td><strong style="color:var(--primary)">AI Receptionist</strong></td>
+                            <td><strong>$200/mo or $1,700 flat</strong></td>
+                            <td><strong>100% — every call answered</strong></td>
+                            <td><strong style="color:#10b981">Best ROI by far</strong></td>
                         </tr>
                     </tbody>
                 </table>
                 
-                <p>The AI receptionist hits the sweet spot: it costs less than hiring someone, works around the clock, and captures every single lead with complete details delivered to your inbox.</p>
+                <h2>The ROI of an AI Receptionist</h2>
                 
-                <h2>Who Benefits Most?</h2>
+                <p>Let's run the numbers for a typical small business:</p>
                 
-                <p>AI receptionists are especially valuable for businesses where a missed call can mean a missed sale:</p>
+                <div class="math-box">
+                    <div class="math-line">After-hours calls captured by AI: 20/month</div>
+                    <div class="math-line">Average call duration: 2.5 minutes</div>
+                    <div class="math-line">Monthly AI cost (pay-per-use): $200/month base (200 min included) — 20 calls × 2.5 min = 50 min, well within your included minutes = <strong>$200/month</strong></div>
+                    <div class="math-line">Leads that convert (25%): 5 new customers</div>
+                    <div class="math-line">Average customer value: $2,000</div>
+                    <div class="math-result">Revenue captured: $10,000/month for a $45 AI cost = 22,122% ROI</div>
+                </div>
+                
+                <p>Read that again. <strong>$45/month in AI costs to capture $10,000/month in revenue.</strong> Even if only one of those 20 leads converts, that's a $2,000 customer for $45 — a 4,344% return.</p>
+                
+                <p>Compare that to a human answering service charging $1,000+/month for the same result. The AI pays for itself on the first call.</p>
+                
+                <h2>What a Modern AI Receptionist Actually Does</h2>
+                
+                <p>If you're picturing the robotic phone menus from 2015 ("Press 1 for sales..."), stop. Modern AI receptionists are nothing like that. Here's what happens on every call:</p>
+                
+                <ol>
+                    <li><strong>Instant answer</strong> — No hold time, no rings. The AI picks up immediately with your business name.</li>
+                    <li><strong>Natural conversation</strong> — The caller has a real back-and-forth conversation. The AI listens, responds naturally, and guides the conversation.</li>
+                    <li><strong>Lead capture</strong> — Name, phone number, email (optional), and reason for calling — all collected through natural dialogue, not "Press 1 for..."</li>
+                    <li><strong>Instant delivery</strong> — Within 30 seconds, you get an email with all the caller's information plus the call is logged in a Google Sheet.</li>
+                    <li><strong>Full records</strong> — Complete call transcript and recording available for every call.</li>
+                </ol>
+                
+                <p>The voice quality is so natural that most callers genuinely don't realize they're talking to AI. It uses premium voice technology (ElevenLabs v3) that sounds like a professional receptionist — not a robot.</p>
+                
+                <h2>Who Should Get an AI Receptionist?</h2>
+                
+                <p>An AI receptionist makes sense if:</p>
                 
                 <ul>
-                    <li><strong>Insurance agencies</strong> — prospects shopping for quotes call multiple agents. The first one to respond wins.</li>
-                    <li><strong>Law firms</strong> — potential clients in urgent situations need to talk to someone now, not tomorrow.</li>
-                    <li><strong>Medical and dental practices</strong> — patients calling about urgent issues expect a response, not a voicemail.</li>
-                    <li><strong>Home services (HVAC, plumbing, electrical)</strong> — emergencies don't happen during business hours. The plumber who answers the phone at 9 PM gets the job.</li>
-                    <li><strong>Real estate</strong> — buyers calling about a listing have a short attention span. If you don't answer, they move on to another agent.</li>
+                    <li>You get <strong>5+ after-hours calls per month</strong> (that's the break-even — it pays for itself at just one captured lead)</li>
+                    <li>Your average customer is worth <strong>$200 or more</strong></li>
+                    <li>You're currently sending callers to <strong>voicemail</strong> after hours</li>
+                    <li>You can't justify <strong>$1,000+ per month</strong> for a human answering service</li>
+                    <li>You want <strong>instant lead delivery</strong> instead of checking voicemail the next morning</li>
                 </ul>
                 
-                <h2>"But Isn't This Just a Glorified Voicemail?"</h2>
-                
-                <p>This is the most common question I hear, and the answer is a clear <strong>no</strong>. Here's the difference:</p>
-                
-                <p><strong>Voicemail</strong> is a one-way recording device. The caller talks into the void, hopes someone listens, and usually gets a callback 12-18 hours later — if at all.</p>
-                
-                <p><strong>An AI receptionist</strong> is a two-way conversation. It greets your caller by your business name, asks what they need, collects their details through natural dialogue, confirms the information, and delivers a complete lead report to your team in real time.</p>
-                
-                <p>The difference in caller experience is night and day. Instead of "Leave a message... *beep*," your caller hears "Thank you for calling [Your Business]. I'd love to help — can I get your name?" That's not voicemail. That's a professional experience that makes your business look like it's always on.</p>
-                
-                <h2>What to Look for in an AI Receptionist</h2>
-                
-                <p>If you're considering an AI receptionist for your business, here's what actually matters:</p>
-                
-                <ul>
-                    <li><strong>Natural voice quality.</strong> The AI should sound like a real person, not a robot. Ask for a live demo before you buy anything.</li>
-                    <li><strong>Customized to your business.</strong> It should greet callers with your business name and understand your services — not give generic responses.</li>
-                    <li><strong>Real-time lead delivery.</strong> You should get the caller's information immediately via email, not in a daily report the next morning.</li>
-                    <li><strong>No long contracts.</strong> Any provider confident in their service will let you go month-to-month.</li>
-                    <li><strong>Transparent pricing.</strong> You should know exactly what you're paying, with no hidden fees.</li>
-                    <li><strong>A real person managing it.</strong> AI is powerful, but you want a human behind the scenes optimizing the system, fixing issues quickly, and making sure it's working for your business.</li>
-                </ul>
+                <p>Industries where it's a no-brainer: <strong>insurance, real estate, law, medical/dental, HVAC, plumbing, electrical, auto repair, financial services, home services.</strong></p>
                 
                 <h2>The Bottom Line</h2>
                 
-                <p>Every missed call is a missed opportunity. And in 2026, there's no reason to let voicemail be the face of your business after 5 PM.</p>
+                <p>Every missed call is money walking out the door. And in 2026, there's no reason to let voicemail be your after-hours strategy.</p>
                 
-                <p>An AI receptionist doesn't replace your team — it extends them. It handles the calls your staff can't get to, captures the leads that would otherwise disappear, and gives your customers a professional experience around the clock.</p>
+                <p>For less than the cost of a single lost customer, you can have an AI receptionist that answers every call, captures every lead, and delivers the details to your inbox in real time.</p>
                 
-                <p>The businesses that figure this out first will have a real advantage. The ones that don't will keep wondering why their competitors are growing faster.</p>
+                <p>The math is simple: <strong>do nothing and lose $5,000-$40,000+ per year in missed revenue, or pay $45-$1,700/month and capture it all.</strong></p>
                 
                 <div class="blog-cta">
-                    <h3>Hear It for Yourself</h3>
-                    <p>Don't take my word for it. Call our live AI receptionist demo line right now and experience what your customers would hear. No sales pitch, no obligation — just call and see.</p>
+                    <h3>Try It Right Now — Free</h3>
+                    <p>Call our live AI demo line and experience what your after-hours callers would hear. No signup, no credit card, no sales pitch — just call.</p>
                     <p style="font-size:1.5rem;font-weight:800;color:var(--primary);margin-bottom:1rem"><a href="tel:+13074649517" style="color:var(--primary);text-decoration:none">(307) 464-9517</a></p>
-                    <a href="ai-receptionist.html" class="btn">Learn More About AI Receptionist</a>
+                    <a href="ai-receptionist.html" class="btn">See Pricing & Features</a>
                 </div>
             </div>
         </div>
@@ -393,7 +467,6 @@
     </footer>
 
     <script>
-        // Theme Toggle
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         
@@ -404,7 +477,6 @@
             localStorage.setItem('theme', newTheme);
         }
         
-        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -420,10 +492,25 @@
             }
         });
         
-        // Theme toggle button
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        // Missed Call Cost Calculator
+        function calculateCost() {
+            const value = parseFloat(document.getElementById('calc-value').value) || 0;
+            const calls = parseFloat(document.getElementById('calc-calls').value) || 0;
+            const closeRate = parseFloat(document.getElementById('calc-close').value) || 0;
+            
+            // 80% hang up on voicemail, 85% never call back
+            const lostCallers = calls * 0.80 * 0.85;
+            const lostCustomers = lostCallers * (closeRate / 100);
+            const monthlyLoss = lostCustomers * value;
+            const annualLoss = monthlyLoss * 12;
+            
+            document.getElementById('calc-result').textContent = '$' + Math.round(monthlyLoss).toLocaleString() + '/month';
+            document.getElementById('calc-annual').textContent = '$' + Math.round(annualLoss).toLocaleString() + '/year in missed revenue';
         }
     </script>
 </body>
