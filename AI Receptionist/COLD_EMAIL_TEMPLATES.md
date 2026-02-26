@@ -1,10 +1,12 @@
 # Cold Email Campaign — Instantly.ai Templates
 
+## Current Target: HVAC / Heating & Cooling Businesses
+
 ## How to Use
 Copy each email into Instantly.ai as a separate step in your sequence.
 - **Step 1** = Email 1 (sends immediately)
 - **Step 2** = Email 2 (set to send 3 days after Step 1)
-- **Step 3** = Email 3 (set to send 5 days after Step 2)
+- **Step 3** = Email 3 (set to send 6 days after Step 2)
 
 Use Instantly's variable tags: `{{firstName}}`, `{{companyName}}`
 
@@ -12,57 +14,63 @@ Use Instantly's variable tags: `{{firstName}}`, `{{companyName}}`
 
 ## STEP 1 — Initial Outreach
 
-**Subject:** {{firstName}} — quick question
+**Subject:** {{firstName}} — quick question about {{companyName}}
 
 **Body:**
 
 Hi {{firstName}},
 
-Do you guys ever miss calls after hours at {{companyName}}?
+Ever miss a call while you're under someone's crawlspace or up on a roof?
 
-I set up an AI receptionist for an insurance office here in Wyoming — it picks up every call they miss, collects the caller's info, can even book appointments, and emails everything to their team instantly.
+I built an AI that answers your phone 24/7 — it sounds like a real receptionist, talks to the caller, gets their name, number, address, and what's broken, then texts and emails it all to you instantly.
 
-Want to hear what it sounds like? You can call it right now: (307) 464-9517
+One HVAC owner told me he was losing 3-5 calls a week just during jobs. That's $10,000+ a month walking to competitors.
 
-Oliver
+Want to hear what it sounds like? Call (307) 439-0773 right now — it'll answer as an HVAC company so you can hear exactly what your customers would experience.
 
-Best,
 Oliver Carroll
-OliverSEO — AI Receptionist Services
+AI Receptionist Services
+(307) 439-0773
 
 ---
 
 ## STEP 2 — Follow-Up (3 days later)
 
-**Subject:** Re: {{firstName}} — quick question
+**Subject:** re: missed calls {{firstName}}
 
 **Body:**
 
 Hi {{firstName}},
 
-Just bumping this up. 80% of callers won't leave a voicemail — they just hang up and call someone else.
+Just following up — 80% of callers won't leave a voicemail. They hang up and call the next company on Google.
 
-If you want to hear what the AI receptionist sounds like, call this number: (307) 464-9517
+My AI receptionist picks up every call, has a real conversation, and sends you the lead info instantly — even at 2am when someone's furnace dies.
 
-Takes 30 seconds.
+Takes 2 minutes to set up on your existing phone line. No new hardware, no apps to download.
+
+Try the live demo: (307) 439-0773
+
+Worth a 10-minute chat this week?
 
 Oliver
 
 ---
 
-## STEP 3 — Final Follow-Up (5 days later)
+## STEP 3 — Final Follow-Up (6 days later)
 
-**Subject:** not trying to spam you {{firstName}}
+**Subject:** last one {{firstName}}
 
 **Body:**
 
 Hey {{firstName}},
 
-Last email from me. If after-hours calls aren't a problem for {{companyName}}, totally ignore this.
+Last email from me — not trying to be annoying.
 
-But if you're losing leads to voicemail, I built something that fixes it. Already running it for a business here in Wyoming.
+If missed calls aren't a problem for {{companyName}}, totally ignore this.
 
-Demo line if you're curious: (307) 464-9517
+But if you've ever lost a job because nobody picked up the phone while your crew was out — that's exactly what I fix. Already running this for businesses and it's working.
+
+Live demo if you're curious: (307) 439-0773
 
 Oliver
 
@@ -72,13 +80,13 @@ Oliver
 
 | Setting | Value |
 |---------|-------|
-| Daily send limit | 30/day (increase to 50 after 1 week) |
+| Daily send limit | 30/day (increase to 40 after 1 week if open rates are above 30%) |
 | Delay between emails | 3-5 minutes |
-| Send window | Mon-Fri, 8am-11am recipient timezone |
+| Send window | Mon-Fri, 7am-10am recipient timezone |
 | Track opens | Yes |
 | Track link clicks | No (hurts deliverability) |
 | Step 1 → Step 2 delay | 3 days |
-| Step 2 → Step 3 delay | 5 days |
+| Step 2 → Step 3 delay | 6 days |
 
 ## Variable Mapping (from your CSV)
 
@@ -91,8 +99,32 @@ Oliver
 | `{{phone}}` | Phone |
 | `{{website}}` | Website |
 
+## Email Signature (in Instantly settings)
+
+```
+Oliver Carroll
+AI Receptionist Services
+(307) 439-0773
+```
+
+⚠️ Do NOT include "OliverSEO" in the signature — it confuses HVAC owners.
+⚠️ Use the HVAC demo number (307) 439-0773 for HVAC campaigns, NOT the general demo line (307) 464-9517.
+
 ## Tips
-- Add your demo phone number to Email 3 before launching
+- Send window is 7am-10am because HVAC owners check email early before heading to jobs
 - Don't launch until warmup score is 90%+ (check in Instantly dashboard)
-- Start with 30 emails/day — if open rates stay above 50%, bump to 50/day after a week
+- Start with 30 emails/day — if open rates stay above 30%, bump to 40/day after a week
 - Check replies daily — respond within 1 hour if possible
+- When they reply, offer a quick 10-minute call to show them the demo and answer questions
+- If they call the demo line and then reply to the email — they're HOT. Call them immediately.
+
+## Previous Sequences (Archive)
+
+### Dentist Sequence (paused)
+Previously targeted dentists — paused due to HIPAA concerns and lower relevance. Leads were mixed healthcare, not clean dentist lists. Sequence saved below for reference if targeting dentists later.
+
+**Email 1 Subject:** quick question {{firstName}}
+**Email 1 Body:** Hi {{firstName}}, Do you ever lose patients because your front desk missed a call? I set up an AI receptionist for a dental office — it answers every call 24/7, books appointments straight into their calendar, and sends the team an instant notification with the caller's info. They stopped losing after-hours patients completely. Want to hear exactly how it sounds? Call (307) 464-9517 right now and it'll answer live. Worth a 10-minute chat? Oliver Carroll, AI Receptionist Services, (307) 464-9517
+
+### General/Insurance Sequence (original — retired)
+Original sequence referencing insurance office in Wyoming. Retired because industry-specific messaging converts better.

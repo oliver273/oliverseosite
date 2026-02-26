@@ -1,4 +1,4 @@
-OliverSEO AI Receptionist Service Information:
+Oliver AI Services AI Receptionist Service Information:
 
 What It Is:
 - An AI receptionist that answers your business phone 24/7
@@ -10,16 +10,26 @@ What It Is:
 
 How It Works:
 - We set up a custom AI for YOUR business with your greeting, your call flow, your industry knowledge
-- When a call comes in after hours (or anytime you want), the AI picks up
-- It has a natural conversation with the caller and collects their info
-- Your team gets an email within seconds with all the details
+- We give you a dedicated phone number for the AI
+- You set up call forwarding on your existing business line to forward calls to that number — after hours, when you're busy, or all the time
+- Your customers still dial your normal number — nothing changes for them. Calls just route to the AI automatically
+- Works with any phone system — landline, cell phone, VoIP, whatever you've got. Most people set up forwarding in about two minutes
+- The AI picks up, has a natural conversation with the caller, and collects their info
+- Your team gets an email within seconds with all the details plus full transcript and recording
 - Setup takes about a week — we handle everything
 
 Pricing:
-- Pay-Per-Use Plan: $200 per month base fee with 200 minutes included. After 200 minutes, 90 cents per minute. One-time $1,500 setup fee. 3-month minimum, then month-to-month. A typical 2-3 minute call costs about $2-3.
-- Pro Plan: $1,700 per month flat rate. Includes 3,000 call minutes. No setup fee. Month-to-month, cancel anytime. Overage is 30 cents per minute over 3,000.
-- HIPAA Compliance Add-On: $2,000 per month on top of either plan. For medical offices, dental, therapists, and healthcare businesses that need secure patient call handling.
-- Both plans include: 24/7 coverage, appointment booking, email delivery, transcripts, recordings, Google Sheets integration, monthly optimization, and ongoing support.
+- The pay-per-use plan: two hundred dollars per month base fee with two hundred minutes included. After two hundred minutes, ninety cents per minute. One-time fifteen hundred dollar setup fee. Three month minimum, then month-to-month. A typical two to three minute call costs about two to three dollars.
+- Pro Plan: seventeen hundred dollars per month flat rate. Includes three thousand call minutes. No setup fee. Month-to-month, cancel anytime. Overage is thirty cents per minute over three thousand.
+- HIPAA Compliance Add-On: two thousand dollars per month on top of either plan. For medical offices, dental, therapists, and healthcare businesses that need secure patient call handling.
+- Both plans include: twenty four seven coverage, appointment booking, email delivery, transcripts, recordings, Google Sheets integration, monthly optimization, and ongoing support.
+
+Billing Details:
+- Calls are billed per second, not rounded up to the nearest minute. A thirty second call is billed as thirty seconds.
+- There are no hidden fees or extra charges beyond the plan pricing and overage rates.
+- Pay-Per-Use has a one-time fifteen hundred dollar setup fee. Pro plan has no setup fee.
+- Pay-Per-Use requires a three month minimum commitment. Pro plan is month-to-month, cancel anytime.
+- No cancellation fees on the Pro plan.
 
 Appointment Booking:
 - The AI can book appointments directly into your calendar during the call
@@ -35,7 +45,7 @@ Current Clients:
 - Already running live for an insurance office in Wyoming
 - Handling all their after-hours calls professionally
 
-About OliverSEO:
+About Oliver AI Services:
 - Owner: Oliver Carroll
 - Location: Gillette, Wyoming
 - Services: AI Receptionist and Web Design
@@ -43,11 +53,13 @@ About OliverSEO:
 - Email: oliver@oliverseo.com
 
 Setup Process:
-1. You tell us about your business (name, hours, what info to collect)
-2. We build a custom AI receptionist tailored to your business
-3. We test it with you until it's perfect
-4. We connect it to your phone line
+1. You tell us about your business (name, hours, services, what info to collect, FAQs your callers ask)
+2. We build a custom AI receptionist tailored to your business — your greeting, your script, your industry knowledge
+3. Testing and refinement period: We test the AI together with you, run sample calls, and fine-tune it until it sounds exactly how you want. This usually takes about a week. You don't go live until you're happy with it.
+4. We give you a dedicated phone number for the AI. You set up call forwarding on your existing line to send calls to that number — no hardware, no installation, takes about two minutes
 5. Calls start getting answered — you start getting leads
+- You are NOT paying during the testing period. Billing starts when the AI goes live on your phone line.
+- The AI is customized specifically for your business — it's not a generic bot. It knows your services, your hours, your pricing, whatever you need it to know.
 
 What Makes Us Different:
 - This is NOT a DIY platform where you figure it out yourself
