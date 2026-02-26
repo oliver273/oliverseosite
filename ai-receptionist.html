@@ -231,49 +231,41 @@
                         </p>
                     </div>
                     
-                    <div class="bg-[#1e293b] rounded-2xl p-6 shadow-lg border border-gray-700 max-w-md">
-                        <div class="flex items-center gap-4 mb-4">
-                            <button id="playDemo" class="w-12 h-12 hero-gradient rounded-full flex items-center justify-center text-white hover:scale-110 transition">
-                                <i data-lucide="play" class="w-5 h-5 ml-1"></i>
-                            </button>
-                            <div>
-                                <p class="font-semibold text-white">Hear Our AI in Action</p>
-                                <p class="text-sm text-gray-400">Real call handling demo</p>
-                    </div>
-                            <div class="audio-wave ml-auto">
-                                <div class="audio-bar"></div>
-                                <div class="audio-bar"></div>
-                                <div class="audio-bar"></div>
-                                <div class="audio-bar"></div>
-                                <div class="audio-bar"></div>
-                    </div>
-                </div>
-                        <p class="text-xs text-gray-400 italic">"Natural voice — callers can't tell it's AI"</p>
+                    <div class="bg-[#1e293b] rounded-2xl p-4 shadow-lg border border-gray-700 max-w-md overflow-hidden">
+                        <p class="font-semibold text-white mb-2 text-sm flex items-center gap-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                            Watch Our AI Handle a Real Call
+                        </p>
+                        <video controls playsinline preload="metadata" class="w-full rounded-lg" style="max-height: 220px; object-fit: cover;">
+                            <source src="oliver_seo_promo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="text-xs text-gray-400 italic mt-2">"Natural voice — callers can't tell it's AI"</p>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="tel:+13074649517" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 group no-underline">
-                            <i data-lucide="phone" class="w-5 h-5 group-hover:animate-pulse transition"></i>
-                            Try Our AI Live — Call Now
+                        <a href="#free-trial" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 group no-underline">
+                            <i data-lucide="gift" class="w-5 h-5 group-hover:animate-pulse transition"></i>
+                            Start Your Free 7-Day Trial
                         </a>
-                        <button onclick="showPricing()" class="bg-[#1e293b] text-gray-200 border-2 border-gray-600 px-8 py-4 rounded-full font-semibold text-lg hover:border-gray-400 transition flex items-center justify-center gap-2">
-                            <i data-lucide="arrow-down" class="w-5 h-5"></i>
-                            See Pricing
-                        </button>
+                        <a href="tel:+13074649517" class="bg-[#1e293b] text-gray-200 border-2 border-gray-600 px-8 py-4 rounded-full font-semibold text-lg hover:border-gray-400 transition flex items-center justify-center gap-2 no-underline">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            Hear It Live
+                        </a>
                     </div>
                     
-                    <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <div class="flex items-center gap-6 text-sm text-gray-400 flex-wrap">
                         <div class="flex items-center gap-2">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-green-500"></i>
-                            <span>Secure & Private</span>
+                            <i data-lucide="gift" class="w-5 h-5 text-green-500"></i>
+                            <span>7-Day Free Trial</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i data-lucide="calendar" class="w-5 h-5 text-green-500"></i>
-                            <span>Month-to-Month</span>
+                            <i data-lucide="credit-card" class="w-5 h-5 text-green-500"></i>
+                            <span>No Credit Card Required</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
-                            <span>Books Appointments</span>
+                            <span>Cancel Anytime</span>
                         </div>
                     </div>
                 </div>
@@ -535,8 +527,82 @@
         </div>
     </section>
 
+    <!-- Free Trial Section -->
+    <section id="free-trial" class="py-24 bg-[#1e293b] relative overflow-hidden">
+        <div class="absolute inset-0 hero-gradient opacity-10"></div>
+        <div class="max-w-5xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30 mb-6">
+                    <i data-lucide="gift" class="w-4 h-4 text-green-400"></i>
+                    <span class="text-sm font-semibold text-green-400">Limited Time Offer</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">Try It Free for <span class="gradient-text">7 Days</span></h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">We'll build a custom AI receptionist for your business — your company name, your hours, your services. If you don't love it after 7 days, we turn it off. No cost, no contract, no risk.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-[#0f172a] rounded-2xl p-8 border border-gray-700 text-center">
+                    <div class="w-16 h-16 bg-green-900/40 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="wrench" class="w-8 h-8 text-green-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">We Build It For You</h3>
+                    <p class="text-gray-400 text-sm">Custom AI trained on your business — your name, hours, services, and common questions. Ready in days.</p>
+                </div>
+                <div class="bg-[#0f172a] rounded-2xl p-8 border border-gray-700 text-center">
+                    <div class="w-16 h-16 bg-blue-900/40 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="phone-forwarded" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Forward Your Calls</h3>
+                    <p class="text-gray-400 text-sm">We give you a phone number. Set up call forwarding in 2 minutes. Works with any phone system — landline, cell, VoIP.</p>
+                </div>
+                <div class="bg-[#0f172a] rounded-2xl p-8 border border-gray-700 text-center">
+                    <div class="w-16 h-16 bg-purple-900/40 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="heart" class="w-8 h-8 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Love It or Leave It</h3>
+                    <p class="text-gray-400 text-sm">After 7 days, decide if you want to keep it. No pressure, no hard sell. The AI sells itself once you see it catch real leads.</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-2xl p-8 border border-green-500/30 text-center max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-3">What's Included in Your Free Trial</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 text-sm">
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Custom AI for your business</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Dedicated phone number</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Real-time email alerts</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Call transcripts & recordings</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Google Sheets logging</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-300">
+                        <i data-lucide="check" class="w-4 h-4 text-green-400 flex-shrink-0"></i>
+                        <span>Full support from Oliver</span>
+                    </div>
+                </div>
+                <a href="mailto:oliver@oliveraiservices.com?subject=Free%20Trial%20Request&body=Hi%20Oliver%2C%0A%0AI%27d%20like%20to%20try%20the%20AI%20receptionist%20for%20my%20business.%0A%0ABusiness%20name%3A%20%0AIndustry%3A%20%0APhone%3A%20%0A%0AThanks!" class="btn-primary text-white px-10 py-4 rounded-full font-bold text-lg inline-flex items-center gap-3 no-underline">
+                    <i data-lucide="gift" class="w-5 h-5"></i>
+                    Start My Free 7-Day Trial
+                </a>
+                <p class="text-sm text-gray-500 mt-4">No credit card required. No commitment. We'll have your AI ready in days.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Grid -->
-    <section class="py-24 bg-[#1e293b]">
+    <section class="py-24 bg-[#0f172a]">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 scroll-reveal">
                 <h2 class="text-4xl font-bold mb-4">Everything You Need to Never Miss a Lead</h2>
@@ -1049,6 +1115,16 @@
                 
                 <div class="bg-[#0f172a] rounded-xl p-6 shadow-sm border border-gray-700 scroll-reveal">
                     <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
+                        <span>How does the 7-day free trial work?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden mt-4 text-gray-400">
+                        We build a custom AI receptionist for your business — with your company name, hours, and services. You get a dedicated phone number to forward calls to. For 7 days, you use it for free. If you love it (and you will), pick a plan and keep going. If not, we turn it off. No credit card required, no obligation, no risk.
+                </div>
+                </div>
+
+                <div class="bg-[#0f172a] rounded-xl p-6 shadow-sm border border-gray-700 scroll-reveal">
+                    <button class="flex justify-between items-center w-full text-left font-semibold" onclick="toggleFaq(this)">
                         <span>Can I cancel anytime?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
                     </button>
@@ -1137,32 +1213,36 @@
                 </div>
         
         <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-6">Ready to Never Miss Another Call?</h2>
-            <p class="text-xl mb-8 opacity-90">Your AI receptionist answers every call, captures every lead, and emails you instantly.</p>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6">Try It Free for 7 Days — Zero Risk</h2>
+            <p class="text-xl mb-8 opacity-90">We'll build a custom AI receptionist for your business. If you don't love it, we turn it off. No cost. No commitment.</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+13074649517" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition flex items-center justify-center gap-2 no-underline">
-                    <i data-lucide="phone" class="w-5 h-5"></i>
-                    Call Now — Try It Yourself
+                <a href="mailto:oliver@oliveraiservices.com?subject=Free%20Trial%20Request&body=Hi%20Oliver%2C%0A%0AI%27d%20like%20to%20try%20the%20AI%20receptionist%20for%20my%20business.%0A%0ABusiness%20name%3A%20%0AIndustry%3A%20%0APhone%3A%20%0A%0AThanks!" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition flex items-center justify-center gap-2 no-underline">
+                    <i data-lucide="gift" class="w-5 h-5"></i>
+                    Start My Free Trial
                 </a>
-                <a href="mailto:oliver@oliverseo.com" class="bg-white/20 backdrop-blur text-white border-2 border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/30 transition flex items-center justify-center gap-2">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                    Email Us
+                <a href="tel:+13074649517" class="bg-white/20 backdrop-blur text-white border-2 border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/30 transition flex items-center justify-center gap-2 no-underline">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Hear It Live — (307) 464-9517
                 </a>
                 </div>
             
             <div class="flex items-center justify-center gap-6 text-sm opacity-80 flex-wrap">
                 <span class="flex items-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    7-day free trial
+                </span>
+                <span class="flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
                     No credit card required
                 </span>
                 <span class="flex items-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i>
-                    Month-to-month
+                    We build it for you
                 </span>
                 <span class="flex items-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i>
-                    Setup in under a week
+                    Cancel anytime
                 </span>
             </div>
         </div>
@@ -1299,10 +1379,7 @@
             }
         }
         
-        // Play demo button interaction
-        document.getElementById('playDemo').addEventListener('click', function() {
-            alert('Audio demo would play here. In production, this would play an actual AI call recording.');
-        });
+        // Video is now embedded directly in the hero section
         
         // Try AI Live - call the demo number
         function tryAILive() {

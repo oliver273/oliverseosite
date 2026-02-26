@@ -1,7 +1,7 @@
 # 💰 AI Receptionist Business - Marketing Plan & Financial Analysis
 
-**Last Updated:** February 16, 2026  
-**Status:** Active - Client #1 (Mike) onboarded, Client #2 in progress
+**Last Updated:** February 26, 2026  
+**Status:** Active — Client #1 (Mike) live. Pivoting to partner/channel sales as primary strategy for Client #2+.
 
 ---
 
@@ -163,50 +163,54 @@ AI Receptionist for after-hours call handling
 
 ## 📈 MARKETING COSTS & ROI
 
-### **Cost to Acquire a Client:**
+### **Cost to Acquire a Client (by Channel):**
 
-**Option 1: LinkedIn Ads (Current Strategy)**
-- **Budget:** $100
-- **Expected Results:** 1-2 qualified leads
-- **Close Rate:** 25-50% (from qualified leads)
-- **Expected:** 0.5-1 client from $100 spend
-- **Cost per Client:** $100-$200
+**Channel 1: Partner/Channel Sales (PRIMARY — Highest Priority)**
+- **Budget:** $0 upfront (pay $250 per closed referral)
+- **Time Investment:** 2-3 hours to recruit each partner
+- **Expected Results:** 1-3 clients/month per active partner
+- **Close Rate:** 30-50% (warm referrals from trusted source)
+- **Cost per Client:** $250 (referral fee)
+- **Why it's #1:** Highest close rate, lowest effort after setup, compounds over time
 
-**Option 2: Direct Outreach (Free)**
-- **Budget:** $0
-- **Time Investment:** 10-15 hours
-- **Expected Results:** 1-2 clients
-- **Cost per Client:** $0 (time only)
+**Channel 2: Free Trial Offers (Paired with all outreach)**
+- **Budget:** ~$10-15 per trial (Vapi minutes during 7-day trial)
+- **Close Rate:** 50-70% (once they see the AI catch real leads, they don't cancel)
+- **Cost per Client:** $10-15
+- **Why it works:** Eliminates the #1 objection — "what if it doesn't work?"
 
-**Option 3: Combined Approach**
-- **Direct Outreach:** $0 (30 emails)
-- **LinkedIn Ads:** $100
-- **Expected:** 1-2 clients
-- **Cost per Client:** $50-$100
+**Channel 3: Cold Email via Instantly.ai (Secondary — HVAC Focus)**
+- **Budget:** $50-100 for leads (Fiverr) + Instantly subscription
+- **Expected Results:** 1-3 clients per 750 leads
+- **Close Rate:** 1-3% (cold outreach)
+- **Cost per Client:** $50-200
+- **Status:** Running — 50 sent, monitoring opens/replies through Feb 28
 
-### **ROI Calculation:**
+**Channel 4: LinkedIn (Long-term Brand Building)**
+- **Budget:** $0 (organic content)
+- **Time:** 15-30 min/week posting
+- **Expected Results:** Builds credibility, attracts inbound inquiries over time
+- **Cost per Client:** $0
+- **Status:** Active — posting demo videos, engagement content
 
-**Scenario 1: $100 Marketing Spend (LinkedIn Ads)**
-- **Marketing Cost:** $100
-- **Client Revenue (Year 1):** $20,400
-- **Client Profit (Year 1):** $16,440
-- **ROI:** 16,340% in first year ($16,440 profit - $100 cost)
-- **Payback Period:** <1 month
+**Channel 5: Local Networking (Gillette Advantage)**
+- **Budget:** $100-200/year (Chamber membership)
+- **Time:** 1-2 events/month
+- **Expected Results:** 1-2 clients per quarter from in-person relationships
+- **Close Rate:** High (face-to-face trust in a small town)
+- **Cost per Client:** ~$50-100
 
-**Scenario 2: $0 Marketing Spend (Direct Outreach)**
-- **Marketing Cost:** $0
-- **Client Revenue (Year 1):** $20,400
-- **Client Profit (Year 1):** $16,440
-- **ROI:** Infinite (no cost)
-- **Payback Period:** Immediate
+### **ROI Calculation (by Channel):**
 
-**Scenario 3: $500 Marketing Spend (Full Campaign)**
-- **Marketing Cost:** $500
-- **Expected Clients:** 1-2
-- **Client Revenue (Year 1):** $20,400-$40,800
-- **Client Profit (Year 1):** $16,440-$32,880
-- **ROI:** 3,188%-6,476% in first year
-- **Payback Period:** <1 month
+| Channel | Cost per Client | Year 1 Profit per Client | ROI |
+|---|---|---|---|
+| Partner Referral | $250 | $16,440 | 6,476% |
+| Free Trial | $15 | $16,440 | 109,500% |
+| Cold Email | $50-200 | $16,440 | 8,120-32,780% |
+| LinkedIn (organic) | $0 | $16,440 | Infinite |
+| Local Networking | $50-100 | $16,440 | 16,340-32,780% |
+
+**Payback period for ALL channels:** Less than 1 month
 
 ---
 
@@ -244,61 +248,138 @@ AI Receptionist for after-hours call handling
 
 ---
 
-## 🎯 MARKETING STRATEGIES
+## 🎯 MARKETING STRATEGIES (Priority Order)
 
-### **Strategy 1: LinkedIn Ads ($100 Budget)**
+### **Strategy 1: Partner/Channel Sales (PRIMARY FOCUS)**
 
-**Setup:**
-- **Budget:** $100
-- **Duration:** 30 days
-- **Daily Budget:** $3.33/day
-- **Target:** Business owners, managers in Wyoming
-- **Industries:** Insurance, Real Estate, Legal, Medical, Home Services
+**The Big Idea:** Find 2-5 people in Gillette who already talk to your target market daily. Pay them $250 for every referral that signs up. They do zero work — just pass along your name when they hear the pain.
 
-**Expected Results:**
-- **Impressions:** 1,000-3,000
-- **Clicks:** 20-60 (2-3% CTR)
-- **Leads:** 2-6 (10% conversion from clicks)
-- **Clients:** 0.5-1.5 (25% close rate from leads)
+**Who to Partner With:**
+1. **Accountants/bookkeepers** who do taxes for HVAC, plumbers, contractors
+2. **IT/phone system companies** who set up VoIP and phone lines for local businesses
+3. **Other service providers** to tradespeople — sign shops, uniform companies, supply houses
+4. **Business coaches/consultants** who advise small business owners
+5. **Web designers/marketing agencies** in Wyoming (you ARE one — refer yourself)
 
-**Cost per Lead:** $17-$50  
-**Cost per Client:** $67-$200
+**How to Find Them in Gillette:**
+- Ask Mike who does his business taxes — that accountant probably does 20+ local businesses
+- Google "accountant Gillette WY" and "bookkeeper Gillette WY"
+- Check the Gillette Chamber of Commerce directory
+- Walk into their offices (in Gillette, face-to-face beats email every time)
+
+**What to Say When You Walk In:**
+> "Hey [name], I'm Oliver — I run an AI receptionist service here in Gillette. When a business owner is on a job and can't answer the phone, my AI picks up, sounds like a real person, gets the caller's info, and emails it to them instantly. I've got it running for Mike over at Farm Bureau and he loves it.
+>
+> I'm looking for a couple people in town who already work with HVAC guys, plumbers, contractors — people who miss calls all day. If you ever hear one of your clients complaining about missed calls, I'll pay you $250 for every referral that signs up. No work on your end — just pass along my name."
+
+**Partner Referral Terms:**
+- $250 per referral that becomes a paying client
+- No limit on referrals
+- No work required — just pass along Oliver's name/number
+- Paid within 30 days of the referral signing up
+- Printed partner referral sheet available (PARTNER_REFERRAL_SHEET.html)
+
+**Why Partner Sales Beats Everything Else:**
+
+| Metric | Partner Sales | Cold Email | LinkedIn |
+|---|---|---|---|
+| Trust level | High (referred by someone they trust) | Zero (stranger) | Low-Medium |
+| Close rate | 30-50% | 1-3% | 5-10% |
+| Cost per client | $250 (only when it works) | $50-200 (whether it works or not) | $0 (time) |
+| Effort after setup | Almost zero | Constant lead buying + sending | Constant posting |
+| Compounds over time? | Yes — partners keep sending | No — have to keep buying leads | Slowly |
+
+**Target:** Recruit 3-5 active partners in the next 30 days.
+**Expected Result:** 2-3 clients/month once partners are active.
 
 ---
 
-### **Strategy 2: Direct Outreach (Free)**
+### **Strategy 2: Free Trial Offer (Paired with ALL Outreach)**
 
-**Setup:**
-- **Budget:** $0
-- **Time:** 10-15 hours
-- **Target:** 30-50 businesses
-- **Method:** Personalized emails
+**The Big Idea:** Remove the #1 objection by letting them try it free for 7 days.
 
-**Expected Results:**
-- **Emails Sent:** 30-50
-- **Responses:** 3-10 (10-20% response rate)
-- **Leads:** 1-3 (qualified)
-- **Clients:** 0.5-1.5 (25-50% close rate)
+**How It Works:**
+1. Build a custom AI for their business (their name, hours, services)
+2. Give them a phone number to forward calls to
+3. They use it free for 7 days
+4. After 7 days, they pick a plan or we turn it off — no pressure
 
-**Cost per Lead:** $0  
-**Cost per Client:** $0 (time only)
+**Your Cost Per Trial:** ~$10-15 in Vapi minutes
+**Close Rate After Trial:** 50-70% (once they see the AI catch a real lead, they don't cancel)
+
+**Use the free trial offer in:**
+- Partner referral conversations ("Tell them I'll set one up free for a week")
+- Cold emails ("I'll build you one free for 7 days")
+- LinkedIn posts ("Comment 'trial' and I'll build one for your business")
+- In-person meetings ("Want me to build one for you to try? No cost.")
+
+**Status:** Added to website (ai-receptionist.html). Ready to use in all outreach.
 
 ---
 
-### **Strategy 3: Referrals (Best ROI)**
+### **Strategy 3: Cold Email via Instantly.ai (Secondary)**
+
+**Current Status:** 
+- HVAC campaign running — 50 emails sent, monitoring through Feb 28
+- 750 HVAC leads from Fiverr (Muhammad Kaleem, $90)
+- Lead quality was mixed — ~334 usable HVAC leads from File 2
+- Email sequence updated with free trial offer
 
 **Setup:**
-- **Budget:** $0
-- **Time:** Minimal (just ask)
-- **Method:** Ask existing clients for referrals
+- **Budget:** $50-100 for leads + Instantly subscription
+- **Send Rate:** 30-40 emails/day max to protect domain health
+- **Target:** HVAC/home service business owners in the US
 
-**Expected Results:**
-- **Referral Rate:** 1-2 referrals per client
-- **Close Rate:** 50%+ (referrals convert much higher)
-- **Clients:** 0.5-1 per existing client
+**Email Sequence:** See COLD_EMAIL_TEMPLATES.md (updated with free trial angle)
 
-**Cost per Lead:** $0  
-**Cost per Client:** $0
+**Action Items:**
+- [ ] Monitor open/reply rates through Feb 28
+- [ ] If opens stay at 0%, check domain health and email deliverability
+- [ ] If opens > 20% but no replies, tweak subject lines and body
+- [ ] Upload Tier B (CEOs) after Tier A results come in
+
+---
+
+### **Strategy 4: LinkedIn (Long-Term Brand Building)**
+
+**The Big Idea:** Post valuable content that builds credibility. Not the priority right now, but plant seeds for the future.
+
+**What to Post (1-2x per week):**
+- Demo videos showing the AI answering a call
+- Before/after stories ("This HVAC owner was missing 15 calls/month...")
+- Industry stats about missed calls and lost revenue
+- Quick tips for small business owners
+
+**Status:** Active — keep posting, don't make it the main focus.
+
+---
+
+### **Strategy 5: Local Networking (Gillette Advantage)**
+
+**You live in a town of 30,000 people. You can walk into any business. National competitors can't.**
+
+**Channels:**
+- **Gillette Chamber of Commerce** — membership, directory, monthly events
+- **BNI (Business Networking International)** — check for chapters near Gillette
+- **Local Facebook Groups** — "Gillette Business Owners", "Campbell County Business Network"
+- **Walk-ins** — walk into HVAC shops, plumbers, contractors with your referral sheet
+
+**Action Items:**
+- [ ] Look up Gillette Chamber of Commerce — check membership cost
+- [ ] Search for BNI chapters near Gillette, WY
+- [ ] Join 2-3 local business Facebook groups
+- [ ] Post demo video in those groups
+
+---
+
+### **Strategy 6: Client Referrals (Ongoing)**
+
+**Current Program:**
+- Mike (Client #1): $200 off per referral (legacy deal since he's on pay-per-use)
+- All future clients: $500 off next invoice per referral that signs up
+- No limit on referrals
+
+**Status:** Mike agreed to send referrals (as of Feb 23). Still need to ask for a 2-3 sentence testimonial for use in cold emails and sales calls.
 
 ---
 
@@ -341,24 +422,35 @@ AI Receptionist for after-hours call handling
 
 ## 💡 GROWTH STRATEGY
 
-### **Phase 1: Foundation (Months 1-3)**
-- **Goal:** 2-3 clients
-- **Marketing Budget:** $200-$300
-- **Focus:** Direct outreach + LinkedIn Ads
-- **Revenue Target:** $3,400-$5,100/month
-- **Profit Target:** $2,740-$4,110/month
+### **Phase 1: Partner Pipeline (NOW — Next 30 Days)**
+- **Goal:** Recruit 3-5 referral partners + close Client #2
+- **Marketing Budget:** $0-100 (Chamber membership if applicable)
+- **Primary Focus:** Partner/channel sales — walk into offices, recruit partners
+- **Secondary:** Cold email campaign running in background, LinkedIn posts
+- **Revenue Target:** $1,700-$3,400/month (1-2 new clients)
+- **Profit Target:** $1,370-$2,740/month
 
-### **Phase 2: Growth (Months 4-6)**
-- **Goal:** 5-7 clients
-- **Marketing Budget:** $500-$700
-- **Focus:** Referrals + Paid ads + Case studies
+**Week-by-Week Plan:**
+| Week | Action |
+|---|---|
+| **Week 1 (Now)** | Text Mike for accountant recommendation. Google accountants/IT in Gillette. Print partner referral sheets. |
+| **Week 2** | Walk into 3-5 offices with referral sheet. Have the conversation. Leave your card + sheet. |
+| **Week 3** | Follow up with partners. Monitor cold email results (Feb 28 check). Post LinkedIn demo video. |
+| **Week 4** | Check if any partner referrals came in. Follow up with warm leads. Close Client #2. |
+
+### **Phase 2: Growth (Months 2-4)**
+- **Goal:** 5-7 total clients
+- **Marketing Budget:** $250-500 (referral payouts + Chamber)
+- **Primary Focus:** Keep partners sending referrals. Free trial every prospect. Local networking events.
+- **Secondary:** Scale cold email if it's working. LinkedIn content.
 - **Revenue Target:** $8,500-$11,900/month
 - **Profit Target:** $6,850-$9,590/month
 
-### **Phase 3: Scale (Months 7-12)**
-- **Goal:** 10-15 clients
-- **Marketing Budget:** $1,000-$1,500
-- **Focus:** Multiple channels, automation, partnerships
+### **Phase 3: Scale (Months 5-12)**
+- **Goal:** 10-15 total clients
+- **Marketing Budget:** $500-1,500 (referral payouts + expanded outreach)
+- **Primary Focus:** Partners compounding, client referrals stacking, inbound from LinkedIn/website
+- **Secondary:** Expand to new industries/cities. Consider "AI Front Office" bundle ($3,000-5,000/mo)
 - **Revenue Target:** $17,000-$25,500/month
 - **Profit Target:** $13,700-$20,550/month
 
@@ -436,47 +528,60 @@ AI Receptionist for after-hours call handling
 
 ## 🚀 NEXT STEPS
 
-### **Immediate Actions:**
-1. ✅ Client #1 (Mike) - Onboarded and testing
-2. 🎯 Client #2 - LinkedIn Ads campaign ($100 budget)
-3. 📧 Follow up with leads from ads
-4. 📊 Track all metrics in spreadsheet
-5. 💰 Optimize marketing spend based on results
+### **This Week (Priority Order):**
+1. 🎯 **Text Mike** — ask who does his business taxes / who the local accountant is for contractors
+2. 🎯 **Google "accountant Gillette WY" and "IT company Gillette WY"** — make a list of 5-10 potential partners
+3. 🎯 **Print 10 copies of PARTNER_REFERRAL_SHEET.html** — have them ready to hand out
+4. 🎯 **Walk into 2-3 offices** this week with the referral sheet — have the conversation
+5. 📧 **Monitor cold email campaign** — check open/reply rates on Friday Feb 28
+6. 📱 **Post demo video on LinkedIn** — keep building presence
 
 ### **This Month:**
-- Launch LinkedIn Ads campaign
-- Send 30 direct outreach emails
-- Follow up with all leads
-- Close client #2
-- Track ROI and optimize
+- Recruit 3-5 referral partners in Gillette
+- Walk into offices and have face-to-face conversations
+- Monitor Instantly cold email results — adjust or pause if still 0 opens by end of month
+- Post 2-3 times on LinkedIn
+- Close Client #2 (from any channel — partner referral, cold email, or Mike referral)
+- Ask Mike for a 2-3 sentence testimonial
 
 ### **This Quarter:**
-- Reach 3-5 clients
-- Establish referral program
-- Create case study (Mike's success)
-- Optimize marketing channels
-- Scale profitable strategies
+- 3-5 active referral partners sending warm leads
+- 5+ total clients ($8,500+/month revenue)
+- Chamber of Commerce membership if budget allows
+- Case study from Mike's success for website and emails
+- Evaluate cold email ROI — scale or drop based on results
+- Begin "AI Front Office" bundle planning once at 5+ clients
 
 ---
 
 ## 📝 NOTES
 
-### **Current Status:**
-- **Client #1:** Farm Bureau Financial Services (Mike) - $1,700/month
-- **Status:** Testing over weekend, ready for implementation
+### **Current Status (Feb 26, 2026):**
+- **Client #1:** Farm Bureau Financial Services (Mike) - Legacy pay-per-use ($0.90/min, no base)
 - **AI Phone Number:** +1 (307) 439-0626
-- **Email Delivery:** KCody@mwfbi.com
+- **Email Delivery:** KCody@mwfbi.com (Kayleigh, Mike's receptionist)
+- **Mike's Status:** Live and running. Had some issues Feb 23 (now mostly fixed). Mike loves it.
+- **Mike does NOT do life/health insurance** — only auto, home, investments. No HIPAA needed.
+- **Mike referrals:** Agreed to send people (Feb 23). Offered $200 off per referral.
+- **Cold Email:** HVAC campaign running via Instantly.ai — 50 sent, 0 opens so far. Checking Feb 28.
+- **HVAC Demo AI:** "Peak Air HVAC" (AI name: Sarah) — built and live on demo line
+- **Free Trial:** Added to website (ai-receptionist.html) — 7-day free trial offer
+- **Partner Referral Sheet:** Created (PARTNER_REFERRAL_SHEET.html) — ready to print
 
 ### **Marketing Budget:**
-- **Current:** $100 for LinkedIn Ads (Client #2)
-- **Future:** $100-$200 per client acquisition target
+- **Current Spend:** ~$90 (Fiverr leads) + Instantly subscription
+- **Partner Referral Payouts:** $250 per closed referral (budget as needed)
+- **Future:** Chamber membership ($100-200/year), additional lead batches if cold email works
 
 ### **Key Learnings:**
-- Direct outreach has best ROI (free, high conversion)
-- LinkedIn Ads work well for B2B targeting
+- Partner/channel sales has the highest close rate (30-50%) — make it the #1 priority
+- Free trial eliminates the biggest objection and costs only $10-15 per trial
+- Cold email needs better targeting — 0 opens on 50 sent means possible deliverability issues
+- Fiverr lead quality was mixed (334 usable out of 822 in File 2) — vet sellers carefully
+- In a small town like Gillette, face-to-face beats email every time
+- Mike's organic enthusiasm (annoying his wife talking about it) is the best proof of product-market fit
 - Referrals convert at 50%+ (much higher than cold leads)
-- Case studies and social proof are powerful
-- Month-to-month contracts reduce friction
+- Month-to-month contracts + free trial = minimal friction to close
 
 ---
 
@@ -605,5 +710,5 @@ Do these every month for EVERY client to keep them happy and referral-ready:
 
 ---
 
-**Last Updated:** February 16, 2026  
-**Next Review:** After Client #2 acquisition
+**Last Updated:** February 26, 2026  
+**Next Review:** Friday Feb 28 (check cold email stats) + end of March (partner sales results)

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Referral Sheet — Oliver AI Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        body {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in 0.6in;
+            color: #1a1a2e;
+            font-size: 11pt;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            @page {
+                size: letter;
+                margin: 0.5in 0.6in;
+            }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 22pt;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+
+        .header-left p {
+            font-size: 10pt;
+            color: #6366f1;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .header-right strong {
+            color: #1a1a2e;
+        }
+
+        .intro {
+            background: #f0f0ff;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #6366f1;
+        }
+
+        .intro p {
+            font-size: 10.5pt;
+            color: #333;
+        }
+
+        .intro strong {
+            color: #1a1a2e;
+        }
+
+        h2 {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2 .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #6366f1;
+            color: white;
+            border-radius: 6px;
+            font-size: 14pt;
+        }
+
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .card h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+
+        .card p, .card li {
+            font-size: 9.5pt;
+            color: #555;
+        }
+
+        .card ul {
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .card ul li {
+            margin-bottom: 3px;
+        }
+
+        .reward-box {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 10px;
+            padding: 18px 24px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .reward-box .amount {
+            font-size: 36pt;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .reward-box .label {
+            font-size: 11pt;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .reward-box .sub {
+            font-size: 9pt;
+            opacity: 0.75;
+            margin-top: 6px;
+        }
+
+        .how-it-works {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 12px 8px;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+        }
+
+        .step .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #6366f1;
+            color: white;
+            border-radius: 50%;
+            font-size: 13pt;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .step h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 3px;
+        }
+
+        .step p {
+            font-size: 8.5pt;
+            color: #666;
+        }
+
+        .when-to-refer {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+        }
+
+        .when-to-refer h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 8px;
+        }
+
+        .when-to-refer ul {
+            padding-left: 18px;
+        }
+
+        .when-to-refer li {
+            font-size: 9.5pt;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .when-to-refer li strong {
+            color: #166534;
+        }
+
+        .footer-cta {
+            background: #1a1a2e;
+            color: white;
+            border-radius: 10px;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-cta .left h3 {
+            font-size: 13pt;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .footer-cta .left p {
+            font-size: 9.5pt;
+            color: #aaa;
+        }
+
+        .footer-cta .right {
+            text-align: right;
+        }
+
+        .footer-cta .right .phone {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #a5b4fc;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-cta .right .email {
+            font-size: 9pt;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        .demo-line {
+            font-size: 9pt;
+            color: #6366f1;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Partner Referral Program</h1>
+            <p>Oliver AI Services — AI Receptionist</p>
+        </div>
+        <div class="header-right">
+            <strong>Oliver Carroll</strong><br>
+            (307) 464-9517<br>
+            oliver@oliverseo.com<br>
+            Gillette, Wyoming
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        <p><strong>What I do:</strong> I build AI receptionists that answer business phones 24/7. When someone calls and the owner can't pick up — the AI answers, sounds like a real person, collects the caller's name, number, and reason for calling, then emails everything to the business owner instantly. It's already running for a local insurance office and they love it.</p>
+    </div>
+
+    <!-- Reward Box -->
+    <div class="reward-box">
+        <div class="amount">$250</div>
+        <div class="label">For every referral that becomes a paying client</div>
+        <div class="sub">No limit on referrals. No work on your end. Just pass along my name.</div>
+    </div>
+
+    <!-- How It Works for the Partner -->
+    <div class="section">
+        <h2><span class="icon">1</span> How It Works For You</h2>
+        <div class="how-it-works">
+            <div class="step">
+                <div class="num">1</div>
+                <h4>You Hear the Pain</h4>
+                <p>A client mentions missing calls, losing leads, or not having someone to answer the phone</p>
+            </div>
+            <div class="step">
+                <div class="num">2</div>
+                <h4>You Pass My Name</h4>
+                <p>Give them my number or email. Or just text me their name and I'll reach out</p>
+            </div>
+            <div class="step">
+                <div class="num">3</div>
+                <h4>You Get Paid</h4>
+                <p>If they sign up, you get $250. I handle everything else — setup, support, billing</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Two Column: What They Get + Who To Refer -->
+    <div class="two-col section">
+        <div class="card">
+            <h3>What Your Client Gets</h3>
+            <ul>
+                <li>AI answers their phone 24/7 (sounds human)</li>
+                <li>Collects caller name, phone, email, reason</li>
+                <li>Emails the info to them instantly</li>
+                <li>Logs every call to a Google Sheet</li>
+                <li>Full call transcripts and recordings</li>
+                <li>Books appointments into their calendar</li>
+                <li><strong>7-day free trial — no cost, no risk</strong></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Pricing (So You Know)</h3>
+            <ul>
+                <li><strong>Starter:</strong> $200/month + $1,500 setup<br>
+                    <span style="font-size: 8.5pt; color: #888;">200 min included, $0.90/min after</span></li>
+                <li style="margin-top: 8px;"><strong>Pro:</strong> $1,700/month flat<br>
+                    <span style="font-size: 8.5pt; color: #888;">3,000 min included, no setup fee</span></li>
+                <li style="margin-top: 8px;"><strong>Free trial:</strong> 7 days, no commitment<br>
+                    <span style="font-size: 8.5pt; color: #888;">I build a custom AI for their business</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- When to Refer -->
+    <div class="when-to-refer">
+        <h3>When to Think of Me (Listen for These)</h3>
+        <ul>
+            <li><strong>"I keep missing calls when I'm on a job"</strong> — #1 thing HVAC/plumbing owners say</li>
+            <li><strong>"My voicemail is full of leads I never called back"</strong> — the AI captures them in real-time</li>
+            <li><strong>"I can't afford a receptionist"</strong> — the AI starts at $200/month, a receptionist is $3,000+</li>
+            <li><strong>"I need someone to answer after hours"</strong> — the AI works 24/7/365, including holidays</li>
+            <li><strong>"I'm losing jobs to competitors"</strong> — usually because the competitor answered the phone first</li>
+        </ul>
+    </div>
+
+    <!-- Best Industries -->
+    <div class="section">
+        <h2><span class="icon">2</span> Best Fit Industries</h2>
+        <div class="two-col">
+            <div class="card">
+                <h3>Great Fit</h3>
+                <p>HVAC &bull; Plumbing &bull; Electrical &bull; Roofing &bull; Landscaping &bull; Auto repair &bull; Insurance agencies &bull; Law firms &bull; Real estate &bull; Dental offices &bull; Salons &bull; Any business that misses calls</p>
+            </div>
+            <div class="card">
+                <h3>Live Demo</h3>
+                <p>Have them call <strong>(307) 464-9517</strong> right now. An AI receptionist will answer live and show them exactly how it works. Takes 60 seconds.</p>
+                <p class="demo-line" style="margin-top: 8px;">They can try it anytime — day or night.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="footer-cta">
+        <div class="left">
+            <h3>Ready to refer someone?</h3>
+            <p>Just text or call me with their name. I'll take it from there.</p>
+        </div>
+        <div class="right">
+            <div class="phone">(307) 464-9517</div>
+            <div class="email">oliver@oliverseo.com</div>
+        </div>
+    </div>
+
+</body>
+</html>
