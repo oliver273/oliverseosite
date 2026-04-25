@@ -14,43 +14,41 @@
     <script>
       (function(){
         var injected=false;
-        var obs=new MutationObserver(function(){
+        function tryInject(){
           if(injected)return;
-          var navButtons=document.querySelectorAll('nav button, header button');
-          var contactBtn=null;
-          navButtons.forEach(function(b){
-            if(b.textContent.trim()==='Contact')contactBtn=b;
-          });
-          if(!contactBtn)return;
+          // Find all nav/header links or buttons with text "Contact"
+          var all=document.querySelectorAll('nav a, nav button, header a, header button');
+          var contactEls=[];
+          all.forEach(function(el){if(el.textContent.trim()==='Contact')contactEls.push(el);});
+          if(!contactEls.length)return;
           injected=true;
-          obs.disconnect();
 
-          var desktopNav=contactBtn.closest('div.hidden, div.lg\\:flex, nav');
-          if(!desktopNav)desktopNav=contactBtn.parentElement;
+          contactEls.forEach(function(contactEl){
+            // Skip if Portfolio link already exists in same parent
+            var parent=contactEl.parentElement;
+            if(!parent)return;
+            var already=false;
+            parent.querySelectorAll('a').forEach(function(a){if(a.textContent.trim()==='Portfolio')already=true;});
+            if(already)return;
 
-          var link=document.createElement('a');
-          link.href='/portfolio.html';
-          link.textContent='Portfolio';
-          link.className=contactBtn.className;
-          link.style.cssText='cursor:pointer;text-decoration:none;';
-          contactBtn.parentElement.insertBefore(link,contactBtn.nextSibling);
-
-          var mobileMenus=document.querySelectorAll('[class*="lg:hidden"], [class*="md:hidden"]');
-          mobileMenus.forEach(function(menu){
-            var mobileLinks=menu.querySelectorAll('button, a');
-            mobileLinks.forEach(function(ml){
-              if(ml.textContent.trim()==='Contact'){
-                var mLink=document.createElement('a');
-                mLink.href='/portfolio.html';
-                mLink.textContent='Portfolio';
-                mLink.className=ml.className;
-                mLink.style.cssText='cursor:pointer;text-decoration:none;';
-                ml.parentElement.insertBefore(mLink,ml.nextSibling);
-              }
-            });
+            var link=document.createElement('a');
+            link.href='/portfolio.html';
+            link.textContent='Portfolio';
+            link.className=contactEl.className;
+            link.style.cssText='cursor:pointer;text-decoration:none;';
+            parent.insertBefore(link,contactEl);
           });
-        });
+        }
+
+        // Try immediately in case React already rendered
+        tryInject();
+        // Also observe for React hydration
+        var obs=new MutationObserver(function(){tryInject();});
         obs.observe(document.body,{childList:true,subtree:true});
+        // Belt-and-suspenders: try again after short delays
+        setTimeout(tryInject,500);
+        setTimeout(tryInject,1500);
+        setTimeout(function(){tryInject();obs.disconnect();},4000);
       })();
     </script>
   </body>
