@@ -11,26 +11,47 @@
   </head>
   <body>
     <div id="root"></div>
+    <style>
+      /* Desktop: inject Portfolio into nav via JS (below) */
+      /* Mobile: always-visible Portfolio pill in top-right */
+      #portfolio-mobile-btn{
+        display:none;
+        position:fixed;
+        bottom:1.25rem;
+        right:1.25rem;
+        z-index:9999;
+        background:linear-gradient(to right,#3b82f6,#9333ea);
+        color:#fff;
+        font-family:ui-sans-serif,system-ui,sans-serif;
+        font-size:.875rem;
+        font-weight:600;
+        padding:.6rem 1.1rem;
+        border-radius:9999px;
+        text-decoration:none;
+        box-shadow:0 4px 20px rgba(0,0,0,.4);
+        letter-spacing:.01em;
+      }
+      @media(max-width:767px){
+        #portfolio-mobile-btn{display:inline-block}
+      }
+    </style>
+    <a id="portfolio-mobile-btn" href="/portfolio.html">Portfolio ›</a>
     <script>
       (function(){
         var injected=false;
         function tryInject(){
           if(injected)return;
-          // Find all nav/header links or buttons with text "Contact"
           var all=document.querySelectorAll('nav a, nav button, header a, header button');
           var contactEls=[];
           all.forEach(function(el){if(el.textContent.trim()==='Contact')contactEls.push(el);});
           if(!contactEls.length)return;
           injected=true;
-
           contactEls.forEach(function(contactEl){
-            // Skip if Portfolio link already exists in same parent
             var parent=contactEl.parentElement;
             if(!parent)return;
             var already=false;
             parent.querySelectorAll('a').forEach(function(a){if(a.textContent.trim()==='Portfolio')already=true;});
             if(already)return;
-
             var link=document.createElement('a');
             link.href='/portfolio.html';
             link.textContent='Portfolio';
@@ -39,13 +60,9 @@
             parent.insertBefore(link,contactEl);
           });
         }
-
-        // Try immediately in case React already rendered
         tryInject();
-        // Also observe for React hydration
         var obs=new MutationObserver(function(){tryInject();});
         obs.observe(document.body,{childList:true,subtree:true});
-        // Belt-and-suspenders: try again after short delays
         setTimeout(tryInject,500);
         setTimeout(tryInject,1500);
         setTimeout(function(){tryInject();obs.disconnect();},4000);
