@@ -99,7 +99,9 @@
         .card{display:flex;flex-direction:column;border-radius:1rem;border:1px solid #1e293b;background:#0f172a;overflow:hidden;transition:all .3s;text-decoration:none;color:inherit}
         .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);border-color:#334155}
         .card-img{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-        .card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,#0f172a);pointer-events:none}
+        .card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 75%,#0f172a);pointer-events:none}
+        .card-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
+        .card:hover .card-img img{transform:scale(1.04)}
         .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
         .card-title{font-size:1.25rem;font-weight:700;color:#f1f5f9;margin-bottom:.5rem}
         .card-desc{color:#94a3b8;font-size:.875rem;line-height:1.625;flex:1;margin-bottom:1rem}
@@ -160,23 +162,25 @@
             </a>
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="/portfolio.html" class="active">Portfolio</a>
-                <a href="/#pricing">Pricing</a>
-                <a href="/#why-us">Why Us</a>
-                <a href="/#contact">Contact</a>
+                <a href="/services">Services</a>
+                <a href="/portfolio" class="active">Portfolio</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/why-us">Why Us</a>
+                <a href="/contact">Contact</a>
             </div>
-            <a href="/#contact" class="nav-cta">Get a Free Quote</a>
+            <a href="/contact" class="nav-cta">Get a Free Quote</a>
             <button class="mobile-toggle" id="mob-btn" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <div class="mobile-menu" id="mob-menu">
             <a href="/">Home</a>
-            <a href="/portfolio.html" class="active">Portfolio</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/#why-us">Why Us</a>
-            <a href="/#contact">Contact</a>
-            <a href="/#contact" class="mob-cta">Get a Free Quote</a>
+            <a href="/services">Services</a>
+            <a href="/portfolio" class="active">Portfolio</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/why-us">Why Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/contact" class="mob-cta">Get a Free Quote</a>
         </div>
     </nav>
 
@@ -196,12 +200,7 @@
         <div class="grid">
             <!-- Water Co. II LLC (live client) -->
             <a href="https://waterco2.com" target="_blank" rel="noopener" class="card fade-up fade-up-2">
-                <div class="card-img" style="background:linear-gradient(135deg,#0e3a5c,#082238)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#5bc0eb">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5bc0eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Water Co. II LLC</span>
-                    </div>
-                </div>
+                <div class="card-img"><img src="/assets/previews/waterco.jpg" alt="Water Co. II LLC website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Water Co. II LLC</h3>
                     <p class="card-desc">Live client site we built, host, and maintain. 24/7 water load out facility in Wyoming — contact form with spam protection, fast mobile experience, and ongoing monthly support.</p>
@@ -215,12 +214,7 @@
 
             <!-- Summit Tax & Accounting -->
             <a href="https://summittax-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-2">
-                <div class="card-img" style="background:linear-gradient(135deg,#1d3b30,#142a22)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#b08d57">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b08d57" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Summit Tax &amp; Accounting</span>
-                    </div>
-                </div>
+                <div class="card-img"><img src="/assets/previews/summittax.jpg" alt="Summit Tax &amp; Accounting website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Summit Tax &amp; Accounting</h3>
                     <p class="card-desc">Four-page site for a tax and accounting firm — services, about, and contact pages with a warm, established-firm look. Built to win trust with clients handing over their books.</p>
@@ -234,12 +228,7 @@
 
             <!-- The Larkspur Hotel -->
             <a href="https://larkspurhotel-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img" style="background:linear-gradient(135deg,#2a231e,#1a1511)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#b16547">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b16547" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">The Larkspur Hotel</span>
-                    </div>
-                </div>
+                <div class="card-img"><img src="/assets/previews/larkspur.jpg" alt="The Larkspur Hotel website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">The Larkspur Hotel</h3>
                     <p class="card-desc">Boutique hotel site with six room types, online booking flow with secure payment integration, restaurant menu, and local experiences guide. Built to turn lookers into bookings.</p>
@@ -253,12 +242,7 @@
 
             <!-- Brighter Path Foundation -->
             <a href="https://brighterpath-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img" style="background:linear-gradient(135deg,#15565c,#0c3d43)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#f4b13e">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f4b13e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Brighter Path Foundation</span>
-                    </div>
-                </div>
+                <div class="card-img"><img src="/assets/previews/brighterpath.jpg" alt="Brighter Path Foundation website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Brighter Path Foundation</h3>
                     <p class="card-desc">Nonprofit site with summer camp registration, donation tiers showing exactly what each gift funds, volunteer signup, and impact storytelling that builds donor trust.</p>
@@ -272,12 +256,7 @@
 
             <!-- Turn It On Electric -->
             <a href="https://turnitonelectric-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img" style="background:linear-gradient(135deg,#1B2A4A,#0f1a30)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#F5A623">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Turn It On Electric</span>
-                    </div>
-                        </div>
+                <div class="card-img"><img src="/assets/previews/turniton.jpg" alt="Turn It On Electric website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Turn It On Electric</h3>
                     <p class="card-desc">Full website for a Phoenix electrician with 476+ Google reviews. Services section, review highlights, contact form, and emergency service callout.</p>
@@ -291,12 +270,7 @@
 
             <!-- Denver Small Moves -->
             <a href="https://denversmallmoves-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-4">
-                <div class="card-img" style="background:linear-gradient(135deg,#2D2D2D,#1a1a1a)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#E8621C">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E8621C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Denver Small Moves</span>
-                    </div>
-                        </div>
+                <div class="card-img"><img src="/assets/previews/denvermoves.jpg" alt="Denver Small Moves website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Denver Small Moves LLC</h3>
                     <p class="card-desc">Website for Denver's top-rated small moving company with 498+ reviews. Quote form, service area map, how-it-works section, and real customer testimonials.</p>
@@ -310,12 +284,7 @@
 
             <!-- Speakeasy Barber Lounge -->
             <a href="https://speakeasybarber-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-5">
-                <div class="card-img" style="background:linear-gradient(135deg,#111111,#0a0a0a)">
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;color:#C9A84C">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12L12 12"/><path d="M20 4L8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8L20 20"/></svg>
-                        <span style="font-weight:700;font-size:1.125rem;letter-spacing:-.01em">Speakeasy Barber Lounge</span>
-                    </div>
-                        </div>
+                <div class="card-img"><img src="/assets/previews/speakeasy.jpg" alt="Speakeasy Barber Lounge website preview" loading="lazy"></div>
                 <div class="card-body">
                     <h3 class="card-title">Speakeasy Barber Lounge</h3>
                     <p class="card-desc">Dark, upscale website for a Denver barbershop with 475+ reviews. Service menu with pricing, booking form, speakeasy-inspired design with gold accents.</p>
