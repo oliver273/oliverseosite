@@ -8,7 +8,7 @@ if (mobBtn && mobMenu) {
   });
 }
 
-// Contact form (formsubmit.co ajax)
+// Contact form (Web3Forms)
 var contactForm = document.getElementById('contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', function (e) {
@@ -24,22 +24,29 @@ if (contactForm) {
       services.push(c.value);
     });
 
-    fetch('https://formsubmit.co/ajax/oliver@oliverseo.co', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
+        access_key: 'ccdf3061-ccc5-42cd-a0ef-4d3839be4e8f',
+        subject: 'New Lead from OliverSEO.com: ' + contactForm.name.value,
+        from_name: 'OliverSEO Contact Form',
         name: contactForm.name.value,
         email: contactForm.email.value,
         phone: contactForm.phone.value || 'Not provided',
         business: contactForm.business.value || 'Not provided',
         budget: contactForm.budget.value || 'Not specified',
         services: services.join(', ') || 'None selected',
-        message: contactForm.message.value || 'No message',
-        _subject: 'New Lead from OliverSEO.com: ' + contactForm.name.value
+        message: contactForm.message.value || 'No message'
       })
     })
       .then(function (res) {
-        if (!res.ok) throw new Error('send failed');
+        return res.json().then(function (data) {
+          if (!res.ok || data.success === false) throw new Error(data.message || 'send failed');
+          return data;
+        });
+      })
+      .then(function () {
         msg.className = 'form-msg ok';
         msg.textContent = "Message sent! We'll be in touch within 2 hours.";
         contactForm.reset();
