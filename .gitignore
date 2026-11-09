@@ -12,3 +12,15 @@ index-old-backup.html
 
 
 roofstormleads/
+
+# Business docs stay on the PC, never on GitHub (repo is public + deploys to oliverseo.com)
+.cursorrules
+RESTART/
+AI Receptionist/
+STRATEGIES/
+TEMPLATES/
+QUICK_STARTS/
+ALTERNATIVES/
+*BUSINESS*.md
+*PLAN*.md
+*STRATEGY*.md
