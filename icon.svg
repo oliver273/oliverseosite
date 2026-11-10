@@ -1,14 +1,5 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="64" height="64" rx="12" fill="#f59e0b20"/>
-  
-  <!-- Letter O -->
-  <circle cx="22" cy="32" r="10" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
-  
-  <!-- Letter S - Stylized -->
-  <path d="M 38 16 Q 48 16 48 26 Q 48 30 44 30 Q 40 30 40 36 Q 40 42 48 42 L 48 48" 
-        fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="64" height="64" rx="10" fill="#24211C"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="8.5" fill="none" stroke="#D6B45A" stroke-width="1.5"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#D6B45A">OS</text>
 </svg>
-
-
-

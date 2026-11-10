@@ -3,357 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Oliver SEO</title>
-    <meta name="description" content="View my portfolio of professional websites I've designed and built. Modern, responsive designs for businesses of all sizes.">
+    <title>Work | Oliver SEO</title>
+    <meta name="description" content="Water Co. II, a live site by Oliver SEO in Wyoming.">
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
     <link rel="alternate icon" href="/icon.ico">
     <link rel="canonical" href="https://oliverseo.com/portfolio">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Portfolio | Oliver SEO">
-    <meta property="og:description" content="View my portfolio of professional websites I've designed and built.">
-    <meta property="og:url" content="https://oliverseo.com/portfolio.html">
-    <meta property="og:site_name" content="Oliver SEO">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Portfolio | Oliver SEO">
-    <meta name="twitter:description" content="View my portfolio of professional websites I've designed and built.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css?v=6">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VGKYK0Q0E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-2VGKYK0Q0E');
-    </script>
-    <style>
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-        body{font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5;background:#020617;color:#f8fafc;-webkit-tap-highlight-color:transparent}
-        a{color:inherit;text-decoration:inherit}
-        button{font-family:inherit;cursor:pointer}
-        img,svg{display:block;vertical-align:middle}
-
-        ::-webkit-scrollbar{width:8px}
-        ::-webkit-scrollbar-track{background:#0f172a}
-        ::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
-        ::-webkit-scrollbar-thumb:hover{background:#475569}
-        ::selection{background:rgba(59,130,246,.3);color:#fff}
-
-        @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .fade-up{opacity:0;animation:fadeInUp .6s ease-out forwards}
-        .fade-up-1{animation-delay:.1s}
-        .fade-up-2{animation-delay:.2s}
-        .fade-up-3{animation-delay:.3s}
-        .fade-up-4{animation-delay:.4s}
-        .fade-up-5{animation-delay:.5s}
-
-        /* ── NAV ── */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(2,6,23,1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #1e293b}
-        .nav-inner{max-width:80rem;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:4rem}
-        @media(min-width:640px){.nav-inner{padding:0 1.5rem}}
-        @media(min-width:1024px){.nav-inner{padding:0 2rem}}
-        .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
-        .nav-logo-box{width:2.5rem;height:2.5rem;background:linear-gradient(135deg,#3b82f6,#9333ea);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
-        .nav-logo-box span{color:#fff;font-weight:700;font-size:1.125rem}
-        .nav-brand{display:flex;flex-direction:column}
-        .nav-brand-name{color:#f1f5f9;font-weight:600;font-size:1.125rem;line-height:1.25}
-        .nav-brand-sub{color:#64748b;font-size:.75rem;line-height:1;margin-top:1px}
-        .nav-links{display:none;align-items:center;gap:2rem}
-        @media(min-width:768px){.nav-links{display:flex}}
-        .nav-links a{color:#94a3b8;font-size:.875rem;font-weight:500;transition:color .15s;text-decoration:none}
-        .nav-links a:hover,.nav-links a.active{color:#fff}
-        .nav-cta{display:none;padding:.5rem 1.25rem;border-radius:calc(.625rem - 2px);font-size:.875rem;font-weight:500;color:#fff;background:linear-gradient(to right,#3b82f6,#9333ea);border:none;transition:all .15s;text-decoration:none}
-        @media(min-width:768px){.nav-cta{display:inline-flex}}
-        .nav-cta:hover{opacity:.9}
-        .mobile-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:.5rem;cursor:pointer}
-        @media(min-width:768px){.mobile-toggle{display:none}}
-        .mobile-toggle span{display:block;width:1.25rem;height:2px;background:#94a3b8;border-radius:2px;transition:all .3s}
-        .mobile-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-        .mobile-toggle.open span:nth-child(2){opacity:0}
-        .mobile-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-        .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,.98);backdrop-filter:blur(12px);border-bottom:1px solid #1e293b;padding:1rem 0}
-        .mobile-menu.open{display:block}
-        .mobile-menu a{display:block;padding:.75rem 1.5rem;color:#94a3b8;font-size:.9375rem;font-weight:500;transition:color .15s}
-        .mobile-menu a:hover,.mobile-menu a.active{color:#fff}
-        .mobile-menu .mob-cta{display:block;margin:1rem 1.5rem 0;padding:.75rem;border-radius:calc(.625rem - 2px);font-size:.875rem;font-weight:500;color:#fff;background:linear-gradient(to right,#3b82f6,#9333ea);text-align:center}
-
-        /* ── HERO ── */
-        .hero{padding:8rem 0 4rem;position:relative;overflow:hidden}
-        @media(min-width:1024px){.hero{padding:10rem 0 5rem}}
-        .hero-glow{position:absolute;border-radius:9999px;filter:blur(80px);opacity:.08;pointer-events:none}
-        .glow-1{width:500px;height:500px;background:#3b82f6;top:-150px;right:-100px}
-        .glow-2{width:400px;height:400px;background:#9333ea;bottom:-100px;left:-80px}
-        .hero-inner{max-width:80rem;margin:0 auto;padding:0 1rem;text-align:center;position:relative;z-index:1}
-        @media(min-width:640px){.hero-inner{padding:0 1.5rem}}
-        @media(min-width:1024px){.hero-inner{padding:0 2rem}}
-        .hero-badge{display:inline-block;padding:.25rem 1rem;border-radius:9999px;background:#0f172a;border:1px solid #1e293b;color:#94a3b8;font-size:.875rem;font-weight:500;margin-bottom:1.5rem}
-        .hero-title{font-size:2.25rem;font-weight:700;color:#f1f5f9;line-height:1.15;letter-spacing:-.025em;margin-bottom:1rem}
-        @media(min-width:1024px){.hero-title{font-size:3rem}}
-        .gradient-text{background:linear-gradient(to right,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-desc{color:#94a3b8;font-size:1.125rem;max-width:42rem;margin:0 auto 2rem;line-height:1.625}
-
-        /* ── PORTFOLIO GRID ── */
-        .section{max-width:80rem;margin:0 auto;padding:0 1rem 5rem}
-        @media(min-width:640px){.section{padding:0 1.5rem 5rem}}
-        @media(min-width:1024px){.section{padding:0 2rem 5rem}}
-        .grid{display:grid;grid-template-columns:1fr;gap:2rem}
-        @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
-        @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
-        .card{display:flex;flex-direction:column;border-radius:1rem;border:1px solid #1e293b;background:#0f172a;overflow:hidden;transition:all .3s;text-decoration:none;color:inherit}
-        .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);border-color:#334155}
-        .card-img{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-        .card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 75%,#0f172a);pointer-events:none}
-        .card-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
-        .card:hover .card-img img{transform:scale(1.04)}
-        .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
-        .card-title{font-size:1.25rem;font-weight:700;color:#f1f5f9;margin-bottom:.5rem}
-        .card-desc{color:#94a3b8;font-size:.875rem;line-height:1.625;flex:1;margin-bottom:1rem}
-        .card-tags{display:flex;flex-wrap:wrap;gap:.5rem}
-        .tag{padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:500;background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
-        .card-link{display:inline-flex;align-items:center;gap:.5rem;color:#60a5fa;font-size:.875rem;font-weight:500;margin-top:1rem;transition:gap .2s}
-        .card:hover .card-link{gap:.75rem}
-        .card-link svg{width:1rem;height:1rem;transition:transform .2s}
-        .card:hover .card-link svg{transform:translateX(2px)}
-
-        /* ── CTA SECTION ── */
-        .cta-section{padding:5rem 0;background:#0f172a;border-top:1px solid #1e293b}
-        .cta-inner{max-width:42rem;margin:0 auto;padding:0 1rem;text-align:center}
-        .cta-title{font-size:1.875rem;font-weight:700;color:#f1f5f9;margin-bottom:1rem}
-        @media(min-width:1024px){.cta-title{font-size:2.25rem}}
-        .cta-desc{color:#94a3b8;margin-bottom:2rem;line-height:1.625}
-        .cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;border-radius:calc(.625rem);font-size:1rem;font-weight:500;color:#fff;background:linear-gradient(to right,#3b82f6,#9333ea);border:none;text-decoration:none;transition:all .15s;position:relative;overflow:hidden}
-        .cta-btn:hover{opacity:.9;transform:translateY(-1px)}
-        .cta-btn::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
-        .cta-btn:hover::after{left:100%}
-
-        /* ── FOOTER ── */
-        .footer{background:#020617;border-top:1px solid #1e293b}
-        .footer-inner{max-width:80rem;margin:0 auto;padding:3rem 1rem 2rem}
-        @media(min-width:640px){.footer-inner{padding:3rem 1.5rem 2rem}}
-        @media(min-width:1024px){.footer-inner{padding:4rem 2rem 2rem}}
-        .footer-top{display:grid;grid-template-columns:1fr;gap:2rem;margin-bottom:3rem}
-        @media(min-width:768px){.footer-top{grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}}
-        .footer-about .f-logo{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
-        .footer-about .f-logo-box{width:2.5rem;height:2.5rem;background:linear-gradient(135deg,#3b82f6,#9333ea);border-radius:.5rem;display:flex;align-items:center;justify-content:center}
-        .footer-about .f-logo-box span{color:#fff;font-weight:700;font-size:1.125rem}
-        .footer-about .f-name{color:#f1f5f9;font-weight:600;font-size:1.125rem}
-        .footer-about .f-sub{color:#64748b;font-size:.75rem}
-        .footer-about p{color:#94a3b8;font-size:.875rem;line-height:1.625;margin-bottom:1rem}
-        .footer-about .f-loc{color:#64748b;font-size:.875rem}
-        .footer-col h4{color:#f1f5f9;font-weight:600;margin-bottom:1rem;font-size:.875rem}
-        .footer-col a{display:flex;align-items:center;gap:.5rem;color:#94a3b8;font-size:.875rem;padding:.375rem 0;transition:color .15s}
-        .footer-col a:hover{color:#fff}
-        .footer-col a svg{width:1rem;height:1rem;flex-shrink:0}
-        .footer-bottom{padding-top:2rem;border-top:1px solid #1e293b;display:flex;flex-direction:column;gap:1rem;align-items:center}
-        @media(min-width:640px){.footer-bottom{flex-direction:row;justify-content:space-between}}
-        .footer-bottom p{color:#64748b;font-size:.875rem}
-        .footer-bottom-links{display:flex;gap:1.5rem}
-        .footer-bottom-links a{color:#64748b;font-size:.875rem;transition:color .15s}
-        .footer-bottom-links a:hover{color:#fff}
-    </style>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2VGKYK0Q0E');</script>
 </head>
 <body>
-    <!-- Nav -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
                 <div class="nav-logo-box"><span>OS</span></div>
                 <div class="nav-brand">
                     <span class="nav-brand-name">Oliver SEO</span>
-                    <span class="nav-brand-sub">Digital Marketing</span>
+                    <span class="nav-brand-sub">Websites and local SEO</span>
                 </div>
             </a>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/services">Services</a>
-                <a href="/portfolio" class="active">Portfolio</a>
+                <a href="/portfolio" class="active">Work</a>
                 <a href="/pricing">Pricing</a>
-                <a href="/why-us">Why Us</a>
                 <a href="/contact">Contact</a>
             </div>
-            <a href="/contact" class="nav-cta">Get a Free Mockup</a>
-            <button class="mobile-toggle" id="mob-btn" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <a href="/contact" class="nav-cta">Start a site</a>
+            <button class="mobile-toggle" id="mob-btn" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
         <div class="mobile-menu" id="mob-menu">
             <a href="/">Home</a>
             <a href="/services">Services</a>
-            <a href="/portfolio" class="active">Portfolio</a>
+            <a href="/portfolio" class="active">Work</a>
             <a href="/pricing">Pricing</a>
-            <a href="/why-us">Why Us</a>
             <a href="/contact">Contact</a>
-            <a href="/contact" class="mob-cta">Get a Free Mockup</a>
+            <a href="/contact" class="mob-cta">Start a site</a>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
-        <div class="hero-glow glow-1"></div>
-        <div class="hero-glow glow-2"></div>
         <div class="hero-inner">
-            <span class="hero-badge fade-up fade-up-1">Our Work</span>
-            <h1 class="hero-title fade-up fade-up-2">Websites That <span class="gradient-text">Actually Convert</span></h1>
-            <p class="hero-desc fade-up fade-up-3">Real sites we've built for real businesses. Every project is designed to turn visitors into customers.</p>
-            </div>
-    </section>
-
-    <!-- Portfolio Grid -->
-    <div class="section">
-        <div class="grid">
-            <!-- Water Co. II LLC (live client) -->
-            <a href="https://waterco2.com" target="_blank" rel="noopener" class="card fade-up fade-up-2">
-                <div class="card-img"><img src="/assets/previews/waterco.jpg" alt="Water Co. II LLC website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Water Co. II LLC</h3>
-                    <p class="card-desc">Live client site we built, host, and maintain. 24/7 water load out facility in Wyoming — contact form with spam protection, fast mobile experience, and ongoing monthly support.</p>
-                    <div class="card-tags">
-                        <span class="tag">Live Client</span>
-                        <span class="tag">Gillette, WY</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                        </div>
-            </a>
-
-            <!-- Summit Tax & Accounting -->
-            <a href="https://summittax-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-2">
-                <div class="card-img"><img src="/assets/previews/summittax.jpg" alt="Summit Tax &amp; Accounting website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Summit Tax &amp; Accounting</h3>
-                    <p class="card-desc">Four-page site for a tax and accounting firm — services, about, and contact pages with a warm, established-firm look. Built to win trust with clients handing over their books.</p>
-                    <div class="card-tags">
-                        <span class="tag">Tax &amp; Accounting</span>
-                        <span class="tag">4 Pages</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                        </div>
-            </a>
-
-            <!-- The Larkspur Hotel -->
-            <a href="https://larkspurhotel-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img"><img src="/assets/previews/larkspur.jpg" alt="The Larkspur Hotel website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">The Larkspur Hotel</h3>
-                    <p class="card-desc">Boutique hotel site with six room types, online booking flow with secure payment integration, restaurant menu, and local experiences guide. Built to turn lookers into bookings.</p>
-                    <div class="card-tags">
-                        <span class="tag">Hotel &amp; Hospitality</span>
-                        <span class="tag">Online Booking</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </a>
-
-            <!-- Brighter Path Foundation -->
-            <a href="https://brighterpath-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img"><img src="/assets/previews/brighterpath.jpg" alt="Brighter Path Foundation website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Brighter Path Foundation</h3>
-                    <p class="card-desc">Nonprofit site with summer camp registration, donation tiers showing exactly what each gift funds, volunteer signup, and impact storytelling that builds donor trust.</p>
-                    <div class="card-tags">
-                        <span class="tag">Nonprofit</span>
-                        <span class="tag">Donations &amp; Camp</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                        </div>
-            </a>
-
-            <!-- Turn It On Electric -->
-            <a href="https://turnitonelectric-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-3">
-                <div class="card-img"><img src="/assets/previews/turniton.jpg" alt="Turn It On Electric website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Turn It On Electric</h3>
-                    <p class="card-desc">Full website for a Phoenix electrician with 476+ Google reviews. Services section, review highlights, contact form, and emergency service callout.</p>
-                    <div class="card-tags">
-                        <span class="tag">Electrician</span>
-                        <span class="tag">Phoenix, AZ</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </a>
-
-            <!-- Denver Small Moves -->
-            <a href="https://denversmallmoves-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-4">
-                <div class="card-img"><img src="/assets/previews/denvermoves.jpg" alt="Denver Small Moves website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Denver Small Moves LLC</h3>
-                    <p class="card-desc">Website for Denver's top-rated small moving company with 498+ reviews. Quote form, service area map, how-it-works section, and real customer testimonials.</p>
-                    <div class="card-tags">
-                        <span class="tag">Moving Company</span>
-                        <span class="tag">Denver, CO</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                        </div>
-            </a>
-
-            <!-- Speakeasy Barber Lounge -->
-            <a href="https://speakeasybarber-preview.pages.dev" target="_blank" rel="noopener" class="card fade-up fade-up-5">
-                <div class="card-img"><img src="/assets/previews/speakeasy.jpg" alt="Speakeasy Barber Lounge website preview" loading="lazy"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Speakeasy Barber Lounge</h3>
-                    <p class="card-desc">Dark, upscale website for a Denver barbershop with 475+ reviews. Service menu with pricing, booking form, speakeasy-inspired design with gold accents.</p>
-                    <div class="card-tags">
-                        <span class="tag">Barbershop</span>
-                        <span class="tag">Denver, CO</span>
-                    </div>
-                    <span class="card-link">View Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </a>
-                </div>
-            </div>
-            
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="cta-inner fade-up">
-            <h2 class="cta-title">Ready to <span class="gradient-text">Grow Your Business?</span></h2>
-            <p class="cta-desc">Get a professional website that actually brings in customers. We'll have a mockup ready for you within 48 hours.</p>
-            <a href="/#contact" class="cta-btn">Get Started <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <h1 class="hero-title">Water Co. II is the live site.</h1>
+            <p class="hero-desc">A water load-out yard in Wyoming. Open it and look around.</p>
         </div>
     </section>
 
-    <!-- Footer -->
+    <div class="section">
+        <div class="grid">
+            <a href="https://waterco2.com" target="_blank" rel="noopener" class="card">
+                <div class="card-img"><img src="/assets/previews/waterco.jpg?v=2" alt="Water Co. II LLC website" loading="lazy"></div>
+                <div class="card-body">
+                    <h3 class="card-title">Water Co. II LLC</h3>
+                    <p class="card-desc">Live site for a water load-out yard in Wyoming. Contact form, phone-friendly pages, and the business’s own information.</p>
+                    <div class="card-tags"><span class="tag">Live</span><span class="tag">Gillette, WY</span></div>
+                    <span class="card-link">View live site</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Want one for your business?</h2>
+            <p class="cta-desc">$700 a month, hosting included while you pay it. $3,500 once for the build. $7,000 to own it and move it.</p>
+            <a href="/contact" class="cta-btn">Start a site</a>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-about">
                     <div class="f-logo">
                         <div class="f-logo-box"><span>OS</span></div>
-                <div>
-                            <span class="f-name">Oliver SEO</span>
-                            <span class="f-sub" style="display:block">Digital Marketing</span>
-                        </div>
+                        <div><span class="f-name">Oliver SEO</span><span class="f-sub" style="display:block">Websites and local SEO</span></div>
                     </div>
-                    <p>Helping businesses grow online with Google Ads, professional websites, and local SEO.</p>
-                    <span class="f-loc">Serving businesses nationwide.</span>
+                    <p>Oliver Carroll, Gillette, Wyoming.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Services</h4>
-                    <a href="/#google-ads"><svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Google Ads</a>
-                    <a href="/#websites"><svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Professional Websites</a>
-                    <a href="/#maps"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Google Maps</a>
+                    <h4>Offers</h4>
+                    <a href="/services#website">Website — $700/mo</a>
+                    <a href="/services#seo">Local SEO — from $858/mo</a>
+                    <a href="/pricing">Pricing</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
-                    <a href="/">Home</a>
-                    <a href="/portfolio.html">Portfolio</a>
-                    <a href="/#contact">Contact</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Get In Touch</h4>
-                    <a href="tel:3072280770"><svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (307) 228-0770</a>
-                    <a href="mailto:oliver@oliverseo.co"><svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> oliver@oliverseo.co</a>
+                    <h4>Contact</h4>
+                    <a href="tel:3072280770">(307) 228-0770</a>
+                    <a href="mailto:oliver@oliverseo.com">oliver@oliverseo.com</a>
+                    <a href="/privacy-policy">Privacy</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Oliver SEO. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="/privacy-policy">Privacy Policy</a>
-            </div>
+                <div class="footer-bottom-links"><a href="/">Home</a><a href="/privacy-policy">Privacy</a></div>
             </div>
         </div>
     </footer>
-
-    <script>
-        var btn=document.getElementById('mob-btn'),menu=document.getElementById('mob-menu');
-        btn.addEventListener('click',function(){btn.classList.toggle('open');menu.classList.toggle('open')});
-        document.addEventListener('click',function(e){if(!btn.contains(e.target)&&!menu.contains(e.target)){btn.classList.remove('open');menu.classList.remove('open')}});
-    </script>
+    <script src="/js/site.js"></script>
 </body>
 </html>
